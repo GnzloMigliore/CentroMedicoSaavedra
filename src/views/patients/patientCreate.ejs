@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../partials/head.ejs') %>
+    <!--Mi CSS-->
+   
+</head>
+<body>
+    <header>
+        <%- include('../partials/navBar.ejs') %>
+    </header>
+    
+    <main class="container-fluid">
+        <section class="row my-5">
+            <article class="col-8 mx-auto">
+                <h2 class="titulo-crear pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">Crear nuevo paciente</h2>
+            </article>
+        </section>
+        <section class="container">
+            <div class="row">
+                <article id="crear" class="col-8 mx-auto">
+                    <form action="/admin/create" method="POST" enctype="multipart/form-data">
+                        <!--Nombre-->
+                        <div class="form-group">
+                            <input type="text" class="form-control border-0 rounded-0 bg-light" name="marca" placeholder="Marca" required="required" value="">
+                        </div>
+                        <!--Apellido-->
+                        <div class="form-group">
+                            <input type="text" class="form-control border-0 rounded-0 bg-light" name="modelo" placeholder="Modelo" required="required" value="">
+                        </div>
+                        
+                        <div class="row">
+                            <!--Género-->
+                            <div class="form-group col-4" placeholder="Modelo" required="required" value="">
+                                <select class="custom-select border-0 rounded-0 bg-light"  name="genero">
+                                    <option selected>Género</option>
+                                    <option value="1">Men</option>
+                                </select>
+                            </div>
+                            <!--Domicilio-->
+                            <div class="form-group col-2 pl-0">
+                                <input type="color" class="form-control border-0 rounded-0 bg-light" name="color" required="required" value="">
+                            </div>
+                            <!--Teléfono-->
+                            <div class="form-group col-6 pl-0">
+                                <input class="form-control border-0 rounded-0 bg-light" name="talle" placeholder="Talles (separados por guión sin espacio)" required="required" value="">
+                            </div>
+                            <!--Obra social-->
+                            <div class="form-group col-7">
+                                <input type="number" class="form-control border-0 rounded-0 bg-light" name="precio" placeholder="$" required="required" value="">
+                            </div>
+                            <!--Tratamietos-->
+                            <div class="form-group col-5 pl-0">
+                                <input type="number" class="form-control border-0 rounded-0 bg-light" name="descuento" placeholder="%" required="required" value="">
+                            </div>
+                        </div>
+                        <!--Descripción de producto-->
+                        <div class="form-group">
+                            <input type="text" class="form-control border-0 rounded-0 bg-light" name="descripcion" placeholder="Descripción del producto" required="required" value="">
+                        </div>
+                        <!--Seleccionar imagenes-->
+                        <div class="form-group d-flex flex-wrap justify-content-between">
+                            <!--<div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile" placeholder="Seleccionar imágenes" multiple>
+                                <label class="custom-file-label border-0 rounded-0 bg-light" for="customFile"></label>
+                            </div>-->
+                            <div class="custom-file">
+                                <input type="file" name="imagen1">
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" name="imagen2">
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" name="imagen3">
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" name="imagen4">
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" name="imagen5">
+                            </div>
+                        </div>
+                        <!--Botones guardar volver-->
+                        <div class="form-group row d-flex justify-content-center mx-auto mt-5">
+                            <button type="submit" class="btn btn-dark col-8 border-0 rounded-0">Guardar producto</button>
+                        </div>
+                        <div class="form-group row d-flex justify-content-center mx-auto">
+                            <a href="/patients" class=" text-decoration-none text-body col-12 text-center pl-0">Volver</a>
+                        </div>
+                        
+                        
+                        
+                    </form>
+                </article>
+            </div>
+        </section>
+    </main>
+    <!-- FOOTER -->
+    <%- include('../partials/footer.ejs') %>
+    
+</body>
+</html>

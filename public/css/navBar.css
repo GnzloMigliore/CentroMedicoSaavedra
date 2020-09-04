@@ -1,0 +1,11 @@
+body{
+    background-color: 	#ECFFFF;
+    font-family: 'Montserrat', sans-serif;
+}
+header{
+    background-color: white;
+    height: 13vh;
+}
+.logo{
+    width: 35%;
+}

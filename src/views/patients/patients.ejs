@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs') %>
+  <link rel='stylesheet' href='/css/patients.css' />
+  <body>
+    <%- include('../partials/navBar.ejs') %>
+    <main class="container-fluid">
+
+        <!--Listado de productos para administrar-->
+        <section class="row">
+            <article class="col-8 mx-auto mb-5">
+            <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">Pacientes</h2>
+            </article>
+            <article class="col-12 my-3">
+                <a href="/patients/create"><button type="button" class="btn btn-outline-dark rounded-0">+ Agregar Paciente</button>
+                </a>
+            </article>
+            <article class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Ver</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+                            <tr>
+                                <td>1</td>
+                                <td>Tomás</td>
+                                <td>Lopez</td>
+                                <td><a href="#">Ver detalle</a></td>
+                                <td><a href="#">Editar producto</a></td>
+                                <td><a href="#">Eliminar producto</a></td>
+                            </tr>
+                     
+                    </tbody>
+                </table>
+            </article>
+        </section>
+    </main>
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+    <!-- FOOTER -->
+<%- include('../partials/footer.ejs') %>
+  </body>
+</html>

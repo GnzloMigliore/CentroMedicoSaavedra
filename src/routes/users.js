@@ -1,14 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+const fs = require('fs');
+const {
+  check,
+  validationResult,
+  body
+} = require('express-validator');
 
+//Requiero Controladores
+const controllersUser = require(path.resolve(__dirname, '..', 'controllers', 'controllersUser'));
 
+//Requiero middlewares
+const validacionRegistro = require(path.resolve(__dirname, '..', 'middlewares', 'validacionRegistro'));
+const validacionAcceso = require(path.resolve(__dirname, '..', 'middlewares', 'validacionAcceso'));
 
-
-const controllersWeb = require(path.resolve(__dirname, '..', 'controllers', 'controllersUser'));
 //armo mis rutas
 
-router.get('/registro', controllersWeb.registro);
-router.post('/registro', controllersWeb.create);
+router.get('/registro', controllersUser.registro);
+router.post('/registro',[validacionRegistro], controllersUser.create);
+router.post('/login',[validacionAcceso], controllersUser.login)
+
 module.exports = router;
 
