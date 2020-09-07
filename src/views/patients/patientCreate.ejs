@@ -8,6 +8,7 @@
 <body>
     <header>
         <%- include('../partials/navBar.ejs') %>
+        <link rel="stylesheet" href="/css/patientCreate.css">
     </header>
     
     <main class="container-fluid">
@@ -19,66 +20,165 @@
         <section class="container">
             <div class="row">
                 <article id="crear" class="col-8 mx-auto">
-                    <form action="/admin/create" method="POST" enctype="multipart/form-data">
+                    <% if(typeof(errors) != 'undefined'){%>
+                        <ul class="alert alert-danger">
+                          <% errors.forEach(error => { %>
+                            <li><%= error.msg%></li>
+                            <%});%>
+                        </ul>
+                      <%}%>
+                    <form action="/patients/create" method="POST">
                         <!--Nombre-->
                         <div class="form-group">
-                            <input type="text" class="form-control border-0 rounded-0 bg-light" name="marca" placeholder="Marca" required="required" value="">
+                            <input type="text" class="form-control  bg-light" name="nombre" placeholder="Nombre"  value="">
                         </div>
                         <!--Apellido-->
                         <div class="form-group">
-                            <input type="text" class="form-control border-0 rounded-0 bg-light" name="modelo" placeholder="Modelo" required="required" value="">
+                            <input type="text" class="form-control  bg-light" name="apellido" placeholder="Apellido"  value="">
                         </div>
                         
                         <div class="row">
                             <!--Género-->
-                            <div class="form-group col-4" placeholder="Modelo" required="required" value="">
-                                <select class="custom-select border-0 rounded-0 bg-light"  name="genero">
-                                    <option selected>Género</option>
-                                    <option value="1">Men</option>
+                            <div class="form-group col-6" placeholder="Genero"  value="">
+                                <select class="custom-select  bg-light"  name="genero">
+                                    <option value="mujer">Mujer</option>
+                                    <option value="hombre">Hombre</option>
                                 </select>
                             </div>
-                            <!--Domicilio-->
-                            <div class="form-group col-2 pl-0">
-                                <input type="color" class="form-control border-0 rounded-0 bg-light" name="color" required="required" value="">
+                            <!--Fecha de nacimiento-->
+                            <div class="form-group col-6" placeholder="Nacimiento"  value="">
+                            <input type="date" id="start" name="nacimiento" class="form-control  bg-light"
+                            value=""
+                            min="1940-01-01" max="2020-12-31">
                             </div>
-                            <!--Teléfono-->
-                            <div class="form-group col-6 pl-0">
-                                <input class="form-control border-0 rounded-0 bg-light" name="talle" placeholder="Talles (separados por guión sin espacio)" required="required" value="">
+                             <!--Email-->
+                           <div class="form-group col-12">
+                           <input type="email" class="form-control  bg-light" name="email" placeholder="Email"  value="">
+                           </div>
+                          
+                         <!--Obra social-->
+                             <div class="form-group col-5">
+                          <input type="text" class="form-control bg-light" name="ObraSocial" placeholder="Obra Social"   value="">
                             </div>
-                            <!--Obra social-->
+                           <!--numero-->
+                           <div class="form-group col-7 pl-0">
+                           <input type="number" class="form-control bg-light" name="numero" placeholder="numero"  value="">
+                           </div>
+
+                            <!--Dirección-->
                             <div class="form-group col-7">
-                                <input type="number" class="form-control border-0 rounded-0 bg-light" name="precio" placeholder="$" required="required" value="">
+                                <input type="text" class="form-control bg-light" name="dirección" placeholder="Dirección"  value="">
                             </div>
-                            <!--Tratamietos-->
+                            <!--Telefóno-->
                             <div class="form-group col-5 pl-0">
-                                <input type="number" class="form-control border-0 rounded-0 bg-light" name="descuento" placeholder="%" required="required" value="">
+                                <input type="text" class="form-control bg-light" name="telefono" placeholder="Teléfono"  value="">
                             </div>
                         </div>
                         <!--Descripción de producto-->
-                        <div class="form-group">
-                            <input type="text" class="form-control border-0 rounded-0 bg-light" name="descripcion" placeholder="Descripción del producto" required="required" value="">
+                        <div class="form-group d-flex justify-content-between">                       
+                            <span>DIABETES</span>                 
+                           <label class="switch">
+                            <input type="checkbox" name="diabetes">
+                            <span class="slider round"></span>
+                           </label>
                         </div>
-                        <!--Seleccionar imagenes-->
-                        <div class="form-group d-flex flex-wrap justify-content-between">
-                            <!--<div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile" placeholder="Seleccionar imágenes" multiple>
-                                <label class="custom-file-label border-0 rounded-0 bg-light" for="customFile"></label>
-                            </div>-->
-                            <div class="custom-file">
-                                <input type="file" name="imagen1">
+                        <div class="form-group d-flex justify-content-between">                       
+                            <span>DLP</span>                 
+                           <label class="switch">
+                            <input type="checkbox" name="dlp">
+                            <span class="slider round"></span>
+                           </label>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">                       
+                            <span>HTA</span>                 
+                           <label class="switch">
+                            <input type="checkbox" name="hta">
+                            <span class="slider round"></span>
+                           </label>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">                       
+                            <span>CRM</span>                 
+                           <label class="switch">
+                            <input type="checkbox" name="crm">
+                            <span class="slider round"></span>
+                           </label>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">                       
+                            <span>ATC</span>                 
+                           <label class="switch">
+                            <input type="checkbox" name="atc">
+                            <span class="slider round"></span>
+                           </label>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">                       
+                            <span>IAM</span>                 
+                           <label class="switch">
+                            <input type="checkbox" name="iam">
+                            <span class="slider round"></span>
+                           </label>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">                       
+                            <span>ACV</span>                 
+                           <label class="switch">
+                            <input type="checkbox" name="acv">
+                            <span class="slider round"></span>
+                           </label>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">                       
+                            <span>ANEURISMA AORTA</span>                 
+                           <label class="switch">
+                            <input type="checkbox" name="aneurisma">
+                            <span class="slider round"></span>
+                           </label>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">                       
+                            <span>IC</span>                 
+                           <label class="switch">
+                            <input type="checkbox" name="ic">
+                            <span class="slider round"></span>
+                           </label>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">                       
+                            <span>EVP</span>                 
+                           <label class="switch">
+                            <input type="checkbox" name="evp">
+                            <span class="slider round"></span>
+                           </label>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">                       
+                            <span>EPOC</span>                 
+                           <label class="switch">
+                            <input type="checkbox" name="epoc">
+                            <span class="slider round"></span>
+                           </label>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">                       
+                            <span>IRC</span>                 
+                           <label class="switch">
+                            <input type="checkbox" name="irc">
+                            <span class="slider round"></span>
+                           </label>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">                       
+                            <span>OBESIDAD</span>                 
+                           <label class="switch">
+                            <input type="checkbox" name="obesidad">
+                            <span class="slider round"></span>
+                           </label>
+                        </div>
+                            <!--NHC-->
+                            <div class="form-group">
+                                <input type="text" class="form-control  bg-light" name="nhc" placeholder="NHC"  value="">
                             </div>
-                            <div class="custom-file">
-                                <input type="file" name="imagen2">
+                        
+                        <!--Sección-->
+                            <div class="form-group">
+                                <input type="text" class="form-control  bg-light" name="seccion" placeholder="Sección"  value="">
                             </div>
-                            <div class="custom-file">
-                                <input type="file" name="imagen3">
-                            </div>
-                            <div class="custom-file">
-                                <input type="file" name="imagen4">
-                            </div>
-                            <div class="custom-file">
-                                <input type="file" name="imagen5">
-                            </div>
+                        <!--Sección-->
+                       <div class="form-group">
+                           <input type="text" class="form-control  bg-light" name="Visita_medica" placeholder="Comentarios sobre visita medica"  value="">
+                       </div>
                         </div>
                         <!--Botones guardar volver-->
                         <div class="form-group row d-flex justify-content-center mx-auto mt-5">
