@@ -12,6 +12,7 @@ const {
 
 module.exports = {
   index: async (req, res) => {
+  
     const paciente = await patients.findAll()
     res.render(path.resolve(__dirname , '..','views','patients','patients'),{paciente}); 
 },
@@ -50,7 +51,7 @@ save: async (req, res) => {
      nhc: req.body.nhc,
      dlp: req.body.dlp,
      section: req.body.seccion,
-     medica_visit: req.body.visita_medica,
+     medical_visit: req.body.visita_medica,
 
 };     
 patients.create(patient_body)
@@ -74,6 +75,7 @@ destroy: async (req, res) => {
   
   res.redirect('/patients')
 },
+//filtros
 generom: async (req, res) => {
   let paciente = await patients.findAll({where: {gender: 'mujer'}})
   //return res.send(paciente)
@@ -81,6 +83,26 @@ generom: async (req, res) => {
 },
 generoh: async (req, res) => {
   let paciente = await patients.findAll({where: {gender: 'hombre'}})
+  //return res.send(zapatillas)
+  res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+},
+obesos: async (req, res) => {
+  let paciente = await patients.findAll({where: {obesity: 'on'}})
+  //return res.send(zapatillas)
+  res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+},
+diabetes: async (req, res) => {
+  let paciente = await patients.findAll({where: {diabetes: 'on'}})
+  //return res.send(zapatillas)
+  res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+},
+acv: async (req, res) => {
+  let paciente = await patients.findAll({where: {acv: 'on'}})
+  //return res.send(zapatillas)
+  res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+},
+aneurisma: async (req, res) => {
+  let paciente = await patients.findAll({where: {aortic_aneurysm: 'on'}})
   //return res.send(zapatillas)
   res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
 },

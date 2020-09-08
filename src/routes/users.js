@@ -19,7 +19,8 @@ const validacionAcceso = require(path.resolve(__dirname, '..', 'middlewares', 'v
 
 router.get('/registro', controllersUser.registro);
 router.post('/registro',[validacionRegistro], controllersUser.create);
-router.post('/login',[validacionAcceso], controllersUser.login)
+router.post('/login',[validacionAcceso], controllersUser.login);
+router.get('/logout',[validacionAcceso], controllersUser.logout)
 
 module.exports = router;
 

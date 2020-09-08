@@ -19,4 +19,8 @@ router.get("/patients/delete/:id", controllersPatients.destroy);
 //rutas de filtros
 router.get('/patients/generoh', controllersPatients.generoh);
 router.get('/patients/generom', controllersPatients.generom);
+router.get('/patients/obesos', controllersPatients.obesos);
+router.get('/patients/diabetes', controllersPatients.diabetes);
+router.get('/patients/acv', controllersPatients.acv);
+router.get('/patients/aneurisma', controllersPatients.aneurisma);
 module.exports = router;

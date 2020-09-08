@@ -55,8 +55,15 @@ login: async (req, res) => {
       if(req.body.recordarme){
           res.cookie('email', usuarioLogueado.email, {maxAge: 1000 * 60 * 60 * 48})
       }
+      //return res.send(req.session.usuario)
+      
       res.redirect('/patients');
   }
+},
+logout: (req, res) => {
+  req.session.destroy();
+  res.cookie('email',null,{maxAge: -1});
+  res.redirect('/')
 },
 
 }

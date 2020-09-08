@@ -23,18 +23,20 @@
              <!--Marca y modelo-->
              <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
                <div class="card-title m-0 pr-5"><h4>Nombre: <%= paciente.first_name %></h4></div>
-               <div class="card-title m-0 pl-5"><h4>Apellido: <%= paciente.last_name %></h4></div>
+               <div class="card-title m-0 "><h4>Apellido: <%= paciente.last_name %></h4></div>
+                <div class="card-title m-0 pl-5"><h4>Genero: <%= paciente.gender %></h4></div>
               </div>
               <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
-                <div class="card-title m-0 pr-5"><h4>Genero: <%= paciente.gender %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>Nacimiento: <%= paciente.date %></h4></div>
+                <div class="card-title m-0 pr-5"><h4>Obra social: <%= paciente.medical_insurance %></h4></div>
+                <div class="card-title m-0 "><h4>Número: <%= paciente.insurance_number %></h4></div>
                </div>
                <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
-                <div class="card-title m-0 pr-5"><h4>Email: <%= paciente.email %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>Obra social: <%= paciente.medical_insurance %></h4></div>
+                <div class="card-title m-0 "><h4>Nacimiento: <%= paciente.date %></h4></div>
+                <div class="card-title m-0 pl-5"><h4>Email: <%= paciente.email %></h4></div>
+                
                </div>
                <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
-                <div class="card-title m-0 pr-5"><h4>Dirección: <%= paciente.adress %></h4></div>
+                <div class="card-title m-0 "><h4>Dirección: <%= paciente.adress %></h4></div>
                 <div class="card-title m-0 pl-5"><h4>Teléfono: <%= paciente.telephone %></h4></div>
                </div>
                <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
@@ -45,7 +47,9 @@
                </div>
                <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
                 <div class="card-title m-0 pr-5"><h4>Aueurisma aorta: <%= paciente.aortic_aneurysm %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>IC: <%= paciente.ic %></h4></div>
+                <div class="card-title m-0 "><h4>IC: <%= paciente.ic %></h4></div>
+                <div class="card-title m-0 pl-5"><h4>IRC: <%= paciente.irc %></h4></div>
+                <div class="card-title m-0 pl-5"><h4>Obecidad: <%= paciente.obesity %></h4></div>
                </div>
                <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
                 <div class="card-title m-0 "><h4>EVP: <%= paciente.evp %></h4></div>
@@ -54,16 +58,12 @@
                 <div class="card-title m-0 pl-5"><h4>ACV: <%= paciente.acv %></h4></div>
                </div>
                <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
-                <div class="card-title m-0 pr-5"><h4>IRC: <%= paciente.irc %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>Obecidad: <%= paciente.obesity %></h4></div>
-               </div>
-               <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
                 <div class="card-title m-0 pr-5"><h4>NHC: <%= paciente.nhc %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>DLP: <%= paciente.dlp %></h4></div>
+                <div class="card-title m-0 "><h4>DLP: <%= paciente.dlp %></h4></div>
+                <div class="card-title m-0 pl-5"><h4>Sección: <%= paciente.section %></h4></div>
                </div>
-               <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
-                <div class="card-title m-0 pr-5"><h4>Sección: <%= paciente.section %></h4></div>
-                     
+               <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">              
+                <div class="card-title m-0 pr-5"><h4>Comentarios: <%= paciente.medical_visit %></h4></div>   
                </div>
               }
             </article>
