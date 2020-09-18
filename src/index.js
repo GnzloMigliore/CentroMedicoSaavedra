@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+//const logger = require('morgan');
 const session = require('express-session');
 
 
@@ -23,12 +23,15 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
 }));
+//Aqui coloco el Middleware para activar lo referido a las cookies
+app.use(cookieParser());
 
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.resolve(__dirname, '..','public')))
+
+// Requiero el middleware para recordar el usuario en la vista
 app.use(recordarUser);
 
 //requiero las rutas

@@ -50,12 +50,14 @@ login: async (req, res) => {
               email: req.body.email
              }
       })
+      
       delete usuarioLogueado.password;
       req.session.usuario = usuarioLogueado;
+      //return res.send(req.session.usuario)
       if(req.body.recordarme){
           res.cookie('email', usuarioLogueado.email, {maxAge: 1000 * 60 * 60 * 48})
       }
-//return res.send(req.session.usuario)
+
       
       res.redirect('/patients');
   }
