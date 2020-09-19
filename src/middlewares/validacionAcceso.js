@@ -31,7 +31,7 @@ module.exports = [
       return true
     } else {
       return Promise.reject('La contraseña es incorrecta')
-    
+      
     }
   })
 ]

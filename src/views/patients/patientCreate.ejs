@@ -3,19 +3,19 @@
 <head>
     <%- include('../partials/head.ejs') %>
     <!--Mi CSS-->
-   
+    <link rel="stylesheet" href="/css/patientCreate.css">
 </head>
 <body>
     <header>
         <%- include('../partials/navBar.ejs') %>
-        <link rel="stylesheet" href="/css/patientCreate.css">
+        
     </header>
     
     <main class="container-fluid">
-        <section class="row my-5">
-            <article class="col-8 mx-auto">
-                <h2 class="titulo-crear pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">Crear nuevo paciente</h2>
-            </article>
+        <section class="row my-3">
+            <div class="card-body">
+                <h1 class="col-8 mx-auto pb-3 card-title text-center border-bottom">CREAR NUEVO PACIENTE</h1>
+            </div>
         </section>
         <section class="container">
             <div class="row">
@@ -74,7 +74,7 @@
                                 <input type="text" class="form-control bg-light" name="telefono" placeholder="Teléfono"  value="">
                             </div>
                         </div>
-                        <!--Descripción de producto-->
+                        
                         <div class="form-group d-flex justify-content-between">                       
                             <span>DIABETES</span>                 
                            <label class="switch">
@@ -175,7 +175,7 @@
                             <div class="form-group">
                                 <input type="text" class="form-control  bg-light" name="seccion" placeholder="Sección"  value="">
                             </div>
-                        <!--Sección-->
+                        <!--comentario-->
                        <div class="form-group">
                            <input type="text" class="form-control  bg-light" name="visita_medica" placeholder="Comentarios sobre visita medica"  value="">
                        </div>

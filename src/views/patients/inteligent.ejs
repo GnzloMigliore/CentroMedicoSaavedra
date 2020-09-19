@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../partials/head.ejs') %>
+    <!--Mi CSS-->
+    <link rel="stylesheet" href="/css/patientCreate.css">
+</head>
+<body>
+    <header>
+        <%- include('../partials/navBar.ejs') %>
+        
+    </header>
+    
+    <main class="container-fluid">
+        <section class="row my-3">
+            <div class="card-body">
+                <h1 class="col-8 mx-auto pb-3 card-title text-center border-bottom">BÚSQUEDA INTELIGENTE</h1>
+            </div>
+        </section>
+        <section class="container">
+            <div class="row">
+                <article id="crear" class="col-8 mx-auto">
+                    <% if(typeof(errors) != 'undefined'){%>
+                        <ul class="alert alert-danger">
+                          <% errors.forEach(error => { %>
+                            <li><%= error.msg%></li>
+                            <%});%>
+                        </ul>
+                      <%}%>
+                    <form action="#" method="POST">
+                        <!--Nombre-->
+                        <div class="form-group">
+                            <input type="text" class="form-control  bg-light" name="nombre" placeholder="Nombre"  value="">
+                        </div>
+                        <!--Apellido-->
+                        <div class="form-group">
+                            <input type="text" class="form-control  bg-light" name="apellido" placeholder="Apellido"  value="">
+                        </div>
+                        
+                        <div class="row">
+                              <!--Género-->
+                            <div class="form-group col-6" placeholder="Genero"  value="">
+                                <select class="custom-select  bg-light"  name="genero">
+                                    <option desabled value="">Seleccione género</option>
+                                    <option value="mujer">Mujer</option>
+                                    <option value="hombre">Hombre</option>
+                                </select>
+                            </div>
+                            <!--Obra social-->
+                            <div class="form-group col-6" placeholder="Obra Social"  value="">                                         
+                            <input type="text" class="form-control  bg-light" name="ObraSocial" placeholder="Obra Social"  value="">                                            
+                            </div>
+                        </div>
+                            <div class="form-group d-flex justify-content-between">                       
+                                <span>DIABETES</span>                 
+                               <label class="switch">
+                                <input type="checkbox" name="diabetes">
+                                <span class="slider round"></span>
+                               </label>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">                       
+                                <span>DLP</span>                 
+                               <label class="switch">
+                                <input type="checkbox" name="dlp">
+                                <span class="slider round"></span>
+                               </label>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">                       
+                                <span>HTA</span>                 
+                               <label class="switch">
+                                <input type="checkbox" name="hta">
+                                <span class="slider round"></span>
+                               </label>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">                       
+                                <span>CRM</span>                 
+                               <label class="switch">
+                                <input type="checkbox" name="crm">
+                                <span class="slider round"></span>
+                               </label>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">                       
+                                <span>ATC</span>                 
+                               <label class="switch">
+                                <input type="checkbox" name="atc">
+                                <span class="slider round"></span>
+                               </label>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">                       
+                                <span>IAM</span>                 
+                               <label class="switch">
+                                <input type="checkbox" name="iam">
+                                <span class="slider round"></span>
+                               </label>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">                       
+                                <span>ACV</span>                 
+                               <label class="switch">
+                                <input type="checkbox" name="acv">
+                                <span class="slider round"></span>
+                               </label>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">                       
+                                <span>ANEURISMA AORTA</span>                 
+                               <label class="switch">
+                                <input type="checkbox" name="aneurisma">
+                                <span class="slider round"></span>
+                               </label>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">                       
+                                <span>IC</span>                 
+                               <label class="switch">
+                                <input type="checkbox" name="ic">
+                                <span class="slider round"></span>
+                               </label>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">                       
+                                <span>EVP</span>                 
+                               <label class="switch">
+                                <input type="checkbox" name="evp">
+                                <span class="slider round"></span>
+                               </label>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">                       
+                                <span>EPOC</span>                 
+                               <label class="switch">
+                                <input type="checkbox" name="epoc">
+                                <span class="slider round"></span>
+                               </label>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">                       
+                                <span>IRC</span>                 
+                               <label class="switch">
+                                <input type="checkbox" name="irc">
+                                <span class="slider round"></span>
+                               </label>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">                       
+                                <span>OBESIDAD</span>                 
+                               <label class="switch">
+                                <input type="checkbox" name="obesidad">
+                                <span class="slider round"></span>
+                               </label>
+                            </div>
+                                <!--NHC-->
+                                <div class="form-group">
+                                    <input type="text" class="form-control  bg-light" name="nhc" placeholder="NHC"  value="">
+                                </div>
+
+                         
+                        </div>
+                        <!--Botones guardar volver-->
+                        <div class="form-group row d-flex justify-content-center mx-auto mt-5">
+                            <button type="submit" class="btn btn-dark col-8 border-0 rounded-0">Buscar</button>
+                        </div>
+                        <div class="form-group row d-flex justify-content-center mx-auto">
+                            <a href="/patients" class=" text-decoration-none text-body col-12 text-center pl-0">Volver</a>
+                        </div>
+                        
+                        
+                        
+                    </form>
+                </article>
+            </div>
+        </section>
+    </main>
+    <!-- FOOTER -->
+    <%- include('../partials/footer.ejs') %>
+    
+</body>
+</html>

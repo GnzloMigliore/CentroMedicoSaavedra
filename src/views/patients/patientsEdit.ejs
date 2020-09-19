@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs') %>
+    <link rel="stylesheet" href="/css/patientCreate.css">
+</head>
+<body>
+    <header>
+        <%- include('../partials/navBar.ejs') %>
+    </header>
+    <section >
+       
+            <div class="card-body">
+                <h1 class="col-8 mx-auto pb-3 card-title text-center border-bottom">EDITAR PACIENTES</h1>
+            </div>
+    
+    </section>
+    
+    <section class="bg-home pt-4">
+        <div class="container-fluid">
+            <div class="row" >
+                <!--UL de errores-->
+                <div class="col-8 mx-auto">
+             
+             
+                <div  class="col-12">
+                    <div class=" create-form">
+                        <form action="/patients/edit/<%= paciente.id%>?_method=PUT" method="POST" >
+                            <!--Inputs-->
+                       <!--Nombre-->
+                       <div class="form-group">
+                        <input type="hidden" name="oldExample"  value="<%= paciente.first_name%>">
+                        <input type="text" class="form-control  bg-light" name="nombre" placeholder="Nombre"   value="<%= paciente.first_name%>">
+                    </div>
+                    <!--Apellido-->
+                    <div class="form-group">
+                        <input type="hidden" name="oldExample"  value="<%= paciente.last_name%>">
+                        <input type="text" class="form-control  bg-light" name="apellido" placeholder="Apellido"  value="<%= paciente.last_name%>">
+                    </div>
+                    
+                    <div class="row">
+                        <!--Género-->
+                        <div class="form-group col-6" placeholder="Genero">
+                            <select id="genero" name="genero" class="form-control  bg-light">
+                                 <option desabled value=""><%= paciente.gender%></option>
+                                <option value="Hombre">hombre</option>
+                                <option value="Mujer">mujer</option>
+                            </select>
+                        </div>
+                        <!--Fecha de nacimiento-->
+                        <div class="form-group col-6" placeholder="Nacimiento">
+                        <input type="date" id="start" name="nacimiento" class="form-control  bg-light"
+                        value="<%= paciente.date%>"
+                        min="1940-01-01" max="2020-12-31">
+                        </div>
+                         <!--Email-->
+                       <div class="form-group col-12">
+                        <input type="hidden" name="oldExample"  value="<%= paciente.email%>">
+                       <input type="email" class="form-control  bg-light" name="email" placeholder="Email"  value="<%= paciente.email%>">
+                       </div>
+                      
+                     <!--Obra social-->
+                         <div class="form-group col-5">
+                            <input type="hidden" name="oldExample"  value="<%= paciente.medical_insurance%>">
+                      <input type="text" class="form-control bg-light" name="ObraSocial" placeholder="Obra Social"   value="<%= paciente.medical_insurance%>">
+                        </div>
+                       <!--numero-->
+                       <div class="form-group col-7 pl-0">
+                        <input type="hidden" name="oldExample"  value="<%= paciente.insurance_number%>">
+                       <input type="number" class="form-control bg-light" name="numero" placeholder="numero"  value="<%= paciente.insurance_number%>">
+                       </div>
+
+                        <!--Dirección-->
+                        <div class="form-group col-7">
+                            <input type="hidden" name="oldExample"  value="<%= paciente.adress%>">
+                            <input type="text" class="form-control bg-light" name="dirección" placeholder="Dirección"  value=<%= paciente.adress%>">
+                        </div>
+                        <!--Telefóno-->
+                        <div class="form-group col-5 pl-0">
+                             <input type="hidden" name="oldExample"  value="<%= paciente.telephone%>">
+                            <input type="text" class="form-control bg-light" name="telefono" placeholder="Teléfono"  value="<%= paciente.telephone%>">
+                        </div>
+                    </div>
+                    <!--Descripción de producto-->
+                    <div class="form-group d-flex justify-content-between">                       
+                        <span>DIABETES</span>                 
+                       <label class="switch">
+                        <input type="checkbox"  name="diabetes">
+                        
+                        
+                        <span  class="slider round"></span>
+                        
+                       </label>
+                    </div>
+                    <div class="form-group d-flex justify-content-between">                       
+                        <span>DLP</span>                 
+                       <label class="switch">
+                        <input type="checkbox" name="dlp">
+                        <span class="slider round"></span>
+                       </label>
+                    </div>
+                    <div class="form-group d-flex justify-content-between">                       
+                        <span>HTA</span>                 
+                       <label class="switch">
+                        <input type="checkbox" name="hta">
+                        <span class="slider round"></span>
+                       </label>
+                    </div>
+                    <div class="form-group d-flex justify-content-between">                       
+                        <span>CRM</span>                 
+                       <label class="switch">
+                        <input type="checkbox" name="crm">
+                        <span class="slider round"></span>
+                       </label>
+                    </div>
+                    <div class="form-group d-flex justify-content-between">                       
+                        <span>ATC</span>                 
+                       <label class="switch">
+                        <input type="checkbox" name="atc">
+                        <span class="slider round"></span>
+                       </label>
+                    </div>
+                    <div class="form-group d-flex justify-content-between">                       
+                        <span>IAM</span>                 
+                       <label class="switch">
+                        <input type="checkbox" name="iam">
+                        <span class="slider round"></span>
+                       </label>
+                    </div>
+                    <div class="form-group d-flex justify-content-between">                       
+                        <span>ACV</span>                 
+                       <label class="switch">
+                        <input type="checkbox" name="acv">
+                        <span class="slider round"></span>
+                       </label>
+                    </div>
+                    <div class="form-group d-flex justify-content-between">                       
+                        <span>ANEURISMA AORTA</span>                 
+                       <label class="switch">
+                        <input type="checkbox" name="aneurisma">
+                        <span class="slider round"></span>
+                       </label>
+                    </div>
+                    <div class="form-group d-flex justify-content-between">                       
+                        <span>IC</span>                 
+                       <label class="switch">
+                        <input type="checkbox" name="ic">
+                        <span class="slider round"></span>
+                       </label>
+                    </div>
+                    <div class="form-group d-flex justify-content-between">                       
+                        <span>EVP</span>                 
+                       <label class="switch">
+                        <input type="checkbox" name="evp">
+                        <span class="slider round"></span>
+                       </label>
+                    </div>
+                    <div class="form-group d-flex justify-content-between">                       
+                        <span>EPOC</span>                 
+                       <label class="switch">
+                        <input type="checkbox" name="epoc">
+                        <span class="slider round"></span>
+                       </label>
+                    </div>
+                    <div class="form-group d-flex justify-content-between">                       
+                        <span>IRC</span>                 
+                       <label class="switch">
+                        <input type="checkbox" name="irc">
+                        <span class="slider round"></span>
+                       </label>
+                    </div>
+                    <div class="form-group d-flex justify-content-between">                       
+                        <span>OBESIDAD</span>                 
+                       <label class="switch">
+                        <input type="checkbox" name="obesidad">
+                        <span class="slider round"></span>
+                       </label>
+                    </div>
+                        <!--NHC-->
+                        <div class="form-group">
+                            <input type="hidden" name="oldExample"  value="<%= paciente.nhc%>">
+                            <input type="text" class="form-control  bg-light" name="nhc" placeholder="NHC"  value="<%= paciente.nhc%>">
+                        </div>
+                    
+                    <!--Sección-->
+                        <div class="form-group">
+                            <input type="hidden" name="oldExample"  value="<%= paciente.section%>">
+                            <input type="text" class="form-control  bg-light" name="seccion" placeholder="Sección"  value="<%= paciente.section%>">
+                        </div>
+                    <!--comentario-->
+                         <div class="form-group">
+                         <input type="text" class="form-control  bg-light" name="Comentario" placeholder="Comentarios sobre visita medica"  value="">
+                         </div>
+                         </div>
+                                                       
+                    
+                            <div class="col-12 form-group d-flex flex-wrap justify-content-center">
+                                <button type="submit" class="col-6 mx-5 mt-5 btn btn btn-dark">Actualizar</button>
+                                <a href="/patients" class="col-6 mx-5 my-3 btn btn-light border">Volver</a>
+                            </div>
+                            
+                        </form>
+                    </div>                        
+                </div>
+            </div>
+        </div>
+    </section>
+  
+
+    <!-- FOOTER -->
+    <%- include('../partials/footer.ejs') %>
+    
+</body>
+
+</html>

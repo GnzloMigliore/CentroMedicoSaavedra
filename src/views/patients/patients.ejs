@@ -3,7 +3,9 @@
   <%- include('../partials/head.ejs') %>
   <link rel='stylesheet' href='/css/patients.css' />
   <body>
+      <header>
     <%- include('../partials/navBar.ejs') %>
+     </header>
     <main class="container-fluid">
         <article class="col-8 mx-auto mb-5">
             <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">Pacientes</h2>
@@ -16,14 +18,14 @@
                 </a>
             </article>
             <div class="d-flex justify-content-center align-items-center">
-                <form action="/action_page.php" class="d-none d-md-block">
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="border-bottom border-dark">
-                        <input type="text" placeholder="BUSCAR" name="search" class="border-0 rounded-0 buscar-input">
-                    </div>
-                    <button type="submit" class="border-0 bg-white"><ion-icon name="search-outline"></ion-icon></button>
-                </div>
-                </form>
+                <!--Búsqueda-->
+        
+            <form method="POST" id="busqueda" action="/busqueda" class="form-inline ocultar">
+                <input class="form-control" type="search" name="search" placeholder="Buscar...">
+                <button class="btn" type="submit">
+                    <ion-icon name="search-outline"></ion-icon>
+                </button>
+            </form>
             </div>
             <div class="dropdown  my-3 d-flex justify-content-end">
                 <button class="btn btn-outline-dark rounded-0 dropdown-toggle boton-orden-filtro  " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -83,7 +85,7 @@
                                 <td><%= patient.aortic_aneurysm %></td>
 
                                 <td><a href="/patients/detail/<%= patient.id %>"><ion-icon  class="pl-2" name="eye-outline"></ion-icon></a></td>
-                                <td><a href="#"><ion-icon class="pl-3" name="pencil-outline"></ion-icon></a></td>
+                                <td><a href="/patients/edit/<%= patient.id %>"><ion-icon class="pl-3" name="pencil-outline"></ion-icon></a></td>
                                 <td><a href="/patients/delete/<%= patient.id %>"><ion-icon  class="pl-3" name="trash-outline"></ion-icon></a></td>
                             </tr>
                             <% }); %> 

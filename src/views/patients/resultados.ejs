@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs') %>
+  <link rel='stylesheet' href='/css/patients.css' />
+  <body>
+      <header>
+    <%- include('../partials/navBar.ejs') %>
+     </header>
+    <!--Menu vinos FIN-->
+<main class="container-fluid  py-5" id="main">
+    <article class="col-12">
+        <h1 class="font-weight-bolder w-100 text-center my-5">Resultados de la Búsqueda</h1>
+    </article>
+    <% if (paciente.length == 0) {%>
+        <h4 class="w-100 text-center my-5">NO SE ENCONTRARON PACIENTES COINCIDENTES CON LA BÚSQUEDA</h4>
+    <%} else if (paciente.length == 1) {%>
+         <h4 class="w-100 text-center my-5">SE ENCONTRÓ <%= paciente.length %> PACIENTE COINCIDENTE CON LA BÚSQUEDA</h4>
+         <%}else{%>
+        <h4 class="w-100 text-center my-5">SE ENCONTRARON <%= paciente.length %> PACIENTES COINCIDENTES CON LA BÚSQUEDA</h4>
+    <% } %>
+    <section class="d-flex">
+        <% paciente.forEach(patient => { %>
+            <article class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Género</th>
+                            <th scope="col">Diabetes</th>
+                            <th scope="col">Obesidad</th>
+                            <th scope="col">ACV</th>
+                            <th scope="col">Aneurisma</th>
+                            <th scope="col">Ver</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% paciente.forEach(patient=> { %>
+                            <tr>
+                               
+                                <td><%= patient.first_name %></td>
+                                <td><%= patient.last_name %></td>
+                                <td><%= patient.gender %></td>
+                                <td><%= patient.diabetes %></td>
+                                <td><%= patient.obesity %></td>
+                                <td><%= patient.acv %></td>
+                                <td><%= patient.aortic_aneurysm %></td>
+
+                                <td><a href="/patients/detail/<%= patient.id %>"><ion-icon  class="pl-2" name="eye-outline"></ion-icon></a></td>
+                                <td><a href="/patients/edit/<%= patient.id %>"><ion-icon class="pl-3" name="pencil-outline"></ion-icon></a></td>
+                                <td><a href="/patients/delete/<%= patient.id %>"><ion-icon  class="pl-3" name="trash-outline"></ion-icon></a></td>
+                            </tr>
+                            <% }); %> 
+                    </tbody>
+                </table>
+            </article>
+    <% }) %>
+</section>
+
+<div class="col-12 form-group d-flex flex-wrap justify-content-end">
+
+    <a href="/patients" class="btn btn-dark px-5">Volver</a>
+</div>
+</main>
+    <!--Menu Vinos FIN-->
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

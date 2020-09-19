@@ -14,7 +14,7 @@
     <div class="container-fluid">             
         <section class="row">
           <!-- Cuerpo principal -->
-          <h1 class="col-12 mt-5 text-center">DETALLE DEL PACIENTE</h1>
+          <h1 class="col-8 mx-auto pb-3 card-title text-center border-bottom">DETALLE DEL PACIENTE</h1>
           
           
           <article id="article" class="col-12">       
@@ -65,14 +65,18 @@
                <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">              
                 <div class="card-title m-0 pr-5"><h4>Comentarios: <%= paciente.medical_visit %></h4></div>   
                </div>
-              }
+      
             </article>
             </section>
           
           <!--Boton volver-->
           <div class="col-12 d-flex justify-content-end pr-5 my-5">
             <a href="/patients" class="btn btn-dark px-5">Volver</a>
+            <a href="/patients/edit/<%= paciente.id %>" class="btn btn-dark px-5 ml-2">Editar</a>
           </div>
+          
+           
+    
     </section>
   </div>
   <!-- Footer -->

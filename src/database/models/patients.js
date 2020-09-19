@@ -32,7 +32,8 @@ module.exports = (sequelize, dataTypes) => {
         nhc: dataTypes.STRING,
         dlp: dataTypes.STRING,
         section: dataTypes.STRING,
-        medical_visit: dataTypes.STRING
+        medical_visit: dataTypes.STRING,
+        coments: dataTypes.STRING
     };
 
     const patients = sequelize.define(alias, cols)
