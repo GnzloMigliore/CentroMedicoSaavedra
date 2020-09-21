@@ -22,5 +22,6 @@ router.post('/registro',[validacionRegistro], controllersUser.create);
 router.post('/login',[validacionAcceso], controllersUser.login);
 router.get('/logout',[validacionAcceso], controllersUser.logout)
 
+
 module.exports = router;
 

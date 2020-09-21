@@ -8,7 +8,7 @@ const {
   validationResult,
   body
 } = require('express-validator');
-
+const usuario = require('../database/models/usuario');
 module.exports = {
   registro: async (req, res) => {
     const usuarios = await users.findAll()
@@ -38,26 +38,27 @@ module.exports = {
     .catch(error => res.render(path.resolve(__dirname , '..','views','web','registro'), {
       errors: errors.errors,  old: req.body}))     
 },
- login: async (req, res) => {
-        
+login: async (req, res) => {
   let errors = validationResult(req);
-  if(!errors.isEmpty()){
-      //return res.send(errors.mapped())
-      return res.render(path.resolve(__dirname, '..', 'views', 'usuarios', 'login'), {
+  if (!errors.isEmpty()){
+      return res.render(path.resolve(__dirname, '..', 'views', 'web', 'index'), {
           errors: errors.mapped(),  old: req.body});
-  } else {
-      let usuarioLogueado = await users.findOne({where: {email: req.body.email}})
+  } else{
+    
+      let usuarioLogueado = await users.findOne({
+          where: {
+              email: req.body.email
+             }
+      })
       delete usuarioLogueado.password;
       req.session.usuario = usuarioLogueado;
-      //return res.send (req.session.usuario)
       if(req.body.recordarme){
           res.cookie('email', usuarioLogueado.email, {maxAge: 1000 * 60 * 60 * 48})
       }
+//return res.send(req.session.usuario)
+      
       res.redirect('/patients');
   }
-  
-  
-  
 },
 logout: (req, res) => {
   req.session.destroy();

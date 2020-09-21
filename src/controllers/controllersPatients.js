@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const { Op } = require("sequelize");
 const {patients} = require ('../database/models');
+const {users} = require ('../database/models');
 const {
   check,
   validationResult,
@@ -12,9 +13,11 @@ const {
 
 module.exports = {
   index: async (req, res) => {
-  
+    const usuario = await users.findAll()
     const paciente = await patients.findAll()
-    res.render(path.resolve(__dirname , '..','views','patients','patients'),{paciente}); 
+   //return res.send(req.session.usuario)
+    res.render(path.resolve(__dirname , '..','views','patients','patients'),{paciente, usuario}); 
+
 },
 create: async (req, res) => {
     res.render(path.resolve(__dirname , '..','views','patients','patientCreate')); 
@@ -120,12 +123,7 @@ destroy: async (req, res) => {
   
   res.redirect('/patients')
 },
-inteligent: async (req,res) => {
-  const paciente = await patients.findAll();
-  
-  res.render(path.resolve(__dirname , '..','views','patients','inteligent') , {paciente});                       
-  
-},
+
 //filtros
 generom: async (req, res) => {
   let paciente = await patients.findAll({where: {gender: 'mujer'}})
@@ -168,5 +166,65 @@ search:async (req,res)=>{
   //return res.send(paciente)
   .then(paciente => res.render(path.resolve(__dirname, '..', 'views', 'patients', 'resultados'), {paciente}))
   .catch((error)=> res.send(error))
+},
+inteligent: async (req,res) => {
+  const paciente = await patients.findAll();
+  
+  res.render(path.resolve(__dirname , '..','views','patients','inteligent') , {paciente});                       
+  
+},
+inteligentSearch:async (req,res)=>{
+  let param = {
+    first_name: '',
+    last_name: '',
+    gender: ["mujer","hombre"],
+    medical_insurance: "",
+    diabetes: ["on",null],
+    dlp: ["on",null],
+    hta: ["on",null],
+    crm: ["on",null],
+    atc: ["on",null],
+    iam: ["on",null],
+    acv: ["on",null],
+    aortic_aneurysm: ["on",null],
+    ic: ["on",null],
+    evp: ["on",null],
+    epoc: ["on",null],
+    irc: ["on",null],
+    obesity: ["on",null],
+    nhc: "",
+
+  
+};
+  let paciente = await patients.findAll({
+      where:{
+        first_name: {[Op.like]: `%${param.nombre}%`},
+        last_name: {[Op.like]: `%${param.apellido}%`},
+        gender: param.gender,
+        medical_insurance: {[Op.like]: `%${param.ObraSocial}%`},
+        diabetes: {[Op.or]: param.diabetes},
+        dlp: {[Op.or]: param.dlp},
+        hta: {[Op.or]: param.hta},
+        crm: {[Op.or]: param.crm},
+        atc: {[Op.or]: param.atc},
+        iam: {[Op.or]: param.iam},
+        acv: {[Op.or]: param.acv},
+        aortic_aneurysm: {[Op.or]: param.aortic_aneurysm},
+        ic: {[Op.or]: param.ic},
+        evp: {[Op.or]: param.evp},
+        epoc: {[Op.or]: param.epoc},
+        irc: {[Op.or]: param.irc},
+        obesity: {[Op.or]: param.obesity},
+        nhc: {[Op.like]: `%${param.nhc}%`},
+
+      }
+    
+  })
+ 
+  //return res.send(paciente)
+  .then(paciente => res.render(path.resolve(__dirname, '..', 'views', 'patients', 'resultados'), {paciente}))
+  .catch((error)=> res.send(error))
 }
 }
+
+

@@ -11,25 +11,25 @@ const session = require('express-session');
 
 
 // Requiero el middleware para recordar el usuario en la vista
-const userMiddleware = require('./middlewares/user');
+
 const recordarUser = require ('./middlewares/recordarUser');
 // view engine setup
 app.set('views', path.join(__dirname,'..', 'views'));
 app.set('view engine', 'ejs');
 
-
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.resolve(__dirname, '..','public')))
 // Aquí requerimos nuestros middlewares de session y cookies
 app.use(session({
     secret : 'topSecret',
     resave: true,
     saveUninitialized: true,
 }));
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.resolve(__dirname, '..','public')))
+app.use(recordarUser);
 
 //requiero las rutas
 const webRouter = require('./routes/web');
@@ -42,8 +42,8 @@ app.use(patientsRouter);
 app.use(apointmentsRouter);
 
 // Requiero el middleware para recordar el usuario en la vista
-app.use(recordarUser);
-app.use(userMiddleware);
+
+
 
 
 
