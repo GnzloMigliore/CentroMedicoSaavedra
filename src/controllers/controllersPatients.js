@@ -29,15 +29,77 @@ module.exports = {
         errors: errors.errors,  old: req.body
       });
     }
+<<<<<<< HEAD
     let patient_body={
+=======
+  let patient_body={
+    first_name: req.body.nombre,
+    last_name : req.body.apellido,
+    gender : req.body.genero,
+    date : req.body.nacimiento,
+    email: req.body.email,
+    dni: req.body.dni,
+    medical_insurance: req.body.obrasocial,
+    insurance_number: req.body.numero,
+    adress: req.body.dirección,
+    adress_number: req.body.adress_number,    
+    telephone: req.body.telefono,
+    diabetes: req.body.diabetes,    
+    dlp: req.body.dlp,
+    hta: req.body.hta,
+     crm: req.body.crm,
+     atc: req.body.atc,
+     acv: req.body.acv,
+     aortic_aneurysm: req.body.aneurisma,
+     ic: req.body.ic,
+     evp: req.body.evp,
+     epoc: req.body.epoc,
+     irc: req.body.irc,
+     obesity: req.body.obesidad,
+     nhc: req.body.nhc,
+     dlp: req.body.dlp,
+     section: req.body.seccion,
+     medical_visit: req.body.visita_medica,
+
+};     
+patients.create(patient_body)
+.then((patientcreate) => {
+     return res.redirect('/patients');
+})  
+.catch(error => res.render(path.resolve(__dirname , '..','views','patients','patientCreate'), {
+  errors: errors.errors,  old: req.body}))  
+},
+show: async (req,res)=>{
+  let paciente = await patients.findOne({
+    where: {
+        id: req.params.id
+    }
+});
+
+  res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente});   
+},
+edit: async (req,res) => {
+  const paciente = await patients.findByPk(req.params.id)
+  
+  res.render(path.resolve(__dirname , '..','views','patients','patientsEdit') , {paciente});                       
+  
+},
+updatePatients: async (req,res) => {
+
+
+  const patient_body = { 
+      //return res.send(_body);
+>>>>>>> 51c4cc36ead52105460e40e14a941f50a4ad83b8
       first_name: req.body.nombre,
       last_name : req.body.apellido,
       gender : req.body.genero,
       date : req.body.nacimiento,
       email: req.body.email,
-      medical_insurance: req.body.ObraSocial,
+      dni: req.body.dni,
+      medical_insurance: req.body.obrasocial,
       insurance_number: req.body.numero,
       adress: req.body.dirección,
+      adress_number: req.body.adress_number,
       telephone: req.body.telefono,
       diabetes: req.body.diabetes,    
       dlp: req.body.dlp,
@@ -202,6 +264,7 @@ module.exports = {
       console.log('oooooooooooooooooooooooooooooooooo' + paciente.diabetes);
       
       //return res.send(paciente)
+
 
       res.render(path.resolve(__dirname, '..', 'views', 'patients', 'resultados'), {paciente})
 
