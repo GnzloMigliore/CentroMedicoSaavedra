@@ -17,56 +17,183 @@
           <h1 class="col-8 mx-auto pb-3 card-title text-center border-bottom">DETALLE DEL PACIENTE</h1>
           
           
-          <article id="article" class="col-12">       
+          <article id="article" class="col-12 mt-5">       
             <!--Info-->
-              <!--Nombre y apellidoo-->
-             <!--Marca y modelo-->
-             <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
-               <div class="card-title m-0 pr-5"><h4>Nombre: <%= paciente.first_name %></h4></div>
-               <div class="card-title m-0 "><h4>Apellido: <%= paciente.last_name %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>Genero: <%= paciente.gender %></h4></div>
-              </div>
-              <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
-                <div class="card-title m-0 pr-5"><h4>Obra social: <%= paciente.medical_insurance %></h4></div>
-                <div class="card-title m-0 "><h4>Número: <%= paciente.insurance_number %></h4></div>
-               </div>
-               <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
-                <div class="card-title m-0 "><h4>Nacimiento: <%= paciente.date %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>Email: <%= paciente.email %></h4></div>
+            <article class="col-12 mt-3">
+              <table class="table">
+                  <thead class="thead">
+                    <tr>
+                        
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Género</th>
+                        <th scope="col">Nacimiento</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Email</th>
+                   
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                        <tr>
+                           
+                            <td><%= paciente.first_name %></td>
+                            <td><%= paciente.last_name %></td>
+                            <td><%= paciente.gender %></td>
+                            <td><%= paciente.date %></td>
+                            <td><%= paciente.dni %></td>
+                            <td><%= paciente.email %></td>
+                            
+
+                          
+                        </tr>
+                       
+                </tbody>
+                <thead>
+                  <tr>
+                      
+                    <th scope="col">Obra social</th>
+                    <th scope="col">Número de afiliado</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Calle n°</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col"></th>
+                     
+                      
+                  </tr>
+              </thead>
+              <tbody>
+                 
+                      <tr>
+                         
+                        <td><%= paciente.medical_insurance %></td>
+                        <td><%= paciente.insurance_number%></td>
+                        <td><%= paciente.adress %></td>
+                        <td><%= paciente.adress_number %></td>
+                        <td><%= paciente.telephone %></td>  
+
+                         
+                      </tr>
+                     
+              </tbody>  
+              <thead>
+                <tr>
+                    
+                  <th scope="col">Diabetes</th>
+                  <th scope="col">DLP</th>
+                  <th scope="col">HTA</th>
+                  <th scope="col">CRM</th>
+                  <th scope="col">Aneurisma</th>
+                  <th scope="col">IC</th>
+                  
+                  
+                   
+                    
+                </tr>
+            </thead>
+            <tbody>
+               
+                    <tr>
+                       
+                      <td><%= paciente.diabetes %></td>
+                      <td><%= paciente.dlp%></td>
+                      <td><%= paciente.hta %></td>
+                      <td><%= paciente.crm %></td>
+                      <td><%= paciente.aortic_aneurysm %></td> 
+                      <td><%= paciente.ic %></td> 
+                   
+
+                       
+                    </tr>
+                   
+            </tbody>  
+            <thead>
+              <tr>
+                  
+                <th scope="col">IRC</th>
+                <th scope="col">Obecidad</th>
+                <th scope="col">EVP</th>
+                <th scope="col">EPOC</th>
+                <th scope="col">HTC</th>
+                <th scope="col"></th>
                 
-               </div>
-               <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
-                <div class="card-title m-0 "><h4>Dirección: <%= paciente.adress %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>Teléfono: <%= paciente.telephone %></h4></div>
-               </div>
-               <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
-                <div class="card-title m-0"><h4>Diabetes: <%= paciente.diabetes %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>Dlp: <%= paciente.dlp %></h4></div>
-                <div class="card-title m-0  pl-5"><h4>HTA: <%= paciente.hta %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>CRM: <%= paciente.crm %></h4></div>
-               </div>
-               <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
-                <div class="card-title m-0 pr-5"><h4>Aueurisma aorta: <%= paciente.aortic_aneurysm %></h4></div>
-                <div class="card-title m-0 "><h4>IC: <%= paciente.ic %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>IRC: <%= paciente.irc %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>Obecidad: <%= paciente.obesity %></h4></div>
-               </div>
-               <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
-                <div class="card-title m-0 "><h4>EVP: <%= paciente.evp %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>EPOC: <%= paciente.epoc %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>HTC: <%= paciente.htc %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>ACV: <%= paciente.acv %></h4></div>
-               </div>
-               <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">
-                <div class="card-title m-0 pr-5"><h4>NHC: <%= paciente.nhc %></h4></div>
-                <div class="card-title m-0 "><h4>DLP: <%= paciente.dlp %></h4></div>
-                <div class="card-title m-0 pl-5"><h4>Sección: <%= paciente.section %></h4></div>
-               </div>
-               <div class="col-12 d-flex flex-wrap justify-content-center  my-3 pb-3 borde-bajo">              
-                <div class="card-title m-0 pr-5"><h4>Comentarios: <%= paciente.medical_visit %></h4></div>   
-               </div>
-      
-            </article>
+                
+                 
+                  
+              </tr>
+          </thead>
+          <tbody>
+             
+                  <tr>
+                     
+                    <td><%= paciente.irc %></td>
+                    <td><%= paciente.obesity%></td>
+                    <td><%= paciente.evp%></td>
+                    <td><%= paciente.epoc %></td>
+                    <td><%= paciente.htc %></td> 
+                    
+                 
+
+                     
+                  </tr>
+                 
+          </tbody>  
+          <thead>
+            <tr>
+              <th scope="col">ACV</th>
+              <th scope="col">NHC</th>
+              <th scope="col">DLP</th>
+              <th scope="col">Sección</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              
+               
+                
+            </tr>
+        </thead>
+        <tbody>
+           
+                <tr>
+                  <td><%= paciente.acv %></td>
+                  <td><%= paciente.nhc %></td>
+                  <td><%= paciente.dlp%></td>
+                  <td><%= paciente.section%></td>
+              
+               
+
+                   
+                </tr>
+               
+        </tbody>  
+        <thead>
+          <tr>
+            <th scope="col">Comentarios:</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            
+             
+              
+          </tr>
+      </thead>
+      <tbody>
+         
+              <tr>
+                <td><%= paciente. medical_visit%></td>
+               
+                <td></td>
+                <td></td>
+                <td></td>       
+           </tr>
+             
+      </tbody>  
+              </table>
+        
+
+          
             </section>
           
           <!--Boton volver-->

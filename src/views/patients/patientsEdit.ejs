@@ -43,9 +43,9 @@
                         <!--Género-->
                         <div class="form-group col-6" placeholder="Genero">
                             <select id="genero" name="genero" class="form-control  bg-light">
-                                 <option desabled value=""><%= paciente.gender%></option>
-                                <option value="Hombre">hombre</option>
-                                <option value="Mujer">mujer</option>
+                                <option disabled value="">Seleccione un genero</option>
+                                <option value="masculino" <%= paciente.gender == "masculino" ? "selected" : " " %>>Masculino</option>
+                                <option value="femenino" <%= paciente.gender == "femenino" ? "selected" : " " %>>Femenino</option>
                             </select>
                         </div>
                         <!--Fecha de nacimiento-->
@@ -54,16 +54,21 @@
                         value="<%= paciente.date%>"
                         min="1940-01-01" max="2020-12-31">
                         </div>
-                         <!--Email-->
-                       <div class="form-group col-12">
+                      <!--Email-->
+                      <div class="form-group col-5">
                         <input type="hidden" name="oldExample"  value="<%= paciente.email%>">
-                       <input type="email" class="form-control  bg-light" name="email" placeholder="Email"  value="<%= paciente.email%>">
-                       </div>
+                  <input type="text" class="form-control bg-light" name="email" placeholder="Email"   value="<%= paciente.email%>">
+                    </div>
+                   <!--numero-->
+                   <div class="form-group col-7 pl-0">
+                    <input type="hidden" name="oldExample"  value="<%= paciente.dni%>">
+                   <input type="number" class="form-control bg-light" name="dni" placeholder="DNI"  value="<%= paciente.dni%>">
+                   </div>
                       
                      <!--Obra social-->
                          <div class="form-group col-5">
                             <input type="hidden" name="oldExample"  value="<%= paciente.medical_insurance%>">
-                      <input type="text" class="form-control bg-light" name="ObraSocial" placeholder="Obra Social"   value="<%= paciente.medical_insurance%>">
+                      <input type="text" class="form-control bg-light" name="obrasocial" placeholder="Obra Social"   value="<%= paciente.medical_insurance%>">
                         </div>
                        <!--numero-->
                        <div class="form-group col-7 pl-0">
@@ -72,25 +77,27 @@
                        </div>
 
                         <!--Dirección-->
-                        <div class="form-group col-7">
+                        <div class="form-group col-6">
                             <input type="hidden" name="oldExample"  value="<%= paciente.adress%>">
-                            <input type="text" class="form-control bg-light" name="dirección" placeholder="Dirección"  value=<%= paciente.adress%>">
+                            <input type="text" class="form-control bg-light" name="dirección" placeholder="Dirección"  value="<%= paciente.adress%>">
                         </div>
+                          <!--numero-->
+                          <div class="form-group col-2 pl-0">
+                            <input type="hidden" name="oldExample"  value="<%= paciente.adress_number%>">
+                           <input type="text" class="form-control bg-light" name="adress_number" placeholder="Número"  value="<%= paciente.adress_number%>">
+                       </div>
                         <!--Telefóno-->
-                        <div class="form-group col-5 pl-0">
+                        <div class="form-group col-4 pl-0">
                              <input type="hidden" name="oldExample"  value="<%= paciente.telephone%>">
                             <input type="text" class="form-control bg-light" name="telefono" placeholder="Teléfono"  value="<%= paciente.telephone%>">
                         </div>
                     </div>
-                    <!--Descripción de producto-->
-                    <div class="form-group d-flex justify-content-between">                       
+                    
+                    <div class="diabetes form-group d-flex justify-content-between">                       
                         <span>DIABETES</span>                 
                        <label class="switch">
-                        <input type="checkbox"  name="diabetes">
-                        
-                        
-                        <span  class="slider round"></span>
-                        
+                        <input type="checkbox" name="diabetes" value="on"<%= paciente.diabetes == "on" ? "selected" : null %>>
+                        <span class="slider round"value="on"<%= paciente.diabetes == "on" ? "selected" : null %>></span>
                        </label>
                     </div>
                     <div class="form-group d-flex justify-content-between">                       

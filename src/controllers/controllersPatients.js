@@ -35,9 +35,11 @@ save: async (req, res) => {
     gender : req.body.genero,
     date : req.body.nacimiento,
     email: req.body.email,
-    medical_insurance: req.body.ObraSocial,
+    dni: req.body.dni,
+    medical_insurance: req.body.obrasocial,
     insurance_number: req.body.numero,
     adress: req.body.dirección,
+    adress_number: req.body.adress_number,    
     telephone: req.body.telefono,
     diabetes: req.body.diabetes,    
     dlp: req.body.dlp,
@@ -89,9 +91,11 @@ updatePatients: async (req,res) => {
       gender : req.body.genero,
       date : req.body.nacimiento,
       email: req.body.email,
-      medical_insurance: req.body.ObraSocial,
+      dni: req.body.dni,
+      medical_insurance: req.body.obrasocial,
       insurance_number: req.body.numero,
       adress: req.body.dirección,
+      adress_number: req.body.adress_number,
       telephone: req.body.telefono,
       diabetes: req.body.diabetes,    
       dlp: req.body.dlp,
@@ -159,7 +163,7 @@ search:async (req,res)=>{
 
   let paciente = await patients.findAll({
       where:{
-          [Op.or]: [{first_name: {[Op.like]: `%${req.body.search}%`}},{$last_name$: {[Op.like]: `%${req.body.search}%`}}]
+          [Op.or]: [{first_name: {[Op.like]: `%${req.body.search}%`}},{$last_name$: {[Op.like]: `%${req.body.search}%`}},{$dni$: {[Op.like]: `%${req.body.search}%`}}]
       }
     
   })

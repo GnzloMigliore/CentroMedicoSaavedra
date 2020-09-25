@@ -41,8 +41,8 @@
                             <!--Género-->
                             <div class="form-group col-6" placeholder="Genero"  value="">
                                 <select class="custom-select  bg-light"  name="genero">
-                                    <option value="mujer">Mujer</option>
-                                    <option value="hombre">Hombre</option>
+                                    <option value="femenino">Femenino</option>
+                                    <option value="masculino">Masculino</option>
                                 </select>
                             </div>
                             <!--Fecha de nacimiento-->
@@ -51,14 +51,19 @@
                             value=""
                             min="1940-01-01" max="2020-12-31">
                             </div>
-                             <!--Email-->
-                           <div class="form-group col-12">
-                           <input type="email" class="form-control  bg-light" name="email" placeholder="Email"  value="">
-                           </div>
+                       
+                            <!--Email-->
+                            <div class="form-group col-7">
+                                <input type="email" class="form-control bg-light" name="email" placeholder="Email"  value="">
+                            </div>
+                            <!--DNI-->
+                            <div class="form-group col-5 pl-0">
+                                <input type="number" class="form-control bg-light" name="dni" placeholder="DNI"  value="">
+                            </div>
                           
                          <!--Obra social-->
                              <div class="form-group col-5">
-                          <input type="text" class="form-control bg-light" name="ObraSocial" placeholder="Obra Social"   value="">
+                          <input type="text" class="form-control bg-light" name="obrasocial" placeholder="Obra Social"   value="">
                             </div>
                            <!--numero-->
                            <div class="form-group col-7 pl-0">
@@ -66,11 +71,15 @@
                            </div>
 
                             <!--Dirección-->
-                            <div class="form-group col-7">
+                            <div class="form-group col-6">
                                 <input type="text" class="form-control bg-light" name="dirección" placeholder="Dirección"  value="">
                             </div>
+                             <!--numero-->
+                             <div class="form-group col-2 pl-0">
+                                <input type="number" class="form-control bg-light" name="adress_number" placeholder="Número"  value="">
+                            </div>
                             <!--Telefóno-->
-                            <div class="form-group col-5 pl-0">
+                            <div class="form-group col-4 pl-0">
                                 <input type="text" class="form-control bg-light" name="telefono" placeholder="Teléfono"  value="">
                             </div>
                         </div>
@@ -164,7 +173,7 @@
                            <label class="switch">
                             <input type="checkbox" name="obesidad">
                             <span class="slider round"></span>
-                           </label>
+                           </label> 
                         </div>
                             <!--NHC-->
                             <div class="form-group">
