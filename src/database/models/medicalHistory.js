@@ -7,13 +7,14 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
             autoIncrement: true
         },
+        patient_id:dataTypes.INTEGER,
         visitamedica: dataTypes.STRING,
     };
 
     const medicalhistories = sequelize.define(alias, cols)
     
     medicalhistories.associate = function(models) {
-        medicalhistories.hasOne(
+        medicalhistories.hasMany(
             models.patients,
             {
                 as: 'patients',
