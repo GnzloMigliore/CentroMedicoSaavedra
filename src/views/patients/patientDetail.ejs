@@ -166,34 +166,76 @@
                 </tr>
                
         </tbody>  
-        <thead>
-          <tr>
-            <th scope="col">Comentarios:</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            
-             
-              
-          </tr>
-      </thead>
-      <tbody>
-         
-              <tr>
-                <td><%= paciente. medical_visit%></td>
-               
-                <td></td>
-                <td></td>
-                <td></td>       
-           </tr>
-             
-      </tbody>  
+       
               </table>
-        
+        </article>
+        </article>
+           <!-- Historia clinica-->
+           <h1 class="col-8 mx-auto pb-3 card-title text-center border-bottom">Historia clínica</h1>
+              <article id="article" class="col-12 mt-5">       
+<!-- Large modal -->
+<button type="button" class="btn btn-dark ml-3" data-toggle="modal" data-target=".bd-example-modal-lg">Agregar Visita médica</button>
 
-          
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+   
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle">Agregar visita médica</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">  
+        <form action="/patients/detail/<%= paciente.id%>?" method="POST">
+        <input type="text" class="form-control bg-light mt-3 mb-3 visita_medica" name="visita_medica" placeholder="Comentarios sobre visita medica"  value="">
+     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Atras</button>
+        <button type="submit" class="btn btn-dark">Guardar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+                <!--Info-->
+                <article class="col-12 mt-3">
+                  <table class="table"> 
+     <thead>
+     <tr>
+   
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+     <th scope="col">Historia clinica:</th>
+    <th scope="col">Fecha de visita</th>
+     
+      
+     </tr>
+     </thead>
+     <tbody>
+ 
+      <tr>
+       
+      
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td> 
+        <td class="pr-5"><%= paciente. medical_visit%> </td>
+        <td> <%= paciente.createdAt  %></td> 
+       </tr>
+     
+      </tbody> 
+    </table>
+  </article>
+  </article>
+
+
+
             </section>
           
           <!--Boton volver-->

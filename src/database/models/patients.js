@@ -34,22 +34,20 @@ module.exports = (sequelize, dataTypes) => {
         nhc: dataTypes.STRING,
         dlp: dataTypes.STRING,
         section: dataTypes.STRING,
-        medical_visit: dataTypes.STRING,
-        coments: dataTypes.STRING
+        medicalhistory_id:  dataTypes.STRING,
     };
 
     const patients = sequelize.define(alias, cols)
-    //Relaciones entre Users y Address
-    /*users.associate = function(models) {
-       users.belongsToMany(
-            models.patients,
+   
+    patients.associate = function(models) {
+        patients.belongsTo(
+            models.medicalhistories,
             {
-                as: 'patients',
-                through: 'patients',
-                foreignKey: 'patients_id'
+                as: 'medicalhistories',
+                foreignKey: 'medicalhistory_id'
             }
         )
-   }*/
+   }
     return patients
     ;
 } 

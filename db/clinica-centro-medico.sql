@@ -72,28 +72,30 @@ LOCK TABLES `apointmentspatients` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `clinicalhistory`
+-- Table structure for table `medicalhistories`
 --
 
-DROP TABLE IF EXISTS `clinicalhistory`;
+DROP TABLE IF EXISTS `medicalhistories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `clinicalhistory` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `date` varchar(45) NOT NULL,
-  `patients_id` varchar(45) NOT NULL,
-  `coment` varchar(45) NOT NULL,
+CREATE TABLE `medicalhistories` (
+  `id` int(11) NOT NULL,
+  ` visitamedica` varchar(145) DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
+  `deletedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `clinicalhistory`
+-- Dumping data for table `medicalhistories`
 --
 
-LOCK TABLES `clinicalhistory` WRITE;
-/*!40000 ALTER TABLE `clinicalhistory` DISABLE KEYS */;
-/*!40000 ALTER TABLE `clinicalhistory` ENABLE KEYS */;
+LOCK TABLES `medicalhistories` WRITE;
+/*!40000 ALTER TABLE `medicalhistories` DISABLE KEYS */;
+INSERT INTO `medicalhistories` VALUES (0,'asd',NULL,NULL,NULL);
+/*!40000 ALTER TABLE `medicalhistories` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -131,7 +133,7 @@ CREATE TABLE `patients` (
   `obesity` varchar(45) DEFAULT NULL,
   `nhc` varchar(45) DEFAULT NULL,
   `section` varchar(45) DEFAULT NULL,
-  `medical_visit` varchar(150) DEFAULT NULL,
+  `medicalhistory_id` int(11) DEFAULT NULL,
   `coments` varchar(45) DEFAULT NULL,
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL,
@@ -139,7 +141,7 @@ CREATE TABLE `patients` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `dni_UNIQUE` (`dni`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,7 +150,7 @@ CREATE TABLE `patients` (
 
 LOCK TABLES `patients` WRITE;
 /*!40000 ALTER TABLE `patients` DISABLE KEYS */;
-INSERT INTO `patients` VALUES (61,'Juan ','Perez','masculino','2020-09-11','juan@gmail.com',21039023,'osde',2147483647,'Rector Vicente Gallo ',2573,1149407095,NULL,'on',NULL,'on',NULL,NULL,NULL,NULL,'on',NULL,NULL,NULL,NULL,'132','B','El paciente presenta cuadro de fiebre y picazon en las manos. Se le resetó sfldskjf y lsdhosjdf. ',NULL,'2020-09-25 20:38:08','2020-09-26 14:31:24',NULL),(63,'Joaquin','Dominguez','masculino','2020-10-11','joaquin4@gmail.com',12345441,'swiss medical',124412425,'Rector Vicente Gallo ',2573,1149407095,NULL,NULL,NULL,'on','on',NULL,'on',NULL,NULL,NULL,NULL,NULL,'on','123','B','sdfsdfsdñkfjlsfhdñjdfhgkjsdfhgkjsdhfgkjldshfl',NULL,'2020-09-25 20:39:48','2020-09-25 20:39:48',NULL),(64,'Tomas','Hernandez','masculino','2020-09-15','tomas@gmail.com',123441234,'osde',2147483647,'Rector Vicente Gallo 2573',2573,1149407095,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'on','on','on',NULL,'dhl','1234x','sdfsdfsdñkfjlsfhdñjdfhgkjsdfhgkjsdhfgkjldshfl',NULL,'2020-09-25 20:40:29','2020-09-26 15:16:47',NULL),(66,'Gonzalo','Migliore','masculino','2020-09-25','Gonzalomigliore@gmail.com',38812562,'swiss medical',213512314,'Rector Vicente Gallo',2573,1149407095,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'cbd','B','sdfsdfsdñkfjlsfhdñjdfhgkjsdfhgkjsdhfgkjldshfl',NULL,'2020-09-25 21:33:36','2020-09-26 15:17:25',NULL),(67,'Felipe','Pereyta','masculino','2020-09-22','felipe@gmai.com',39960913,'swiss medical',213421314,'Rector Vicente Gallo',2573,1149407095,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','',NULL,'2020-09-25 21:34:36','2020-09-25 21:34:36',NULL),(68,'Pedro ','Gonzalez','masculino','2020-09-12','pedro@gmail.com',34960913,'osde',2147483647,'Rector Vicente Gallo ',2573,1149407095,NULL,NULL,NULL,'on',NULL,NULL,'on',NULL,NULL,NULL,NULL,NULL,'on','cbd','B','El paciente presenta cuadro de fiebre y picaz',NULL,'2020-09-25 21:40:32','2020-09-26 14:27:36',NULL),(69,'Ignacio','migliore','masculino','2020-09-17','ignacio@gmail.com',32960913,'swiss medical',1234234234,'Rector Vicente Gallo ',2573,1149407095,'on',NULL,NULL,'on',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'on','132','B','El paciente presenta cuadro de fiebre y picaz',NULL,'2020-09-25 21:43:44','2020-09-25 22:01:01',NULL);
+INSERT INTO `patients` VALUES (72,'Juana','Gimenez','femenino','2020-09-10','Juana@gmail.com',32960913,'swiss medical',1234124123,'Rector Vicente Gallo',2573,1149407095,'on',NULL,NULL,NULL,'on',NULL,'on',NULL,NULL,NULL,NULL,'on',NULL,'132','H',NULL,NULL,'2020-09-27 15:22:41','2020-09-27 15:22:41',NULL),(73,'Pedro','Motoa','masculino','2020-09-23','pedro@gmail.com',34322342,'osde',2147483647,'Rector Vicente Gallo',2573,1149407095,NULL,'on',NULL,'on',NULL,NULL,NULL,'on',NULL,NULL,NULL,'on','on','132','c',NULL,NULL,'2020-09-27 15:23:26','2020-09-27 15:23:26',NULL);
 /*!40000 ALTER TABLE `patients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -289,4 +291,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-26 12:22:41
+-- Dump completed on 2020-09-27 20:09:51
