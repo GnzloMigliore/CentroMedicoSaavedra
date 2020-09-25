@@ -7,7 +7,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
             autoIncrement: true
         },
-        patient_id:dataTypes.INTEGER,
+        patient_id: dataTypes.INTEGER,
         visitamedica: dataTypes.STRING,
     };
 

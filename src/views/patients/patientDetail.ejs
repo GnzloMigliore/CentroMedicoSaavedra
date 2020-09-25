@@ -187,9 +187,8 @@
         </button>
       </div>
       <div class="modal-body">  
-        <form action="/patients/detail/<%= paciente.id%>?" method="POST">
+        <form action="/patients/detail/<%= paciente.id%>" method="POST">
         <input type="text" class="form-control bg-light mt-3 mb-3 visita_medica" name="visita_medica" placeholder="Comentarios sobre visita medica"  value="">
-     
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Atras</button>
@@ -202,9 +201,9 @@
 
  
 
-                <!--Info-->
-                <article class="col-12 mt-3">
-                  <table class="table"> 
+<!--Info-->
+<article class="col-12 mt-3">
+  <table class="table"> 
      <thead>
      <tr>
    
@@ -220,17 +219,29 @@
      </thead>
      <tbody>
      
-      <tr>
-       
+      <% historiaClinica.forEach(historia => { %>
+       <% if (historia.visitamedica) { %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td> 
+            <td><%= historia.visitamedica %> </td>
+            <td> <%= historia.createdAt  %></td> 
+          </tr>
+        <% }  else { %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td> 
+            <td>El paciente no tiene historia clínica</td>
+            <td>--/--/----</td> 
+        </tr>
+        <% } %> 
+      <% }) %>
       
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td> 
-        <td><%= paciente.medicalhistories.visitamedica%> </td>
-        <td> <%= paciente.medicalhistories.createdAt  %></td> 
-       </tr>
- 
+     
       </tbody> 
     </table>
   </article>
