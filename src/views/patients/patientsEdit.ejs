@@ -197,7 +197,8 @@
                         </div>
                     <!--comentario-->
                          <div class="form-group">
-                         <input type="text" class="form-control  bg-light" name="Comentario" placeholder="Comentarios sobre visita medica"  value="">
+                            <input type="hidden" name="oldExample"  value="<%= paciente.medical_visit%>">
+                         <input type="text" class="form-control  bg-light" name="visita_medica" placeholder="Comentarios sobre visita medica"  value="<%= paciente.medical_visit%>">
                          </div>
                          </div>
                                                        

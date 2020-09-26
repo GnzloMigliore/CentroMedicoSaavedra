@@ -112,7 +112,7 @@ updatePatients: async (req,res) => {
        nhc: req.body.nhc,
        dlp: req.body.dlp,
        section: req.body.seccion,
-       coments: req.body.comentario,
+       medical_visit: req.body.visita_medica,
   }
   
 
