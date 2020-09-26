@@ -186,8 +186,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <input type="text" class="form-control  bg-light" name="visita_medica" placeholder="Comentarios sobre visita medica"  value="<%= paciente.medical_visit%>">
+      <div class="modal-body">  
+       <form action="#">
+        <input type="text" class="form-control bg-light mt-3 mb-3" name="visita_medica" placeholder="Comentarios sobre visita medica"  value="">
+      </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Atras</button>
@@ -208,7 +210,7 @@
     <th scope="col"></th>
     <th scope="col"></th>
      <th scope="col">Historia clinica:</th>
-    <th scope="col">Fecha de creación</th>
+    <th scope="col">Fecha de visita</th>
      
       
      </tr>
