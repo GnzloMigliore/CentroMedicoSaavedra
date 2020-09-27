@@ -2,8 +2,8 @@
 const path = require('path');
 const fs = require('fs');
 const { Op } = require("sequelize");
-const {patients} = require ('../database/models');
-const {users} = require ('../database/models');
+const {patients,medicalhistories} = require ('../database/models');
+
 const {
   check,
   validationResult,
@@ -29,7 +29,10 @@ module.exports = {
         errors: errors.errors,  old: req.body
       });
     }
-  let patient_body={
+ 
+   
+  
+    let patient_body={
     first_name: req.body.nombre,
     last_name : req.body.apellido,
     gender : req.body.genero,
@@ -56,10 +59,12 @@ module.exports = {
      nhc: req.body.nhc,
      dlp: req.body.dlp,
      section: req.body.seccion,
-     medical_visit: req.body.visita_medica,
+   
 
 };     
-patients.create(patient_body)
+  patients.create(patient_body)
+
+
 .then((patientcreate) => {
      return res.redirect('/patients');
 })  
@@ -67,13 +72,23 @@ patients.create(patient_body)
   errors: errors.errors,  old: req.body}))  
 },
 show: async (req,res)=>{
-  let paciente = await patients.findOne({
-    where: {
-        id: req.params.id
-    }
-});
+  const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistory']})
+ 
 
   res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente});   
+},
+addhistory: async (req,res)=>{
+  
+  const paciente = await patients.findOne({where: {id:req.params.id}})
+  
+  const medicalhistory = await medicalhistories.findAll()
+  return res.send(medicalhistory)
+  let medicalhistory_body={
+    visita_medica: req.body.visita_medica,
+  }; 
+  medicalhistories.create(medicalhistory_body)
+
+  res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {medicalhistory});   
 },
 edit: async (req,res) => {
   const paciente = await patients.findByPk(req.params.id)
@@ -112,7 +127,7 @@ updatePatients: async (req,res) => {
       nhc: req.body.nhc,
       dlp: req.body.dlp,
       section: req.body.seccion,
-      medical_visit: req.body.visita_medica,
+     
       
     };     
     patients.create(patient_body)
@@ -131,51 +146,7 @@ updatePatients: async (req,res) => {
       
       res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente});   
     },
-    edit: async (req,res) => {
-      const paciente = await patients.findByPk(req.params.id)
-      
-      res.render(path.resolve(__dirname , '..','views','patients','patientsEdit') , {paciente});                       
-      
-    },
-    updatePatients: async (req,res) => {
-      
-      
-      const patient_body = { 
-        //return res.send(_body);
-        first_name: req.body.nombre,
-        last_name : req.body.apellido,
-        gender : req.body.genero,
-        date : req.body.nacimiento,
-        email: req.body.email,
-        medical_insurance: req.body.ObraSocial,
-        insurance_number: req.body.numero,
-        adress: req.body.dirección,
-        telephone: req.body.telefono,
-        diabetes: req.body.diabetes,    
-        dlp: req.body.dlp,
-        hta: req.body.hta,
-        crm: req.body.crm,
-        atc: req.body.atc,
-        acv: req.body.acv,
-        aortic_aneurysm: req.body.aneurisma,
-        ic: req.body.ic,
-        evp: req.body.evp,
-        epoc: req.body.epoc,
-        irc: req.body.irc,
-        obesity: req.body.obesidad,
-        nhc: req.body.nhc,
-        dlp: req.body.dlp,
-        section: req.body.seccion,
-        medical_visit: req.body.visita_medica,
-      }
-      
-      
-      let newpatient = await patients.update( patient_body, {where: {id: req.params.id}})
-      
-      
-      
-      res.redirect("/patients")
-    },
+ 
     destroy: async (req, res) => {
       let destroyPatient = await patients.destroy({where: {id: req.params.id}, force: true})
       

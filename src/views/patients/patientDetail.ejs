@@ -187,13 +187,14 @@
         </button>
       </div>
       <div class="modal-body">  
-       <form action="#">
-        <input type="text" class="form-control bg-light mt-3 mb-3" name="visita_medica" placeholder="Comentarios sobre visita medica"  value="">
-      </form>
+        <form action="/patients/detail/<%= paciente.id%>?" method="POST">
+        <input type="text" class="form-control bg-light mt-3 mb-3 visita_medica" name="visita_medica" placeholder="Comentarios sobre visita medica"  value="">
+     
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Atras</button>
-        <button type="button" class="btn btn-dark">Guardar</button>
+        <button type="submit" class="btn btn-dark">Guardar</button>
+      </form>
       </div>
     </div>
   </div>
