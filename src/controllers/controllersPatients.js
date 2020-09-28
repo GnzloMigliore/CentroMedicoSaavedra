@@ -72,23 +72,37 @@ module.exports = {
   errors: errors.errors,  old: req.body}))  
 },
 show: async (req,res)=>{
-  const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistory']})
+  const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistories']})
  
 
   res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente});   
 },
 addhistory: async (req,res)=>{
   
-  const paciente = await patients.findOne({where: {id:req.params.id}})
-  
-  const medicalhistory = await medicalhistories.findAll()
-  return res.send(medicalhistory)
-  let medicalhistory_body={
-    visita_medica: req.body.visita_medica,
-  }; 
-  medicalhistories.create(medicalhistory_body)
+ 
+  const historiaclinica = await medicalhistories.findAll()
+ 
 
-  res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {medicalhistory});   
+  let medicalhistory_body={
+    visitamedica: req.body.visita_medica,
+    patient_id:req.params.id,
+  }; 
+
+
+  let newmedicalhistory =  await medicalhistories.create({
+  visitamedica: req.body.visita_medica,
+  patient_id:req.params.id,
+  })
+ 
+  //return res.send(newmedicalhistory)
+  const medicalhistory = await medicalhistories.findOne({where:{patient_id:req.params.id}})
+  const patient_id = {
+    medicalhistory_id: medicalhistory.id
+  }
+  const paciente = await patients.update(patient_id, {where: {id:req.params.id}})
+  //res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente}); 
+  res.redirect(`/patients/detail/${paciente.id}`)
+  
 },
 edit: async (req,res) => {
   const paciente = await patients.findByPk(req.params.id)
@@ -136,15 +150,6 @@ updatePatients: async (req,res) => {
     })  
     .catch(error => res.render(path.resolve(__dirname , '..','views','patients','patientCreate'), {
       errors: errors.errors,  old: req.body}))  
-    },
-    show: async (req,res)=>{
-      let paciente = await patients.findOne({
-        where: {
-          id: req.params.id
-        }
-      });
-      
-      res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente});   
     },
  
     destroy: async (req, res) => {
