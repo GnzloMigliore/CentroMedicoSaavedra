@@ -23,6 +23,7 @@ module.exports = {
     res.render(path.resolve(__dirname , '..','views','patients','patientCreate')); 
   },
   save: async (req, res) => {
+    
     let errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.render(path.resolve(__dirname , '..','views','patients','patientCreate'), {
@@ -59,7 +60,7 @@ module.exports = {
      nhc: req.body.nhc,
      dlp: req.body.dlp,
      section: req.body.seccion,
-   
+     
 
 };     
   patients.create(patient_body)
@@ -73,7 +74,7 @@ module.exports = {
 },
 show: async (req,res)=>{
   const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistories']})
- 
+ //return res.send(paciente)
 
   res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente});   
 },
@@ -99,9 +100,10 @@ addhistory: async (req,res)=>{
   const patient_id = {
     medicalhistory_id: medicalhistory.id
   }
-  const paciente = await patients.update(patient_id, {where: {id:req.params.id}})
-  //res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente}); 
-  res.redirect(`/patients/detail/${paciente.id}`)
+  const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistories']})
+  //return res.send(paciente)
+  res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente,medicalhistory}); 
+  //res.redirect(`/patients/detail/${paciente.id}`)
   
 },
 edit: async (req,res) => {
