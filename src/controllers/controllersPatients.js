@@ -156,12 +156,6 @@ module.exports = {
         errors: errors.errors,  old: req.body}))  
       },
       
-      destroy: async (req, res) => {
-        let destroyPatient = await patients.destroy({where: {id: req.params.id}, force: true})
-        
-        res.redirect('/patients')
-      },
-      
       //filtros
       generom: async (req, res) => {
         let paciente = await patients.findAll({where: {gender: 'mujer'}})

@@ -16,7 +16,7 @@ router.get('/patients/detail/:id', controllersPatients.show);
 router.post('/patients/detail/:id', controllersPatients.addhistory);
 router.get("/patients/edit/:id", controllersPatients.edit);
 router.post("/patients/edit/:id", controllersPatients.updatePatients);
-router.get("/patients/delete/:id", controllersPatients.destroy);
+
 
 
 //rutas de filtros

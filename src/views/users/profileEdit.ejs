@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %>
+    <link rel="stylesheet" href="/css/navbar.css"> 
+</head>
+<body>
+    <%- include('../partials/navBar.ejs') %>
+    <main class="container">
+        <section class="row mx-auto mb-5 pb-5">
+            <form action="/profile/editar/<%= locals.usuarios.id %> " method="POST"class="col-12 mx-0 px-0">
+                <article class="col-12 p-auto mb-5">
+                   
+                    <article class="col-8 mx-auto mb-5">
+                        <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">EDITAR USUARIO</h2>
+                        </article>
+                    <div class="col-6 border-bottom mx-auto mt-5 mb-4 pt-3">
+                        <div class="col-12 d-flex justify-content-around align-items-center">
+                            <p class="col-4 d-flex justify-content-start">Nombre: </p>
+                            <input type="text" value="<%= locals.usuario.first_name %> " class="col-8 d-flex justify-content-start border-0 inputs-actualizar" name="nombre">
+                        </div>
+                    </div>
+                    <div class="col-6 border-bottom mx-auto mt-3 mb-4">
+                        <div class="col-12 d-flex justify-content-around align-items-center">
+                            <p class="col-4 d-flex justify-content-start">Apellido: </p>
+                            <input type="text" value="<%= locals.usuario.last_name %>" class="col-8 d-flex justify-content-start border-0 inputs-actualizar" name="apellido">
+                        </div>
+                    </div>
+                    <div class="col-6 border-bottom mx-auto mt-3 mb-4">
+                        <div class="col-12 d-flex justify-content-around align-items-center">
+                            <p class="col-4 d-flex justify-content-start">Email: </p>
+                            <input type="text" value="<%= locals.usuario.email %>" class="col-8 d-flex justify-content-start border-0 inputs-actualizar" name="email">
+                        </div>
+                    </div>
+                    <div class="col-6 border-bottom mx-auto mt-3 mb-4">
+                        <div class="col-12 d-flex justify-content-around align-items-center">
+                            <p class="col-4 d-flex justify-content-start">Teléfono: </p>
+                            <input type="text" value="<%= locals.usuario.telephone %>" class="col-8 d-flex justify-content-start border-0 inputs-actualizar" name="telefono">
+                        </div>
+                    </div>
+                    <div class="col-6 border-bottom mx-auto mt-3 mb-4">
+                        <div class="col-12 d-flex justify-content-around align-items-center">
+                            <p class="col-4 d-flex justify-content-start my-auto">Género: </p>
+                            <select id="genero" name="genero" class="custom-select border-0 btn btn-outline-dark py-0" value="<%= locals.usuario.gender %> " required>
+                                <option value="Hombre">Masculino</option>
+                                <option value="Mujer">Femenino</option>
+                              
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-6 mx-auto d-flex justify-content-between">
+                        <a href="/profile/editar/delete/<%= locals.usuario.id %>  " class="btn btn-danger">Eliminar usuario</a>
+                        <div class="ml-0 pl-0">
+                            <a href="/profile " class="btn btn-outline-dark">Volver</a>
+                            <button type="submit" class="btn btn btn-dark">Actualizar</button>
+                        </div>
+                    </div>
+                         
+                </article>
+            </form>
+        </section>
+    </main>
+    <!-- FOOTER -->
+    <%- include('../partials/footer.ejs') %>    
+</body>
+</html>

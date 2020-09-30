@@ -67,5 +67,35 @@ logout: (req, res) => {
   res.cookie('email',null,{maxAge: -1});
   res.redirect('/')
 },
+show: async (req, res) => {
+  const usuarios = await users.findAll()
 
+  res.render(path.resolve(__dirname , '..','views','users','profile') , {usuarios}); 
+},
+profile: async (req, res) => {
+  const usuarios = await users.findByPk(req.params.id)
+  //return res.send(usuarios); 
+  res.render(path.resolve(__dirname , '..','views','users','profileEdit') , {usuarios});
+},
+update: async (req,res) =>{
+  const usuarios = await users.findByPk(req.params.id)
+  const usuario_body = { 
+      //return res.send(_body);
+      first_name: req.body.nombre,
+      last_name: req.body.apellido,
+      telephone: req.body.telefono,
+      email: req.body.email,
+      gender: req.body.gender,
+      
+  }
+  let updateUsuario = await users.update(usuario_body, {where: {id: req.params.id}})
+  
+  res.redirect('/profile');
+},
+destroy: async (req, res) => {
+  await users.destroy({where: {id:req.params.id}, force: true})
+  req.session.destroy();
+  res.cookie('email',null,{maxAge: -1});        
+  res.redirect('/')
+}
 }
