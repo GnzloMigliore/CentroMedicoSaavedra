@@ -92,10 +92,11 @@ module.exports = {
         visitamedica: req.body.visita_medica
       }
       
-      if (visita.length >= 1) {
-        await medicalhistories.create(newMedicalHistory)
-      } else {
+      if (visita == null) {
+       
         await medicalhistories.update(medicalhistory_body, {where: {patient_id: req.params.id}})
+      } else {
+        await medicalhistories.create(newMedicalHistory)
       }
       
       //return res.send(newmedicalhistory)
@@ -123,7 +124,7 @@ module.exports = {
         gender : req.body.genero,
         date : req.body.nacimiento,
         email: req.body.email,
-        //dni: req.body.dni,
+        dni: req.body.dni,
         medical_insurance: req.body.obrasocial,
         insurance_number: req.body.numero,
         adress: req.body.dirección,
@@ -147,7 +148,7 @@ module.exports = {
         
         
       };     
-      patients.create(patient_body)
+      let newPaciente = await patients.update(patient_body, {where: {id: req.params.id}})
       .then((patientcreate) => {
         return res.redirect('/patients');
       })  
@@ -196,7 +197,7 @@ module.exports = {
         
         let paciente = await patients.findAll({
           where:{
-            [Op.or]: [{first_name: {[Op.like]: `%${req.body.search}%`}},{$last_name$: {[Op.like]: `%${req.body.search}%`}}]
+            [Op.or]: [{first_name: {[Op.like]: `%${req.body.search}%`}},{$last_name$: {[Op.like]: `%${req.body.search}%`}},{$dni$: {[Op.like]: `%${req.body.search}%`}}]
           }
           
         })
