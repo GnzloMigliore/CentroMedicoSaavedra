@@ -83,107 +83,307 @@
                                 <input type="text" class="form-control bg-light" name="telefono" placeholder="Teléfono"  value="">
                             </div>
                         </div>
-                        
-                        <div class="form-group d-flex justify-content-between">                       
+                      
+                           <!--Número de Paciente-->
+                           <div class="form-group">
+                            <input type="number" class="form-control  bg-light" name="nhc" placeholder="Número de paciente"  value="">
+                           </div>
+                      
+
+                          <!--Enfermedades-->
+
+                        <article class="col-8 mx-auto mb-5">
+                            <h2 class="titulo-admin pb-3  text-center pt-5 mx-auto text-uppercase">ENFERMEDADES</h2>
+                            </article>
+                        <!--Diabetes-->
+                        <div class="row enfermedad">
+                        <div class="col 6 form-group d-flex justify-content-between pt-2">                       
                             <span>DIABETES</span>                 
                            <label class="switch">
                             <input type="checkbox" name="diabetes">
                             <span class="slider round"></span>
                            </label>
                         </div>
-                        <div class="form-group d-flex justify-content-between">                       
-                            <span>DLP</span>                 
-                           <label class="switch">
-                            <input type="checkbox" name="dlp">
-                            <span class="slider round"></span>
-                           </label>
+                        <div class="form-group col-6 pt-2" placeholder="fecha_diabetes"  value="">
+                        <input type="date" id="start" name="fecha_diabetes" class="form-control  bg-light"
+                        value=""
+                        min="1940-01-01" max="2020-12-31">
                         </div>
-                        <div class="form-group d-flex justify-content-between">                       
-                            <span>HTA</span>                 
-                           <label class="switch">
-                            <input type="checkbox" name="hta">
-                            <span class="slider round"></span>
-                           </label>
+                        <div class="form-group col-6 pl-3">
+                            <input type="text" class="form-control bg-light" name="accion_diabetes" placeholder="Acción tomada"  value="">
                         </div>
-                        <div class="form-group d-flex justify-content-between">                       
-                            <span>CRM</span>                 
-                           <label class="switch">
-                            <input type="checkbox" name="crm">
-                            <span class="slider round"></span>
-                           </label>
+                        <div class="form-group col-6 pl-0">
+                            <input type="text" class="form-control bg-light" name="comentario_diabetes" placeholder="Comentario"  value="">
                         </div>
-                        <div class="form-group d-flex justify-content-between">                       
-                            <span>ATC</span>                 
-                           <label class="switch">
-                            <input type="checkbox" name="atc">
-                            <span class="slider round"></span>
-                           </label>
                         </div>
-                        <div class="form-group d-flex justify-content-between">                       
-                            <span>IAM</span>                 
-                           <label class="switch">
-                            <input type="checkbox" name="iam">
-                            <span class="slider round"></span>
-                           </label>
-                        </div>
-                        <div class="form-group d-flex justify-content-between">                       
-                            <span>ACV</span>                 
-                           <label class="switch">
-                            <input type="checkbox" name="acv">
-                            <span class="slider round"></span>
-                           </label>
-                        </div>
-                        <div class="form-group d-flex justify-content-between">                       
-                            <span>ANEURISMA AORTA</span>                 
-                           <label class="switch">
-                            <input type="checkbox" name="aneurisma">
-                            <span class="slider round"></span>
-                           </label>
-                        </div>
-                        <div class="form-group d-flex justify-content-between">                       
-                            <span>IC</span>                 
-                           <label class="switch">
-                            <input type="checkbox" name="ic">
-                            <span class="slider round"></span>
-                           </label>
-                        </div>
-                        <div class="form-group d-flex justify-content-between">                       
-                            <span>EVP</span>                 
-                           <label class="switch">
-                            <input type="checkbox" name="evp">
-                            <span class="slider round"></span>
-                           </label>
-                        </div>
-                        <div class="form-group d-flex justify-content-between">                       
-                            <span>EPOC</span>                 
-                           <label class="switch">
-                            <input type="checkbox" name="epoc">
-                            <span class="slider round"></span>
-                           </label>
-                        </div>
-                        <div class="form-group d-flex justify-content-between">                       
-                            <span>IRC</span>                 
-                           <label class="switch">
-                            <input type="checkbox" name="irc">
-                            <span class="slider round"></span>
-                           </label>
-                        </div>
-                        <div class="form-group d-flex justify-content-between">                       
-                            <span>OBESIDAD</span>                 
-                           <label class="switch">
-                            <input type="checkbox" name="obesidad">
-                            <span class="slider round"></span>
-                           </label> 
-                        </div>
-                            <!--NHC-->
-                            <div class="form-group">
-                                <input type="text" class="form-control  bg-light" name="nhc" placeholder="NHC"  value="">
-                            </div>
+                 <!--DLP-->
+                <div class="row enfermedad mt-4">
+                  <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                <span>DLP</span>                 
+                <label class="switch">
+               <input type="checkbox" name="dlp">
+                <span class="slider round"></span>
+                </label>
+               </div>
+                <div class="form-group col-6 pt-2" placeholder="fecha_dlp"  value="">
+               <input type="date" id="start" name="fecha_dlp" class="form-control  bg-light"
+              value=""
+              min="1940-01-01" max="2020-12-31">
+             </div>
+             <div class="form-group col-6 pl-3">
+              <input type="text" class="form-control bg-light" name="accion_dlp" placeholder="Acción tomada"  value="">
+              </div>
+             <div class="form-group col-6 pl-0">
+             <input type="text" class="form-control bg-light" name="comentario_dlp" placeholder="Comentario"  value="">
+             </div>
+             </div>
+
+                      <!--HTA-->
+                <div class="row enfermedad mt-4">
+                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                  <span>HTA</span>                 
+                  <label class="switch">
+                 <input type="checkbox" name="hta">
+                  <span class="slider round"></span>
+                  </label>
+                 </div>
+                  <div class="form-group col-6 pt-2" placeholder="fecha_hta"  value="">
+                 <input type="date" id="start" name="fecha_hta" class="form-control  bg-light"
+                value=""
+                min="1940-01-01" max="2020-12-31">
+               </div>
+               <div class="form-group col-6 pl-3">
+                <input type="text" class="form-control bg-light" name="accion_hta" placeholder="Acción tomada"  value="">
+                </div>
+               <div class="form-group col-6 pl-0">
+               <input type="text" class="form-control bg-light" name="comentario_hta" placeholder="Comentario"  value="">
+               </div>
+               </div>
+                       
+                                  <!--CRM-->
+                <div class="row enfermedad mt-4">
+                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                  <span>CRM</span>                 
+                  <label class="switch">
+                 <input type="checkbox" name="crm">
+                  <span class="slider round"></span>
+                  </label>
+                 </div>
+                  <div class="form-group col-6 pt-2" placeholder="fecha_crm"  value="">
+                 <input type="date" id="start" name="fecha_crm" class="form-control  bg-light"
+                value=""
+                min="1940-01-01" max="2020-12-31">
+               </div>
+               <div class="form-group col-6 pl-3">
+                <input type="text" class="form-control bg-light" name="accion_crm" placeholder="Acción tomada"  value="">
+                </div>
+               <div class="form-group col-6 pl-0">
+               <input type="text" class="form-control bg-light" name="comentario_crm" placeholder="Comentario"  value="">
+               </div>
+               </div>  
+                                                 <!--ATC-->
+                <div class="row enfermedad mt-4">
+                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                  <span>ATC</span>                 
+                  <label class="switch">
+                 <input type="checkbox" name="atc">
+                  <span class="slider round"></span>
+                  </label>
+                 </div>
+                  <div class="form-group col-6 pt-2" placeholder="fecha_atc"  value="">
+                 <input type="date" id="start" name="fecha_atc" class="form-control  bg-light"
+                value=""
+                min="1940-01-01" max="2020-12-31">
+               </div>
+               <div class="form-group col-6 pl-3">
+                <input type="text" class="form-control bg-light" name="accion_atc" placeholder="Acción tomada"  value="">
+                </div>
+               <div class="form-group col-6 pl-0">
+               <input type="text" class="form-control bg-light" name="comentario_atc" placeholder="Comentario"  value="">
+               </div>
+               </div>  
+
+                                            <!--IAM-->
+                <div class="row enfermedad mt-4">
+                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                  <span>IAM</span>                 
+                  <label class="switch">
+                 <input type="checkbox" name="iam">
+                  <span class="slider round"></span>
+                  </label>
+                 </div>
+                  <div class="form-group col-6 pt-2" placeholder="fecha_iam"  value="">
+                 <input type="date" id="start" name="fecha_iam" class="form-control  bg-light"
+                value=""
+                min="1940-01-01" max="2020-12-31">
+               </div>
+               <div class="form-group col-6 pl-3">
+                <input type="text" class="form-control bg-light" name="accion_iam" placeholder="Acción tomada"  value="">
+                </div>
+               <div class="form-group col-6 pl-0">
+               <input type="text" class="form-control bg-light" name="comentario_iam" placeholder="Comentario"  value="">
+               </div>
+               </div>  
+                       
+                       
+                                            <!--ACV-->
+                <div class="row enfermedad mt-4">
+                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                  <span>ACV</span>                 
+                  <label class="switch">
+                 <input type="checkbox" name="acv">
+                  <span class="slider round"></span>
+                  </label>
+                 </div>
+                  <div class="form-group col-6 pt-2" placeholder="fecha_acv"  value="">
+                 <input type="date" id="start" name="fecha_acv" class="form-control  bg-light"
+                value=""
+                min="1940-01-01" max="2020-12-31">
+               </div>
+               <div class="form-group col-6 pl-3">
+                <input type="text" class="form-control bg-light" name="accion_acv" placeholder="Acción tomada"  value="">
+                </div>
+               <div class="form-group col-6 pl-0">
+               <input type="text" class="form-control bg-light" name="comentario_acv" placeholder="Comentario"  value="">
+               </div>
+               </div>  
+                       
+                   <!--Aneurisma aorta-->
+                <div class="row enfermedad mt-4">
+                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                  <span>Aneurisma aorta</span>                 
+                  <label class="switch">
+                 <input type="checkbox" name="aneurisma">
+                  <span class="slider round"></span>
+                  </label>
+                 </div>
+                  <div class="form-group col-6 pt-2" placeholder="fecha_aneurisma"  value="">
+                 <input type="date" id="start" name="fecha_aneurisma" class="form-control  bg-light"
+                value=""
+                min="1940-01-01" max="2020-12-31">
+               </div>
+               <div class="form-group col-6 pl-3">
+                <input type="text" class="form-control bg-light" name="accion_aneurisma" placeholder="Acción tomada"  value="">
+                </div>
+               <div class="form-group col-6 pl-0">
+               <input type="text" class="form-control bg-light" name="comentario_aneurisma" placeholder="Comentario"  value="">
+               </div>
+               </div>  
+
+                       <!--IC-->
+                <div class="row enfermedad mt-4">
+                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                  <span>IC</span>                 
+                  <label class="switch">
+                 <input type="checkbox" name="ic">
+                  <span class="slider round"></span>
+                  </label>
+                 </div>
+                  <div class="form-group col-6 pt-2" placeholder="fecha_ic"  value="">
+                 <input type="date" id="start" name="fecha_ic" class="form-control  bg-light"
+                value=""
+                min="1940-01-01" max="2020-12-31">
+               </div>
+               <div class="form-group col-6 pl-3">
+                <input type="text" class="form-control bg-light" name="accion_ic" placeholder="Acción tomada"  value="">
+                </div>
+               <div class="form-group col-6 pl-0">
+               <input type="text" class="form-control bg-light" name="comentario_ic" placeholder="Comentario"  value="">
+               </div>
+               </div>  
+                    
+                               <!--EVP-->
+                <div class="row enfermedad mt-4">
+                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                  <span>EVP</span>                 
+                  <label class="switch">
+                 <input type="checkbox" name="evp">
+                  <span class="slider round"></span>
+                  </label>
+                 </div>
+                  <div class="form-group col-6 pt-2" placeholder="fecha_evp"  value="">
+                 <input type="date" id="start" name="fecha_evp" class="form-control  bg-light"
+                value=""
+                min="1940-01-01" max="2020-12-31">
+               </div>
+               <div class="form-group col-6 pl-3">
+                <input type="text" class="form-control bg-light" name="accion_evp" placeholder="Acción tomada"  value="">
+                </div>
+               <div class="form-group col-6 pl-0">
+               <input type="text" class="form-control bg-light" name="comentario_evp" placeholder="Comentario"  value="">
+               </div>
+               </div> 
+                       
+                     
+                               <!--EPOC-->
+                <div class="row enfermedad mt-4">
+                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                  <span>EPOC</span>                 
+                  <label class="switch">
+                 <input type="checkbox" name="epoc">
+                  <span class="slider round"></span>
+                  </label>
+                 </div>
+                  <div class="form-group col-6 pt-2" placeholder="fecha_epoc"  value="">
+                 <input type="date" id="start" name="fecha_epoc" class="form-control  bg-light"
+                value=""
+                min="1940-01-01" max="2020-12-31">
+               </div>
+               <div class="form-group col-6 pl-3">
+                <input type="text" class="form-control bg-light" name="accion_epoc" placeholder="Acción tomada"  value="">
+                </div>
+               <div class="form-group col-6 pl-0">
+               <input type="text" class="form-control bg-light" name="comentario_epoc" placeholder="Comentario"  value="">
+               </div>
+               </div>  
+
+
+                                  <!--IRC-->
+                <div class="row enfermedad mt-4">
+                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                  <span>IRC</span>                 
+                  <label class="switch">
+                 <input type="checkbox" name="irc">
+                  <span class="slider round"></span>
+                  </label>
+                 </div>
+                  <div class="form-group col-6 pt-2" placeholder="fecha_irc"  value="">
+                 <input type="date" id="start" name="fecha_irc" class="form-control  bg-light"
+                value=""
+                min="1940-01-01" max="2020-12-31">
+               </div>
+               <div class="form-group col-6 pl-3">
+                <input type="text" class="form-control bg-light" name="accion_irc" placeholder="Acción tomada"  value="">
+                </div>
+               <div class="form-group col-6 pl-0">
+               <input type="text" class="form-control bg-light" name="comentario_irc" placeholder="Comentario"  value="">
+               </div>
+               </div> 
+
+                 <!--Obesidad-->
+                 <div class="row enfermedad mt-4">
+                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                  <span>Obesidad</span>                 
+                  <label class="switch">
+                 <input type="checkbox" name="obesidad">
+                  <span class="slider round"></span>
+                  </label>
+                 </div>
+                  <div class="form-group col-6 pt-2" placeholder="fecha_obesidad"  value="">
+                 <input type="date" id="start" name="fecha_obesidad" class="form-control  bg-light"
+                value=""
+                min="1940-01-01" max="2020-12-31">
+               </div>
+               <div class="form-group col-6 pl-3">
+                <input type="text" class="form-control bg-light" name="accion_obesidad" placeholder="Acción tomada"  value="">
+                </div>
+               <div class="form-group col-6 pl-0">
+               <input type="text" class="form-control bg-light" name="comentario_obesidad" placeholder="Comentario"  value="">
+               </div>
+               </div> 
+
                         
-                        <!--Sección-->
-                            <div class="form-group">
-                                <input type="text" class="form-control  bg-light" name="seccion" placeholder="Sección"  value="">
-                            </div>
+                      
                    
                    
                         </div>

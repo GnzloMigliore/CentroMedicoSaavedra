@@ -60,7 +60,7 @@
                     <th scope="col">Dirección</th>
                     <th scope="col">Calle n°</th>
                     <th scope="col">Teléfono</th>
-                    <th scope="col"></th>
+                    <th scope="col">Número de paciente</th>
                      
                       
                   </tr>
@@ -73,135 +73,200 @@
                         <td><%= paciente.insurance_number%></td>
                         <td><%= paciente.adress %></td>
                         <td><%= paciente.adress_number %></td>
-                        <td><%= paciente.telephone %></td>  
+                        <td><%= paciente.telephone %></td>
+                        <td><%= paciente.nhc %></td>  
 
                          
                       </tr>
                      
-              </tbody>  
-              <thead>
-                <tr>
-                    
-                  <th scope="col">Diabetes</th>
-                  <th scope="col">DLP</th>
-                  <th scope="col">HTA</th>
-                  <th scope="col">CRM</th>
-                  <th scope="col">Aneurisma</th>
-                  <th scope="col">IC</th>
-                  
-                  
-                   
-                    
-                </tr>
-            </thead>
-            <tbody>
-               
+              </tbody> 
+            </table>
+           
+              <article class="col-8 mx-auto mb-5">
+                <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">ENFERMEDADES</h2>
+                </article>
+                <table class="table">
+                  <thead class="thead">
                     <tr>
-                       
+                      <th scope="col">ENFERMEDAD</th>
+                      <th scope="col">¿La tiene?</th>
+                      <th scope="col">Año de la enfermedad</th>
+                      <th scope="col">Acción</th>
+                      <th scope="col">Comentario</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Diabetes</th>
                       <td><%= paciente.diabetes %></td>
-                      <td><%= paciente.dlp%></td>
+                      <td><%= paciente.date_diabetes %></td>
+                      <td><%= paciente.action_diabetes %></td>
+                      <td><%= paciente.coments_diabetes %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">DLP</th>
+                      <td><%= paciente.dlp %></td>
+                      <td><%= paciente.date_dlp %></td>
+                      <td><%= paciente.action_dlp %></td>
+                      <td><%= paciente.coments_dlp %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">HTA</th>
                       <td><%= paciente.hta %></td>
+                      <td><%= paciente.date_hta %></td>
+                      <td><%= paciente.action_hta %></td>
+                      <td><%= paciente.coments_hta %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">CRM</th>
                       <td><%= paciente.crm %></td>
-                      <td><%= paciente.aortic_aneurysm %></td> 
-                      <td><%= paciente.ic %></td> 
-                   
-
-                       
+                      <td><%= paciente.date_crm %></td>
+                      <td><%= paciente.action_crm %></td>
+                      <td><%= paciente.coments_crm %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">ATC</th>
+                      <td><%= paciente.atc %></td>
+                      <td><%= paciente.date_atc %></td>
+                      <td><%= paciente.action_atc %></td>
+                      <td><%= paciente.coments_atc %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">IAM</th>
+                      <td><%= paciente.iam %></td>
+                      <td><%= paciente.date_iam %></td>
+                      <td><%= paciente.action_iam %></td>
+                      <td><%= paciente.coments_iam %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">ACV</th>
+                      <td><%= paciente.acv %></td>
+                      <td><%= paciente.date_acv %></td>
+                      <td><%= paciente.action_acv %></td>
+                      <td><%= paciente.coments_acv %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Aneurisma</th>
+                      <td><%= paciente.aerotic %></td>
+                      <td><%= paciente.date_aerotic %></td>
+                      <td><%= paciente.action_aerotic %></td>
+                      <td><%= paciente.coments_aerotic %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">IC</th>
+                      <td><%= paciente.ic %></td>
+                      <td><%= paciente.date_ic %></td>
+                      <td><%= paciente.action_ic%></td>
+                      <td><%= paciente.coments_ic %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">EVP</th>
+                      <td><%= paciente.evp %></td>
+                      <td><%= paciente.date_evp %></td>
+                      <td><%= paciente.action_evp %></td>
+                      <td><%= paciente.coments_evp %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">EPOC</th>
+                      <td><%= paciente.epoc %></td>
+                      <td><%= paciente.date_epoc %></td>
+                      <td><%= paciente.action_epoc %></td>
+                      <td><%= paciente.coments_epoc %></td>
+                    </tr>
+                     <tr>
+                      <th scope="row">IRC</th>
+                      <td><%= paciente.irc %></td>
+                      <td><%= paciente.date_irc %></td>
+                      <td><%= paciente.action_irc %></td>
+                      <td><%= paciente.coments_irc %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Obesidad</th>
+                      <td><%= paciente.obesity %></td>
+                      <td><%= paciente.date_obesity %></td>
+                      <td><%= paciente.action_obesity %></td>
+                      <td><%= paciente.coments_obesity %></td>
                     </tr>
                    
-            </tbody>  
-            <thead>
-              <tr>
                   
-                <th scope="col">IRC</th>
-                <th scope="col">Obecidad</th>
-                <th scope="col">EVP</th>
-                <th scope="col">EPOC</th>
-                <th scope="col">HTC</th>
-                <th scope="col"></th>
-                
-                
-                 
-                  
-              </tr>
-          </thead>
-          <tbody>
-             
-                  <tr>
-                     
-                    <td><%= paciente.irc %></td>
-                    <td><%= paciente.obesity%></td>
-                    <td><%= paciente.evp%></td>
-                    <td><%= paciente.epoc %></td>
-                    <td><%= paciente.htc %></td> 
-                    
-                 
-
-                     
-                  </tr>
-                 
-          </tbody>  
-          <thead>
-            <tr>
-              <th scope="col">ACV</th>
-              <th scope="col">NHC</th>
-              <th scope="col">DLP</th>
-              <th scope="col">Sección</th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-              
-               
-                
-            </tr>
-        </thead>
-        <tbody>
-           
-                <tr>
-                  <td><%= paciente.acv %></td>
-                  <td><%= paciente.nhc %></td>
-                  <td><%= paciente.dlp%></td>
-                  <td><%= paciente.section%></td>
-              
-               
-
                    
-                </tr>
-               
-        </tbody>  
-       
-              </table>
+                  </tbody>
+                </table>
+              
+             
         </article>
         </article>
+          <!-- Tratamientos-->
+          <article class="col-8 mx-auto mb-5">
+            <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">TRATAMIENTOS</h2>
+            </article>
+              <article id="article" class="col-12">       
+                <div>
+                  <form action="/patients/detail/treatment/<%= paciente.id%>" method="POST">
+                  <input type="text" class="form-control bg-light mt-3 mb-3 visita_medica col-12" name="tratamiento" placeholder="Agregar tratamiento"  value="">
+                  <button type="submit" class="btn btn-dark">Guardar</button>
+                  </form>
+                </div>
+      </div>
+    
+<!--Info-->
+<article class="col-12 mt-3">
+  <table class="table"> 
+     <thead>
+     <tr>
+   
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+     <th scope="col">Tratamiento:</th>
+    <th scope="col">Fecha de inicio</th>
+     
+      
+     </tr>
+     </thead>
+     <tbody>
+     
+      <% tratamiento.forEach(treatment => { %>
+       <% if (treatment.tratamiento) { %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td> 
+            <td><%= treatment.tratamiento %> </td>
+            <td> <%= treatment.createdAt  %></td> 
+          </tr>
+        <% }  else { %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td> 
+            <td>El paciente no realizo ningun tratamiento</td>
+            <td>--/--/----</td> 
+        </tr>
+        <% } %> 
+      <% }) %>
+      
+     
+      </tbody> 
+    </table>
+  </article>
+
            <!-- Historia clinica-->
            <article class="col-8 mx-auto mb-5">
             <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">HISTORIA CLÍNICA</h2>
             </article>
-              <article id="article" class="col-12 mt-5">       
-<!-- Large modal -->
-<button type="button" class="btn btn-dark ml-3" data-toggle="modal" data-target=".bd-example-modal-lg">Agregar Visita médica</button>
+              <article id="article" class="col-12">       
+                <div>
+                  <form action="/patients/detail/history/<%= paciente.id%>" method="POST">
+                  <input type="text" class="form-control bg-light mt-3 mb-3 visita_medica col-12" name="visita_medica" placeholder="Agregar visita médica"  value="">
+                  <button type="submit" class="btn btn-dark">Guardar</button>
+                  </form>
+                </div>
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-   
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLongTitle">Agregar visita médica</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">  
-        <form action="/patients/detail/<%= paciente.id%>" method="POST">
-        <input type="text" class="form-control bg-light mt-3 mb-3 visita_medica" name="visita_medica" placeholder="Comentarios sobre visita medica"  value="">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Atras</button>
-        <button type="submit" class="btn btn-dark">Guardar</button>
-      </form>
-      </div>
-    </div>
-  </div>
-</div>
+</article>
 
  
 
@@ -224,7 +289,7 @@
      <tbody>
      
       <% historiaClinica.forEach(historia => { %>
-       <% if (historia.visitamedica) { %>
+       <% if (historia.visitamedica  ){ %>
           <tr>
             <td></td>
             <td></td>

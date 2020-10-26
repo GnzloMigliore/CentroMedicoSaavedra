@@ -91,111 +91,352 @@
                              <input type="hidden" name="oldExample"  value="<%= paciente.telephone%>">
                             <input type="text" class="form-control bg-light" name="telefono" placeholder="Teléfono"  value="<%= paciente.telephone%>">
                         </div>
+                        <!--Número de paciente-->
+                        <div class="form-group col-12">
+                            <input type="hidden" name="oldExample"  value="<%= paciente.nhc%>">
+                           <input type="text" class="form-control bg-light" name="nhc" placeholder="Número de paciente"  value="<%= paciente.nhc%>">
+                       </div>
                     </div>
                     
-                    <div class="diabetes form-group d-flex justify-content-between">                       
+                    <!--Enfermedades-->
+
+                    <article class="col-8 mx-auto mb-5">
+                        <h2 class="titulo-admin pb-3  text-center pt-5 mx-auto text-uppercase">ENFERMEDADES</h2>
+                        </article>
+                    <!--Diabetes-->
+                    <div class="row enfermedad">
+                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
                         <span>DIABETES</span>                 
                        <label class="switch">
-                        <input type="checkbox" name="diabetes" value="on"<%= paciente.diabetes == "on" ? "selected" : null %>>
-                        <span class="slider round"value="on"<%= paciente.diabetes == "on" ? "selected" : null %>></span>
-                       </label>
-                    </div>
-                    <div class="form-group d-flex justify-content-between">                       
-                        <span>DLP</span>                 
-                       <label class="switch">
-                        <input type="checkbox" name="dlp">
+                           <% if (paciente.diabetes == 'on') { %>
+                            <input type="checkbox" checked name="diabetes">
+                           <% }else  {%>
+                            <input type="checkbox"  name="diabetes"> 
+                            <% } %>
                         <span class="slider round"></span>
                        </label>
                     </div>
-                    <div class="form-group d-flex justify-content-between">                       
-                        <span>HTA</span>                 
-                       <label class="switch">
-                        <input type="checkbox" name="hta">
-                        <span class="slider round"></span>
-                       </label>
+                    <div class="form-group col-6 pt-2" placeholder="fecha_diabetes"  value="">
+                    <input type="date" id="start" name="fecha_diabetes" class="form-control  bg-light"
+                    value="<%= paciente.date_diabetes%>"
+                    min="1940-01-01" max="2020-12-31">
                     </div>
-                    <div class="form-group d-flex justify-content-between">                       
-                        <span>CRM</span>                 
-                       <label class="switch">
-                        <input type="checkbox" name="crm">
-                        <span class="slider round"></span>
-                       </label>
+                    <div class="form-group col-6 pl-3">
+                        <input type="text" class="form-control bg-light" name="accion_diabetes" placeholder="Acción tomada"  value="<%= paciente.action_diabetes%>">
                     </div>
-                    <div class="form-group d-flex justify-content-between">                       
-                        <span>ATC</span>                 
-                       <label class="switch">
-                        <input type="checkbox" name="atc">
-                        <span class="slider round"></span>
-                       </label>
+                    <div class="form-group col-6 pl-0">
+                        <input type="text" class="form-control bg-light" name="comentario_diabetes" placeholder="Comentario"  value="<%= paciente.coments_diabetes%>">
                     </div>
-                    <div class="form-group d-flex justify-content-between">                       
-                        <span>IAM</span>                 
-                       <label class="switch">
-                        <input type="checkbox" name="iam">
-                        <span class="slider round"></span>
-                       </label>
                     </div>
-                    <div class="form-group d-flex justify-content-between">                       
-                        <span>ACV</span>                 
-                       <label class="switch">
-                        <input type="checkbox" name="acv">
-                        <span class="slider round"></span>
-                       </label>
-                    </div>
-                    <div class="form-group d-flex justify-content-between">                       
-                        <span>ANEURISMA AORTA</span>                 
-                       <label class="switch">
-                        <input type="checkbox" name="aneurisma">
-                        <span class="slider round"></span>
-                       </label>
-                    </div>
-                    <div class="form-group d-flex justify-content-between">                       
-                        <span>IC</span>                 
-                       <label class="switch">
-                        <input type="checkbox" name="ic">
-                        <span class="slider round"></span>
-                       </label>
-                    </div>
-                    <div class="form-group d-flex justify-content-between">                       
-                        <span>EVP</span>                 
-                       <label class="switch">
-                        <input type="checkbox" name="evp">
-                        <span class="slider round"></span>
-                       </label>
-                    </div>
-                    <div class="form-group d-flex justify-content-between">                       
-                        <span>EPOC</span>                 
-                       <label class="switch">
-                        <input type="checkbox" name="epoc">
-                        <span class="slider round"></span>
-                       </label>
-                    </div>
-                    <div class="form-group d-flex justify-content-between">                       
-                        <span>IRC</span>                 
-                       <label class="switch">
-                        <input type="checkbox" name="irc">
-                        <span class="slider round"></span>
-                       </label>
-                    </div>
-                    <div class="form-group d-flex justify-content-between">                       
-                        <span>OBESIDAD</span>                 
-                       <label class="switch">
-                        <input type="checkbox" name="obesidad">
-                        <span class="slider round"></span>
-                       </label>
-                    </div>
-                        <!--NHC-->
-                        <div class="form-group">
-                            <input type="hidden" name="oldExample"  value="<%= paciente.nhc%>">
-                            <input type="text" class="form-control  bg-light" name="nhc" placeholder="NHC"  value="<%= paciente.nhc%>">
-                        </div>
-                    
-                    <!--Sección-->
-                        <div class="form-group">
-                            <input type="hidden" name="oldExample"  value="<%= paciente.section%>">
-                            <input type="text" class="form-control  bg-light" name="seccion" placeholder="Sección"  value="<%= paciente.section%>">
-                        </div>
-                    
+             <!--DLP-->
+            <div class="row enfermedad mt-4">
+              <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+            <span>DLP</span>                 
+            <label class="switch">
+                <% if (paciente.dlp == 'on') { %>
+                    <input type="checkbox" checked name="dlp">
+                   <% }else  {%>
+                    <input type="checkbox"  name="dlp"> 
+                    <% } %>
+            <span class="slider round"></span>
+            </label>
+           </div>
+            <div class="form-group col-6 pt-2" placeholder="fecha_dlp"  value="">
+           <input type="date" id="start" name="fecha_dlp" class="form-control  bg-light"
+          value="<%= paciente.date_dlp%>"
+          min="1940-01-01" max="2020-12-31">
+         </div>
+         <div class="form-group col-6 pl-3">
+          <input type="text" class="form-control bg-light" name="accion_dlp" placeholder="Acción tomada"  value="<%= paciente.action_dlp%>">
+          </div>
+         <div class="form-group col-6 pl-0">
+         <input type="text" class="form-control bg-light" name="comentario_dlp" placeholder="Comentario"  value="<%= paciente.coments_dlp%>">
+         </div>
+         </div>
+
+                  <!--HTA-->
+            <div class="row enfermedad mt-4">
+                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+              <span>HTA</span>                 
+              <label class="switch">
+                <% if (paciente.hta == 'on') { %>
+                    <input type="checkbox" checked name="hta">
+                   <% }else  {%>
+                    <input type="checkbox"  name="hta"> 
+                    <% } %>
+              <span class="slider round"></span>
+              </label>
+             </div>
+              <div class="form-group col-6 pt-2" placeholder="fecha_hta"  value="">
+             <input type="date" id="start" name="fecha_hta" class="form-control  bg-light"
+            value="<%= paciente.date_hta%>"
+            min="1940-01-01" max="2020-12-31">
+           </div>
+           <div class="form-group col-6 pl-3">
+            <input type="text" class="form-control bg-light" name="accion_hta" placeholder="Acción tomada"  value="<%= paciente.action_hta%>">
+            </div>
+           <div class="form-group col-6 pl-0">
+           <input type="text" class="form-control bg-light" name="comentario_hta" placeholder="Comentario"  value="<%= paciente.coments_hta%>">
+           </div>
+           </div>
+                   
+                              <!--CRM-->
+            <div class="row enfermedad mt-4">
+                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+              <span>CRM</span>                 
+              <label class="switch">
+                <% if (paciente.crm == 'on') { %>
+                    <input type="checkbox" checked name="crm">
+                   <% }else  {%>
+                    <input type="checkbox"  name="crm"> 
+                    <% } %>
+              <span class="slider round"></span>
+              </label>
+             </div>
+              <div class="form-group col-6 pt-2" placeholder="fecha_crm"  value="<%= paciente.date_crm%>">
+             <input type="date" id="start" name="fecha_crm" class="form-control  bg-light"
+            value=""
+            min="1940-01-01" max="2020-12-31">
+           </div>
+           <div class="form-group col-6 pl-3">
+            <input type="text" class="form-control bg-light" name="accion_crm" placeholder="Acción tomada"  value="<%= paciente.action_crm%>">
+            </div>
+           <div class="form-group col-6 pl-0">
+           <input type="text" class="form-control bg-light" name="comentario_crm" placeholder="Comentario"  value="<%= paciente.coments_crm%>">
+           </div>
+           </div>  
+                                             <!--ATC-->
+            <div class="row enfermedad mt-4">
+                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+              <span>ATC</span>                 
+              <label class="switch">
+                <% if (paciente.atc == 'on') { %>
+                    <input type="checkbox" checked name="atc">
+                   <% }else  {%>
+                    <input type="checkbox"  name="atc"> 
+                    <% } %>
+              <span class="slider round"></span>
+              </label>
+             </div>
+              <div class="form-group col-6 pt-2" placeholder="fecha_atc"  value="">
+             <input type="date" id="start" name="fecha_atc" class="form-control  bg-light"
+            value="<%= paciente.date_atc%>"
+            min="1940-01-01" max="2020-12-31">
+           </div>
+           <div class="form-group col-6 pl-3">
+            <input type="text" class="form-control bg-light" name="accion_atc" placeholder="Acción tomada"  value="<%= paciente.action_atc%>">
+            </div>
+           <div class="form-group col-6 pl-0">
+           <input type="text" class="form-control bg-light" name="comentario_atc" placeholder="Comentario"  value="<%= paciente.coments_atc%>">
+           </div>  
+        </div>
+
+                                        <!--IAM-->
+            <div class="row enfermedad mt-4">
+                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+              <span>IAM</span>                 
+              <label class="switch">
+                <% if (paciente.iam == 'on') { %>
+                    <input type="checkbox" checked name="iam">
+                   <% }else  {%>
+                    <input type="checkbox"  name="iam"> 
+                    <% } %>
+              <span class="slider round"></span>
+              </label>
+             </div>
+              <div class="form-group col-6 pt-2" placeholder="fecha_iam"  value="">
+             <input type="date" id="start" name="fecha_iam" class="form-control  bg-light"
+            value="<%= paciente.date_iam%>"
+            min="1940-01-01" max="2020-12-31">
+           </div>
+           <div class="form-group col-6 pl-3">
+            <input type="text" class="form-control bg-light" name="accion_iam" placeholder="Acción tomada"  value="<%= paciente.action_iam%>">
+            </div>
+           <div class="form-group col-6 pl-0">
+           <input type="text" class="form-control bg-light" name="comentario_iam" placeholder="Comentario"  value="<%= paciente.coments_iam%>">
+           </div>
+           </div>  
+                   
+                   
+                                        <!--ACV-->
+            <div class="row enfermedad mt-4">
+                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+              <span>ACV</span>                 
+              <label class="switch">
+                <% if (paciente.acv == 'on') { %>
+                    <input type="checkbox" checked name="acv">
+                   <% }else  {%>
+                    <input type="checkbox"  name="acv"> 
+                    <% } %>
+              <span class="slider round"></span>
+              </label>
+             </div>
+              <div class="form-group col-6 pt-2" placeholder="fecha_acv"  value="">
+             <input type="date" id="start" name="fecha_acv" class="form-control  bg-light"
+            value="<%= paciente.date_acv%>"
+            min="1940-01-01" max="2020-12-31">
+           </div>
+           <div class="form-group col-6 pl-3">
+            <input type="text" class="form-control bg-light" name="accion_acv" placeholder="Acción tomada"  value="<%= paciente.action_acv%>">
+            </div>
+           <div class="form-group col-6 pl-0">
+           <input type="text" class="form-control bg-light" name="comentario_acv" placeholder="Comentario"  value="<%= paciente.coments_acv%>">
+           </div>
+           </div>  
+                   
+               <!--Aneurisma aorta-->
+            <div class="row enfermedad mt-4">
+                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+              <span>Aneurisma aorta</span>                 
+              <label class="switch">
+                <% if (paciente.aortic_aneurysm == 'on') { %>
+                    <input type="checkbox" checked name="aerotic">
+                   <% }else  {%>
+                    <input type="checkbox"  name="aerotic"> 
+                    <% } %>
+              <span class="slider round"></span>
+              </label>
+             </div>
+              <div class="form-group col-6 pt-2" placeholder="fecha_aneurisma"  value="">
+             <input type="date" id="start" name="fecha_aneurisma" class="form-control  bg-light"
+            value="<%= paciente.date_aerotic%>"
+            min="1940-01-01" max="2020-12-31">
+           </div>
+           <div class="form-group col-6 pl-3">
+            <input type="text" class="form-control bg-light" name="accion_aneurisma" placeholder="Acción tomada"  value="<%= paciente.action_aerotic%>">
+            </div>
+           <div class="form-group col-6 pl-0">
+           <input type="text" class="form-control bg-light" name="comentario_aneurisma" placeholder="Comentario"  value="<%= paciente.coments_aerotic%>">
+           </div>
+           </div>  
+
+                   <!--IC-->
+            <div class="row enfermedad mt-4">
+                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+              <span>IC</span>                 
+              <label class="switch">
+                <% if (paciente.ic == 'on') { %>
+                    <input type="checkbox" checked name="ic">
+                   <% }else  {%>
+                    <input type="checkbox"  name="ic"> 
+                    <% } %>
+              <span class="slider round"></span>
+              </label>
+             </div>
+              <div class="form-group col-6 pt-2" placeholder="fecha_ic"  value="">
+             <input type="date" id="start" name="fecha_ic" class="form-control  bg-light"
+            value="<%= paciente.date_ic%>"
+            min="1940-01-01" max="2020-12-31">
+           </div>
+           <div class="form-group col-6 pl-3">
+            <input type="text" class="form-control bg-light" name="accion_ic" placeholder="Acción tomada"  value="<%= paciente.action_ic%>">
+            </div>
+           <div class="form-group col-6 pl-0">
+           <input type="text" class="form-control bg-light" name="comentario_ic" placeholder="Comentario"  value="<%= paciente.coments_ic%>">
+           </div>
+           </div>  
+                
+                           <!--EVP-->
+            <div class="row enfermedad mt-4">
+                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+              <span>EVP</span>                 
+              <label class="switch">
+             <input type="checkbox" name="evp">
+              <span class="slider round"></span>
+              </label>
+             </div>
+              <div class="form-group col-6 pt-2" placeholder="fecha_evp"  value="">
+             <input type="date" id="start" name="fecha_evp" class="form-control  bg-light"
+            value="<%= paciente.date_evp%>"
+            min="1940-01-01" max="2020-12-31">
+           </div>
+           <div class="form-group col-6 pl-3">
+            <input type="text" class="form-control bg-light" name="accion_evp" placeholder="Acción tomada"  value="<%= paciente.action_evp%>">
+            </div>
+           <div class="form-group col-6 pl-0">
+           <input type="text" class="form-control bg-light" name="comentario_evp" placeholder="Comentario"  value="<%= paciente.coments_evp%>">
+           </div>
+           </div> 
+                   
+                 
+                           <!--EPOC-->
+            <div class="row enfermedad mt-4">
+                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+              <span>EPOC</span>                 
+              <label class="switch">
+                <% if (paciente.epoc == 'on') { %>
+                    <input type="checkbox" checked name="epoc">
+                   <% }else  {%>
+                    <input type="checkbox"  name="epoc"> 
+                    <% } %>
+              <span class="slider round"></span>
+              </label>
+             </div>
+              <div class="form-group col-6 pt-2" placeholder="fecha_epoc"  value="">
+             <input type="date" id="start" name="fecha_epoc" class="form-control  bg-light"
+            value="<%= paciente.date_epoc%>"
+            min="1940-01-01" max="2020-12-31">
+           </div>
+           <div class="form-group col-6 pl-3">
+            <input type="text" class="form-control bg-light" name="accion_epoc" placeholder="Acción tomada"  value="<%= paciente.action_epoc%>">
+            </div>
+           <div class="form-group col-6 pl-0">
+           <input type="text" class="form-control bg-light" name="comentario_epoc" placeholder="Comentario"  value="<%= paciente.coments_epoc%>">
+           </div>
+           </div>  
+
+
+                              <!--IRC-->
+            <div class="row enfermedad mt-4">
+                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+              <span>IRC</span>                 
+              <label class="switch">
+                <% if (paciente.irc == 'on') { %>
+                    <input type="checkbox" checked name="irc">
+                   <% }else  {%>
+                    <input type="checkbox"  name="irc"> 
+                    <% } %>
+              <span class="slider round"></span>
+              </label>
+             </div>
+              <div class="form-group col-6 pt-2" placeholder="fecha_irc"  value="">
+             <input type="date" id="start" name="fecha_irc" class="form-control  bg-light"
+            value="<%= paciente.date_irc%>"
+            min="1940-01-01" max="2020-12-31">
+           </div>
+           <div class="form-group col-6 pl-3">
+            <input type="text" class="form-control bg-light" name="accion_irc" placeholder="Acción tomada"  value="<%= paciente.action_irc%>">
+            </div>
+           <div class="form-group col-6 pl-0">
+           <input type="text" class="form-control bg-light" name="comentario_irc" placeholder="Comentario"  value="<%= paciente.coments_irc%>">
+           </div>
+           </div> 
+
+             <!--Obesidad-->
+             <div class="row enfermedad mt-4">
+                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+              <span>Obesidad</span>                 
+              <label class="switch">
+                <% if (paciente.obesity == 'on') { %>
+                    <input type="checkbox" checked name="obesity">
+                   <% }else  {%>
+                    <input type="checkbox"  name="obesity"> 
+                    <% } %>
+              <span class="slider round"></span>
+              </label>
+             </div>
+              <div class="form-group col-6 pt-2" placeholder="fecha_obesidad"  value="">
+             <input type="date" id="start" name="fecha_obesidad" class="form-control  bg-light"
+            value="<%= paciente.date_obesity%>"
+            min="1940-01-01" max="2020-12-31">
+           </div>
+           <div class="form-group col-6 pl-3">
+            <input type="text" class="form-control bg-light" name="accion_obesidad" placeholder="Acción tomada"  value="<%= paciente.action_obesity%>">
+            </div>
+           <div class="form-group col-6 pl-0">
+           <input type="text" class="form-control bg-light" name="comentario_obesidad" placeholder="Comentario"  value="<%= paciente.coments_obesity%>">
+           </div>
+           </div> 
                          </div>
                                                        
                     
