@@ -65,10 +65,9 @@
                             <th scope="col">Apellido</th>
                             <th scope="col">Género</th>
                             <th scope="col">Diabetes</th>
+                            <th scope="col">DLP</th>
+                            <th scope="col">HTA</th>
                             <th scope="col">Obesidad</th>
-                            <th scope="col">ACV</th>
-                           
-                            <th scope="col">Tratamiento</th>
                             <th scope="col">Ver</th>
                             <th scope="col">Editar</th>
                            
@@ -81,12 +80,10 @@
                                 <td><%= patient.first_name %></td>
                                 <td><%= patient.last_name %></td>
                                 <td><%= patient.gender %></td>
-                                <td><%= patient.diabetes %></td>
+                                <td><%= patient.diabetes %></td>   
+                                <td><%= patient.dlp %></td>
+                                <td><%= patient.hta %></td>
                                 <td><%= patient.obesity %></td>
-                                <td><%= patient.acv %></td>
-                                <td> 
-                                    <%= patient.tratmentspatients_id %>                            
-                                </td>
                                 <td><a href="/patients/detail/<%= patient.id %>"><ion-icon  class="pl-2" name="eye-outline"></ion-icon></a></td>
                                 <td><a href="/patients/edit/<%= patient.id %>"><ion-icon class="pl-3" name="pencil-outline"></ion-icon></a></td>
                                

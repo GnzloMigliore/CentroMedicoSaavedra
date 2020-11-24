@@ -41,6 +41,7 @@
                             <!--Género-->
                             <div class="form-group col-6" placeholder="Genero"  value="">
                                 <select class="custom-select  bg-light"  name="genero">
+                                    <option desabled value="">Seleccione género</option>
                                     <option value="femenino">Femenino</option>
                                     <option value="masculino">Masculino</option>
                                 </select>
@@ -98,11 +99,12 @@
                         <!--Diabetes-->
                         <div class="row enfermedad">
                         <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                            <span>DIABETES</span>                 
-                           <label class="switch">
-                            <input type="checkbox" name="diabetes">
-                            <span class="slider round"></span>
-                           </label>
+                            <select class="custom-select  bg-light"  name="diabetes">
+                                <option desabled value="no">Seleccione si tiene diabetes</option>
+                                <option value="si">Si</option>
+                                <option value="no">No</option>
+                            </select>
+                            </label> 
                         </div>
                         <div class="form-group col-6 pt-2" placeholder="fecha_diabetes"  value="">
                         <input type="date" id="start" name="fecha_diabetes" class="form-control  bg-light"
@@ -119,11 +121,11 @@
                  <!--DLP-->
                 <div class="row enfermedad mt-4">
                   <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                <span>DLP</span>                 
-                <label class="switch">
-               <input type="checkbox" name="dlp">
-                <span class="slider round"></span>
-                </label>
+                    <select class="custom-select  bg-light"  name="dlp">
+                        <option desabled value="no">Seleccione si tiene DLP</option>
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                    </select>
                </div>
                 <div class="form-group col-6 pt-2" placeholder="fecha_dlp"  value="">
                <input type="date" id="start" name="fecha_dlp" class="form-control  bg-light"
@@ -141,11 +143,11 @@
                       <!--HTA-->
                 <div class="row enfermedad mt-4">
                     <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                  <span>HTA</span>                 
-                  <label class="switch">
-                 <input type="checkbox" name="hta">
-                  <span class="slider round"></span>
-                  </label>
+                        <select class="custom-select  bg-light"  name="hta">
+                            <option desabled value="no">Seleccione si tiene HTA</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
                  </div>
                   <div class="form-group col-6 pt-2" placeholder="fecha_hta"  value="">
                  <input type="date" id="start" name="fecha_hta" class="form-control  bg-light"
@@ -163,11 +165,11 @@
                                   <!--CRM-->
                 <div class="row enfermedad mt-4">
                     <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                  <span>CRM</span>                 
-                  <label class="switch">
-                 <input type="checkbox" name="crm">
-                  <span class="slider round"></span>
-                  </label>
+                        <select class="custom-select  bg-light"  name="crm">
+                            <option desabled value="no">Seleccione si tiene CRM</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
                  </div>
                   <div class="form-group col-6 pt-2" placeholder="fecha_crm"  value="">
                  <input type="date" id="start" name="fecha_crm" class="form-control  bg-light"
@@ -184,11 +186,11 @@
                                                  <!--ATC-->
                 <div class="row enfermedad mt-4">
                     <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                  <span>ATC</span>                 
-                  <label class="switch">
-                 <input type="checkbox" name="atc">
-                  <span class="slider round"></span>
-                  </label>
+                        <select class="custom-select  bg-light"  name="atc">
+                            <option desabled value="no">Seleccione si tiene ATC</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
                  </div>
                   <div class="form-group col-6 pt-2" placeholder="fecha_atc"  value="">
                  <input type="date" id="start" name="fecha_atc" class="form-control  bg-light"
@@ -206,11 +208,11 @@
                                             <!--IAM-->
                 <div class="row enfermedad mt-4">
                     <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                  <span>IAM</span>                 
-                  <label class="switch">
-                 <input type="checkbox" name="iam">
-                  <span class="slider round"></span>
-                  </label>
+                        <select class="custom-select  bg-light"  name="iam">
+                            <option desabled value="no">Seleccione si tiene IAM</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
                  </div>
                   <div class="form-group col-6 pt-2" placeholder="fecha_iam"  value="">
                  <input type="date" id="start" name="fecha_iam" class="form-control  bg-light"
@@ -229,11 +231,11 @@
                                             <!--ACV-->
                 <div class="row enfermedad mt-4">
                     <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                  <span>ACV</span>                 
-                  <label class="switch">
-                 <input type="checkbox" name="acv">
-                  <span class="slider round"></span>
-                  </label>
+                        <select class="custom-select  bg-light"  name="acv">
+                            <option desabled value="no">Seleccione si tiene ACV</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
                  </div>
                   <div class="form-group col-6 pt-2" placeholder="fecha_acv"  value="">
                  <input type="date" id="start" name="fecha_acv" class="form-control  bg-light"
@@ -251,11 +253,11 @@
                    <!--Aneurisma aorta-->
                 <div class="row enfermedad mt-4">
                     <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                  <span>Aneurisma aorta</span>                 
-                  <label class="switch">
-                 <input type="checkbox" name="aneurisma">
-                  <span class="slider round"></span>
-                  </label>
+                        <select class="custom-select  bg-light"  name="aneurisma">
+                            <option desabled value="no">Seleccione si tiene aneurisma</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
                  </div>
                   <div class="form-group col-6 pt-2" placeholder="fecha_aneurisma"  value="">
                  <input type="date" id="start" name="fecha_aneurisma" class="form-control  bg-light"
@@ -273,11 +275,11 @@
                        <!--IC-->
                 <div class="row enfermedad mt-4">
                     <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                  <span>IC</span>                 
-                  <label class="switch">
-                 <input type="checkbox" name="ic">
-                  <span class="slider round"></span>
-                  </label>
+                        <select class="custom-select  bg-light"  name="ic">
+                            <option desabled value="no">Seleccione si tiene IC</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
                  </div>
                   <div class="form-group col-6 pt-2" placeholder="fecha_ic"  value="">
                  <input type="date" id="start" name="fecha_ic" class="form-control  bg-light"
@@ -295,11 +297,11 @@
                                <!--EVP-->
                 <div class="row enfermedad mt-4">
                     <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                  <span>EVP</span>                 
-                  <label class="switch">
-                 <input type="checkbox" name="evp">
-                  <span class="slider round"></span>
-                  </label>
+                        <select class="custom-select  bg-light"  name="evp">
+                            <option desabled value="no">Seleccione si tiene EVP</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
                  </div>
                   <div class="form-group col-6 pt-2" placeholder="fecha_evp"  value="">
                  <input type="date" id="start" name="fecha_evp" class="form-control  bg-light"
@@ -318,11 +320,11 @@
                                <!--EPOC-->
                 <div class="row enfermedad mt-4">
                     <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                  <span>EPOC</span>                 
-                  <label class="switch">
-                 <input type="checkbox" name="epoc">
-                  <span class="slider round"></span>
-                  </label>
+                        <select class="custom-select  bg-light"  name="epoc">
+                            <option desabled value="no">Seleccione si tiene EPOC</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
                  </div>
                   <div class="form-group col-6 pt-2" placeholder="fecha_epoc"  value="">
                  <input type="date" id="start" name="fecha_epoc" class="form-control  bg-light"
@@ -341,11 +343,11 @@
                                   <!--IRC-->
                 <div class="row enfermedad mt-4">
                     <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                  <span>IRC</span>                 
-                  <label class="switch">
-                 <input type="checkbox" name="irc">
-                  <span class="slider round"></span>
-                  </label>
+                        <select class="custom-select  bg-light"  name="irc">
+                            <option desabled value="no">Seleccione si tiene IRC</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
                  </div>
                   <div class="form-group col-6 pt-2" placeholder="fecha_irc"  value="">
                  <input type="date" id="start" name="fecha_irc" class="form-control  bg-light"
@@ -363,11 +365,11 @@
                  <!--Obesidad-->
                  <div class="row enfermedad mt-4">
                     <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                  <span>Obesidad</span>                 
-                  <label class="switch">
-                 <input type="checkbox" name="obesidad">
-                  <span class="slider round"></span>
-                  </label>
+                        <select class="custom-select  bg-light"  name="obesidad">
+                            <option desabled value="no">Seleccione si tiene obesidad</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
                  </div>
                   <div class="form-group col-6 pt-2" placeholder="fecha_obesidad"  value="">
                  <input type="date" id="start" name="fecha_obesidad" class="form-control  bg-light"
