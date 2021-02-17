@@ -108,7 +108,7 @@
                     <div class="col 6 form-group d-flex justify-content-between pt-2">                       
                         <span>DIABETES</span>                 
                        <label class="switch">
-                           <% if (paciente.diabetes == 'on') { %>
+                           <% if (paciente.diabetes == 'si') { %>
                             <input type="checkbox" checked name="diabetes">
                            <% }else  {%>
                             <input type="checkbox"  name="diabetes"> 
@@ -159,7 +159,7 @@
                 <div class="col 6 form-group d-flex justify-content-between pt-2">                       
               <span>HTA</span>                 
               <label class="switch">
-                <% if (paciente.hta == 'on') { %>
+                <% if (paciente.hta == 'si') { %>
                     <input type="checkbox" checked name="hta">
                    <% }else  {%>
                     <input type="checkbox"  name="hta"> 
@@ -185,7 +185,7 @@
                 <div class="col 6 form-group d-flex justify-content-between pt-2">                       
               <span>CRM</span>                 
               <label class="switch">
-                <% if (paciente.crm == 'on') { %>
+                <% if (paciente.crm == 'si') { %>
                     <input type="checkbox" checked name="crm">
                    <% }else  {%>
                     <input type="checkbox"  name="crm"> 
@@ -210,7 +210,7 @@
                 <div class="col 6 form-group d-flex justify-content-between pt-2">                       
               <span>ATC</span>                 
               <label class="switch">
-                <% if (paciente.atc == 'on') { %>
+                <% if (paciente.atc == 'si') { %>
                     <input type="checkbox" checked name="atc">
                    <% }else  {%>
                     <input type="checkbox"  name="atc"> 
@@ -236,7 +236,7 @@
                 <div class="col 6 form-group d-flex justify-content-between pt-2">                       
               <span>IAM</span>                 
               <label class="switch">
-                <% if (paciente.iam == 'on') { %>
+                <% if (paciente.iam == 'si') { %>
                     <input type="checkbox" checked name="iam">
                    <% }else  {%>
                     <input type="checkbox"  name="iam"> 
@@ -263,7 +263,7 @@
                 <div class="col 6 form-group d-flex justify-content-between pt-2">                       
               <span>ACV</span>                 
               <label class="switch">
-                <% if (paciente.acv == 'on') { %>
+                <% if (paciente.acv == 'si') { %>
                     <input type="checkbox" checked name="acv">
                    <% }else  {%>
                     <input type="checkbox"  name="acv"> 
@@ -289,7 +289,7 @@
                 <div class="col 6 form-group d-flex justify-content-between pt-2">                       
               <span>Aneurisma aorta</span>                 
               <label class="switch">
-                <% if (paciente.aortic_aneurysm == 'on') { %>
+                <% if (paciente.aortic_aneurysm == 'si') { %>
                     <input type="checkbox" checked name="aerotic">
                    <% }else  {%>
                     <input type="checkbox"  name="aerotic"> 
@@ -315,7 +315,7 @@
                 <div class="col 6 form-group d-flex justify-content-between pt-2">                       
               <span>IC</span>                 
               <label class="switch">
-                <% if (paciente.ic == 'on') { %>
+                <% if (paciente.ic == 'si') { %>
                     <input type="checkbox" checked name="ic">
                    <% }else  {%>
                     <input type="checkbox"  name="ic"> 
@@ -364,7 +364,7 @@
                 <div class="col 6 form-group d-flex justify-content-between pt-2">                       
               <span>EPOC</span>                 
               <label class="switch">
-                <% if (paciente.epoc == 'on') { %>
+                <% if (paciente.epoc == 'si') { %>
                     <input type="checkbox" checked name="epoc">
                    <% }else  {%>
                     <input type="checkbox"  name="epoc"> 
@@ -391,7 +391,7 @@
                 <div class="col 6 form-group d-flex justify-content-between pt-2">                       
               <span>IRC</span>                 
               <label class="switch">
-                <% if (paciente.irc == 'on') { %>
+                <% if (paciente.irc == 'si') { %>
                     <input type="checkbox" checked name="irc">
                    <% }else  {%>
                     <input type="checkbox"  name="irc"> 
@@ -417,7 +417,7 @@
                 <div class="col 6 form-group d-flex justify-content-between pt-2">                       
               <span>Obesidad</span>                 
               <label class="switch">
-                <% if (paciente.obesity == 'on') { %>
+                <% if (paciente.obesity == 'si') { %>
                     <input type="checkbox" checked name="obesity">
                    <% }else  {%>
                     <input type="checkbox"  name="obesity"> 
@@ -438,8 +438,7 @@
            </div>
            </div> 
                          </div>
-                                                       
-                    
+          
                             <div class="col-12 form-group d-flex flex-wrap justify-content-center">
                                 <button type="submit" class="col-6 mx-5 mt-5 btn btn btn-dark">Actualizar</button>
                                 <a href="/patients" class="col-6 mx-5 my-3 btn btn-light border">Volver</a>

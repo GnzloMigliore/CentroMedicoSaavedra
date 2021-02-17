@@ -2,7 +2,7 @@
 const path = require('path');
 const fs = require('fs');
 const { Op } = require("sequelize");
-const {patients, medicalhistories,treatments} = require ('../database/models');
+const {patients, medicalhistories,treatments,patienttreatments} = require ('../database/models');
 
 const {
   check,
@@ -16,9 +16,9 @@ module.exports = {
   index: async (req, res) => {
     //const usuario = await users.findAll()
     const paciente = await patients.findAll()
-    const tratamiento = await treatments.findAll()
+  
     //return res.send(paciente) 
-    res.render(path.resolve(__dirname , '..','views','patients','patients'),{paciente, tratamiento}); 
+    res.render(path.resolve(__dirname , '..','views','patients','patients'),{paciente}); 
     
   },
   create: async (req, res) => {
@@ -48,94 +48,121 @@ module.exports = {
       nhc: req.body.nhc,
       diabetes: req.body.diabetes,
       date_diabetes: req.body.fecha_diabetes,
+      date_end_diabetes: req.body.fecha_end_diabetes,
       action_diabetes: req.body.accion_diabetes,
       coments_diabetes: req.body.comentario_diabetes,    
       dlp: req.body.dlp,
       date_dlp: req.body.fecha_dlp,
+      date_end_dlp: req.body.fecha_end_dlp,
       action_dlp: req.body.accion_dlp,
       coments_dlp: req.body.comentario_dlp,  
       hta: req.body.hta,
       date_hta: req.body.fecha_hta,
+      date_end_hta: req.body.fecha_end_hta,
       action_hta: req.body.accion_hta,
       coments_hta: req.body.comentario_hta,  
       crm: req.body.crm,
       date_crm: req.body.fecha_crm,
+      date_end_crm: req.body.fecha_end_crm,
       action_crm: req.body.accion_crm,
       coments_crm: req.body.comentario_crm,  
       atc: req.body.atc,
       date_atc: req.body.fecha_atc,
+      date_end_atc: req.body.fecha_end_atc,
       action_atc: req.body.accion_atc,
       coments_atc: req.body.comentario_atc, 
       iam: req.body.iam,
       date_iam: req.body.fecha_iam,
+      date_end_iam: req.body.fecha_end_iam,
       action_iam: req.body.accion_iam,
       coments_iam: req.body.comentario_iam, 
       acv: req.body.acv,
       date_acv: req.body.fecha_acv,
+      date_end_acv: req.body.fecha_end_acv,
       action_acv: req.body.accion_acv,
       coments_acv: req.body.comentario_acv, 
       aortic_aneurysm: req.body.aneurisma,
       date_aerotic: req.body.fecha_aneurisma,
+      date_end_aerotic: req.body.fecha_end_aneurisma,
       action_aerotic: req.body.accion_aneurisma,
       coments_aerotic: req.body.comentario_aneurisma, 
       ic: req.body.ic,
       date_ic: req.body.fecha_ic,
+      date_end_ic: req.body.fecha_end_ic,
       action_ic: req.body.accion_ic,
       coments_ic: req.body.comentario_ic, 
       evp: req.body.evp,
       date_evp: req.body.fecha_evp,
+      date_end_evp: req.body.fecha_end_evp,
       action_evp: req.body.accion_evp,
       coments_evp: req.body.comentario_evp, 
       epoc: req.body.epoc,
       date_epoc: req.body.fecha_epoc,
+      date_end_epoc: req.body.fecha_end_epoc,
       action_epoc: req.body.accion_epoc,
       coments_epoc: req.body.comentario_epoc, 
       irc: req.body.irc,
       date_irc: req.body.fecha_irc,
+      date_end_irc: req.body.fecha_end_irc,
       action_irc: req.body.accion_irc,
       coments_irc: req.body.comentario_irc, 
       obesity: req.body.obesidad,
       date_obesity: req.body.fecha_obesidad,
+      date_end_obesity: req.body.fecha_end_obesidad,
       action_obesity: req.body.accion_obesidad,
       coments_obesity: req.body.comentario_obesidad, 
     
-    };     
+    };  
+    
     //return res.send(patient_body) 
     //Guardo el paciente creado en una variable para despues poder llamarlo cuando creo la historia clinica
     let newPaciente = await patients.create(patient_body)
+
+    let patientsid_body1 = {patient_id: newPaciente.id} 
     //console.log('ooooooooooooooooooooo' + newPaciente.id);
+   let newtreatment = await treatments.create(patientsid_body1);
+     //return res.send(newtreatment.id)
     //Guardo en la variable los datos que quiero que se creen en la historia clinica
-    let patientsid_body = {patient_id: newPaciente.id}
+    let patientsid_body = {patient_id: newPaciente.id, treatments_id:newtreatment.id}
+      //Hago el create de treatments pasandole la variable declarada acá arriba
+    
+      await patienttreatments.create(patientsid_body);
+
+
+
+     
     //Hago el create de la historia clinica pasandole la variable declarada acá arriba
     await medicalhistories.create(patientsid_body);
    
-    //Hago el create de treatments pasandole la variable declarada acá arriba
-    await treatments.create(patientsid_body);
+  
 
     res.redirect('/patients')
     },
     show: async (req,res)=>{
-      const paciente = await patients.findByPk(req.params.id)
-      const historiaClinica = await medicalhistories.findAll({where: {patient_id: req.params.id}, order: [['createdAt', 'DESC']]})
+      const paciente = await patients.findByPk(req.params.id, {include: ['treatments']})
       const tratamiento = await treatments.findAll({where: {patient_id: req.params.id}, order: [['createdAt', 'DESC']]})
-      //return res.send(tratamiento) 
+      const historiaClinica = await medicalhistories.findAll({where: {patient_id: req.params.id}, order: [['createdAt', 'DESC']]})
+    
       
-      res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente, historiaClinica, tratamiento});   
+      
+      res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente, historiaClinica,tratamiento });   
     },
     addhistory: async (req,res)=>{
-      
+   
       const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistories','treatments']})
       const historiaClinica = await medicalhistories.findOne({where:{patient_id:req.params.id}})
-      
+
       const visita = historiaClinica.visitamedica
       
       let medicalhistory_body={
-        visitamedica: req.body.visita_medica
+        visitamedica: req.body.visita_medica,
+        doctor: req.body.doctor
       }; 
 
       let newMedicalHistory = {
         patient_id: paciente.id,
-        visitamedica: req.body.visita_medica
+        visitamedica: req.body.visita_medica,
+        doctor: req.body.doctor
       }
       
       if (visita == null) {
@@ -155,34 +182,74 @@ module.exports = {
       
     },
      addtreatment: async (req,res)=>{
-      const paciente = await patients.findByPk(req.params.id, {include: ['treatments','medicalhistories']})
+      const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistories','treatments']})
       const tratamientos = await treatments.findOne({where:{patient_id:req.params.id}})
-      
       const tratamiento = tratamientos.tratamiento
       
       let treatments_body={
-        tratamiento: req.body.tratamiento
+        
+        tratamiento: req.body.tratamiento,
+        datetreatment: req.body.fechatratamiento,
+        dateendtreatment: req.body.fechafintratamiento
       }; 
 
-      let newTreatment = {
-        patient_id: paciente.id,
-        tratamiento: req.body.tratamiento
+      let newtreatment = {
+        patient_id: req.params.id,
+        tratamiento: req.body.tratamiento,
+        datetreatment: req.body.fechatratamiento,
+        dateendtreatment: req.body.fechafintratamiento
       }
       
       if (tratamiento == null) {
        
-        await treatments.update(treatments_body, {where: {patient_id: req.params.id}})
+        await treatments.update(treatments_body, {where: {patient_id: req.params.id}})   
       } else {
-        await treatments.create(newTreatment)
-      }
-    
-      res.redirect(`/patients/detail/${paciente.id}`)
+        let newTreatment =  await treatments.create(newtreatment)
       
+        let patientsid_body = {patient_id: req.params.id, treatments_id:newTreatment.id }
+        
+        await patienttreatments.create(patientsid_body);
+      }
+      res.redirect(`/patients/detail/${paciente.id}`);
+      
+      },
+    destroy: async (req,res) => {
+  
+     
+      const tratamiento = await treatments.findByPk(req.params.id)
+      const patienttreatment = await patienttreatments.findOne({where:{treatments_id:req.params.id}})
+      //return res.send(patienttreatment)
+      const paciente = await patients.findOne({where:{id:tratamiento.patient_id}})
+      const tratamientos = await treatments.findAll({where:{patient_id:tratamiento.patient_id}})
+      //return res.send(tratamientos)
+      if (tratamientos.length===1) {
+          //return res.send(paciente)
+       await tratamiento.destroy()
+       await patienttreatment.destroy()
+       //
+    
+       let patientsid_body1 = {patient_id: paciente.id} 
+       //console.log('ooooooooooooooooooooo' + newPaciente.id);
+      let newtreatment = await treatments.create(patientsid_body1);
+        //return res.send(newtreatment.id)
+       //Guardo en la variable los datos que quiero que se creen en la historia clinica
+       let patientsid_body = {patient_id: paciente.id, treatments_id:newtreatment.id}
+         //Hago el create de treatments pasandole la variable declarada acá arriba
+       
+         await patienttreatments.create(patientsid_body);
+       res.redirect(`/patients/detail/${paciente.id}`);
+      } else {
+        await tratamiento.destroy()
+        await patienttreatment.destroy()
+        res.redirect(`/patients/detail/${paciente.id}`);
+      }
+     
     },
     edit: async (req,res) => {
-      const paciente = await patients.findByPk(req.params.id)
-      
-      res.render(path.resolve(__dirname , '..','views','patients','patientsEdit') , {paciente});                       
+      const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistories','treatments']})
+      const tratamiento = await treatments.findAll({where: {patient_id: req.params.id}})
+    
+      res.render(path.resolve(__dirname , '..','views','patients','patientsEdit') , {paciente,tratamiento});                       
       
     },
     updatePatients: async (req,res) => {
@@ -254,16 +321,20 @@ module.exports = {
         date_obesity: req.body.fecha_obesidad,
         action_obesity: req.body.accion_obesidad,
         coments_obesity: req.body.comentario_obesidad, 
-        
-        
+      
       };   
-        
-      let newPaciente = await patients.update(patient_body, {where: {id: req.params.id}})
+
+        let newPaciente = await patients.update(patient_body, {where: {id: req.params.id}})
       .then((patientcreate) => {
         return res.redirect('/patients');
       })  
       .catch(error => res.render(path.resolve(__dirname , '..','views','patients','patientCreate'), {
         errors: errors.errors,  old: req.body}))  
+    
+        return res.redirect('/patients');
+      
+    
+
       },
       
       //filtros

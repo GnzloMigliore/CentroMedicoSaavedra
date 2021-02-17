@@ -90,7 +90,8 @@
                     <tr>
                       <th scope="col">ENFERMEDAD</th>
                       <th scope="col">¿La tiene?</th>
-                      <th scope="col">Año de la enfermedad</th>
+                      <th scope="col">Inicio de la enfermedad</th>
+                      <th scope="col">Fin de la enfermedad</th>
                       <th scope="col">Acción</th>
                       <th scope="col">Comentario</th>
                     </tr>
@@ -100,6 +101,7 @@
                       <th scope="row">Diabetes</th>
                       <td><%= paciente.diabetes %></td>
                       <td><%= paciente.date_diabetes %></td>
+                      <td><%= paciente.date_end_diabetes %></td>
                       <td><%= paciente.action_diabetes %></td>
                       <td><%= paciente.coments_diabetes %></td>
                     </tr>
@@ -107,6 +109,7 @@
                       <th scope="row">DLP</th>
                       <td><%= paciente.dlp %></td>
                       <td><%= paciente.date_dlp %></td>
+                      <td><%= paciente.date_end_dlp %></td>
                       <td><%= paciente.action_dlp %></td>
                       <td><%= paciente.coments_dlp %></td>
                     </tr>
@@ -114,6 +117,7 @@
                       <th scope="row">HTA</th>
                       <td><%= paciente.hta %></td>
                       <td><%= paciente.date_hta %></td>
+                      <td><%= paciente.date_end_hta %></td>
                       <td><%= paciente.action_hta %></td>
                       <td><%= paciente.coments_hta %></td>
                     </tr>
@@ -121,6 +125,7 @@
                       <th scope="row">CRM</th>
                       <td><%= paciente.crm %></td>
                       <td><%= paciente.date_crm %></td>
+                      <td><%= paciente.date_end_crm %></td>
                       <td><%= paciente.action_crm %></td>
                       <td><%= paciente.coments_crm %></td>
                     </tr>
@@ -128,6 +133,7 @@
                       <th scope="row">ATC</th>
                       <td><%= paciente.atc %></td>
                       <td><%= paciente.date_atc %></td>
+                      <td><%= paciente.date_end_atc %></td>
                       <td><%= paciente.action_atc %></td>
                       <td><%= paciente.coments_atc %></td>
                     </tr>
@@ -135,6 +141,7 @@
                       <th scope="row">IAM</th>
                       <td><%= paciente.iam %></td>
                       <td><%= paciente.date_iam %></td>
+                      <td><%= paciente.date_end_iam %></td>
                       <td><%= paciente.action_iam %></td>
                       <td><%= paciente.coments_iam %></td>
                     </tr>
@@ -142,6 +149,7 @@
                       <th scope="row">ACV</th>
                       <td><%= paciente.acv %></td>
                       <td><%= paciente.date_acv %></td>
+                      <td><%= paciente.date_end_acv %></td>
                       <td><%= paciente.action_acv %></td>
                       <td><%= paciente.coments_acv %></td>
                     </tr>
@@ -149,6 +157,7 @@
                       <th scope="row">Aneurisma</th>
                       <td><%= paciente.aortic_aneurysm     %></td>
                       <td><%= paciente.date_aerotic %></td>
+                      <td><%= paciente.date_end_aerotic %></td>
                       <td><%= paciente.action_aerotic %></td>
                       <td><%= paciente.coments_aerotic %></td>
                     </tr>
@@ -156,6 +165,7 @@
                       <th scope="row">IC</th>
                       <td><%= paciente.ic %></td>
                       <td><%= paciente.date_ic %></td>
+                      <td><%= paciente.date_end_ic %></td>
                       <td><%= paciente.action_ic%></td>
                       <td><%= paciente.coments_ic %></td>
                     </tr>
@@ -163,6 +173,7 @@
                       <th scope="row">EVP</th>
                       <td><%= paciente.evp %></td>
                       <td><%= paciente.date_evp %></td>
+                      <td><%= paciente.date_end_evp %></td>
                       <td><%= paciente.action_evp %></td>
                       <td><%= paciente.coments_evp %></td>
                     </tr>
@@ -170,6 +181,7 @@
                       <th scope="row">EPOC</th>
                       <td><%= paciente.epoc %></td>
                       <td><%= paciente.date_epoc %></td>
+                      <td><%= paciente.date_end_epoc %></td>
                       <td><%= paciente.action_epoc %></td>
                       <td><%= paciente.coments_epoc %></td>
                     </tr>
@@ -177,6 +189,7 @@
                       <th scope="row">IRC</th>
                       <td><%= paciente.irc %></td>
                       <td><%= paciente.date_irc %></td>
+                      <td><%= paciente.date_end_irc %></td>
                       <td><%= paciente.action_irc %></td>
                       <td><%= paciente.coments_irc %></td>
                     </tr>
@@ -184,6 +197,7 @@
                       <th scope="row">Obesidad</th>
                       <td><%= paciente.obesity %></td>
                       <td><%= paciente.date_obesity %></td>
+                      <td><%= paciente.date_end_obesity %></td>
                       <td><%= paciente.action_obesity %></td>
                       <td><%= paciente.coments_obesity %></td>
                     </tr>
@@ -197,14 +211,23 @@
         </article>
         </article>
           <!-- Tratamientos-->
-          <article class="col-8 mx-auto mb-5">
-            <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">TRATAMIENTOS</h2>
+          <article class="col-8 mx-auto mb-4">
+            <h2 class="titulo-admin pb-3 border-bottom text-center mt-5 mx-auto text-uppercase">TRATAMIENTOS</h2>
             </article>
               <article id="article" class="col-12">       
                 <div>
                   <form action="/patients/detail/treatment/<%= paciente.id%>" method="POST">
-                  <input type="text" class="form-control bg-light mt-3 mb-3 visita_medica col-12" name="tratamiento" placeholder="Agregar tratamiento"  value="">
-                  <button type="submit" class="btn btn-dark">Guardar</button>
+                    
+                  <input type="text" class="form-control bg-light  visita_medica col-12" name="tratamiento" placeholder="Agregar tratamiento"  value="">
+                  <label class="mt-2">Fecha inicio tratamiento</label>
+                  <input type="date" id="start" name="fechatratamiento" class="form-control  bg-light"
+                  value=""
+                  min="1940-01-01" max="2020-12-31">
+                  <label class="mt-2">Fecha fin tratamiento</label>
+                  <input type="date" id="start" name="fechafintratamiento" class="form-control  bg-light"
+                  value=""
+                  min="1940-01-01" max="2020-12-31">
+                  <button type="submit" class="btn btn-dark mt-3">Guardar</button>
                   </form>
                 </div>
       </div>
@@ -220,7 +243,10 @@
     <th scope="col"></th>
     <th scope="col"></th>
      <th scope="col">Tratamiento:</th>
-    <th scope="col">Fecha de inicio</th>
+    <th scope="col">Inicio tratamiento</th>
+    <th scope="col">Fin tratamiento</th>
+    <th class="text-center" scope="col">Eliminar tratamiento</th>
+     
      
       
      </tr>
@@ -235,7 +261,9 @@
             <td></td>
             <td></td> 
             <td><%= treatment.tratamiento %> </td>
-            <td> <%= treatment.createdAt  %></td> 
+            <td> <%= treatment.datetreatment  %></td> 
+            <td> <%= treatment.dateendtreatment  %></td> 
+            <td class="text-center"><a href="/patients/delete/treatment/<%= treatment.id%>"><ion-icon style="color: black;" name="trash-outline"></ion-icon></a></td>
           </tr>
         <% }  else { %>
           <tr>
@@ -245,23 +273,30 @@
             <td></td> 
             <td>El paciente no realizo ningun tratamiento</td>
             <td>--/--/----</td> 
+            <td>--/--/----</td>
+            <td>----------</td>
+            
         </tr>
         <% } %> 
       <% }) %>
-      
-     
       </tbody> 
     </table>
+ 
+
+
+
   </article>
 
            <!-- Historia clinica-->
            <article class="col-8 mx-auto mb-5">
             <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">HISTORIA CLÍNICA</h2>
             </article>
-              <article id="article" class="col-12">       
+              <article id="article" class="col-12">   
+               
                 <div>
                   <form action="/patients/detail/history/<%= paciente.id%>" method="POST">
                   <input type="text" class="form-control bg-light mt-3 mb-3 visita_medica col-12" name="visita_medica" placeholder="Agregar visita médica"  value="">
+                  <input type="text" class="form-control bg-light mt-3 mb-3 col-12" name="doctor" placeholder="<%=  locals.usuario.first_name %><%=  locals.usuario.last_name %>"  value="<%=  locals.usuario.first_name %><%=  locals.usuario.last_name %>"required>
                   <button type="submit" class="btn btn-dark">Guardar</button>
                   </form>
                 </div>
@@ -282,6 +317,7 @@
     <th scope="col"></th>
      <th scope="col">Historia clinica:</th>
     <th scope="col">Fecha de visita</th>
+    <th scope="col">Médico</th>
      
       
      </tr>
@@ -297,6 +333,7 @@
             <td></td> 
             <td><%= historia.visitamedica %> </td>
             <td> <%= historia.createdAt  %></td> 
+            <td> <%= historia.doctor  %></td> 
           </tr>
         <% }  else { %>
           <tr>
@@ -306,6 +343,7 @@
             <td></td> 
             <td>El paciente no tiene historia clínica</td>
             <td>--/--/----</td> 
+            <td>----------</td> 
         </tr>
         <% } %> 
       <% }) %>
@@ -313,6 +351,7 @@
      
       </tbody> 
     </table>
+   
   </article>
 
 

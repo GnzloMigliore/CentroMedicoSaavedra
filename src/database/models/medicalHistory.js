@@ -9,6 +9,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         patient_id: dataTypes.INTEGER,
         visitamedica: dataTypes.STRING,
+        doctor: dataTypes.STRING,
     };
 
     const medicalhistories = sequelize.define(alias, cols)

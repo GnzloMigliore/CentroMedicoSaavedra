@@ -98,19 +98,22 @@
                             </article>
                         <!--Diabetes-->
                         <div class="row enfermedad">
-                        <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                            <select class="custom-select  bg-light"  name="diabetes">
+                        <div class="col-12 form-group d-flex justify-content-between pt-2">                       
+                            <select class="custom-select   bg-light"  name="diabetes">
                                 <option desabled value="no">Seleccione si tiene diabetes</option>
                                 <option value="si">Si</option>
                                 <option value="no">No</option>
                             </select>
                             </label> 
                         </div>
-                        <div class="form-group col-6 pt-2" placeholder="fecha_diabetes"  value="">
+                        <div class="form-group col-6 " placeholder="fecha_diabetes"  value="">
                         <input type="date" id="start" name="fecha_diabetes" class="form-control  bg-light"
-                        value=""
-                        min="1940-01-01" max="2020-12-31">
+                        value=""min="1940-01-01" max="2020-12-31">
                         </div>
+                        <div class="form-group col-6 "value="">
+                            <input type="date" id="start" name="fecha_end_diabetes" class="form-control  bg-light"
+                            value="" min="1940-01-01" max="2020-12-31">
+                            </div>
                         <div class="form-group col-6 pl-3">
                             <input type="text" class="form-control bg-light" name="accion_diabetes" placeholder="Acción tomada"  value="">
                         </div>
@@ -120,18 +123,23 @@
                         </div>
                  <!--DLP-->
                 <div class="row enfermedad mt-4">
-                  <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                  <div class="col-12 form-group d-flex justify-content-between pt-2">                       
                     <select class="custom-select  bg-light"  name="dlp">
                         <option desabled value="no">Seleccione si tiene DLP</option>
                         <option value="si">Si</option>
                         <option value="no">No</option>
                     </select>
                </div>
-                <div class="form-group col-6 pt-2" placeholder="fecha_dlp"  value="">
+                <div class="form-group col-6 "value="">
                <input type="date" id="start" name="fecha_dlp" class="form-control  bg-light"
               value=""
               min="1940-01-01" max="2020-12-31">
              </div>
+             <div class="form-group col-6 "value="">
+                <input type="date" id="start" name="fecha_end_dlp" class="form-control  bg-light"
+               value=""
+               min="1940-01-01" max="2020-12-31">
+              </div>
              <div class="form-group col-6 pl-3">
               <input type="text" class="form-control bg-light" name="accion_dlp" placeholder="Acción tomada"  value="">
               </div>
@@ -142,18 +150,23 @@
 
                       <!--HTA-->
                 <div class="row enfermedad mt-4">
-                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
                         <select class="custom-select  bg-light"  name="hta">
                             <option desabled value="no">Seleccione si tiene HTA</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
                         </select>
                  </div>
-                  <div class="form-group col-6 pt-2" placeholder="fecha_hta"  value="">
+                  <div class="form-group col-6 " placeholder="fecha_hta"  value="">
                  <input type="date" id="start" name="fecha_hta" class="form-control  bg-light"
                 value=""
                 min="1940-01-01" max="2020-12-31">
                </div>
+               <div class="form-group col-6 " placeholder="fecha_hta"  value="">
+                <input type="date" id="start" name="fecha_end_hta" class="form-control  bg-light"
+               value=""
+               min="1940-01-01" max="2020-12-31">
+              </div>
                <div class="form-group col-6 pl-3">
                 <input type="text" class="form-control bg-light" name="accion_hta" placeholder="Acción tomada"  value="">
                 </div>
@@ -164,18 +177,23 @@
                        
                                   <!--CRM-->
                 <div class="row enfermedad mt-4">
-                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
                         <select class="custom-select  bg-light"  name="crm">
                             <option desabled value="no">Seleccione si tiene CRM</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
                         </select>
                  </div>
-                  <div class="form-group col-6 pt-2" placeholder="fecha_crm"  value="">
+                  <div class="form-group col-6 "value="">
                  <input type="date" id="start" name="fecha_crm" class="form-control  bg-light"
                 value=""
                 min="1940-01-01" max="2020-12-31">
                </div>
+               <div class="form-group col-6 "value="">
+                <input type="date" id="start" name="fecha_end_crm" class="form-control  bg-light"
+               value=""
+               min="1940-01-01" max="2020-12-31">
+              </div>
                <div class="form-group col-6 pl-3">
                 <input type="text" class="form-control bg-light" name="accion_crm" placeholder="Acción tomada"  value="">
                 </div>
@@ -185,18 +203,23 @@
                </div>  
                                                  <!--ATC-->
                 <div class="row enfermedad mt-4">
-                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
                         <select class="custom-select  bg-light"  name="atc">
                             <option desabled value="no">Seleccione si tiene ATC</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
                         </select>
                  </div>
-                  <div class="form-group col-6 pt-2" placeholder="fecha_atc"  value="">
+                  <div class="form-group col-6" placeholder="fecha_atc"  value="">
                  <input type="date" id="start" name="fecha_atc" class="form-control  bg-light"
                 value=""
                 min="1940-01-01" max="2020-12-31">
                </div>
+               <div class="form-group col-6" placeholder="fecha_atc"  value="">
+                <input type="date" id="start" name="fecha_end_atc" class="form-control  bg-light"
+               value=""
+               min="1940-01-01" max="2020-12-31">
+              </div>
                <div class="form-group col-6 pl-3">
                 <input type="text" class="form-control bg-light" name="accion_atc" placeholder="Acción tomada"  value="">
                 </div>
@@ -207,18 +230,23 @@
 
                                             <!--IAM-->
                 <div class="row enfermedad mt-4">
-                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
                         <select class="custom-select  bg-light"  name="iam">
                             <option desabled value="no">Seleccione si tiene IAM</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
                         </select>
                  </div>
-                  <div class="form-group col-6 pt-2" placeholder="fecha_iam"  value="">
+                  <div class="form-group col-6"value="">
                  <input type="date" id="start" name="fecha_iam" class="form-control  bg-light"
                 value=""
                 min="1940-01-01" max="2020-12-31">
                </div>
+               <div class="form-group col-6"value="">
+                <input type="date" id="start" name="fecha_end_iam" class="form-control  bg-light"
+               value=""
+               min="1940-01-01" max="2020-12-31">
+              </div>
                <div class="form-group col-6 pl-3">
                 <input type="text" class="form-control bg-light" name="accion_iam" placeholder="Acción tomada"  value="">
                 </div>
@@ -230,18 +258,23 @@
                        
                                             <!--ACV-->
                 <div class="row enfermedad mt-4">
-                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
                         <select class="custom-select  bg-light"  name="acv">
                             <option desabled value="no">Seleccione si tiene ACV</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
                         </select>
                  </div>
-                  <div class="form-group col-6 pt-2" placeholder="fecha_acv"  value="">
+                  <div class="form-group col-6 "   value="">
                  <input type="date" id="start" name="fecha_acv" class="form-control  bg-light"
                 value=""
                 min="1940-01-01" max="2020-12-31">
                </div>
+               <div class="form-group col-6 "   value="">
+                <input type="date" id="start" name="fecha_end_acv" class="form-control  bg-light"
+               value=""
+               min="1940-01-01" max="2020-12-31">
+              </div>
                <div class="form-group col-6 pl-3">
                 <input type="text" class="form-control bg-light" name="accion_acv" placeholder="Acción tomada"  value="">
                 </div>
@@ -252,18 +285,23 @@
                        
                    <!--Aneurisma aorta-->
                 <div class="row enfermedad mt-4">
-                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
                         <select class="custom-select  bg-light"  name="aneurisma">
                             <option desabled value="no">Seleccione si tiene aneurisma</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
                         </select>
                  </div>
-                  <div class="form-group col-6 pt-2" placeholder="fecha_aneurisma"  value="">
+                  <div class="form-group col-6 "  value="">
                  <input type="date" id="start" name="fecha_aneurisma" class="form-control  bg-light"
                 value=""
                 min="1940-01-01" max="2020-12-31">
                </div>
+               <div class="form-group col-6 "  value="">
+                <input type="date" id="start" name="fecha_end_aneurisma" class="form-control  bg-light"
+               value=""
+               min="1940-01-01" max="2020-12-31">
+              </div>
                <div class="form-group col-6 pl-3">
                 <input type="text" class="form-control bg-light" name="accion_aneurisma" placeholder="Acción tomada"  value="">
                 </div>
@@ -274,18 +312,23 @@
 
                        <!--IC-->
                 <div class="row enfermedad mt-4">
-                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
                         <select class="custom-select  bg-light"  name="ic">
                             <option desabled value="no">Seleccione si tiene IC</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
                         </select>
                  </div>
-                  <div class="form-group col-6 pt-2" placeholder="fecha_ic"  value="">
+                  <div class="form-group col-6 "  value="">
                  <input type="date" id="start" name="fecha_ic" class="form-control  bg-light"
                 value=""
                 min="1940-01-01" max="2020-12-31">
                </div>
+               <div class="form-group col-6 "  value="">
+                <input type="date" id="start" name="fecha_end_ic" class="form-control  bg-light"
+               value=""
+               min="1940-01-01" max="2020-12-31">
+              </div>
                <div class="form-group col-6 pl-3">
                 <input type="text" class="form-control bg-light" name="accion_ic" placeholder="Acción tomada"  value="">
                 </div>
@@ -296,18 +339,23 @@
                     
                                <!--EVP-->
                 <div class="row enfermedad mt-4">
-                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
                         <select class="custom-select  bg-light"  name="evp">
                             <option desabled value="no">Seleccione si tiene EVP</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
                         </select>
                  </div>
-                  <div class="form-group col-6 pt-2" placeholder="fecha_evp"  value="">
+                  <div class="form-group col-6" value="">
                  <input type="date" id="start" name="fecha_evp" class="form-control  bg-light"
                 value=""
                 min="1940-01-01" max="2020-12-31">
                </div>
+               <div class="form-group col-6 " value="">
+                <input type="date" id="start" name="fecha_end_evp" class="form-control  bg-light"
+               value=""
+               min="1940-01-01" max="2020-12-31">
+              </div>
                <div class="form-group col-6 pl-3">
                 <input type="text" class="form-control bg-light" name="accion_evp" placeholder="Acción tomada"  value="">
                 </div>
@@ -319,18 +367,23 @@
                      
                                <!--EPOC-->
                 <div class="row enfermedad mt-4">
-                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
                         <select class="custom-select  bg-light"  name="epoc">
                             <option desabled value="no">Seleccione si tiene EPOC</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
                         </select>
                  </div>
-                  <div class="form-group col-6 pt-2" placeholder="fecha_epoc"  value="">
+                  <div class="form-group col-6" placeholder="fecha_epoc"  value="">
                  <input type="date" id="start" name="fecha_epoc" class="form-control  bg-light"
                 value=""
                 min="1940-01-01" max="2020-12-31">
                </div>
+               <div class="form-group col-6" placeholder="fecha_epoc"  value="">
+                <input type="date" id="start" name="fecha_end_epoc" class="form-control  bg-light"
+               value=""
+               min="1940-01-01" max="2020-12-31">
+              </div>
                <div class="form-group col-6 pl-3">
                 <input type="text" class="form-control bg-light" name="accion_epoc" placeholder="Acción tomada"  value="">
                 </div>
@@ -342,18 +395,23 @@
 
                                   <!--IRC-->
                 <div class="row enfermedad mt-4">
-                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
                         <select class="custom-select  bg-light"  name="irc">
                             <option desabled value="no">Seleccione si tiene IRC</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
                         </select>
                  </div>
-                  <div class="form-group col-6 pt-2" placeholder="fecha_irc"  value="">
+                  <div class="form-group col-6 "value="">
                  <input type="date" id="start" name="fecha_irc" class="form-control  bg-light"
                 value=""
                 min="1940-01-01" max="2020-12-31">
                </div>
+               <div class="form-group col-6 "value="">
+                <input type="date" id="start" name="fecha_end_irc" class="form-control  bg-light"
+               value=""
+               min="1940-01-01" max="2020-12-31">
+              </div>
                <div class="form-group col-6 pl-3">
                 <input type="text" class="form-control bg-light" name="accion_irc" placeholder="Acción tomada"  value="">
                 </div>
@@ -364,18 +422,23 @@
 
                  <!--Obesidad-->
                  <div class="row enfermedad mt-4">
-                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
+                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
                         <select class="custom-select  bg-light"  name="obesidad">
                             <option desabled value="no">Seleccione si tiene obesidad</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
                         </select>
                  </div>
-                  <div class="form-group col-6 pt-2" placeholder="fecha_obesidad"  value="">
+                  <div class="form-group col-6" value="">
                  <input type="date" id="start" name="fecha_obesidad" class="form-control  bg-light"
                 value=""
                 min="1940-01-01" max="2020-12-31">
                </div>
+               <div class="form-group col-6" value="">
+                <input type="date" id="start" name="fecha_end_obesidad" class="form-control  bg-light"
+               value=""
+               min="1940-01-01" max="2020-12-31">
+              </div>
                <div class="form-group col-6 pl-3">
                 <input type="text" class="form-control bg-light" name="accion_obesidad" placeholder="Acción tomada"  value="">
                 </div>

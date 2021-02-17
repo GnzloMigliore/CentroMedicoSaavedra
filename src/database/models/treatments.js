@@ -9,16 +9,21 @@ module.exports = (sequelize, dataTypes) => {
         },
         patient_id: dataTypes.INTEGER,
         tratamiento: dataTypes.STRING,
+        datetreatment: dataTypes.TEXT,
+        dateendtreatment: dataTypes.TEXT,
     };
 
     const treatments = sequelize.define(alias, cols)
     
     treatments.associate = function(models) {
-        treatments.hasMany(
+        treatments.belongsToMany(
             models.patients,
-            {
+            { 
                 as: 'patients',
-                foreignKey: 'tratmentspatients_id'
+            through: 'patienttreatments',
+            foreignKey: 'treatments_id',
+            otherKey: 'patient_id'
+
             }
         )
    }
