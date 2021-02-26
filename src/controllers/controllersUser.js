@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const bcrypt = require('bcryptjs');
 const {users} = require ('../database/models');
+
 const {
   check,
   validationResult,
@@ -66,6 +67,31 @@ logout: (req, res) => {
   req.session.destroy();
   res.cookie('email',null,{maxAge: -1});
   res.redirect('/')
+},
+recover : async  (req,res) => {
+  const usuarios = await users.findAll()
+ 
+  res.render(path.resolve(__dirname, '..', 'views', 'web', 'recover') , {usuarios});
+},
+sendemail : async  (req,res) => {
+  let errors = validationResult(req);
+  if (!errors.isEmpty()){
+      return res.render(path.resolve(__dirname, '..', 'views', 'web', 'recover'), {
+          errors: errors.mapped(),  old: req.body});
+  } else{
+   return res.send(req.body)
+    return res.render(path.resolve(__dirname, '..', 'views', 'web', 'index'))
+      
+      }
+},
+newpassword : async  (req,res) => {
+  return res.render(path.resolve(__dirname, '..', 'views', 'web', 'newpassword'))
+},
+usernotfound: async  (req,res) => {
+  return res.render(path.resolve(__dirname, '..', 'views', 'web', 'usernotfound'))
+},
+mensajeenviado: async  (req,res) => {
+  return res.render(path.resolve(__dirname, '..', 'views', 'web', 'mensajeenviado'))
 },
 show: async (req, res) => {
   const usuarios = await users.findAll()

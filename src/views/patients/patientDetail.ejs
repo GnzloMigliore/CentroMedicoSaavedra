@@ -6,12 +6,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/patientDetail.css">
+
   </head>
   <body>
     <header>
       <%- include('../partials/navBar.ejs') %>
     </header>
-    <div class="container-fluid">             
+    <div id="pdf" class="container-fluid">             
         <section class="row">
           <!-- Cuerpo principal -->
           <article class="col-8 mx-auto mb-5">
@@ -230,8 +231,7 @@
                   <button type="submit" class="btn btn-dark mt-3">Guardar</button>
                   </form>
                 </div>
-      </div>
-    
+      
 <!--Info-->
 <article class="col-12 mt-3">
   <table class="table"> 
@@ -300,10 +300,10 @@
                   <button type="submit" class="btn btn-dark">Guardar</button>
                   </form>
                 </div>
+                
 
-</article>
-
- 
+               </article>
+            
 
 <!--Info-->
 <article class="col-12 mt-3">
@@ -358,10 +358,12 @@
 
 
             </section>
-          
+          </div>
+        </div>
           <!--Boton volver-->
           <div class="col-12 d-flex justify-content-end pr-5 my-5">
-            <a href="/patients" class="btn btn-dark px-5">Volver</a>
+           <button id="btnCrearPdf" class="btn btn-dark px-5">PDF</button>
+            <a href="/patients" class="btn btn-dark px-5 ml-2">Volver</a>
             <a href="/patients/edit/<%= paciente.id %>" class="btn btn-dark px-5 ml-2">Editar</a>
           </div>
           
@@ -369,10 +371,15 @@
     
     </section>
   </div>
+
   <!-- Footer -->
   <%- include('../partials/footer.ejs') %>
   <!-- UIkit JS -->
+
   <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
+  <script src="/js/html2pdf.bundle.min.js"></script>
+  <script src="/js/pdf.js"></script>
+
 </body>
 </html>

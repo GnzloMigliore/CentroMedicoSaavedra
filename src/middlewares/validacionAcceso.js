@@ -9,8 +9,8 @@ const {
 
 
 module.exports = [
-  check('email').isEmail().withMessage('Ingrese un mail válido.'),
   check('email').not().isEmpty().withMessage('El campo email no puede estar vacío'),
+  check('email').isEmail().withMessage('Ingrese un mail válido.'),
   body('email').custom( async (value) =>{
     let user = await users.findOne({
       where: {email: value}
@@ -20,8 +20,8 @@ module.exports = [
     } 
     return true
   }),
-  check('contraseña').isLength({min:6}).withMessage('La contraseña debe tener un mínimo de 8 caracteres.'),
   check('contraseña').not().isEmpty().withMessage('El campo contraseña no puede estar vacío'),
+  check('contraseña').isLength({min:8}).withMessage('La contraseña debe tener un mínimo de 8 caracteres.'),
   body('contraseña').custom( async (value, {req}) => {
     let user = await users.findOne({
       where: {email: req.body.email}

@@ -12,15 +12,18 @@
         </div>      
         <div class="form-group col-12 d-flex justify-content-center mt-0 mb-1">
          <% if(typeof errors != 'undefined' && errors.email){%>
-             <span class="text-danger" > <%=errors.email.msg %></span>
+             <span style="background-color: cornsilk;" class="text-danger mb-1" > <%=errors.email.msg %></span>
          <%}%>
        </div>
         <div class="form-group col-12 d-flex justify-content-center mb-0">
            <input type="password" name="contraseña" placeholder="Contraseña" class="form-control mb-2 datos-envio-input col-4">
        </div> 
-        </div class="form-group col-12 d-flex justify-content-center mt-0 mb-1">
+        </div class="form-group col-12  mt-0 mb-1">
          <% if(typeof errors != 'undefined' && errors.contraseña){%>
-             <span class="text-danger d-flex justify-content-center " > <%=errors.contraseña.msg %></span>
+            <div class=" d-flex justify-content-center mb-1"> 
+                <span style="background-color: cornsilk;" class="text-danger " > <%=errors.contraseña.msg %></span>
+            </div>
+           
          <%}%>
         </div> 
      
@@ -38,6 +41,7 @@
            <a href="/registro" class="btn btn-light mt-1" tabindex="-1" role="button" aria-disabled="true">CREAR CUENTA</a>
         </div>
      </div>
+    </div>
         </form>
 
 
@@ -48,7 +52,7 @@
 
 
 
-        <script src="/js/login.js"></script>
+       
 
     <!-- FOOTER -->
 <%- include('../partials/footer.ejs') %>

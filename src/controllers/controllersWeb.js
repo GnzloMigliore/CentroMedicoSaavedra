@@ -9,6 +9,5 @@ module.exports = {
     const usuarios = await users.findAll()
    
     res.render(path.resolve(__dirname, '..', 'views', 'web', 'index') , {usuarios});
-  },
-
+  }
 }

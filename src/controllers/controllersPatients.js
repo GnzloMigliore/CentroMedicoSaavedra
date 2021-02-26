@@ -372,7 +372,7 @@ module.exports = {
         
         let paciente = await patients.findAll({
           where:{
-            [Op.or]: [{first_name: {[Op.like]: `%${req.body.search}%`}},{$last_name$: {[Op.like]: `%${req.body.search}%`}},{$dni$: {[Op.like]: `%${req.body.search}%`}}]
+            [Op.or]: [{first_name: {[Op.like]: `%${req.body.search}%`}},{$last_name$: {[Op.like]: `%${req.body.search}%`}},{$dni$: {[Op.like]: `%${req.body.search}%`}},{$nhc$: {[Op.like]: `%${req.body.search}%`}}]
           }
           
         })
