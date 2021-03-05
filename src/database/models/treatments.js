@@ -9,6 +9,8 @@ module.exports = (sequelize, dataTypes) => {
         },
         patient_id: dataTypes.INTEGER,
         tratamiento: dataTypes.STRING,
+        firstname_patient: dataTypes.STRING,
+        lastname_patient: dataTypes.STRING,
         datetreatment: dataTypes.TEXT,
         dateendtreatment: dataTypes.TEXT,
     };

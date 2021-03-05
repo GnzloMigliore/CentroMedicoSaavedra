@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs') %>
+  <link rel='stylesheet' href='/css/patients.css' />
+  <body>
+      <header>
+    <%- include('../partials/navBar.ejs') %>
+     </header>
+    <!--Menu vinos FIN-->
+<main class="container-fluid  py-5" id="main">
+    <article class="col-12">
+        <h2 class="font-weight-bolder w-100 text-center my-5">AGENDA VISITAS MÉDICAS</h2>
+    </article>
+ <section class="conteiner">
+     <div class="row">
+            <div class="col-4 "> 
+            <form method="POST" id="busqueda" action="/busquedahistoria" class="form-inline ocultar">
+            <div>
+                    <input class="form-control" type="search" name="search" placeholder="Buscar...">
+                    <button class="btn" type="submit">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </button>
+                </div>
+               
+            </form>
+             </div>
+             <div class="col-1 d-flex">
+              
+             </div>
+             <div class="col-7 d-flex justify-content-end">
+                <form method="POST" id="busqueda" action="/busquedadatehistory" class="form-inline ocultar">
+                    <div class="conteiner">
+                    <div class="row">
+                    <div class="col-4 pr-0 pt-0">
+                        <label for="">Ingresa una fecha:</label>
+                    </div>
+                    <div class="col-8 pl-0">
+                        <input type="date" id="start" name="search" class="form-control  bg-light w-90"
+                        value=""
+                        min="1940-01-01" max="2021-12-31">
+                        <button class="btn" type="submit">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                    </div>
+                    </div>
+                    </div>
+                </form>
+             </div>
+    
+     </div>
+    
+
+ </section>
+    <section class="d-flex">
+        <% if (history.length == 0) {%>
+            <h4 class="w-100 text-center my-5">NO SE ENCONTRARON HISTORIAS COINCIDENTES CON LA BÚSQUEDA</h4>
+            <%}else{%>
+        <% history.forEach(historia => { %>
+            <article class="col-12">
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">Paciente</th>
+                            <th scope="col">Visita médica</th>
+                            <th scope="col">Médico</th>
+                            <th scope="col">Fecha visita</th>
+                        
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% history.forEach(historia=> { %>
+                            <tr>
+                                <td><%= historia.first_name + ' '  + historia.last_name %> </td>
+                                <td><%= historia.visitamedica%> </td>
+                                <td><%=  locals.usuario.first_name + " "+ locals.usuario.last_name   %> </td>
+                                <td><%= historia.fechavisita%> </td>
+
+                          
+                              
+                            </tr>
+                            <% }); %> 
+                    </tbody>
+                </table>
+            </article>
+    <% }) %>
+    <% } %>
+</section>
+
+<div class="col-12 form-group d-flex flex-wrap justify-content-end">
+
+    <a href="/searchhistory" class="btn btn-dark px-5">Volver</a>
+</div>
+</main>
+    <!--Menu Vinos FIN-->
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

@@ -24,7 +24,8 @@ router.post('/registro',[validacionRegistro], controllersUser.create);
 router.post('/login',[validacionAcceso], controllersUser.login);
 router.get('/logout',[validacionAcceso], controllersUser.logout);
 router.get('/recover', controllersUser.recover);
-router.get('/newpassword', controllersUser.newpassword);
+router.get('/newpassword/:id', controllersUser.newpassword);
+router.post('/updatepassword/:id', controllersUser.updatepassword);
 router.get('/mensajeenviado', controllersUser.mensajeenviado);
 router.get('/usernotfound', controllersUser.usernotfound);
 router.post('/sendemail',[recover],async (req,res)=>{
@@ -33,6 +34,7 @@ router.post('/sendemail',[recover],async (req,res)=>{
         email: req.body.email
        }
 })
+userId = user.id
   if (user) {
     const email = req.body.email
 contentHTML = `
@@ -57,7 +59,7 @@ await transporter.sendMail({
   from: "'Centro Médico Saavedra'<Gonzalomigliore@sistemcms.com>",
   to:email,
   subject: "Cambio de contraseña",
-  text: 'Para un cambio de contraseña has click aquí: http://localhost:3000/newpassword' 
+  text: "Para un cambio de contraseña has click aquí: http://localhost:3000/newpassword/"+userId
 })
 res.redirect('/mensajeenviado');
   }

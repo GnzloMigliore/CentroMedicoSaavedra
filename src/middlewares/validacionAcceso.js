@@ -16,7 +16,16 @@ module.exports = [
       where: {email: value}
     })
     if (user === null){
-      return Promise.reject('El usuario no se encuentra registrado')
+      return Promise.reject('El usuario no se encuentra registrado o la contraseña es incorrecta')
+    } 
+    return true
+  }),
+  body('email').custom( async (value) =>{
+    let user = await users.findOne({
+      where: {email: value}
+    })
+    if (user === null){
+      return Promise.reject('El usuario no se encuentra registrado o la contraseña es incorrecta')
     } 
     return true
   }),
@@ -26,12 +35,15 @@ module.exports = [
     let user = await users.findOne({
       where: {email: req.body.email}
     })
-  
+  if (user===null) {
+    return Promise.reject('El usuario no se encuentra registrado o la contraseña es incorrecta')
+  }
     if(bcrypt.compareSync(value, user.password)){
       return true
     } else {
-      return Promise.reject('La contraseña es incorrecta')
+      return Promise.reject('El usuario no se encuentra registrado o la contraseña es incorrecta')
       
     }
-  })
+  }),
+
 ]

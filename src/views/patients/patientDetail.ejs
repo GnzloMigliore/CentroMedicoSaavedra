@@ -219,15 +219,15 @@
                 <div>
                   <form action="/patients/detail/treatment/<%= paciente.id%>" method="POST">
                     
-                  <input type="text" class="form-control bg-light  visita_medica col-12" name="tratamiento" placeholder="Agregar tratamiento"  value="">
+                  <input type="text" class="form-control bg-light  visita_medica col-12" name="tratamiento" placeholder="Agregar tratamiento"  value="" required>
                   <label class="mt-2">Fecha inicio tratamiento</label>
                   <input type="date" id="start" name="fechatratamiento" class="form-control  bg-light"
                   value=""
-                  min="1940-01-01" max="2020-12-31">
+                  min="1940-01-01" max="2021-12-31" required>
                   <label class="mt-2">Fecha fin tratamiento</label>
                   <input type="date" id="start" name="fechafintratamiento" class="form-control  bg-light"
                   value=""
-                  min="1940-01-01" max="2020-12-31">
+                  min="1940-01-01" max="2021-12-31">
                   <button type="submit" class="btn btn-dark mt-3">Guardar</button>
                   </form>
                 </div>
@@ -295,8 +295,14 @@
                
                 <div>
                   <form action="/patients/detail/history/<%= paciente.id%>" method="POST">
-                  <input type="text" class="form-control bg-light mt-3 mb-3 visita_medica col-12" name="visita_medica" placeholder="Agregar visita médica"  value="">
-                  <input type="text" class="form-control bg-light mt-3 mb-3 col-12" name="doctor" placeholder="<%=  locals.usuario.first_name %><%=  locals.usuario.last_name %>"  value="<%=  locals.usuario.first_name %><%=  locals.usuario.last_name %>"required>
+                  <input type="text" class="form-control bg-light mt-3 mb-2 visita_medica col-12" name="visita_medica" placeholder="Agregar visita médica"  value="" required>
+                  <label>Fecha de visita:</label>
+                  <input type="date" id="start" name="fechavisita" class="form-control  mb-2   bg-light"
+                  value=""
+                  min="1940-01-01" max="2021-12-31" required>
+                  <label>Nombre del médico:</label>
+                  <input type="text" class="form-control bg-light  mb-3 col-12" name="doctor" placeholder="<%=  locals.usuario.first_name %><%=  locals.usuario.last_name %>"  value="<%=  locals.usuario.first_name %><%=  locals.usuario.last_name %>"required readonly="readonly">
+                 
                   <button type="submit" class="btn btn-dark">Guardar</button>
                   </form>
                 </div>
@@ -332,7 +338,7 @@
             <td></td>
             <td></td> 
             <td><%= historia.visitamedica %> </td>
-            <td> <%= historia.createdAt  %></td> 
+            <td> <%= historia.fechavisita  %></td> 
             <td> <%= historia.doctor  %></td> 
           </tr>
         <% }  else { %>

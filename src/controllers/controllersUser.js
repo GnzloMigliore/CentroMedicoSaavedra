@@ -85,7 +85,26 @@ sendemail : async  (req,res) => {
       }
 },
 newpassword : async  (req,res) => {
-  return res.render(path.resolve(__dirname, '..', 'views', 'web', 'newpassword'))
+  const usuarios = await users.findOne({
+    where: {
+        id: req.params.id
+       }
+})
+  return res.render(path.resolve(__dirname, '..', 'views', 'web', 'newpassword'),{usuarios})
+},
+updatepassword : async  (req,res) => {
+  const usuarios = await users.findByPk(req.params.id)
+  const usuario_body = { 
+    //return res.send(_body);
+   
+    
+    password: bcrypt.hashSync(req.body.contraseña, 10),
+    
+}
+let updateUsuario = await users.update(usuario_body, {where: {id: req.params.id}})
+
+res.redirect('/');
+  
 },
 usernotfound: async  (req,res) => {
   return res.render(path.resolve(__dirname, '..', 'views', 'web', 'usernotfound'))

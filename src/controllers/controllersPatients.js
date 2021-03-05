@@ -1,7 +1,7 @@
 
 const path = require('path');
 const fs = require('fs');
-const { Op } = require("sequelize");
+const { Op, where } = require("sequelize");
 const {patients, medicalhistories,treatments,patienttreatments} = require ('../database/models');
 
 const {
@@ -118,7 +118,7 @@ module.exports = {
     //Guardo el paciente creado en una variable para despues poder llamarlo cuando creo la historia clinica
     let newPaciente = await patients.create(patient_body)
 
-    let patientsid_body1 = {patient_id: newPaciente.id} 
+    let patientsid_body1 = {patient_id: newPaciente.id, firstname_patient: newPaciente.first_name, lastname_patient: newPaciente.last_name} 
     //console.log('ooooooooooooooooooooo' + newPaciente.id);
    let newtreatment = await treatments.create(patientsid_body1);
      //return res.send(newtreatment.id)
@@ -130,9 +130,9 @@ module.exports = {
 
 
 
-     
+      let patientsmh_body = {patient_id: newPaciente.id,  first_name: newPaciente.first_name, last_name: newPaciente.last_name}
     //Hago el create de la historia clinica pasandole la variable declarada acá arriba
-    await medicalhistories.create(patientsid_body);
+    await medicalhistories.create(patientsmh_body);
    
   
 
@@ -156,13 +156,20 @@ module.exports = {
       
       let medicalhistory_body={
         visitamedica: req.body.visita_medica,
-        doctor: req.body.doctor
+        fechavisita: req.body.fechavisita,
+        doctor: req.body.doctor,
+        first_name: paciente.first_name,
+        last_name: paciente.last_name
+
       }; 
 
       let newMedicalHistory = {
         patient_id: paciente.id,
         visitamedica: req.body.visita_medica,
-        doctor: req.body.doctor
+        fechavisita: req.body.fechavisita,
+        doctor: req.body.doctor,
+        first_name: paciente.first_name,
+        last_name: paciente.last_name
       }
       
       if (visita == null) {
@@ -189,6 +196,8 @@ module.exports = {
       let treatments_body={
         
         tratamiento: req.body.tratamiento,
+        firstname_patient: paciente.first_name,
+        lastname_patient: paciente.last_name,
         datetreatment: req.body.fechatratamiento,
         dateendtreatment: req.body.fechafintratamiento
       }; 
@@ -196,6 +205,8 @@ module.exports = {
       let newtreatment = {
         patient_id: req.params.id,
         tratamiento: req.body.tratamiento,
+        firstname_patient: paciente.first_name,
+        lastname_patient: paciente.last_name,
         datetreatment: req.body.fechatratamiento,
         dateendtreatment: req.body.fechafintratamiento
       }
@@ -271,54 +282,67 @@ module.exports = {
         nhc: req.body.nhc,
         diabetes: req.body.diabetes,
         date_diabetes: req.body.fecha_diabetes,
+        date_end_diabetes: req.body.fecha_end_diabetes,
         action_diabetes: req.body.accion_diabetes,
         coments_diabetes: req.body.comentario_diabetes,    
         dlp: req.body.dlp,
         date_dlp: req.body.fecha_dlp,
+        date_end_dlp: req.body.fecha_end_dlp,
         action_dlp: req.body.accion_dlp,
         coments_dlp: req.body.comentario_dlp,  
         hta: req.body.hta,
         date_hta: req.body.fecha_hta,
+        date_end_hta: req.body.fecha_end_hta,
         action_hta: req.body.accion_hta,
         coments_hta: req.body.comentario_hta,  
         crm: req.body.crm,
         date_crm: req.body.fecha_crm,
+        date_end_crm: req.body.fecha_end_crm,
         action_crm: req.body.accion_crm,
         coments_crm: req.body.comentario_crm,  
         atc: req.body.atc,
         date_atc: req.body.fecha_atc,
+        date_end_atc: req.body.fecha_end_atc,
         action_atc: req.body.accion_atc,
         coments_atc: req.body.comentario_atc, 
         iam: req.body.iam,
         date_iam: req.body.fecha_iam,
+        date_end_iam: req.body.fecha_end_iam,
         action_iam: req.body.accion_iam,
         coments_iam: req.body.comentario_iam, 
         acv: req.body.acv,
         date_acv: req.body.fecha_acv,
+        date_end_acv: req.body.fecha_end_acv,
         action_acv: req.body.accion_acv,
         coments_acv: req.body.comentario_acv, 
         aortic_aneurysm: req.body.aneurisma,
         date_aerotic: req.body.fecha_aneurisma,
+        date_end_aerotic: req.body.fecha_end_aneurisma,
         action_aerotic: req.body.accion_aneurisma,
         coments_aerotic: req.body.comentario_aneurisma, 
         ic: req.body.ic,
         date_ic: req.body.fecha_ic,
+        date_end_ic: req.body.fecha_end_ic,
         action_ic: req.body.accion_ic,
         coments_ic: req.body.comentario_ic, 
         evp: req.body.evp,
         date_evp: req.body.fecha_evp,
+        date_end_evp: req.body.fecha_end_evp,
         action_evp: req.body.accion_evp,
         coments_evp: req.body.comentario_evp, 
         epoc: req.body.epoc,
         date_epoc: req.body.fecha_epoc,
+        date_end_epoc: req.body.fecha_end_epoc,
         action_epoc: req.body.accion_epoc,
         coments_epoc: req.body.comentario_epoc, 
         irc: req.body.irc,
         date_irc: req.body.fecha_irc,
+        date_end_irc: req.body.fecha_end_irc,
         action_irc: req.body.accion_irc,
         coments_irc: req.body.comentario_irc, 
         obesity: req.body.obesidad,
         date_obesity: req.body.fecha_obesidad,
+        date_end_obesity: req.body.fecha_end_obesidad,
         action_obesity: req.body.accion_obesidad,
         coments_obesity: req.body.comentario_obesidad, 
       
@@ -328,10 +352,10 @@ module.exports = {
       .then((patientcreate) => {
         return res.redirect('/patients');
       })  
-      .catch(error => res.render(path.resolve(__dirname , '..','views','patients','patientCreate'), {
+      .catch(errors => res.render(path.resolve(__dirname , '..','views','patients','patientsEdit'), {
         errors: errors.errors,  old: req.body}))  
     
-        return res.redirect('/patients');
+        return res.redirect('/patientsDetail');
       
     
 
@@ -348,13 +372,34 @@ module.exports = {
         //return res.send(zapatillas)
         res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
       },
-      obesos: async (req, res) => {
-        let paciente = await patients.findAll({where: {obesity: 'si'}})
+    
+      diabetes: async (req, res) => {
+        let paciente = await patients.findAll({where: {diabetes: 'si'}})
         //return res.send(zapatillas)
         res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
       },
-      diabetes: async (req, res) => {
-        let paciente = await patients.findAll({where: {diabetes: 'si'}})
+      dlp: async (req, res) => {
+        let paciente = await patients.findAll({where: {dlp: 'si'}})
+        //return res.send(zapatillas)
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+      },
+      hta: async (req, res) => {
+        let paciente = await patients.findAll({where: {hta: 'si'}})
+        //return res.send(zapatillas)
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+      },
+      crm: async (req, res) => {
+        let paciente = await patients.findAll({where: {crm: 'si'}})
+        //return res.send(zapatillas)
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+      },
+      atc: async (req, res) => {
+        let paciente = await patients.findAll({where: {atc: 'si'}})
+        //return res.send(zapatillas)
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+      },
+      iam: async (req, res) => {
+        let paciente = await patients.findAll({where: {iam: 'si'}})
         //return res.send(zapatillas)
         res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
       },
@@ -364,7 +409,33 @@ module.exports = {
         res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
       },
       aneurisma: async (req, res) => {
-        let paciente = await patients.findAll({where: {aortic_aneurysm: 'on'}})
+        let paciente = await patients.findAll({where: {aortic_aneurysm: 'si'}})
+        //return res.send(zapatillas)
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+      },
+      ic: async (req, res) => {
+        let paciente = await patients.findAll({where: {ic: 'si'}})
+        //return res.send(zapatillas)
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+      },
+
+      evp: async (req, res) => {
+        let paciente = await patients.findAll({where: {evp: 'si'}})
+        //return res.send(zapatillas)
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+      },
+      epoc: async (req, res) => {
+        let paciente = await patients.findAll({where: {epoc: 'si'}})
+        //return res.send(zapatillas)
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+      },
+      irc: async (req, res) => {
+        let paciente = await patients.findAll({where: {irc: 'si'}})
+        //return res.send(zapatillas)
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+      },
+      obesos: async (req, res) => {
+        let paciente = await patients.findAll({where: {obesity: 'si'}})
         //return res.send(zapatillas)
         res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
       },
@@ -423,7 +494,111 @@ module.exports = {
       res.render(path.resolve(__dirname, '..', 'views', 'patients', 'resultados'), {paciente})
       
   
-    }
+    },
+    searchtreat:async (req,res)=>{
+
+      const tratamiento = await treatments.findAll({ 
+        where:{
+          [Op.or]:
+           [{firstname_patient: {[Op.like]: `%${req.body.search}%`}},
+           {lastname_patient: {[Op.like]: `%${req.body.search}%`}},
+           {tratamiento: {[Op.like]: `%${req.body.search}%`}}
+      
+          ]
+        }
+      
+      })
+  
+  
+      
+      //return res.send(tratamiento)
+      res.render(path.resolve(__dirname, '..', 'views', 'patients', 'treatments'), {tratamiento})
+    },
+    searchtreatments:async (req,res)=>{
+
+      const tratamiento = await treatments.findAll({ 
+        where: { 
+            tratamiento: { 
+              [Op.ne]: '%null%' 
+            } 
+        } 
+    })
+  
+  
+      
+      //return res.send(tratamiento)
+      res.render(path.resolve(__dirname, '..', 'views', 'patients', 'treatments'), {tratamiento})
+    },
+    searchdatetreat:async (req,res)=>{
+
+      const tratamiento = await treatments.findAll({ 
+        where:{
+          [Op.or]:
+           [{datetreatment: {[Op.like]: `%${req.body.search}%`}},
+          
+      
+          ]
+        }
+      
+      })
+  
+  
+      
+      //return res.send(tratamiento)
+      res.render(path.resolve(__dirname, '..', 'views', 'patients', 'treatments'), {tratamiento})
+    },
+    searchhistory:async (req,res)=>{
+
+      const history = await medicalhistories.findAll({ 
+        where: { 
+            visitamedica: { 
+              [Op.ne]: '%null%' 
+            } 
+        } 
+    })
+  
+  
+      
+      //return res.send(tratamiento)
+      res.render(path.resolve(__dirname, '..', 'views', 'patients', 'medicalhistory'), {history})
+    },
+    searchdatehistory:async (req,res)=>{
+
+      const history = await medicalhistories.findAll({ 
+        where:{
+          [Op.or]:
+           [{fechavisita: {[Op.like]: `%${req.body.search}%`}},
+          
+      
+          ]
+        }
+      
+      })
+  
+  
+      
+      //return res.send(tratamiento)
+      res.render(path.resolve(__dirname, '..', 'views', 'patients', 'medicalhistory'), {history})
+    },
+    searchhist:async (req,res)=>{
+
+      const history = await medicalhistories.findAll({ 
+        where:{
+          [Op.or]:
+           [{first_name: {[Op.like]: `%${req.body.search}%`}},
+           {last_name: {[Op.like]: `%${req.body.search}%`}},
+           {visitamedica: {[Op.like]: `%${req.body.search}%`}}
+      
+          ]
+        }
+      
+      })
+  
+  
+      
+      //return res.send(tratamiento)
+      res.render(path.resolve(__dirname, '..', 'views', 'patients', 'medicalhistory'), {history})
+    },
   }
   
   

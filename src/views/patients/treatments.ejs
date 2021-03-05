@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs') %>
+  <link rel='stylesheet' href='/css/patients.css' />
+  <body>
+      <header>
+    <%- include('../partials/navBar.ejs') %>
+     </header>
+    <!--Menu vinos FIN-->
+<main class="container-fluid  py-5" id="main">
+    <article class="col-12">
+        <h2 class="font-weight-bolder w-100 text-center my-5">AGENDA TRATAMIENTOS</h2>
+    </article>
+ <section > 
+            <form method="POST" id="busqueda" action="/busquedatratamiento" class="form-inline ocultar">
+            <div>
+           <input class="form-control" type="search" name="search" placeholder="Buscar...">
+             <button class="btn" type="submit">
+             <ion-icon name="search-outline"></ion-icon>
+          </button>
+          </div>
+            </form>     
+ </section>
+    <section class="d-flex">
+        <% if (tratamiento.length == 0) {%>
+            <h4 class="w-100 text-center my-5">NO SE ENCONTRARON TRATAMIENTOS COINCIDENTES CON LA BÚSQUEDA</h4>
+            <%}else{%>
+        <% tratamiento.forEach(treat => { %>
+            <article class="col-12">
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">Paciente</th>
+                            <th scope="col">Tratamiento:</th>
+                            <th scope="col">Inicio tratamiento</th>
+                            <th scope="col">Fin tratamiento</th>
+                            <th class="text-center" scope="col">Eliminar tratamiento</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% tratamiento.forEach(treat=> { %>
+                            <tr>
+                                <td><%= treat.firstname_patient + ' '  +treat.lastname_patient %> </td>
+                                <td><%= treat.tratamiento %> </td>
+                                <td> <%= treat.datetreatment  %></td> 
+                                <td> <%= treat.dateendtreatment  %></td> 
+                                <td class="text-center"><a href="/patients/delete/treatment/<%= treat.id%>"><ion-icon style="color: black;" name="trash-outline"></ion-icon></a></td>
+
+                          
+                              
+                            </tr>
+                            <% }); %> 
+                    </tbody>
+                </table>
+            </article>
+    <% }) %>
+    <% } %>
+</section>
+
+<div class="col-12 form-group d-flex flex-wrap justify-content-end">
+
+    <a href="/searchtreatments" class="btn btn-dark px-5">Volver</a>
+</div>
+</main>
+    <!--Menu Vinos FIN-->
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

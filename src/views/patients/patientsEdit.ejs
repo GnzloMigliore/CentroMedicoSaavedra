@@ -21,8 +21,15 @@
         <div class="container-fluid">
             <div class="row" >
                 <!--UL de errores-->
-                <div class="col-8 mx-auto">
-             
+                <div class="col-12 mx-auto">
+                    <article id="crear" class="col-8 mx-auto">
+                        <% if(typeof(errors) != 'undefined'){%>
+                            <ul class="alert alert-danger">
+                              <% errors.forEach(error => { %>
+                                <li><%= error.msg%></li>
+                                <%});%>
+                            </ul>
+                          <%}%>
              
                 <div  class="col-12">
                     <div class=" create-form">
@@ -52,7 +59,7 @@
                         <div class="form-group col-6" placeholder="Nacimiento">
                         <input type="date" id="start" name="nacimiento" class="form-control  bg-light"
                         value="<%= paciente.date%>"
-                        min="1940-01-01" max="2020-12-31">
+                        min="1940-01-01" max="2021-12-31">
                         </div>
                       <!--Email-->
                       <div class="form-group col-5">
@@ -105,22 +112,33 @@
                         </article>
                     <!--Diabetes-->
                     <div class="row enfermedad">
-                    <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-                        <span>DIABETES</span>                 
-                       <label class="switch">
+                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
+                             
                            <% if (paciente.diabetes == 'si') { %>
-                            <input type="checkbox" checked name="diabetes">
+                            <select class="custom-select  bg-light"  name="diabetes">
+                             
+                                <option selected value="si">Tiene diabetes</option>
+                                <option value="no">No tiene diabetes</option>
+                            </select>
                            <% }else  {%>
-                            <input type="checkbox"  name="diabetes"> 
+                            <select class="custom-select  bg-light"  name="diabetes">
+                              >
+                                <option  value="si">Tiene diabetes</option>
+                                <option selected value="no">No tiene diabetes</option>
+                            </select> 
                             <% } %>
-                        <span class="slider round"></span>
-                       </label>
+                       
                     </div>
                     <div class="form-group col-6 pt-2" placeholder="fecha_diabetes"  value="">
                     <input type="date" id="start" name="fecha_diabetes" class="form-control  bg-light"
                     value="<%= paciente.date_diabetes%>"
-                    min="1940-01-01" max="2020-12-31">
+                    min="1940-01-01" max="2021-12-31">
                     </div>
+                    <div class="form-group col-6 pt-2" placeholder="fecha_end_diabetes"  value="">
+                        <input type="date" id="start" name="fecha_end_diabetes" class="form-control  bg-light"
+                        value="<%= paciente.date_end_diabetes%>"
+                        min="1940-01-01" max="2021-12-31">
+                        </div>
                     <div class="form-group col-6 pl-3">
                         <input type="text" class="form-control bg-light" name="accion_diabetes" placeholder="Acción tomada"  value="<%= paciente.action_diabetes%>">
                     </div>
@@ -129,23 +147,34 @@
                     </div>
                     </div>
              <!--DLP-->
-            <div class="row enfermedad mt-4">
-              <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-            <span>DLP</span>                 
-            <label class="switch">
-                <% if (paciente.dlp == 'on') { %>
-                    <input type="checkbox" checked name="dlp">
-                   <% }else  {%>
-                    <input type="checkbox"  name="dlp"> 
-                    <% } %>
-            <span class="slider round"></span>
-            </label>
-           </div>
+             <div class="row enfermedad mt-4">
+                <div class="col-12 form-group d-flex justify-content-between pt-2">                       
+                         
+                       <% if (paciente.dlp == 'si') { %>
+                        <select class="custom-select  bg-light"  name="dlp">
+                         
+                            <option selected value="si">Tiene dlp</option>
+                            <option value="no">No tiene dlp</option>
+                        </select>
+                       <% }else  {%>
+                        <select class="custom-select  bg-light"  name="dlp">
+                          >
+                            <option  value="si">Tiene dlp</option>
+                            <option selected value="no">No tiene dlp</option>
+                        </select> 
+                        <% } %>
+                   
+                </div>
             <div class="form-group col-6 pt-2" placeholder="fecha_dlp"  value="">
            <input type="date" id="start" name="fecha_dlp" class="form-control  bg-light"
           value="<%= paciente.date_dlp%>"
-          min="1940-01-01" max="2020-12-31">
+          min="1940-01-01" max="2021-12-31">
          </div>
+         <div class="form-group col-6 pt-2" placeholder="fecha_end_dlp"  value="">
+            <input type="date" id="start" name="fecha_end_dlp" class="form-control  bg-light"
+            value="<%= paciente.date_end_dlp%>"
+            min="1940-01-01" max="2021-12-31">
+            </div>
          <div class="form-group col-6 pl-3">
           <input type="text" class="form-control bg-light" name="accion_dlp" placeholder="Acción tomada"  value="<%= paciente.action_dlp%>">
           </div>
@@ -155,23 +184,34 @@
          </div>
 
                   <!--HTA-->
-            <div class="row enfermedad mt-4">
-                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-              <span>HTA</span>                 
-              <label class="switch">
-                <% if (paciente.hta == 'si') { %>
-                    <input type="checkbox" checked name="hta">
-                   <% }else  {%>
-                    <input type="checkbox"  name="hta"> 
-                    <% } %>
-              <span class="slider round"></span>
-              </label>
-             </div>
+                  <div class="row enfermedad mt-4">
+                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
+                             
+                           <% if (paciente.hta == 'si') { %>
+                            <select class="custom-select  bg-light"  name="hta">
+                             
+                                <option selected value="si">Tiene hta</option>
+                                <option value="no">No tiene hta</option>
+                            </select>
+                           <% }else  {%>
+                            <select class="custom-select  bg-light"  name="hta">
+                              >
+                                <option  value="si">Tiene hta</option>
+                                <option selected value="no">No tiene hta</option>
+                            </select> 
+                            <% } %>
+                       
+                    </div>
               <div class="form-group col-6 pt-2" placeholder="fecha_hta"  value="">
              <input type="date" id="start" name="fecha_hta" class="form-control  bg-light"
             value="<%= paciente.date_hta%>"
-            min="1940-01-01" max="2020-12-31">
+            min="1940-01-01" max="2021-12-31">
            </div>
+           <div class="form-group col-6 pt-2" placeholder="fecha_end_hta"  value="">
+            <input type="date" id="start" name="fecha_end_hta" class="form-control  bg-light"
+            value="<%= paciente.date_end_hta%>"
+            min="1940-01-01" max="2021-12-31">
+            </div>
            <div class="form-group col-6 pl-3">
             <input type="text" class="form-control bg-light" name="accion_hta" placeholder="Acción tomada"  value="<%= paciente.action_hta%>">
             </div>
@@ -181,23 +221,34 @@
            </div>
                    
                               <!--CRM-->
-            <div class="row enfermedad mt-4">
-                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-              <span>CRM</span>                 
-              <label class="switch">
-                <% if (paciente.crm == 'si') { %>
-                    <input type="checkbox" checked name="crm">
-                   <% }else  {%>
-                    <input type="checkbox"  name="crm"> 
-                    <% } %>
-              <span class="slider round"></span>
-              </label>
-             </div>
-              <div class="form-group col-6 pt-2" placeholder="fecha_crm"  value="<%= paciente.date_crm%>">
+                              <div class="row enfermedad mt-4">
+                                <div class="col-12 form-group d-flex justify-content-between pt-2">                       
+                                         
+                                       <% if (paciente.crm == 'si') { %>
+                                        <select class="custom-select  bg-light"  name="crm">
+                                         
+                                            <option selected value="si">Tiene crm</option>
+                                            <option value="no">No tiene crm</option>
+                                        </select>
+                                       <% }else  {%>
+                                        <select class="custom-select  bg-light"  name="crm">
+                                          >
+                                            <option  value="si">Tiene crm</option>
+                                            <option selected value="no">No tiene crm</option>
+                                        </select> 
+                                        <% } %>
+                                   
+                                </div>
+              <div class="form-group col-6 pt-2" placeholder="fecha_crm"  value="">
              <input type="date" id="start" name="fecha_crm" class="form-control  bg-light"
-            value=""
-            min="1940-01-01" max="2020-12-31">
+            value="<%= paciente.date_crm%>"
+            min="1940-01-01" max="2021-12-31">
            </div>
+           <div class="form-group col-6 pt-2" placeholder="fecha_end_crm"  value="">
+            <input type="date" id="start" name="fecha_end_crm" class="form-control  bg-light"
+            value="<%= paciente.date_end_crm%>"
+            min="1940-01-01" max="2021-12-31">
+            </div>
            <div class="form-group col-6 pl-3">
             <input type="text" class="form-control bg-light" name="accion_crm" placeholder="Acción tomada"  value="<%= paciente.action_crm%>">
             </div>
@@ -205,24 +256,35 @@
            <input type="text" class="form-control bg-light" name="comentario_crm" placeholder="Comentario"  value="<%= paciente.coments_crm%>">
            </div>
            </div>  
-                                             <!--ATC-->
+                      <!--ATC-->
             <div class="row enfermedad mt-4">
-                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-              <span>ATC</span>                 
-              <label class="switch">
-                <% if (paciente.atc == 'si') { %>
-                    <input type="checkbox" checked name="atc">
-                   <% }else  {%>
-                    <input type="checkbox"  name="atc"> 
-                    <% } %>
-              <span class="slider round"></span>
-              </label>
+               <div class="col-12 form-group d-flex justify-content-between pt-2">                       
+                                                         
+                 <% if (paciente.atc == 'si') { %>
+             <select class="custom-select  bg-light"  name="atc">
+                                                         
+             <option selected value="si">Tiene atc</option>
+              <option value="no">No tiene atc</option>
+                  </select>
+                  <% }else  {%>
+                <select class="custom-select  bg-light"  name="atc">
+                                                          
+                 <option  value="si">Tiene atc</option>
+                <option selected value="no">No tiene atc</option>
+                </select> 
+                 <% } %>
+                                                   
              </div>
               <div class="form-group col-6 pt-2" placeholder="fecha_atc"  value="">
              <input type="date" id="start" name="fecha_atc" class="form-control  bg-light"
             value="<%= paciente.date_atc%>"
-            min="1940-01-01" max="2020-12-31">
+            min="1940-01-01" max="2021-12-31">
            </div>
+           <div class="form-group col-6 pt-2" placeholder="fecha_end_atc"  value="">
+            <input type="date" id="start" name="fecha_end_atc" class="form-control  bg-light"
+           value="<%= paciente.date_end_atc%>"
+           min="1940-01-01" max="2021-12-31">
+          </div>
            <div class="form-group col-6 pl-3">
             <input type="text" class="form-control bg-light" name="accion_atc" placeholder="Acción tomada"  value="<%= paciente.action_atc%>">
             </div>
@@ -232,23 +294,34 @@
         </div>
 
                                         <!--IAM-->
-            <div class="row enfermedad mt-4">
-                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-              <span>IAM</span>                 
-              <label class="switch">
-                <% if (paciente.iam == 'si') { %>
-                    <input type="checkbox" checked name="iam">
-                   <% }else  {%>
-                    <input type="checkbox"  name="iam"> 
-                    <% } %>
-              <span class="slider round"></span>
-              </label>
-             </div>
+                                        <div class="row enfermedad mt-4">
+                                            <div class="col-12 form-group d-flex justify-content-between pt-2">                       
+                                                                                      
+                                              <% if (paciente.iam == 'si') { %>
+                                          <select class="custom-select  bg-light"  name="iam">
+                                                                                      
+                                          <option selected value="si">Tiene iam</option>
+                                           <option value="no">No tiene iam</option>
+                                               </select>
+                                               <% }else  {%>
+                                             <select class="custom-select  bg-light"  name="iam">
+                                                                                       
+                                              <option  value="si">Tiene iam</option>
+                                             <option selected value="no">No tiene iam</option>
+                                             </select> 
+                                              <% } %>
+                                                                                
+                                          </div>
               <div class="form-group col-6 pt-2" placeholder="fecha_iam"  value="">
              <input type="date" id="start" name="fecha_iam" class="form-control  bg-light"
             value="<%= paciente.date_iam%>"
-            min="1940-01-01" max="2020-12-31">
+            min="1940-01-01" max="2021-12-31">
            </div>
+           <div class="form-group col-6 pt-2" placeholder="fecha_end_iam"  value="">
+            <input type="date" id="start" name="fecha_end_iam" class="form-control  bg-light"
+           value="<%= paciente.date_end_iam%>"
+           min="1940-01-01" max="2021-12-31">
+          </div>
            <div class="form-group col-6 pl-3">
             <input type="text" class="form-control bg-light" name="accion_iam" placeholder="Acción tomada"  value="<%= paciente.action_iam%>">
             </div>
@@ -259,23 +332,34 @@
                    
                    
                                         <!--ACV-->
-            <div class="row enfermedad mt-4">
-                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-              <span>ACV</span>                 
-              <label class="switch">
-                <% if (paciente.acv == 'si') { %>
-                    <input type="checkbox" checked name="acv">
-                   <% }else  {%>
-                    <input type="checkbox"  name="acv"> 
-                    <% } %>
-              <span class="slider round"></span>
-              </label>
-             </div>
+                                        <div class="row enfermedad mt-4">
+                                            <div class="col-12 form-group d-flex justify-content-between pt-2">                       
+                                                                                      
+                                              <% if (paciente.acv == 'si') { %>
+                                          <select class="custom-select  bg-light"  name="acv">
+                                                                                      
+                                          <option selected value="si">Tiene acv</option>
+                                           <option value="no">No tiene acv</option>
+                                               </select>
+                                               <% }else  {%>
+                                             <select class="custom-select  bg-light"  name="acv">
+                                                                                       
+                                              <option  value="si">Tiene acv</option>
+                                             <option selected value="no">No tiene acv</option>
+                                             </select> 
+                                              <% } %>
+                                                                                
+                                          </div>
               <div class="form-group col-6 pt-2" placeholder="fecha_acv"  value="">
              <input type="date" id="start" name="fecha_acv" class="form-control  bg-light"
             value="<%= paciente.date_acv%>"
-            min="1940-01-01" max="2020-12-31">
+            min="1940-01-01" max="2021-12-31">
            </div>
+           <div class="form-group col-6 pt-2" placeholder="fecha_end_acv"  value="">
+            <input type="date" id="start" name="fecha_end_acv" class="form-control  bg-light"
+           value="<%= paciente.date_end_acv%>"
+           min="1940-01-01" max="2021-12-31">
+          </div>
            <div class="form-group col-6 pl-3">
             <input type="text" class="form-control bg-light" name="accion_acv" placeholder="Acción tomada"  value="<%= paciente.action_acv%>">
             </div>
@@ -285,23 +369,35 @@
            </div>  
                    
                <!--Aneurisma aorta-->
-            <div class="row enfermedad mt-4">
-                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-              <span>Aneurisma aorta</span>                 
-              <label class="switch">
-                <% if (paciente.aortic_aneurysm == 'si') { %>
-                    <input type="checkbox" checked name="aerotic">
-                   <% }else  {%>
-                    <input type="checkbox"  name="aerotic"> 
-                    <% } %>
-              <span class="slider round"></span>
-              </label>
-             </div>
+           
+                                        <div class="row enfermedad mt-4">
+                                            <div class="col-12 form-group d-flex justify-content-between pt-2">                       
+                                                                                      
+                                              <% if (paciente.aortic_aneurysm == 'si') { %>
+                                          <select class="custom-select  bg-light"  name="aortic_aneurysm">
+                                                                                      
+                                          <option selected value="si">Tiene aneurisma</option>
+                                           <option value="no">No tiene aneurisma</option>
+                                               </select>
+                                               <% }else  {%>
+                                             <select class="custom-select  bg-light"  name="aaortic_aneurysm">
+                                                                                       
+                                              <option  value="si">Tiene aneurisma</option>
+                                             <option selected value="no">No tiene aneurisma</option>
+                                             </select> 
+                                              <% } %>
+                                                                                
+                                          </div>
               <div class="form-group col-6 pt-2" placeholder="fecha_aneurisma"  value="">
              <input type="date" id="start" name="fecha_aneurisma" class="form-control  bg-light"
             value="<%= paciente.date_aerotic%>"
-            min="1940-01-01" max="2020-12-31">
+            min="1940-01-01" max="2021-12-31">
            </div>
+           <div class="form-group col-6 pt-2" placeholder="fecha_end_aneurisma"  value="">
+            <input type="date" id="start" name="fecha_end_aneurisma" class="form-control  bg-light"
+           value="<%= paciente.date_end_aerotic%>"
+           min="1940-01-01" max="2021-12-31">
+          </div>
            <div class="form-group col-6 pl-3">
             <input type="text" class="form-control bg-light" name="accion_aneurisma" placeholder="Acción tomada"  value="<%= paciente.action_aerotic%>">
             </div>
@@ -311,23 +407,34 @@
            </div>  
 
                    <!--IC-->
-            <div class="row enfermedad mt-4">
-                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-              <span>IC</span>                 
-              <label class="switch">
-                <% if (paciente.ic == 'si') { %>
-                    <input type="checkbox" checked name="ic">
-                   <% }else  {%>
-                    <input type="checkbox"  name="ic"> 
-                    <% } %>
-              <span class="slider round"></span>
-              </label>
-             </div>
+                   <div class="row enfermedad mt-4">
+                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
+                                                              
+                      <% if (paciente.ic == 'si') { %>
+                  <select class="custom-select  bg-light"  name="ic">
+                                                              
+                  <option selected value="si">Tiene ic</option>
+                   <option value="no">No tiene ic</option>
+                       </select>
+                       <% }else  {%>
+                     <select class="custom-select  bg-light"  name="ic">
+                                                               
+                      <option  value="si">Tiene ic</option>
+                     <option selected value="no">No tiene ic</option>
+                     </select> 
+                      <% } %>
+                                                        
+                  </div>
               <div class="form-group col-6 pt-2" placeholder="fecha_ic"  value="">
              <input type="date" id="start" name="fecha_ic" class="form-control  bg-light"
             value="<%= paciente.date_ic%>"
-            min="1940-01-01" max="2020-12-31">
+            min="1940-01-01" max="2021-12-31">
            </div>
+           <div class="form-group col-6 pt-2" placeholder="fecha_end_ic"  value="">
+            <input type="date" id="start" name="fecha_end_ic" class="form-control  bg-light"
+           value="<%= paciente.date_end_ic%>"
+           min="1940-01-01" max="2021-12-31">
+          </div>
            <div class="form-group col-6 pl-3">
             <input type="text" class="form-control bg-light" name="accion_ic" placeholder="Acción tomada"  value="<%= paciente.action_ic%>">
             </div>
@@ -337,19 +444,34 @@
            </div>  
                 
                            <!--EVP-->
-            <div class="row enfermedad mt-4">
-                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-              <span>EVP</span>                 
-              <label class="switch">
-             <input type="checkbox" name="evp">
-              <span class="slider round"></span>
-              </label>
-             </div>
+                           <div class="row enfermedad mt-4">
+                            <div class="col-12 form-group d-flex justify-content-between pt-2">                       
+                                                                      
+                              <% if (paciente.evp == 'si') { %>
+                          <select class="custom-select  bg-light"  name="evp">
+                                                                      
+                          <option selected value="si">Tiene evp</option>
+                           <option value="no">No tiene evp</option>
+                               </select>
+                               <% }else  {%>
+                             <select class="custom-select  bg-light"  name="evp">
+                                                                       
+                              <option  value="si">Tiene evp</option>
+                             <option selected value="no">No tiene evp</option>
+                             </select> 
+                              <% } %>
+                                                                
+                          </div>
               <div class="form-group col-6 pt-2" placeholder="fecha_evp"  value="">
              <input type="date" id="start" name="fecha_evp" class="form-control  bg-light"
             value="<%= paciente.date_evp%>"
-            min="1940-01-01" max="2020-12-31">
+            min="1940-01-01" max="2021-12-31">
            </div>
+           <div class="form-group col-6 pt-2" placeholder="fecha_end_evp"  value="">
+            <input type="date" id="start" name="fecha_end_evp" class="form-control  bg-light"
+           value="<%= paciente.date_end_evp%>"
+           min="1940-01-01" max="2021-12-31">
+          </div>
            <div class="form-group col-6 pl-3">
             <input type="text" class="form-control bg-light" name="accion_evp" placeholder="Acción tomada"  value="<%= paciente.action_evp%>">
             </div>
@@ -360,23 +482,35 @@
                    
                  
                            <!--EPOC-->
-            <div class="row enfermedad mt-4">
-                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-              <span>EPOC</span>                 
-              <label class="switch">
-                <% if (paciente.epoc == 'si') { %>
-                    <input type="checkbox" checked name="epoc">
-                   <% }else  {%>
-                    <input type="checkbox"  name="epoc"> 
-                    <% } %>
-              <span class="slider round"></span>
-              </label>
-             </div>
+                           <div class="row enfermedad mt-4">
+                            <div class="col-12 form-group d-flex justify-content-between pt-2">                       
+                                                                      
+                              <% if (paciente.epoc == 'si') { %>
+                          <select class="custom-select  bg-light"  name="epoc">
+                                                                      
+                          <option selected value="si">Tiene epoc</option>
+                           <option value="no">No tiene epoc</option>
+                               </select>
+                               <% }else  {%>
+                             <select class="custom-select  bg-light"  name="epoc">
+                                                                       
+                              <option  value="si">Tiene epoc</option>
+                             <option selected value="no">No tiene epoc</option>
+                             </select> 
+                              <% } %>
+                                                                
+                          </div>
               <div class="form-group col-6 pt-2" placeholder="fecha_epoc"  value="">
              <input type="date" id="start" name="fecha_epoc" class="form-control  bg-light"
             value="<%= paciente.date_epoc%>"
-            min="1940-01-01" max="2020-12-31">
+            min="1940-01-01" max="2021-12-31">
            </div>
+     
+        <div class="form-group col-6 pt-2" placeholder="fecha_end_epoc"  value="">
+       <input type="date" id="start" name="fecha_end_epoc" class="form-control  bg-light"
+      value="<%= paciente.date_end_epoc%>"
+      min="1940-01-01" max="2021-12-31">
+     </div>
            <div class="form-group col-6 pl-3">
             <input type="text" class="form-control bg-light" name="accion_epoc" placeholder="Acción tomada"  value="<%= paciente.action_epoc%>">
             </div>
@@ -387,23 +521,34 @@
 
 
                               <!--IRC-->
-            <div class="row enfermedad mt-4">
-                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-              <span>IRC</span>                 
-              <label class="switch">
-                <% if (paciente.irc == 'si') { %>
-                    <input type="checkbox" checked name="irc">
-                   <% }else  {%>
-                    <input type="checkbox"  name="irc"> 
-                    <% } %>
-              <span class="slider round"></span>
-              </label>
-             </div>
+                              <div class="row enfermedad mt-4">
+                                <div class="col-12 form-group d-flex justify-content-between pt-2">                       
+                                                                          
+                                  <% if (paciente.irc == 'si') { %>
+                              <select class="custom-select  bg-light"  name="irc">
+                                                                          
+                              <option selected value="si">Tiene irc</option>
+                               <option value="no">No tiene irc</option>
+                                   </select>
+                                   <% }else  {%>
+                                 <select class="custom-select  bg-light"  name="irc">
+                                                                           
+                                  <option  value="si">Tiene irc</option>
+                                 <option selected value="no">No tiene irc</option>
+                                 </select> 
+                                  <% } %>
+                                                                    
+                              </div>
               <div class="form-group col-6 pt-2" placeholder="fecha_irc"  value="">
              <input type="date" id="start" name="fecha_irc" class="form-control  bg-light"
             value="<%= paciente.date_irc%>"
-            min="1940-01-01" max="2020-12-31">
+            min="1940-01-01" max="2021-12-31">
            </div>
+           <div class="form-group col-6 pt-2" placeholder="fecha_end_irc"  value="">
+            <input type="date" id="start" name="fecha_end_irc" class="form-control  bg-light"
+           value="<%= paciente.date_end_irc%>"
+           min="1940-01-01" max="2021-12-31">
+          </div>
            <div class="form-group col-6 pl-3">
             <input type="text" class="form-control bg-light" name="accion_irc" placeholder="Acción tomada"  value="<%= paciente.action_irc%>">
             </div>
@@ -414,22 +559,33 @@
 
              <!--Obesidad-->
              <div class="row enfermedad mt-4">
-                <div class="col 6 form-group d-flex justify-content-between pt-2">                       
-              <span>Obesidad</span>                 
-              <label class="switch">
-                <% if (paciente.obesity == 'si') { %>
-                    <input type="checkbox" checked name="obesity">
+                <div class="col-12 form-group d-flex justify-content-between pt-2">                       
+                                                          
+                  <% if (paciente.obesity == 'si') { %>
+              <select class="custom-select  bg-light"  name="obesity">
+                                                          
+              <option selected value="si">Tiene obesidad</option>
+               <option value="no">No tiene obesidad</option>
+                   </select>
                    <% }else  {%>
-                    <input type="checkbox"  name="obesity"> 
-                    <% } %>
-              <span class="slider round"></span>
-              </label>
-             </div>
+                 <select class="custom-select  bg-light"  name="obesity">
+                                                           
+                  <option  value="si">Tiene obesidad</option>
+                 <option selected value="no">No tiene obesidad</option>
+                 </select> 
+                  <% } %>
+                                                    
+              </div>
               <div class="form-group col-6 pt-2" placeholder="fecha_obesidad"  value="">
              <input type="date" id="start" name="fecha_obesidad" class="form-control  bg-light"
             value="<%= paciente.date_obesity%>"
-            min="1940-01-01" max="2020-12-31">
+            min="1940-01-01" max="2021-12-31">
            </div>
+           <div class="form-group col-6 pt-2" placeholder="fecha_obesidad"  value="">
+            <input type="date" id="start" name="fecha_end_obesidad" class="form-control  bg-light"
+           value="<%= paciente.date_end_obesity%>"
+           min="1940-01-01" max="2021-12-31">
+          </div>
            <div class="form-group col-6 pl-3">
             <input type="text" class="form-control bg-light" name="accion_obesidad" placeholder="Acción tomada"  value="<%= paciente.action_obesity%>">
             </div>
