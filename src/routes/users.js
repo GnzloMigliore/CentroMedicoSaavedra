@@ -34,8 +34,9 @@ router.post('/sendemail',[recover],async (req,res)=>{
         email: req.body.email
        }
 })
-userId = user.id
+
   if (user) {
+    const userId = user.id;
     const email = req.body.email
 contentHTML = `
 <h1>Recover password <h1> 
