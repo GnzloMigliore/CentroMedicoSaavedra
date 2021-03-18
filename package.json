@@ -5,7 +5,7 @@
   "description": "Centro Medico Saavedra",
   "main": "src/index.js",
   "scripts": {
-    "test": "nodemon src/index.js"
+    "start": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",

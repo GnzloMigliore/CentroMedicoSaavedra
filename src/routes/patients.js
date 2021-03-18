@@ -11,20 +11,20 @@ const controllersPatients = require(path.resolve(__dirname, '..', 'controllers',
 //armo mis rutas
 
 
-router.get('/patients', controllersPatients.index);
-router.get('/patients/create', controllersPatients.create);
+router.get('/patients',[userLogueado], controllersPatients.index);
+router.get('/patients/create',[userLogueado], controllersPatients.create);
 router.post('/patients/create', patientCreate, controllersPatients.save);
-router.get('/patients/detail/:id', controllersPatients.show);
+router.get('/patients/detail/:id',[userLogueado], controllersPatients.show);
 router.post('/patients/detail/history/:id',  controllersPatients.addhistory);
 router.post('/patients/detail/treatment/:id', controllersPatients.addtreatment);
-router.get('/searchtreatments', controllersPatients.searchtreatments);
+router.get('/searchtreatments',[userLogueado], controllersPatients.searchtreatments);
 router.post('/busquedatratamiento', controllersPatients.searchtreat);
 router.post('/busquedadatetratamiento', controllersPatients.searchdatetreat);
-router.get('/searchhistory', controllersPatients.searchhistory);
+router.get('/searchhistory',[userLogueado], controllersPatients.searchhistory);
 router.post('/busquedahistoria', controllersPatients.searchhist);
 router.post('/busquedadatehistory', controllersPatients.searchdatehistory);
-router.get('/patients/delete/treatment/:id', controllersPatients.destroy);
-router.get('/patients/edit/:id', controllersPatients.edit);
+router.get('/patients/delete/treatment/:id',[userLogueado], controllersPatients.destroy);
+router.get('/patients/edit/:id',[userLogueado], controllersPatients.edit);
 router.post('/patients/edit/:id', patientedit, controllersPatients.updatePatients);
 
 

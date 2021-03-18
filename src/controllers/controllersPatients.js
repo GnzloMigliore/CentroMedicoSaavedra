@@ -36,6 +36,7 @@ module.exports = {
     let patient_body={
       first_name: req.body.nombre,
       last_name : req.body.apellido,
+      firstlast_name :req.body.nombre+" "+req.body.apellido,
       gender : req.body.genero,
       date : req.body.nacimiento,
       email: req.body.email,
@@ -140,8 +141,8 @@ module.exports = {
     },
     show: async (req,res)=>{
       const paciente = await patients.findByPk(req.params.id, {include: ['treatments']})
-      const tratamiento = await treatments.findAll({where: {patient_id: req.params.id}, order: [['createdAt', 'DESC']]})
-      const historiaClinica = await medicalhistories.findAll({where: {patient_id: req.params.id}, order: [['createdAt', 'DESC']]})
+      const tratamiento = await treatments.findAll({where: {patient_id: req.params.id}, order: [['datetreatment', 'DESC']]})
+      const historiaClinica = await medicalhistories.findAll({where: {patient_id: req.params.id}, order: [['visitamedica', 'DESC']]})
     
       
       
@@ -264,7 +265,13 @@ module.exports = {
       
     },
     updatePatients: async (req,res) => {
-      
+    const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistories','treatments']})
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.render(path.resolve(__dirname , '..','views','patients','patientsEdit'), {paciente,
+        errors: errors.errors,  old: req.body
+      });
+    }
       
       const patient_body = { 
         //return res.send(_body);
@@ -443,7 +450,13 @@ module.exports = {
         
         let paciente = await patients.findAll({
           where:{
-            [Op.or]: [{first_name: {[Op.like]: `%${req.body.search}%`}},{$last_name$: {[Op.like]: `%${req.body.search}%`}},{$dni$: {[Op.like]: `%${req.body.search}%`}},{$nhc$: {[Op.like]: `%${req.body.search}%`}}]
+            [Op.or]: [
+            {$firstlast_name$: {[Op.like]: `%${req.body.search}%`}},  
+            {$first_name$: {[Op.like]: `%${req.body.search}%`}},
+            {$last_name$: {[Op.like]: `%${req.body.search}%`}},
+            {$dni$: {[Op.like]: `%${req.body.search}%`}},
+            {$nhc$: {[Op.like]: `%${req.body.search}%`}}
+          ]
           }
           
         })
@@ -521,7 +534,7 @@ module.exports = {
             tratamiento: { 
               [Op.ne]: '%null%' 
             } 
-        } 
+        },  order: [['datetreatment', 'DESC']]
     })
   
   
@@ -554,7 +567,7 @@ module.exports = {
             visitamedica: { 
               [Op.ne]: '%null%' 
             } 
-        } 
+        }, order: [['fechavisita', 'DESC']]
     })
   
   

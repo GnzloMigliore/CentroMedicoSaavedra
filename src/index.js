@@ -39,11 +39,12 @@ const webRouter = require('./routes/web');
 const userRouter = require('./routes/users');
 const patientsRouter = require('./routes/patients')
 const apointmentsRouter = require('./routes/apointments')
+const adminUsersRouter = require('./routes/adminUsers')
 app.use(webRouter);
 app.use(userRouter);
 app.use(patientsRouter);
 app.use(apointmentsRouter);
-
+app.use(adminUsersRouter);
 // Requiero el middleware para recordar el usuario en la vista
 
 

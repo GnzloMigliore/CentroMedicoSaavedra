@@ -36,7 +36,7 @@ module.exports = [
         
         //Aquí valido la confimación del password dispuesto por el usuario
         check('confirmar_contraseña').not().isEmpty().withMessage('El campo repetir contraseña no puede estar vacio'),
-        check('confirmar_contraseña').isLength({min: 6 }).withMessage('La confirmación de la contraseña debe tener un mínimo de 8 caractéres'),
+        check('confirmar_contraseña').isLength({min: 8 }).withMessage('La confirmación de la contraseña debe tener un mínimo de 8 caractéres'),
       
         body('confirmar_contraseña').custom((value, {req}) =>{
           if(req.body.contraseña == value ){

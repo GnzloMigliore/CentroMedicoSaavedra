@@ -23,7 +23,7 @@
  </section>
     <section class="d-flex">
         <% if (tratamiento.length == 0) {%>
-            <h4 class="w-100 text-center my-5">NO SE ENCONTRARON TRATAMIENTOS COINCIDENTES CON LA BÚSQUEDA</h4>
+            <h4 class="w-100 text-center my-5">NO SE ENCONTRARON TRATAMIENTOS</h4>
             <%}else{%>
         <% tratamiento.forEach(treat => { %>
             <article class="col-12">
@@ -34,7 +34,7 @@
                             <th scope="col">Tratamiento:</th>
                             <th scope="col">Inicio tratamiento</th>
                             <th scope="col">Fin tratamiento</th>
-                            <th class="text-center" scope="col">Eliminar tratamiento</th>
+                      
                            
                         </tr>
                     </thead>
@@ -45,7 +45,7 @@
                                 <td><%= treat.tratamiento %> </td>
                                 <td> <%= treat.datetreatment  %></td> 
                                 <td> <%= treat.dateendtreatment  %></td> 
-                                <td class="text-center"><a href="/patients/delete/treatment/<%= treat.id%>"><ion-icon style="color: black;" name="trash-outline"></ion-icon></a></td>
+                          
 
                           
                               
@@ -60,7 +60,7 @@
 
 <div class="col-12 form-group d-flex flex-wrap justify-content-end">
 
-    <a href="/searchtreatments" class="btn btn-dark px-5">Volver</a>
+    <a href="/patients" class="btn btn-dark px-5">Volver al inicio</a>
 </div>
 </main>
     <!--Menu Vinos FIN-->

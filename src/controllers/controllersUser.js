@@ -9,7 +9,7 @@ const {
   validationResult,
   body
 } = require('express-validator');
-const usuario = require('../database/models/usuario');
+
 module.exports = {
   registro: async (req, res) => {
     const usuarios = await users.findAll()
@@ -29,6 +29,7 @@ module.exports = {
         email: req.body.email,
         password: bcrypt.hashSync(req.body.contraseña, 10),      
         telephone: req.body.telefono,
+        puesto: req.body.puesto,  
         gender: req.body.genero,    
         roles: 1   
     };    
@@ -93,7 +94,18 @@ newpassword : async  (req,res) => {
   return res.render(path.resolve(__dirname, '..', 'views', 'web', 'newpassword'),{usuarios})
 },
 updatepassword : async  (req,res) => {
-  const usuarios = await users.findByPk(req.params.id)
+   const usuarios = await users.findOne({
+    where: {
+        id: req.params.id
+       }
+})
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+      return res.render(path.resolve(__dirname , '..','views','web','newpassword'), {
+        usuarios, errors: errors.errors,  old: req.body
+      });
+    }
+ 
   const usuario_body = { 
     //return res.send(_body);
    
@@ -101,9 +113,15 @@ updatepassword : async  (req,res) => {
     password: bcrypt.hashSync(req.body.contraseña, 10),
     
 }
-let updateUsuario = await users.update(usuario_body, {where: {id: req.params.id}})
+users.update(usuario_body, {where: {id: req.params.id}})
+.then((usuario) => {
+    return res.redirect('/');
+})  
+.catch(error => res.render(path.resolve(__dirname , '..','views','web','newpassword'), {usuarios,
+  errors: errors.errors,  old: req.body}))     
 
-res.redirect('/');
+
+
   
 },
 usernotfound: async  (req,res) => {
@@ -123,7 +141,7 @@ profile: async (req, res) => {
   res.render(path.resolve(__dirname , '..','views','users','profileEdit') , {usuarios});
 },
 update: async (req,res) =>{
-  const usuarios = await users.findByPk(req.params.id)
+
   const usuario_body = { 
       //return res.send(_body);
       first_name: req.body.nombre,
@@ -133,9 +151,10 @@ update: async (req,res) =>{
       gender: req.body.gender,
       
   }
-  let updateUsuario = await users.update(usuario_body, {where: {id: req.params.id}})
-  
-  res.redirect('/profile');
+  await users.update(usuario_body, {where: {id: req.params.id}})
+
+
+  res.render(path.resolve(__dirname , '..','views','web','index'));
 },
 destroy: async (req, res) => {
   await users.destroy({where: {id:req.params.id}, force: true})

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/head.ejs') %>
+  <link rel='stylesheet' href='/css/patients.css' />
+  <body>
+      <header>
+    <%- include('../partials/navBar.ejs') %>
+     </header>
+    <main class="container-fluid">
+        <article class="col-8 mx-auto mb-5">
+            <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">Editar Usuario</h2>
+            </article>
+            <% if(typeof(errors) != 'undefined'){%>
+                <ul class="alert alert-danger">
+                  <% errors.forEach(error => { %>
+                    <li><%= error.msg%></li>
+                    <%});%>
+                </ul>
+              <%}%>
+                   <!--Formulario-->
+              <form class="mt-5" action="/update/<%= usuario.id%>" method="POST" id="formulario">
+                 <!--Nombre-->
+                  <div class="form-group col-12 d-flex justify-content-center mb-0">
+                      <input type="text" name="nombre" placeholder="Nombre" class="form-control form-control-sm mb-3 datos-envio-input  col-6" value="<%= usuario.first_name%>">
+                  </div>
+                  <!--Apellido-->
+                  <div class="form-group col-12 d-flex justify-content-center mb-0">
+                      <input type="text" name="apellido" placeholder="Apellido" class="form-control form-control-sm mb-3 datos-envio-input  col-6" value="<%= usuario.last_name%>">
+                  </div>
+                    <!--Username-->
+                  <div class="form-group col-12 d-flex justify-content-center mb-0">
+                   <input type="text" name="username" placeholder="Nombre de usuario" class="form-control form-control-sm mb-3 datos-envio-input  col-6" value="<%= usuario.username%>">
+               </div>
+                    <!--Email-->
+                  <div class="form-group col-12 d-flex justify-content-center mb-0">
+                      <input type="Email" name="email" placeholder="Email" class="form-control form-control-sm mb-3 datos-envio-input  col-6" value="<%= usuario.email%>">
+                  </div>      
+                
+                      <!--telefono-->
+                  <div class="form-group col-12 d-flex justify-content-center mb-0">
+                      <input type="number" name="telefono" placeholder="Teléfono" class="form-control form-control-sm mb-3 datos-envio-input col-6" value="<%= usuario.telephone%>">
+                   </div>
+                       <!--Puesto-->
+                   <div class="form-group col-12 d-flex justify-content-center mb-0">
+                      <input type="text" name="puesto" placeholder="Puesto de trabajo" class="form-control form-control-sm mb-3 datos-envio-input col-6" value="<%= usuario.puesto%>">
+                   </div>
+                    <!--Genero-->
+                <div class="form-group col-12 d-flex justify-content-center mb-0">
+                   <select id="genero" name="genero" class="custom-select  btn  py-0 col-6" >
+                      <option value="Hombre" selected><%= usuario.gender%></option>
+                      <option value="Mujer">Mujer</option>
+                   </select>
+                </div>
+                <div class="form-group col-12 d-flex justify-content-center mb-0 mt-3">
+                    <select id="roles" name="roles" class="custom-select  btn  py-0 col-6" >
+                        <% if (usuario.roles==9) { %>
+                            <option value="9" selected>Administrador</option>
+                            <option value="1">Editor</option>
+                         
+                            <% } else { %>
+                                <option value="1" selected>Editor</option>
+                                <option value="9">Administrador</option>
+                           <% } %>
+                    
+                    </select>
+                 </div>
+               <div class="ingresar">
+                  <div class="form-group w-60 d-flex justify-content-center">
+                     <button type="submit" class="btn btn-dark w-60 mt-3">ACTUALIZAR</button>
+                  </div>
+                  <div class="form-group w-60 d-flex justify-content-center">
+                      <a href="/adminUsers" class="btn btn-light mt-2" tabindex="-1" role="button" aria-disabled="true">VOLVER</a>
+                   </div>
+                   
+               </div>
+                </form>
+    </main>
+        
+
+ <!-- FOOTER -->
+<%- include('../partials/footer.ejs') %>
+  </body>
+</html>
