@@ -13,7 +13,7 @@ const controllersPatients = require(path.resolve(__dirname, '..', 'controllers',
 
 router.get('/patients',[userLogueado], controllersPatients.index);
 router.get('/patients/create',[userLogueado], controllersPatients.create);
-router.post('/patients/create', patientCreate, controllersPatients.save);
+router.post('/patients/create', patientCreate,[userLogueado], controllersPatients.save);
 router.get('/patients/detail/:id',[userLogueado], controllersPatients.show);
 router.post('/patients/detail/history/:id',  controllersPatients.addhistory);
 router.post('/patients/detail/treatment/:id', controllersPatients.addtreatment);
@@ -26,6 +26,7 @@ router.post('/busquedadatehistory', controllersPatients.searchdatehistory);
 router.get('/patients/delete/treatment/:id',[userLogueado], controllersPatients.destroy);
 router.get('/patients/edit/:id',[userLogueado], controllersPatients.edit);
 router.post('/patients/edit/:id', patientedit, controllersPatients.updatePatients);
+router.get('/patientsHistory/:id',[userLogueado], controllersPatients.historiaclinica);
 
 
 

@@ -25,14 +25,6 @@ module.exports = {
     res.render(path.resolve(__dirname , '..','views','patients','patientCreate')); 
   },
   save: async (req, res) => {
-    
-    let errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.render(path.resolve(__dirname , '..','views','patients','patientCreate'), {
-        errors: errors.errors,  old: req.body
-      });
-    }
-    
     let patient_body={
       first_name: req.body.nombre,
       last_name : req.body.apellido,
@@ -115,6 +107,14 @@ module.exports = {
     
     };  
     
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.render(path.resolve(__dirname , '..','views','patients','patientCreate'), {patient_body,
+        errors: errors.errors,  old: req.body
+      });
+    }
+    
+   
     //return res.send(patient_body) 
     //Guardo el paciente creado en una variable para despues poder llamarlo cuando creo la historia clinica
     let newPaciente = await patients.create(patient_body)
@@ -277,6 +277,7 @@ module.exports = {
         //return res.send(_body);
         first_name: req.body.nombre,
         last_name : req.body.apellido,
+        firstlast_name :req.body.nombre+" "+req.body.apellido,
         gender : req.body.genero,
         date : req.body.nacimiento,
         email: req.body.email,
@@ -611,6 +612,11 @@ module.exports = {
       
       //return res.send(tratamiento)
       res.render(path.resolve(__dirname, '..', 'views', 'patients', 'medicalhistory'), {history})
+    },
+    historiaclinica:async (req,res)=>{
+      const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistories','treatments']})
+      const historiaClinica = await medicalhistories.findOne({where:{patient_id:req.params.id}})
+      res.render(path.resolve(__dirname, '..', 'views', 'patients', 'patientHistory'), {paciente,historiaClinica})
     },
   }
   

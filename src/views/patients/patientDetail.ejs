@@ -12,28 +12,34 @@
     <header>
       <%- include('../partials/navBar.ejs') %>
     </header>
-    <div id="pdf" class="container-fluid">             
+    <div id="pdf" class="container-fluid" >             
         <section class="row">
           <!-- Cuerpo principal -->
-          <article class="col-8 mx-auto mb-5">
-            <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">DETALLE DE PACIENTE</h2>
+          <article class="col-8 mx-auto mb-3 pdf">
+            <h2  class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">DETALLE DE PACIENTE</h2>
+            <div class="col-12 d-flex justify-content-center pr-5">
+              <button id="btnCrearPdf" class="btn btn-light px-5">PDF</button>
+               <a href="/patients/edit/<%= paciente.id %>" class="btn btn-light px-5 ml-2">Editar</a>
+               <a href="/patientsHistory/<%= paciente.id %>" class="btn btn-light px-5 ml-2">Ver historia clínica</a>
+             </div>
+             <h3  class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase"> <td><%= paciente.first_name %></td>
+              <td><%= paciente.last_name %></td></h3>
             </article>
           
           
-          <article id="article" class="col-12 mt-5">       
+          <article id="article" class="col-12 d-flex  justify-content-center">       
             <!--Info-->
-            <article class="col-12 mt-3">
-              <table class="table">
+            <article class="col-9 mt-1" style="background-color: aliceblue;">
+              <table class="table pdf">
                   <thead class="thead">
                     <tr>
                         
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
+                      
                         <th scope="col">Género</th>
                         <th scope="col">Nacimiento</th>
                         <th scope="col">DNI</th>
                         <th scope="col">Email</th>
-                   
+                        <th scope="col">Teléfono</th>
                         
                     </tr>
                 </thead>
@@ -41,13 +47,12 @@
                    
                         <tr>
                            
-                            <td><%= paciente.first_name %></td>
-                            <td><%= paciente.last_name %></td>
+                          
                             <td><%= paciente.gender %></td>
                             <td><%= paciente.date %></td>
                             <td><%= paciente.dni %></td>
                             <td><%= paciente.email %></td>
-                            
+                            <td><%= paciente.telephone %></td>
 
                           
                         </tr>
@@ -60,7 +65,7 @@
                     <th scope="col">Número de afiliado</th>
                     <th scope="col">Dirección</th>
                     <th scope="col">Calle n°</th>
-                    <th scope="col">Teléfono</th>
+                    
                     <th scope="col">Número de paciente</th>
                      
                       
@@ -74,7 +79,7 @@
                         <td><%= paciente.insurance_number%></td>
                         <td><%= paciente.adress %></td>
                         <td><%= paciente.adress_number %></td>
-                        <td><%= paciente.telephone %></td>
+                      
                         <td><%= paciente.nhc %></td>  
 
                          
@@ -212,28 +217,47 @@
         </article>
         </article>
           <!-- Tratamientos-->
-          <article class="col-8 mx-auto mb-4">
+          <article class="col-9 mx-auto mb-4"  style="background-color: aliceblue;">
             <h2 class="titulo-admin pb-3 border-bottom text-center mt-5 mx-auto text-uppercase">TRATAMIENTOS</h2>
-            </article>
-              <article id="article" class="col-12">       
+         
+              
                 <div>
-                  <form action="/patients/detail/treatment/<%= paciente.id%>" method="POST">
+                  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Agregar tratamiento +</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Agregar tratamiento</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/patients/detail/treatment/<%= paciente.id%>" method="POST">
+          <div class="form-group">
+         
                     
-                  <input type="text" class="form-control bg-light  visita_medica col-12" name="tratamiento" placeholder="Agregar tratamiento"  value="" required>
-                  <label class="mt-2">Fecha inicio tratamiento</label>
-                  <input type="date" id="start" name="fechatratamiento" class="form-control  bg-light"
-                  value=""
-                  min="1940-01-01" max="2021-12-31" required>
-                  <label class="mt-2">Fecha fin tratamiento</label>
-                  <input type="date" id="start" name="fechafintratamiento" class="form-control  bg-light"
-                  value=""
-                  min="1940-01-01" max="2021-12-31">
-                  <button type="submit" class="btn btn-dark mt-3">Guardar</button>
-                  </form>
+              <input type="text" class="form-control bg-light  visita_medica col-12" name="tratamiento" placeholder="Agregar tratamiento"  value="" required>
+              <label class="mt-2">Fecha inicio tratamiento</label>
+              <input type="date" id="start" name="fechatratamiento" class="form-control  bg-light"
+              value=""
+              min="1940-01-01" max="2021-12-31" required>
+              <label class="mt-2">Fecha fin tratamiento</label>
+              <input type="date" id="start" name="fechafintratamiento" class="form-control  bg-light"
+              value=""
+              min="1940-01-01" max="2021-12-31">
+              <button type="submit" class="btn btn-dark mt-3">Guardar</button>
+              </form>
+      </div>
+    </div>
+  </div>
+</div>
+                 
                 </div>
       
 <!--Info-->
-<article class="col-12 mt-3">
+<article class="col-12 mt-3 mb-5">
   <table class="table"> 
      <thead>
      <tr>
@@ -281,102 +305,27 @@
       <% }) %>
       </tbody> 
     </table>
- 
-
-
-
-  </article>
-
-           <!-- Historia clinica-->
-           <article class="col-8 mx-auto mb-5">
-            <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">HISTORIA CLÍNICA</h2>
-            </article>
-              <article id="article" class="col-12">   
-               
-                <div>
-                  <form action="/patients/detail/history/<%= paciente.id%>" method="POST">
-                  <input type="text" class="form-control bg-light mt-3 mb-2 visita_medica col-12" name="visita_medica" placeholder="Agregar visita médica"  value="" required>
-                  <label>Fecha de visita:</label>
-                  <input type="date" id="start" name="fechavisita" class="form-control  mb-2   bg-light"
-                  value=""
-                  min="1940-01-01" max="2021-12-31" required>
-                  <label>Nombre del médico:</label>
-                  <input type="text" class="form-control bg-light  mb-3 col-12" name="doctor" placeholder="<%=  locals.usuario.first_name %><%=  locals.usuario.last_name %>"  value="<%=  locals.usuario.first_name %><%=  locals.usuario.last_name %>"required readonly="readonly">
-                 
-                  <button type="submit" class="btn btn-dark">Guardar</button>
-                  </form>
-                </div>
-                
-
-               </article>
-            
-
-<!--Info-->
-<article class="col-12 mt-3">
-  <table class="table"> 
-     <thead>
-     <tr>
+  </div>
+  <!--Boton volver-->
+  <div class="col-12 d-flex justify-content-center mt-5 pt-5 pr-5 my-5">
+   <button id="btnCrearPdf" class="btn btn-dark px-5">PDF</button>
+    <a href="/patients" class="btn btn-dark px-5 ml-2">Volver</a>
+    <a href="/patients/edit/<%= paciente.id %>" class="btn btn-dark px-5 ml-2">Editar</a>
+    <a href="/patientsHistory/<%= paciente.id %>" class="btn btn-dark px-5 ml-2">Ver historia clínica</a>
+  </div>
+  
    
-    <th scope="col"></th>
-    <th scope="col"></th>
-    <th scope="col"></th>
-    <th scope="col"></th>
-     <th scope="col">Historia clinica:</th>
-    <th scope="col">Fecha de visita</th>
-    <th scope="col">Médico</th>
-     
-      
-     </tr>
-     </thead>
-     <tbody>
-     
-      <% historiaClinica.forEach(historia => { %>
-       <% if (historia.visitamedica  ){ %>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td> 
-            <td><%= historia.visitamedica %> </td>
-            <td> <%= historia.fechavisita  %></td> 
-            <td> <%= historia.doctor  %></td> 
-          </tr>
-        <% }  else { %>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td> 
-            <td>El paciente no tiene historia clínica</td>
-            <td>--/--/----</td> 
-            <td>----------</td> 
-        </tr>
-        <% } %> 
-      <% }) %>
-      
-     
-      </tbody> 
-    </table>
-   
-  </article>
 
-
+</section>
+</div>
+          </article>
+          </article>
+        
 
 
             </section>
           </div>
-        </div>
-          <!--Boton volver-->
-          <div class="col-12 d-flex justify-content-end pr-5 my-5">
-           <button id="btnCrearPdf" class="btn btn-dark px-5">PDF</button>
-            <a href="/patients" class="btn btn-dark px-5 ml-2">Volver</a>
-            <a href="/patients/edit/<%= paciente.id %>" class="btn btn-dark px-5 ml-2">Editar</a>
-          </div>
-          
-           
-    
-    </section>
-  </div>
+   
 
   <!-- Footer -->
   <%- include('../partials/footer.ejs') %>
