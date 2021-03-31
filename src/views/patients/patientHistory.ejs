@@ -2,6 +2,7 @@
 <html>
   <%- include('../partials/head.ejs') %>
   <link rel='stylesheet' href='/css/patients.css' />
+  <link rel='stylesheet' href='/css/patientHistory.css' />
   <body>
       <header>
     <%- include('../partials/navBar.ejs') %>
@@ -13,20 +14,20 @@
         <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">HISTORIA CLÍNICA</h2>
         </article>
           <article id="article" class="col-12">   
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Agregar Visita Médica +</button>
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Agregar Evolución +</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Agregar Visita médica</h3>
+        <h3 class="modal-title" id="exampleModalLabel">Agregar Evolución</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form action="/patients/detail/history/<%= paciente.id%>" method="POST">
-            <input type="text" class="form-control bg-light mt-3 mb-2 visita_medica col-12" name="visita_medica" placeholder="Agregar visita médica"  value="" required>
+            <textarea type="text" class="form-control bg-light mt-3 mb-2 visita_medica col-12" name="visita_medica" placeholder="Agregar visita médica"  value="" required></textarea>
             <label>Fecha de visita:</label>
             <input type="date" id="start" name="fechavisita" class="form-control  mb-2   bg-light"
             value=""
@@ -47,57 +48,34 @@
 
 <!--Info-->
 <article class="col-12 mt-3">
-<table class="table"> 
- <thead>
- <tr>
 
-<th scope="col"></th>
-<th scope="col"></th>
-<th scope="col"></th>
-<th scope="col"></th>
- <th scope="col">Historia clinica:</th>
-<th scope="col">Fecha de visita</th>
-<th scope="col">Médico</th>
  
-  
- </tr>
- </thead>
- <tbody>
- 
-  
-   <% if (historiaClinica.visitamedica  ){ %>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td> 
-        <td><%= historiaClinica.visitamedica %> </td>
-        <td> <%= historiaClinica.fechavisita  %></td> 
-        <td> <%= historiaClinica.doctor  %></td> 
-      </tr>
-    <% }  else { %>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td> 
-        <td>El paciente no tiene historia clínica</td>
-        <td>--/--/----</td> 
-        <td>----------</td> 
-    </tr>
-    <% } %> 
- 
-  
- 
-  </tbody> 
-</table>
+    <% if (historiaClinica.length>0) { %>
+     
+ <% historiaClinica.forEach(historia => { %>
+
+  <div class="pl-5 pb-5 pt-3 mt-5 evolucion" >
+    <h4>Evolución <%= historia.fechavisita  %></h4>
+    <h6>Por <%= historia.doctor  %></h6>
+
+      
+      <p><%= historia.visitamedica %></p>
+      
+  </div>
+
+
+  <% }) %>
+<% } else { %>
+ <h4 class="text-center">El paciente no tiene ninguna evolución</h4>
+    <% } %>
+
 
 </article>
 
 
 <div class="col-12 form-group d-flex flex-wrap justify-content-end">
 
-    <a href="/patients/detail/<%= paciente.id %>" class="btn btn-dark px-5">Volver</a>
+    <a href="/patients/detail/<%= paciente.id %>" class="btn btn-dark px-5 mt-5">Volver</a>
 </div>
 
 </main>

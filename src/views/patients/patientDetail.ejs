@@ -12,16 +12,18 @@
     <header>
       <%- include('../partials/navBar.ejs') %>
     </header>
+    <div class="col-12 d-flex justify-content-center pr-5 mt-3 border-top" >
+      <button id="btnCrearPdf" class="btn btn-light px-5 ">PDF</button>
+       <a href="/patients/edit/<%= paciente.id %>" class="btn btn-light px-5 ml-2">Editar</a>
+       <a href="/patientsHistory/<%= paciente.id %>" class="btn btn-light px-5 ml-2">Ver historia clínica</a>
+     </div>
     <div id="pdf" class="container-fluid" >             
         <section class="row">
           <!-- Cuerpo principal -->
           <article class="col-8 mx-auto mb-3 pdf">
             <h2  class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">DETALLE DE PACIENTE</h2>
-            <div class="col-12 d-flex justify-content-center pr-5">
-              <button id="btnCrearPdf" class="btn btn-light px-5">PDF</button>
-               <a href="/patients/edit/<%= paciente.id %>" class="btn btn-light px-5 ml-2">Editar</a>
-               <a href="/patientsHistory/<%= paciente.id %>" class="btn btn-light px-5 ml-2">Ver historia clínica</a>
-             </div>
+            
+             <div id="pdf">
              <h3  class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase"> <td><%= paciente.first_name %></td>
               <td><%= paciente.last_name %></td></h3>
             </article>
@@ -29,7 +31,7 @@
           
           <article id="article" class="col-12 d-flex  justify-content-center">       
             <!--Info-->
-            <article class="col-9 mt-1" style="background-color: aliceblue;">
+            <article class="col-10 mt-1" style="background-color: aliceblue;">
               <table class="table pdf">
                   <thead class="thead">
                     <tr>
@@ -217,44 +219,11 @@
         </article>
         </article>
           <!-- Tratamientos-->
-          <article class="col-9 mx-auto mb-4"  style="background-color: aliceblue;">
+          <article class="col-10 mx-auto mb-4 mt-5"  style="background-color: aliceblue;">
             <h2 class="titulo-admin pb-3 border-bottom text-center mt-5 mx-auto text-uppercase">TRATAMIENTOS</h2>
          
               
-                <div>
-                  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Agregar tratamiento +</button>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Agregar tratamiento</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="/patients/detail/treatment/<%= paciente.id%>" method="POST">
-          <div class="form-group">
-         
-                    
-              <input type="text" class="form-control bg-light  visita_medica col-12" name="tratamiento" placeholder="Agregar tratamiento"  value="" required>
-              <label class="mt-2">Fecha inicio tratamiento</label>
-              <input type="date" id="start" name="fechatratamiento" class="form-control  bg-light"
-              value=""
-              min="1940-01-01" max="2021-12-31" required>
-              <label class="mt-2">Fecha fin tratamiento</label>
-              <input type="date" id="start" name="fechafintratamiento" class="form-control  bg-light"
-              value=""
-              min="1940-01-01" max="2021-12-31">
-              <button type="submit" class="btn btn-dark mt-3">Guardar</button>
-              </form>
-      </div>
-    </div>
-  </div>
-</div>
-                 
-                </div>
+            
       
 <!--Info-->
 <article class="col-12 mt-3 mb-5">
@@ -306,9 +275,42 @@
       </tbody> 
     </table>
   </div>
+  <button type="button" class="btn btn-dark ml-5 pl-5" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Agregar tratamiento +</button>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Agregar tratamiento</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/patients/detail/treatment/<%= paciente.id%>" method="POST">
+            <div class="form-group">
+           
+                      
+                <input type="text" class="form-control bg-light  visita_medica col-12" name="tratamiento" placeholder="Agregar tratamiento"  value="" required>
+                <label class="mt-2">Fecha inicio tratamiento</label>
+                <input type="date" id="start" name="fechatratamiento" class="form-control  bg-light"
+                value=""
+                min="1940-01-01" max="2021-12-31" required>
+                <label class="mt-2">Fecha fin tratamiento</label>
+                <input type="date" id="start" name="fechafintratamiento" class="form-control  bg-light"
+                value=""
+                min="1940-01-01" max="2021-12-31">
+                <button type="submit" class="btn btn-dark mt-3">Guardar</button>
+                </form>
+        </div>
+      </div>
+    </div>
+  </div>
+                   
+</div>
+
   <!--Boton volver-->
   <div class="col-12 d-flex justify-content-center mt-5 pt-5 pr-5 my-5">
-   <button id="btnCrearPdf" class="btn btn-dark px-5">PDF</button>
     <a href="/patients" class="btn btn-dark px-5 ml-2">Volver</a>
     <a href="/patients/edit/<%= paciente.id %>" class="btn btn-dark px-5 ml-2">Editar</a>
     <a href="/patientsHistory/<%= paciente.id %>" class="btn btn-dark px-5 ml-2">Ver historia clínica</a>

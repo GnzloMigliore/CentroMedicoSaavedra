@@ -119,7 +119,7 @@ module.exports = {
     //Guardo el paciente creado en una variable para despues poder llamarlo cuando creo la historia clinica
     let newPaciente = await patients.create(patient_body)
 
-    let patientsid_body1 = {patient_id: newPaciente.id, firstname_patient: newPaciente.first_name, lastname_patient: newPaciente.last_name} 
+    let patientsid_body1 = {patient_id: newPaciente.id, patient_name:newPaciente.first_name +" "+newPaciente.last_name } 
     //console.log('ooooooooooooooooooooo' + newPaciente.id);
    let newtreatment = await treatments.create(patientsid_body1);
      //return res.send(newtreatment.id)
@@ -186,7 +186,7 @@ module.exports = {
       
       //return res.send(paciente)
       //res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente, historiaClinica}); 
-      res.redirect(`/patients/detail/${paciente.id}`)
+      res.redirect(`/patientsHistory/${paciente.id}`)
       
     },
      addtreatment: async (req,res)=>{
@@ -514,8 +514,8 @@ module.exports = {
       const tratamiento = await treatments.findAll({ 
         where:{
           [Op.or]:
-           [{firstname_patient: {[Op.like]: `%${req.body.search}%`}},
-           {lastname_patient: {[Op.like]: `%${req.body.search}%`}},
+           [{patient_name: {[Op.like]: `%${req.body.search}%`}},
+          
            {tratamiento: {[Op.like]: `%${req.body.search}%`}}
       
           ]
@@ -615,7 +615,10 @@ module.exports = {
     },
     historiaclinica:async (req,res)=>{
       const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistories','treatments']})
-      const historiaClinica = await medicalhistories.findOne({where:{patient_id:req.params.id}})
+      const historiaClinica = await medicalhistories.findAll({where:{patient_id:req.params.id, visitamedica: { 
+        [Op.ne]: '%null%' 
+      } }})
+      //return res.send(historiaClinica)
       res.render(path.resolve(__dirname, '..', 'views', 'patients', 'patientHistory'), {paciente,historiaClinica})
     },
   }
