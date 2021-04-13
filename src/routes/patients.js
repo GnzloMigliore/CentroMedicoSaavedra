@@ -27,7 +27,7 @@ router.get('/patients/delete/treatment/:id',[userLogueado], controllersPatients.
 router.get('/patients/edit/:id',[userLogueado], controllersPatients.edit);
 router.post('/patients/edit/:id', patientedit, controllersPatients.updatePatients);
 router.get('/patientsHistory/:id',[userLogueado], controllersPatients.historiaclinica);
-
+router.post('/addevolution/:id', controllersPatients.addevolution);
 
 
 //rutas de filtros

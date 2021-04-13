@@ -88,6 +88,7 @@ module.exports = (sequelize, dataTypes) => {
         action_obesity: dataTypes.STRING,
         coments_obesity: dataTypes.TEXT,
         medicalhistory_id:  dataTypes.STRING,
+        patient_id: dataTypes.INTEGER,
     };
 
     const patients = sequelize.define(alias, cols)
@@ -100,6 +101,15 @@ module.exports = (sequelize, dataTypes) => {
                 foreignKey: 'medicalhistory_id'
             }
         )   
+      
+            patients.belongsTo(
+                models.exams,
+                {
+                    as: 'exams',
+                    foreignKey: 'patient_id'
+                }
+            ) 
+              
         patients.belongsToMany(
             models.treatments,
             {
@@ -113,4 +123,5 @@ module.exports = (sequelize, dataTypes) => {
 
     return patients
     ;
-} 
+
+}

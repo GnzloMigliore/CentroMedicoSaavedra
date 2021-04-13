@@ -2,7 +2,7 @@
 const path = require('path');
 const fs = require('fs');
 const { Op, where } = require("sequelize");
-const {patients, medicalhistories,treatments,patienttreatments} = require ('../database/models');
+const {patients, medicalhistories,treatments,exams,patienttreatments} = require ('../database/models');
 
 const {
   check,
@@ -130,6 +130,8 @@ module.exports = {
       await patienttreatments.create(patientsid_body);
 
 
+      let patientsexam_body = {patient_id: newPaciente.id}
+      await exams.create(patientsexam_body);
 
       let patientsmh_body = {patient_id: newPaciente.id,  first_name: newPaciente.first_name, last_name: newPaciente.last_name}
     //Hago el create de la historia clinica pasandole la variable declarada acá arriba
@@ -620,6 +622,64 @@ module.exports = {
       } }})
       //return res.send(historiaClinica)
       res.render(path.resolve(__dirname, '..', 'views', 'patients', 'patientHistory'), {paciente,historiaClinica})
+    },
+    addevolution:async (req,res)=>{
+    
+      const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistories','treatments','exams']})
+      const exam = await exams.findOne({where:{patient_id:req.params.id}})
+      //return res.sen(exams)
+      const altura = exam.altura;
+      let exams_body={
+       
+        altura: req.body.altura,
+        peso: req.body.peso,
+        masacorporal: req.body.masacorporal,
+        frec_cardiaca: req.body.frec_cardiaca,
+        tension_arterial:req.body.tension_arterial,
+        frec_resp:req.body.frec_resp,
+        temp_axilar: req.body. temp_axilar,
+        perimetro_abs: req.body.perimetro_abs,
+        tension_art_prom: req.body.tension_art_prom,
+        r2: req.body.r2,
+        r3: req.body.r3,
+        r4: req.body.r4,
+        soplos: req.body.soplos,
+        fallaizq: req.body.fallaizq,
+        saturacion: req.body.saturacion,
+      
+
+      }; 
+
+      let newexams = {
+        patient_id: paciente.id,
+        altura: req.body.altura,
+        peso: req.body.peso,
+        masacorporal: req.body.masacorporal,
+        frec_cardiaca: req.body.frec_cardiaca,
+        tension_arterial:req.body.tension_arterial,
+        frec_resp: req.body.frec_resp,
+        temp_axilar: req.body.temp_axilar,
+        perimetro_abs: req.body.perimetro_abs,
+        tension_art_prom: req.body.tension_art_prom,
+        r2: req.body.r2,
+        r3: req.body.r3,
+        r4: req.body.r4,
+        soplos: req.body.soplos,
+        fallaizq: req.body.fallaizq,
+        fallader: req.body.fallader,
+        saturacion: req.body.saturacion,
+      }
+      
+      if (altura == null) {
+       
+        await exams.update(exams_body, {where: {patient_id: req.params.id}})
+      } else {
+        await exams.create(newexams)
+      }  
+     //return res.send(newmedicalhistory) 
+      //return res.send(paciente)
+      //res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente, historiaClinica}); 
+      res.redirect(`/patientsHistory/${paciente.id}`)
     },
   }
   
