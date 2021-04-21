@@ -1,8 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+const multer = require('multer');
+const fs = require('fs');
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.resolve(__dirname,'..','..','public','images','estudios'));
+    },
+    filename: function (req, file, cb) {
+      cb(null, 'imagen-'+Date.now() + path.extname(file.originalname));
+      //console.log("ooooooooooooooooooooooooooooooooooo"+file.originalname);
+    }
+  })
+  
+  const upload = multer({ storage });
 
 //Requiero middlewares
+const addimage = require(path.resolve(__dirname, '..', 'middlewares', 'addimage'))
 const patientCreate = require(path.resolve(__dirname, '..', 'middlewares', 'patientCreate'));
 const patientedit = require(path.resolve(__dirname, '..', 'middlewares', 'patientedit'));
 const userLogueado = require(path.resolve(__dirname, '..', 'middlewares', 'userLogueado'));
@@ -28,7 +42,7 @@ router.get('/patients/edit/:id',[userLogueado], controllersPatients.edit);
 router.post('/patients/edit/:id', patientedit, controllersPatients.updatePatients);
 router.get('/patientsHistory/:id',[userLogueado], controllersPatients.historiaclinica);
 router.post('/addevolution/:id', controllersPatients.addevolution);
-
+router.post('/addimage/:id',upload.single('imagen'), controllersPatients.addimage);
 
 //rutas de filtros
 router.get('/patients/generoh', controllersPatients.generoh);

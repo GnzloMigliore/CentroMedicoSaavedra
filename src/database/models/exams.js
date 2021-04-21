@@ -24,7 +24,8 @@ module.exports = (sequelize, dataTypes) => {
          fallaizq: dataTypes.STRING,
          fallader: dataTypes.STRING,
          saturacion: dataTypes.STRING,
-       
+         date: dataTypes.STRING,
+         doctor: dataTypes.STRING,
 
     };
 

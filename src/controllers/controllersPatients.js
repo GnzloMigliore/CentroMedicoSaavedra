@@ -2,7 +2,7 @@
 const path = require('path');
 const fs = require('fs');
 const { Op, where } = require("sequelize");
-const {patients, medicalhistories,treatments,exams,patienttreatments} = require ('../database/models');
+const {patients, medicalhistories,treatments,exams,patienttreatments,images} = require ('../database/models');
 
 const {
   check,
@@ -132,6 +132,9 @@ module.exports = {
 
       let patientsexam_body = {patient_id: newPaciente.id}
       await exams.create(patientsexam_body);
+
+      let patientsimage_body = {patient_id: newPaciente.id}
+      await images.create(patientsimage_body);
 
       let patientsmh_body = {patient_id: newPaciente.id,  first_name: newPaciente.first_name, last_name: newPaciente.last_name}
     //Hago el create de la historia clinica pasandole la variable declarada acá arriba
@@ -620,11 +623,17 @@ module.exports = {
       const historiaClinica = await medicalhistories.findAll({where:{patient_id:req.params.id, visitamedica: { 
         [Op.ne]: '%null%' 
       } }})
-      //return res.send(historiaClinica)
-      res.render(path.resolve(__dirname, '..', 'views', 'patients', 'patientHistory'), {paciente,historiaClinica})
+      const imagenes= await images.findAll({where:{patient_id:req.params.id}})
+
+      
+      const exam = await exams.findAll({where:{patient_id:req.params.id, altura: { 
+        [Op.ne]: '%null%' 
+      } }})
+     //return res.send(imagenes)
+      res.render(path.resolve(__dirname, '..', 'views', 'patients', 'patientHistory'), {paciente,historiaClinica,exam,imagenes})
     },
     addevolution:async (req,res)=>{
-    
+
       const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistories','treatments','exams']})
       const exam = await exams.findOne({where:{patient_id:req.params.id}})
       //return res.sen(exams)
@@ -646,7 +655,7 @@ module.exports = {
         soplos: req.body.soplos,
         fallaizq: req.body.fallaizq,
         saturacion: req.body.saturacion,
-      
+        date: req.body.date,
 
       }; 
 
@@ -668,6 +677,8 @@ module.exports = {
         fallaizq: req.body.fallaizq,
         fallader: req.body.fallader,
         saturacion: req.body.saturacion,
+        date: req.body.date,
+        doctor: req.body.doctor,
       }
       
       if (altura == null) {
@@ -680,6 +691,64 @@ module.exports = {
       //return res.send(paciente)
       //res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente, historiaClinica}); 
       res.redirect(`/patientsHistory/${paciente.id}`)
+    },
+    addimage:async (req,res)=>{
+     console.log(req.file)
+      const historiaClinica = await medicalhistories.findAll({where:{patient_id:req.params.id, visitamedica: { 
+        [Op.ne]: '%null%' 
+      } }})
+      const exam = await exams.findAll({where:{patient_id:req.params.id, altura: { 
+        [Op.ne]: '%null%' 
+      } }})
+      const imagenes= await images.findAll({where:{patient_id:req.params.id}})
+      const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistories','treatments','exams']})
+      const image = await images.findOne({where:{patient_id:req.params.id}})
+      //return res.send(req.body.imagen)
+
+      
+
+
+
+      let errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.render(path.resolve(__dirname , '..','views','patients','patientHistory'), {paciente,historiaClinica,exam,imagenes,
+          errors: errors.errors,  old: req.body
+        });
+      }
+      const imagen = image.filename;
+       //return res.send(imagen)
+       let newimage = {
+        patient_id: paciente.id,
+        filename:req.file.filename
+      }
+      let image_body={
+       filename:req.file.filename
+        
+      }; 
+
+      if (imagen == null) {
+       
+        await images.update(image_body, {where: {patient_id: req.params.id}})
+        .then((imagecreate) => {
+         
+        })  
+        .catch(errors =>  res.redirect(`/patientsHistory/${paciente.id}`), {
+          errors: errors.errors,  old: req.body}) 
+      
+          return res.redirect(`/patientsHistory/${paciente.id}`)
+      } else {
+        await images.create(newimage)
+        .then((imagecreate) => {
+          return res.redirect(`/patientsHistory/${paciente.id}`)
+        })  
+        .catch(errors =>  res.redirect(`/patientsHistory/${paciente.id}`), {
+          errors: errors.errors,  old: req.body}) 
+      
+          return res.redirect(`/patientsHistory/${paciente.id}`)
+      }  
+   
+    
+    
     },
   }
   

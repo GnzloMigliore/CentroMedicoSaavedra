@@ -119,6 +119,15 @@ module.exports = (sequelize, dataTypes) => {
                 otherKey: 'treatments_id',
             }
         )   
+        patients.belongsToMany(
+            models.images,
+            {
+                as: 'images',
+                through: 'patientimages',
+                foreignKey: 'patient_id',
+               
+            }
+        )   
    }
 
     return patients
