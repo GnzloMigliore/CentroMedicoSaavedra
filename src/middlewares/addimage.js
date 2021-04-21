@@ -9,25 +9,23 @@ const {
 
 
 module.exports = [
-    
-    body('imagen').custom(function (value, { req }) {
-        let ext
-        if(req.file != undefined ){
-            return true
-        }else{
-            ext = ""+path.extname(req.file.filename).toLowerCase();
-        }
-        console.log('oooooooooooooooooooooooooooooooooooooooooooooooooo' + ext);
-        if (
-            ext != ".jpg" ||
-            ext != ".jpeg" ||
-            ext != ".png" ||
-            ext != ".gif"
-            ){
-              return true;
-            }
-            return false;
-      }).withMessage('La imagen debe tener extensión JPG, JPEG, PNG o GIF'),
+
+    function Checkfiles()
+    {
+        var fup = document.getElementById('filename');
+        var fileName = fup.value;
+        var ext = filename.substring(fileName.lastIndexOf('.') + 1);
+  
+    if(ext =="jpg")
+    {
+        return true;
+    }
+    else
+    {
+        return Promise.reject('No')
+        
+    }
+    }
     ]
     
     
