@@ -353,7 +353,7 @@ module.exports = {
         date_end_irc: req.body.fecha_end_irc,
         action_irc: req.body.accion_irc,
         coments_irc: req.body.comentario_irc, 
-        obesity: req.body.obesidad,
+        obesity: req.body.obesity,
         date_obesity: req.body.fecha_obesidad,
         date_end_obesity: req.body.fecha_end_obesidad,
         action_obesity: req.body.accion_obesidad,
