@@ -47,8 +47,13 @@
                     <!--Genero-->
                 <div class="form-group col-12 d-flex justify-content-center mb-0">
                    <select id="genero" name="genero" class="custom-select  btn  py-0 col-6" >
-                      <option value="Hombre" selected><%= usuario.gender%></option>
-                      <option value="Mujer">Mujer</option>
+                    <% if(usuario.gender == "hombre"){%>
+                        <option value="mujer">Femenino</option>
+                        <option selected value="hombre">Masculino</option>
+                        <% } else { %>
+                            <option selected  value="mujer">Femenino</option>
+                        <option value="hombre">Masculino</option>
+                        <% } %>
                    </select>
                 </div>
                 <div class="form-group col-12 d-flex justify-content-center mb-0 mt-3">
