@@ -2,6 +2,7 @@
 const path = require('path');
 const fs = require('fs');
 const bcrypt = require('bcryptjs');
+const nodemailer = require('nodemailer');
 const {users} = require ('../database/models');
 
 const {
@@ -123,6 +124,48 @@ users.update(usuario_body, {where: {id: req.params.id}})
 
 
   
+},
+sendemail: async  (req,res) => {
+  let user = await users.findOne({
+    where: {
+        email: req.body.email
+       }
+});
+
+  if (user) {
+    const userId = user.id;
+    const email = req.body.email
+contentHTML = `
+<h1>Recover password <h1> 
+http://localhost:3000/newpassword
+`; 
+const transporter = nodemailer.createTransport({
+  host:'sistemcms.com',
+  port:  25,
+  secure:false,
+  auth:{
+    user:"Gonzalomigliore@sistemcms.com",
+    pass:'Yavu1234_'
+
+
+  },
+  tls:{
+    rejectUnauthorized:false
+  }
+});
+await transporter.sendMail({
+  from: "'Centro Médico Saavedra'<Gonzalomigliore@sistemcms.com>",
+  to:email,
+  subject: "Cambio de contraseña",
+  text: "Para un cambio de contraseña has click aquí: http://sistemcms.com/newpassword/"+userId
+})
+res.redirect('/mensajeenviado');
+  }
+else{
+  res.redirect('/usernotfound')
+  }
+
+
 },
 usernotfound: async  (req,res) => {
   return res.render(path.resolve(__dirname, '..', 'views', 'web', 'usernotfound'))

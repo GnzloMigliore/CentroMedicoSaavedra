@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const nodemailer = require('nodemailer');
+
 const fs = require('fs');
 const {
   check,
@@ -29,47 +29,7 @@ router.get('/newpassword/:id', controllersUser.newpassword);
 router.post('/updatepassword/:id',[validacionrecover], controllersUser.updatepassword);
 router.get('/mensajeenviado', controllersUser.mensajeenviado);
 router.get('/usernotfound', controllersUser.usernotfound);
-router.post('/sendemail',[recover],async (req,res)=>{
-  let user = await users.findOne({
-    where: {
-        email: req.body.email
-       }
-});
-
-  if (user) {
-    const userId = user.id;
-    const email = req.body.email
-contentHTML = `
-<h1>Recover password <h1> 
-http://localhost:3000/newpassword
-`; 
-const transporter = nodemailer.createTransport({
-  host:'sistemcms.com',
-  port:  25,
-  secure:false,
-  auth:{
-    user:"Gonzalomigliore@sistemcms.com",
-    pass:'Yavu1234_'
-
-
-  },
-  tls:{
-    rejectUnauthorized:false
-  }
-});
-await transporter.sendMail({
-  from: "'Centro Médico Saavedra'<Gonzalomigliore@sistemcms.com>",
-  to:email,
-  subject: "Cambio de contraseña",
-  text: "Para un cambio de contraseña has click aquí: http://localhost:3000/newpassword/"+userId
-})
-res.redirect('/mensajeenviado');
-  }
-else{
-  res.redirect('/usernotfound')
-  }
-
-});
+router.post('/sendemail', controllersUser.sendemail);
   
 
 
