@@ -1,22 +1,22 @@
 module.exports = {
   "development": {
-    "username": "cms_database",
-    "password": "Gallo2573",
-    "database": "sistemcm_",
+    "username": "root",
+    "password": null,
+    "database": "clinica-centro-medico",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "port": 3306
   },
   "test": {
-    "username": "cms_database",
-    "password": "Gallo2573",
-    "database": "sistemcm_",
+    "username": "root",
+    "password": null,
+    "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "cms_database",
-    "password": "Gallo2573",
+    "username": "root",
+    "password": null,
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"

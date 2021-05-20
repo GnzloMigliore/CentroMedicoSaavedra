@@ -44,7 +44,7 @@ module.exports = {
 login: async (req, res) => {
   let errors = validationResult(req);
   if (!errors.isEmpty()){
-      return res.render(path.resolve(__dirname, '..', 'views', 'web', 'index'), {
+      return res.render(path.resolve(__dirname, '..', 'views', 'web', 'index2'), {
           errors: errors.mapped(),  old: req.body});
   } else{
     
