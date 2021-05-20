@@ -6,10 +6,6 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 
-
-
-
-
 // Requiero el middleware para recordar el usuario en la vista
 
 const recordarUser = require ('./src/middlewares/recordarUser');

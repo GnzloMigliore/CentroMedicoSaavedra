@@ -21,6 +21,9 @@ module.exports = {
     res.render(path.resolve(__dirname , '..','views','patients','patients'),{paciente}); 
     
   },
+  turnos: async (req, res) => {
+    res.render(path.resolve(__dirname , '..','views','apointments','apointments')); 
+  },
   create: async (req, res) => {
     res.render(path.resolve(__dirname , '..','views','patients','patientCreate')); 
   },

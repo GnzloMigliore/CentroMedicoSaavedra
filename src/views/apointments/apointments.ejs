@@ -2,22 +2,41 @@
   <head>
     <%- include('../partials/head.ejs') %>
     <meta charset='utf-8' />
-    <script src='js/apointments.js'></script>
-   
+    <link href='/css/apointments.css' rel='stylesheet' />
   </head>
-     <body>
-        <header>
-            <%- include('../partials/navBar.ejs') %>
-             </header>
-             <a href="https://calendar.google.com/calendar/u/0/r?pli=1" target="_blank" class="btn btn-outline-dark mt-4 mb-4 ml-3">Añadir turno</a>
-             <iframe class="w-100" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ecffff&amp;ctz=America%2FArgentina%2FBuenos_Aires&amp;src=Z29uemFsb21pZ2xpb3JlQGdtYWlsLmNvbQ&amp;color=%237986CB&amp;showTitle=0&amp;showNav=1&amp;showDate=1&amp;showPrint=0&amp;showTabs=1&amp;showCalendars=0&amp;showTz=0" style="border-width:0" width="1225" height="600" frameborder="0" scrolling="no"></iframe>
 
 
+   <body>
+      <header>
+          <%- include('../partials/navBar.ejs') %>
+      </header>
+
+
+
+       <div class="conteiner">
+          <div class="row">
+             <div class="col-3 p-0">
+               <h4 class="mt-5 ml-5">AGREGAR TURNO</h4>
+               <form action="/addevent">
+                <input type="text" class="form-control bg-light  mt-2" name="name" placeholder="Nombre paciente"  value="">
+               <input type="date" id="start" name="startDate" class="form-control  mt-2 bg-light"
+               value=""
+               min="1940-01-01" max="2021-12-31">
+               <input type="date" id="start" name="endDate" class="form-control   mt-2 bg-light"
+               value=""
+               min="1940-01-01" max="2021-12-31">
+               <input type="time" id="appt" name="time" class="form-control   mt-2 bg-light"
+               min="00:00" max="24:00" required>
+               <button type="submit" class="btn btn-dark ml-3 mt-2 ">Añadir turno</button>
+              </form>
+             </div>
+             <div class="col-9">
+              <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FArgentina%2FBuenos_Aires&amp;src=Z29uemFsb21pZ2xpb3JlQGdtYWlsLmNvbQ&amp;color=%237986CB&amp;showTitle=0&amp;showNav=1&amp;showTz=0&amp;showCalendars=0&amp;showTabs=1&amp;showPrint=0" style="border-width:0" width="900" height="600" frameborder="0" scrolling="no"></iframe>
+             </div>
+           </div>
+         </div>
+       
     <%- include('../partials/footer.ejs') %>
 
-
-
-
-
-  </body>
+   </body>
 </html>
