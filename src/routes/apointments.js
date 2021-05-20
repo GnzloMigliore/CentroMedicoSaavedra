@@ -9,5 +9,5 @@ const controllersApointments = require(path.resolve(__dirname, '..', 'controller
 //armo mis rutas
 
 router.get('/turnos', controllersApointments.index);
-router.get('/addevent', controllersApointments.addEvent);
+
 module.exports = router;
