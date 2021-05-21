@@ -1,63 +1,57 @@
 <!doctype html>
 <html lang="es">
-  <head>
+<head>
     <%- include('../partials/head.ejs') %>
     <!-- UIkit CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/patientDetail.css">
-
-  </head>
-  <body>
+</head>
+ <body>
     <header>
       <%- include('../partials/navBar.ejs') %>
     </header>
-    <div class="col-12 d-flex justify-content-center pr-5 mt-3 border-top" >
-      <a href="/pdf/<%= paciente.id %>" class="btn btn-light px-5 ml-2">PDF</a>
-       <a href="/patients/edit/<%= paciente.id %>" class="btn btn-light px-5 ml-2">Editar</a>
-       <a href="/patientsHistory/<%= paciente.id %>" class="btn btn-light px-5 ml-2">Ver historia clínica</a>
-     </div>
+      <h2  class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">EXPORTAR HISTORIA CLÍNICA</h2>
+    <div class="col-12 d-flex justify-content-center  pr-5 ">
+      <a href="/patients" class="btn btn-light px-5 ">Volver</a>
+      <button id="btnCrearPdf" class="btn btn-light px-5 ml-2">EXPORTAR PDF</button>
+
+    </div>
     <div id="pdf" class="container-fluid" >             
-        <section class="row">
-          <!-- Cuerpo principal -->
-          <article class="col-8 mx-auto mb-3 pdf">
-            <h2  class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">DETALLE DE PACIENTE</h2>
-            
-             <div id="pdf">
-             <h3  class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase"> <td><%= paciente.first_name %></td>
-              <td><%= paciente.last_name %></td></h3>
-            </article>
+      <section class="row">
+                <!-- Cuerpo principal -->
+        <article class="col-8 mx-auto mb-3 pdf">
+             
+              
+               <!-- Nombre paciente -->
+                <h3  class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase"> 
+                <td><%= paciente.first_name %></td>
+                <td><%= paciente.last_name %></td></h3>
+        </article>
           
           
-          <article id="article" class="col-12 d-flex  justify-content-center">       
+        <article id="article" class="col-12 d-flex  justify-content-center">       
             <!--Info-->
-            <article class="col-10 mt-1" style="background-color: aliceblue;">
+         <article class="col-10 mt-1" style="background-color: aliceblue;">
               <table class="table pdf">
                   <thead class="thead">
                     <tr>
-                        
-                      
                         <th scope="col">Género</th>
                         <th scope="col">Nacimiento</th>
                         <th scope="col">DNI</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Teléfono</th>
-                        
+                        <th scope="col">Teléfono</th> 
                     </tr>
-                </thead>
+                  </thead>
                 <tbody>
                    
-                        <tr>
-                           
-                          
-                            <td><%= paciente.gender %></td>
-                            <td><%= paciente.date %></td>
-                            <td><%= paciente.dni %></td>
-                            <td><%= paciente.email %></td>
-                            <td><%= paciente.telephone %></td>
-
-                          
-                        </tr>
+                    <tr> 
+                        <td><%= paciente.gender %></td>
+                        <td><%= paciente.date %></td>
+                        <td><%= paciente.dni %></td>
+                        <td><%= paciente.email %></td>
+                        <td><%= paciente.telephone %></td>
+                    </tr>
                        
                 </tbody>
                 <thead>
@@ -67,35 +61,30 @@
                     <th scope="col">Número de afiliado</th>
                     <th scope="col">Dirección</th>
                     <th scope="col">Calle n°</th>
-                    
                     <th scope="col">Número de paciente</th>
                      
-                      
                   </tr>
               </thead>
               <tbody>
                  
-                      <tr>
-                         
+                    <tr>
                         <td><%= paciente.medical_insurance %></td>
                         <td><%= paciente.insurance_number%></td>
                         <td><%= paciente.adress %></td>
                         <td><%= paciente.adress_number %></td>
-                      
                         <td><%= paciente.nhc %></td>  
 
-                         
-                      </tr>
+                    </tr>
                      
               </tbody> 
             </table>
            
-              <article class="col-8 mx-auto mb-5">
+             <article class="col-8 mx-auto mb-5">
                 <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">ENFERMEDADES</h2>
-                </article>
-                <table class="table">
+             </article>
+             <table class="table">
               
-                  <thead class="thead">
+                 <thead class="thead">
                     <tr>
                       <th scope="col">ENFERMEDAD</th>
                       <th scope="col">¿La tiene?</th>
@@ -241,119 +230,153 @@
                   </tbody>
                 </table>
               
-             
-        </article>
-        </article>
-          <!-- Tratamientos-->
-          <article class="col-10 mx-auto mb-4 "  style="background-color: aliceblue;">
-            <h2 class="titulo-admin pb-3 border-bottom text-center mt-5 mx-auto text-uppercase">TRATAMIENTOS</h2>
+             </article>
+             </article>
+
+
+             <!-- Tratamientos-->
+            <article class="col-10 mx-auto mb-4"  style="background-color: aliceblue;">
+                <h2 class="titulo-admin pb-3 border-bottom text-center mt-5 mx-auto text-uppercase">TRATAMIENTOS</h2>
          
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Agregar tratamiento +</button>
+         
+      
+             <!--Info-->
+             <article class="col-12 mt-3 mb-5">
+             <table class="table"> 
+                <thead>
+                  <tr>
+   
+                   <th scope="col"></th>
+                   <th scope="col"></th>
+                   <th scope="col"></th>
+                   <th scope="col"></th>
+                   <th scope="col">Tratamiento:</th>
+                   <th scope="col">Inicio tratamiento</th>
+                   <th scope="col">Fin tratamiento</th>
+                   <th class="text-center" scope="col">Eliminar tratamiento</th>
+     
+                 </tr>
+                </thead>
+                <tbody>
+     
+                   <% tratamiento.forEach(treatment => { %>
+                   <% if (treatment.tratamiento) { %>
+                   <tr>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td> 
+                     <td><%= treatment.tratamiento %> </td>
+                     <td> <%= treatment.datetreatment  %></td> 
+                     <td> <%= treatment.dateendtreatment  %></td> 
+                     <td class="text-center"><a href="/patients/delete/treatment/<%= treatment.id%>"><ion-icon style="color: black;" name="trash-outline"></ion-icon></a></td>
+                     </tr>
+                     <% }  else { %>
+                     <tr>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td> 
+                     <td>El paciente no realizo ningun tratamiento</td>
+                     <td>--/--/----</td> 
+                     <td>--/--/----</td>
+                     <td>----------</td>
+                     </tr>
+                  <% } %> 
+               <% }) %>
+               </tbody> 
+              </table>
+            
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Agregar tratamiento</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form action="/patients/detail/treatment/<%= paciente.id%>" method="POST">
-                      <div class="form-group">
-                     
-                                
-                          <input type="text" class="form-control bg-light  visita_medica col-12" name="tratamiento" placeholder="Agregar tratamiento"  value="" required>
-                          <label class="mt-2">Fecha inicio tratamiento</label>
-                          <input type="date" id="start" name="fechatratamiento" class="form-control  bg-light"
-                          value=""
-                          min="1940-01-01" max="2021-12-31" required>
-                          <label class="mt-2">Fecha fin tratamiento</label>
-                          <input type="date" id="start" name="fechafintratamiento" class="form-control  bg-light"
-                          value=""
-                          min="1940-01-01" max="2021-12-31">
-                          <button type="submit" class="btn btn-dark mt-3">Guardar</button>
-                          </form>
-                  </div>
-                </div>
-              </div>
+               <!--Info-->
+              <div style="background-color: aliceblue;" class="col-12">
+                 <h4 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">EVOLUCIONES</h4>
+    
+              <% if (historiaClinica.length>0) { %>
+       
+              <% historiaClinica.forEach(historia => { %>
+   
+               <div class="pl-5 pb-5 pt-3 mt-5 evolucion" >
+                  <h4>Evolución <%= historia.fechavisita  %></h4>
+                  <h6>Por <%= historia.doctor  %></h6>
+                  <p><%= historia.visitamedica %></p>
+               </div>
+              <% }) %>
+              <% } else { %>
+                  <h4 class="text-center">El paciente no tiene ninguna evolución</h4>
+              <% } %>
+  
+  
+  
+              <h4 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">EXAMEN FÍSICO</h4>
+              <% if (exam.length>0) { %>
+              <% exam.forEach(exam => { %>
+              <div class="pl-5 pb-5 pt-3 mt-5 evolucion" >
+              <div class="conteiner">
+                   <h4>Exámen médico <%= exam.date  %></h4>
+                   <h6>Por <%= exam.doctor  %></h6>
+              <div class="row">
+              <div class="col-3">
+              <h6 class="mt-3">Altura</h6>
+              <%= exam.altura  %>
             </div>
-                             
-          </div>     
-            
-      
-<!--Info-->
-<article class="col-12 mt-3 mb-5">
-  <table class="table"> 
-     <thead>
-     <tr>
-   
-    <th scope="col"></th>
-    <th scope="col"></th>
-    <th scope="col"></th>
-    <th scope="col"></th>
-     <th scope="col">Tratamiento:</th>
-    <th scope="col">Inicio tratamiento</th>
-    <th scope="col">Fin tratamiento</th>
-    <th class="text-center" scope="col">Eliminar tratamiento</th>
-     
-     
-      
-     </tr>
-     </thead>
-     <tbody>
-     
-      <% tratamiento.forEach(treatment => { %>
-       <% if (treatment.tratamiento) { %>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td> 
-            <td><%= treatment.tratamiento %> </td>
-            <td> <%= treatment.datetreatment  %></td> 
-            <td> <%= treatment.dateendtreatment  %></td> 
-            <td class="text-center"><a href="/patients/delete/treatment/<%= treatment.id%>"><ion-icon style="color: black;" name="trash-outline"></ion-icon></a></td>
-          </tr>
-        <% }  else { %>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td> 
-            <td>El paciente no realizo ningun tratamiento</td>
-            <td>--/--/----</td> 
-            <td>--/--/----</td>
-            <td>----------</td>
-            
-        </tr>
-        <% } %> 
-      <% }) %>
-      </tbody> 
-    </table>
-  </div>
+            <div class="col-3">
+              <h6 class="mt-3">Peso</h6>
+              <%= exam.peso  %>
+            </div>
+            <div class="col-3">
+              <h6 class="mt-3">Masa corporal</h6>
+              <%= exam.masacorporal  %>
+            </div>
+            <div class="col-3">
+              <h6 class="mt-3">Frecuencia cardíaca</h6>
+              <%= exam.frec_cardiaca  %>
+            </div>
+          
+                <div class="col-3">
+                  <h6 class="mt-3">Tensión arterial</h6>
+                  <%= exam.tension_arterial  %>
+                </div>
+                <div class="col-3">
+                  <h6 class="mt-3">Frecuencia respiratoria</h6>
+                  <%= exam.frec_resp  %>
+                </div>
+                <div class="col-3">
+                  <h6 class="mt-3">Temperatura axilar</h6>
+                  <%= exam.temp_axilar  %>
+                </div>
+                <div class="col-3">
+                  <h6 class="mt-3">Perimetro abdominal</h6>
+                  <%= exam.perimetro_abs  %>
+                </div>
+                <div class="col-3">
+                  <h6 class="mt-3">Tensión arterial promedio</h6>
+                  <%= exam.tension_art_prom  %>
+                </div>
+               </div>
   
-
-  <!--Boton volver-->
-  <div class="col-12 d-flex justify-content-center mt-5 pt-5 pr-5 my-5">
-    <a href="/patients" class="btn btn-dark px-5 ml-2">Volver</a>
-    <a href="/patients/edit/<%= paciente.id %>" class="btn btn-dark px-5 ml-2">Editar</a>
-    <a href="/patientsHistory/<%= paciente.id %>" class="btn btn-dark px-5 ml-2">Ver historia clínica</a>
-  </div>
+               </div>
+            
+              
+               </div>
+              <% }) %>
+              <% } else { %>
+              <h4 class="text-center">El paciente no tiene ningún examen</h4>
+             <% } %>
   
-   
-
-</section>
-</div>
-          </article>
-          </article>
+            </div>
+            <!--Boton volver-->
+           
+            <div class="col-12 d-flex justify-content-center my-5 py-5 pr-5 ">
+              <a href="/patients" class="btn btn-light px-5 ">Volver</a>
+              <button id="btnCrearPdf" class="btn btn-light px-5 ml-2">EXPORTAR PDF</button>
         
-
-
-            </section>
-          </div>
+            </div>
    
+
+         
+          </div>
+        
 
   <!-- Footer -->
   <%- include('../partials/footer.ejs') %>

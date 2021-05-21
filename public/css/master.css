@@ -11,4 +11,17 @@ body{
     background-size: cover;
     background-attachment: fixed;
 }
-   
+input:focus,
+textarea,
+select {
+	width: 100%;
+	background: transparent;
+	border: 1px solid #ddd;
+	padding: 15px 15px;
+	font-size: 14px;
+	letter-spacing: 1px;
+	-webkit-transition: .3s;
+	transition: .3s;
+}
+
+

@@ -39,6 +39,7 @@ router.post('/busquedahistoria', controllersPatients.searchhist);
 router.post('/busquedadatehistory', controllersPatients.searchdatehistory);
 router.get('/patients/delete/treatment/:id',[userLogueado], controllersPatients.destroy);
 router.get('/patients/edit/:id',[userLogueado], controllersPatients.edit);
+router.get('/pdf/:id',[userLogueado], controllersPatients.pdf);
 router.post('/patients/edit/:id', patientedit, controllersPatients.updatePatients);
 router.get('/patientsHistory/:id', controllersPatients.historiaclinica);
 router.post('/addevolution/:id', controllersPatients.addevolution);

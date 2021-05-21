@@ -749,9 +749,18 @@ module.exports = {
       
           return res.redirect(`/patientsHistory/${paciente.id}`)
       }  
-   
-    
-    
+    },
+    pdf: async (req,res) => {
+      const paciente = await patients.findByPk(req.params.id, {include: ['medicalhistories','treatments']})
+      const tratamiento = await treatments.findAll({where: {patient_id: req.params.id}})
+      const historiaClinica = await medicalhistories.findAll({where:{patient_id:req.params.id, visitamedica: { 
+        [Op.ne]: '%null%' 
+      } }})
+      const exam = await exams.findAll({where:{patient_id:req.params.id, altura: { 
+        [Op.ne]: '%null%' 
+      } }})
+      res.render(path.resolve(__dirname , '..','views','patients','pdf') , {paciente,tratamiento,historiaClinica,exam});                       
+      
     },
   }
   

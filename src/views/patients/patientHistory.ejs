@@ -8,15 +8,8 @@
       <header>
     <%- include('../partials/navBar.ejs') %>
      </header>
-    <!--Menu vinos FIN-->
+
     
-     
-    
-     
-     
-    
-     
-      
 
 <main class="container-fluid" id="main">
       <!-- Historia clinica-->
@@ -151,8 +144,8 @@
                   </div>
                 </div>
               </div>
-              <h4 class="mt-4">EXPORTAR EVOLUCIÓN</h4>
-              <button id="btnCrearPdf" class="btn btn-dark px-5 mr-2 ">PDF</button>
+              <h4 class="mt-4">EXPORTAR HISTORIA CLÍNICA</h4>
+              <a href="/pdf/<%= paciente.id %>" class="btn btn-dark px-5 ml-2">PDF</a>
                 
             </div>
             
