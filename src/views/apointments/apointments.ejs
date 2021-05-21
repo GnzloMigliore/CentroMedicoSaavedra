@@ -7,34 +7,42 @@
 
 
    <body>
-      <header>
+      <header >
           <%- include('../partials/navBar.ejs') %>
       </header>
+       
+        <h4 class="mt-5 ml-5">AGREGAR TURNO</h4>
 
-
-
-       <div class="conteiner">
-          <div class="row">
-             <div class="col-3 p-0">
-               <h4 class="mt-5 ml-5">AGREGAR TURNO</h4>
-               <form action="/addevent">
-                <input type="text" class="form-control bg-light  mt-2" name="name" placeholder="Nombre paciente"  value="">
-               <input type="date" id="start" name="startDate" class="form-control  mt-2 bg-light"
-               value=""
-               min="1940-01-01" max="2021-12-31">
-               <input type="date" id="start" name="endDate" class="form-control   mt-2 bg-light"
-               value=""
-               min="1940-01-01" max="2021-12-31">
-               <input type="time" id="appt" name="time" class="form-control   mt-2 bg-light"
-               min="00:00" max="24:00" required>
-               <button type="submit" class="btn btn-dark ml-3 mt-2 ">Añadir turno</button>
+        <div class="conteiner">
+             
+               <form action="/addevent" class=" col-12">
+                <div class="row">
+                <div class="col-3">
+                   <input type="text" class="form-control bg-light  mt-2" name="name" placeholder="Nombre paciente"  value="">
+                </div>
+                <div class="col-3">
+                   <input type="date" id="start" name="startDate" class="form-control  mt-2 bg-light"
+                   value=""
+                   min="1940-01-01" max="2021-12-31">
+               </div>
+               <div class="col-3">
+                   <input type="date" id="start" name="endDate" class="form-control   mt-2 bg-light"
+                   value=""
+                   min="1940-01-01" max="2021-12-31">
+               </div>
+               <div class="col-3">
+                   <input type="time" id="appt" name="time" class="form-control   mt-2 bg-light"
+                   min="00:00" max="24:00" required>
+               </div>
+               </div>
+              </div>
+                  <button type="submit" class="btn btn-dark ml-3 mt-2 ">Añadir turno</button>
               </form>
+            
+             <div class="col-12 px-0">
+              <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FArgentina%2FBuenos_Aires&amp;src=Z29uemFsb21pZ2xpb3JlQGdtYWlsLmNvbQ&amp;color=%237986CB&amp;showTitle=0&amp;showNav=1&amp;showTz=0&amp;showCalendars=0&amp;showTabs=1&amp;showPrint=0" style="border-width:0" width="100%" height="1200" frameborder="0" scrolling="no"></iframe>
              </div>
-             <div class="col-9">
-              <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FArgentina%2FBuenos_Aires&amp;src=Z29uemFsb21pZ2xpb3JlQGdtYWlsLmNvbQ&amp;color=%237986CB&amp;showTitle=0&amp;showNav=1&amp;showTz=0&amp;showCalendars=0&amp;showTabs=1&amp;showPrint=0" style="border-width:0" width="900" height="600" frameborder="0" scrolling="no"></iframe>
-             </div>
-           </div>
-         </div>
+
        
     <%- include('../partials/footer.ejs') %>
 
