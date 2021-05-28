@@ -11,50 +11,67 @@ module.exports = {
     res.render(path.resolve(__dirname, '..', 'views', 'apointments', 'apointments'));
   },
   addEvent : async  (req,res) => {
+
     // Create a new instance of oAuth and set our Client ID & Client Secret.
-  
+   const titulo = req.body.name;
+
+   const end =   new Date(req.body.endDate);
+   
+
+   const start = new Date(req.body.startDate);
+ 
+
 
 
     const oAuth2Client = new OAuth2(
       '973393698786-drcpg3obm2sq7ekimt575use5ckpp51n.apps.googleusercontent.com',
-      'QbmP9eFhq2pCSeLITnw05xDf'
+      'QbmP9eFhq2pCSeLITnw05xDf',
+      'https://localhost:3000'
     )
-    
+    // generate a url that asks permissions for Blogger and Google Calendar scopes
+
+
+
+
+
     // Call the setCredentials method on our oAuth2Client instance and set our refresh token.
     oAuth2Client.setCredentials({
-      refresh_token: '1//048YWO6hqOXO9CgYIARAAGAQSNwF-L9Ir88KiMOZ9elpEhqgzzFKTYUJFKKRp0ICJ5Wopt7qd0HlXUyPhjXY1PByDelrkNeJ4FpM',
+      refresh_token: '1//04Hw9gg63FYEcCgYIARAAGAQSNwF-L9IruL6Wk3LeXR6fm_G7dm3wJy3Jjg4GGJfG7v4cNliSxreYBeDhE2x058e1yGaGSo-EE_k',
     })
-    
-    
-    
+
+
+
+  
     // Create a new calender instance.
     const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
     
     
+
+
+
     // Create a new event start date instance for temp uses in our calendar.
-    const eventStartTime = new Date()
-    eventStartTime.setDate(eventStartTime.getDay() + 2)
+
    
     
     // Create a new event end date instance for temp uses in our calendar.
     const eventEndTime = new Date()
-     eventEndTime.setDate(eventEndTime.getDay() + 4)
+     eventEndTime.setDate(eventEndTime.getDay() + 6)
      eventEndTime.setMinutes(eventEndTime.getMinutes() + 45)
 
     
     // Create a dummy event for temp uses in our calendar
     const event = {
-      summary:req.body.name,
-      location: `3595 California St, San Francisco, CA 94118`,
-      description: `Meet with David to talk about the new client project and how to integrate the calendar for booking.`,
+      summary: titulo,
+      location: `Ruiz Huidobro`,
+      description: `Paciente turno con xxx`,
       colorId: 1,
       start: {
-        dateTime: req.body.startDate,
-        timeZone: 'America/Denver',
+        dateTime:start,
+        timeZone: 'America/Argentina/Buenos_Aires',
       },
       end: {
-        dateTime: req.body.endDate,
-        timeZone: 'America/Denver',
+        dateTime:end,
+        timeZone: 'America/Argentina/Buenos_Aires',
       },
     }
     
@@ -62,9 +79,9 @@ module.exports = {
     calendar.freebusy.query(
       {
         resource: {
-          timeMin: eventStartTime,
-          timeMax: eventEndTime,
-          timeZone: 'America/Denver',
+          timeMin: start,
+          timeMax: end,
+          timeZone: 'America/Argentina/Buenos_Aires',
           items: [{ id: 'primary' }],
         },
       },

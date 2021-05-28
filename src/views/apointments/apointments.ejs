@@ -11,31 +11,28 @@
           <%- include('../partials/navBar.ejs') %>
       </header>
        
-        <h4 class="mt-5 ml-5">AGREGAR TURNO</h4>
+        <h4 class="mt-5 mb-3 text-center">AGREGAR TURNO</h4>
 
         <div class="conteiner">
              
-               <form action="/addevent" class=" col-12">
+               <form action="/addevent" class=" col-12" method="POST">
                 <div class="row">
                 <div class="col-3">
                    <input type="text" class="form-control bg-light  mt-2" name="name" placeholder="Nombre paciente"  value="">
                 </div>
-                <div class="col-2">
-                   <input type="date" id="start" name="startDate" class="form-control  mt-2 bg-light"
+                <div class="col-3">
+                   <input type="datetime-local" id="start" name="startDate" class="form-control  mt-2 bg-light"
                    value=""
                    min="1940-01-01" max="2021-12-31">
-               </div>
-               <div class="col-2">
-                   <input type="date" id="start" name="endDate" class="form-control   mt-2 bg-light"
-                   value=""
-                   min="1940-01-01" max="2021-12-31">
-               </div>
-               <div class="col-2">
-                   <input type="time" id="appt" name="time" class="form-control   mt-2 bg-light"
-                   min="00:00" max="24:00" required>
                </div>
                <div class="col-3">
-                <button type="submit" class="btn btn-dark ml-3 mt-2">Añadir turno</button>
+                   <input type="datetime-local" id="start" name="endDate" class="form-control   mt-2 bg-light"
+                   value=""
+                   min="1940-01-01" max="2021-12-31">
+               </div>
+               
+               <div class="col-3">
+                <button type="submit" class="btn btn-dark mr-3 mt-2  btn-block">Añadir turno</button>
                </div>
                </div>
               </div>
