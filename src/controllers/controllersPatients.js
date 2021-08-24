@@ -15,8 +15,8 @@ const {
 module.exports = {
   index: async (req, res) => {
     //const usuario = await users.findAll()
-    const paciente = await patients.findAll()
-  
+    let paciente = await patients.findAll()
+
     //return res.send(paciente) 
     res.render(path.resolve(__dirname , '..','views','patients','patients'),{paciente}); 
     
