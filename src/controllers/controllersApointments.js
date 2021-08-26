@@ -24,23 +24,23 @@ module.exports = {
 
 
     const oAuth2Client = new OAuth2(
-      '973393698786-o5ns69f3img0ostov5ojv9g6jg5avhsp.apps.googleusercontent.com',
-      '3tuGxS4_tRETUB7ItEqF6w6A',
+      process.env.CLIENT_ID,process.env.CLIENT_SECRET,
       
     )
     // generate a url that asks permissions for Blogger and Google Calendar scopes
-
+      console.log(process.env.CLIENT_ID);
+    console.log(process.env.CLIENT_SECRET);
+    console.log(process.env.REFRESH_TOKEN);
 
 
 
 
     // Call the setCredentials method on our oAuth2Client instance and set our refresh token.
     oAuth2Client.setCredentials({
-      refresh_token: '1//04riSgF_V1u5fCgYIARAAGAQSNwF-L9Iro-zG9EAzxCJEim2XAPtUtHFhYx9zdUs0zWUEItb4_QrdF8nD4k3PTKbM1Ccgbbedffk',
+      refresh_token: process.env.REFRESH_TOKEN,
     })
 
-
-
+        
   
     // Create a new calender instance.
     const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
