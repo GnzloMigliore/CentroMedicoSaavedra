@@ -1,27 +1,50 @@
 const path = require('path');
 const fs = require('fs');
+const {patients,users,apointments} = require ('../database/models');
 const  {google}  = require('googleapis')
 const {OAuth2}  = google.auth
 
 
-
-
 module.exports = {
-  index : async  (req,res) => {
-    res.render(path.resolve(__dirname, '..', 'views', 'apointments', 'apointments'));
+  turnos : async  (req,res) => {
+    const pacientes = await patients.findAll()
+    const usuarios = await users.findAll({where: {puesto: "medico"}})
+
+    res.render(path.resolve(__dirname, '..', 'views', 'apointments', 'apointments'),{usuarios,pacientes});
+  },
+  filtroTurnos : async  (req,res) => {
+    const usuarios = await users.findAll({where: {puesto: "medico"}})
+    const pacientes = await patients.findAll()
+    const turnos = await apointments.findAll()
+    res.render(path.resolve(__dirname, '..', 'views', 'apointments', 'filtrarApointments'),{turnos,usuarios,pacientes});
+  },
+  filtrarTurnos : async  (req,res) => {
+    const usuarios = await users.findAll({where: {puesto: "medico"}})
+    const turnos = await apointments.findAll({where: {doctor: req.body.medico}})
+
+    res.render(path.resolve(__dirname, '..', 'views', 'apointments', 'filtrarApointments'),{turnos,usuarios});
   },
   addEvent : async  (req,res) => {
 
+    const usuarios = await users.findAll({where: {puesto: "medico"}})
+ 
+     let turno={
+     name: req.body.name,
+     description : req.body.descripcion,
+     doctor : req.body.medico,
+     start_date: req.body.startDate,
+     end_date: req.body.endDate,      
+
+};    
+     apointments.create(turno)
+
+
+
     // Create a new instance of oAuth and set our Client ID & Client Secret.
    const titulo = req.body.name;
-
    const end =   new Date(req.body.endDate);
-   
-
    const start = new Date(req.body.startDate);
- 
-
-
+   const description = req.body.descripcion;
 
     const oAuth2Client = new OAuth2(
       "973393698786-o5ns69f3img0ostov5ojv9g6jg5avhsp.apps.googleusercontent.com","3tuGxS4_tRETUB7ItEqF6w6A",
@@ -63,7 +86,7 @@ module.exports = {
     const event = {
       summary: titulo,
       location: `Ruiz Huidobro`,
-      description: `Paciente turno con xxx`,
+      description: description,
       colorId: 1,
       start: {
         dateTime:start,
@@ -111,7 +134,7 @@ module.exports = {
     
     )
       
-    res.render(path.resolve(__dirname, '..', 'views', 'apointments', 'apointments'));
+    res.render(path.resolve(__dirname, '..', 'views', 'apointments', 'apointments'),{usuarios});
   },
 
 }

@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'users';
+    let alias = 'apointments';
     let cols = {
         id: {
             type: dataTypes.INTEGER,
@@ -7,18 +7,17 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
             autoIncrement: true
         },
-        first_name: dataTypes.STRING,
-        last_name: dataTypes.STRING,
-        complete_name: dataTypes.STRING,        
-        email: dataTypes.STRING,
-        roles: dataTypes.STRING,
-        password: dataTypes.STRING,
-        telephone: dataTypes.INTEGER,
-        puesto: dataTypes.STRING,
-        gender: dataTypes.STRING
+        name: dataTypes.STRING,
+        description: dataTypes.STRING,
+        doctor: dataTypes.STRING,
+        start_date: dataTypes.STRING,
+        end_date: dataTypes.STRING,
+
+
+
     };
 
-    const users = sequelize.define(alias, cols)
+    const apointments = sequelize.define(alias, cols)
     //Relaciones entre Users y Address
     /*users.associate = function(models) {
        users.belongsToMany(
@@ -30,5 +29,5 @@ module.exports = (sequelize, dataTypes) => {
             }
         )
    }*/
-    return users;
+    return apointments;
 } 

@@ -10,41 +10,67 @@
       <header >
           <%- include('../partials/navBar.ejs') %>
       </header>
-       
-        <h4 class="mt-5 mb-3 text-center">AGREGAR TURNO</h4>
 
         <div class="conteiner">
-             
-               <form action="/addevent" class=" col-12" method="POST">
-                <div class="row">
-                <div class="col-3">
-                   <input type="text" class="form-control bg-light  mt-2" name="name" placeholder="Nombre paciente"  value="">
-                </div>
-                <div class="col-3">
-                   <input type="datetime-local" id="start" name="startDate" class="form-control  mt-2 bg-light"
-                   value=""
-                   min="1940-01-01" max="2021-12-31">
-               </div>
-               <div class="col-3">
-                   <input type="datetime-local" id="start" name="endDate" class="form-control   mt-2 bg-light"
-                   value=""
-                   min="1940-01-01" max="2021-12-31">
-               </div>
+          
+         
+                <article class="col-8 mx-auto mb-5">
+                    <h2 class="pb-3 border-bottom text-center pt-5">AGREGAR TURNO</h2>
+                    <a href="/filtroTurnos"class="btn btn-light btn-block">Filtrar turno por médico</a>
+                 </article>
                
-               <div class="col-3">
-                <button type="submit" class="btn btn-dark mr-3 mt-2  btn-block">Añadir turno</button>
-               </div>
-               </div>
-              </div>
-                 
-              </form>
-            
+              
+               
+            <section class="container">
+                <div class="row">
+                    <article class="col-8 mx-auto">
+                        <form action="/addevent" method="POST">
+                            <div class="col-12 mb-4 bg-light p-0">
+                              <select class="form-control" name="medico" required>
+                                <option selected  disabled>Paciente</option>
+                                <% pacientes.forEach(paciente=> { %>
+                                  <option value="<%= usuario.complete_name   %>"><%= paciente.firstlast_name   %></option>
+                                 <% }); %> 
+                                </select>  
+                            
+                            </div>
+                           
+                            <div class="form-group">
+                                <input type="text" class="form-control  bg-light" name="descripcion" placeholder="Descripción"  value="" required>
+                            </div>
+                       <div class="row">
+                            <div class="col-6 mt-2 bg-light">
+                              <select class="form-control" name="medico" required>
+                                <option selected  disabled>Médico</option>
+                                <% usuarios.forEach(usuario=> { %>
+                                  <option value="<%= usuario.complete_name   %>"><%= usuario.complete_name   %></option>
+                                 <% }); %> 
+                                </select>  
+                            
+                            </div>
+                       <div class="col-3">
+                               <input type="datetime-local" id="start" name="startDate" class="form-control  mt-2 bg-light"
+                               value=""
+                               min="1940-01-01" max="2021-12-31" required>
+                      </div>
+                      <div class="col-3">
+                              <input type="datetime-local" id="start" name="endDate" class="form-control   mt-2 bg-light"
+                              value=""
+                              min="1940-01-01" max="2021-12-31">
+                     </div>
+                     <div class="col-3">
+                           <button type="submit" class="btn btn-dark mr-3 mt-4  btn-block">Añadir turno</button>
+                     </div>
+                      </form>
+                   </div>
+              </div> 
+          
              <div class="col-12 px-0">
-              <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FArgentina%2FBuenos_Aires&amp;src=Z29uemFsb21pZ2xpb3JlQGdtYWlsLmNvbQ&amp;color=%237986CB&amp;showTitle=0&amp;showNav=1&amp;showTz=0&amp;showCalendars=0&amp;showTabs=1&amp;showPrint=0" style="border-width:0" width="100%" height="1200" frameborder="0" scrolling="no"></iframe>
+              <iframe src="https://calendar.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FArgentina%2FBuenos_Aires&amp;src=Z29uemFsb21pZ2xpb3JlQGdtYWlsLmNvbQ&amp;color=%237986CB&amp;showTitle=0&amp;showNav=1&amp;showTz=0&amp;showCalendars=0&amp;showTabs=1&amp;showPrint=0" style="border-width:0" width="100%" height="1200" frameborder="0" scrolling="no"></iframe>
              </div>
 
        
     <%- include('../partials/footer.ejs') %>
-
+    <script src="/js/calendar.js"></script>
    </body>
 </html>

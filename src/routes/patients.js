@@ -44,7 +44,7 @@ router.post('/patients/edit/:id', patientedit, controllersPatients.updatePatient
 router.get('/patientsHistory/:id', controllersPatients.historiaclinica);
 router.post('/addevolution/:id', controllersPatients.addevolution);
 router.post('/addimage/:id',upload.single('imagen'), controllersPatients.addimage);
-router.get('/turnos', controllersPatients.turnos);
+
 
 //rutas de filtros
 router.get('/patients/generoh', controllersPatients.generoh);
