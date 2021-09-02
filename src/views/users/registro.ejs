@@ -49,10 +49,14 @@
                    </div>
                        <!--Puesto-->
                    <div class="form-group col-12 d-flex justify-content-center mb-0">
-                      <input type="text" name="puesto" placeholder="Puesto de trabajo" class="form-control form-control-sm mb-3 datos-envio-input col-6">
+                    <select id="puesto" name="puesto" class="custom-select border-0 btn  py-0 col-6    ">
+                        <option selected disabled>Area de trabajo</option>
+                        <option value="administrativo">Administrativo</option>
+                        <option value="medico">Médico</option>
+                     </select>
                    </div>
                     <!--Genero-->
-                <div class="form-group col-12 d-flex justify-content-center mb-0">
+                <div class="form-group col-12 d-flex justify-content-center mb-0 mt-3">
                    <select id="genero" name="genero" class="custom-select border-0 btn  py-0 col-6    ">
                       <option selected disabled>Seleccione su género</option>
                       <option value="Hombre">Hombre</option>

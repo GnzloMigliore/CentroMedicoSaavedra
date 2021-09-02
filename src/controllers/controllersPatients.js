@@ -16,9 +16,15 @@ module.exports = {
   index: async (req, res) => {
     //const usuario = await users.findAll()
     let paciente = await patients.findAll()
-
+    let patient = paciente.sort(function(a,b){
+       if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+         return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+           return 1
+         }
+         return 0;
+     })
     //return res.send(paciente) 
-    res.render(path.resolve(__dirname , '..','views','patients','patients'),{paciente}); 
+    res.render(path.resolve(__dirname , '..','views','patients','patients'),{patient}); 
     
   },
   turnos: async (req, res) => {
@@ -380,80 +386,186 @@ module.exports = {
       //filtros
       generom: async (req, res) => {
         let paciente = await patients.findAll({where: {gender: 'femenino'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(paciente)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
       },
       generoh: async (req, res) => {
         let paciente = await patients.findAll({where: {gender: 'masculino'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(zapatillas)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
       },
     
       diabetes: async (req, res) => {
         let paciente = await patients.findAll({where: {diabetes: 'si'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(zapatillas)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
       },
       dlp: async (req, res) => {
         let paciente = await patients.findAll({where: {dlp: 'si'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(zapatillas)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
       },
       hta: async (req, res) => {
         let paciente = await patients.findAll({where: {hta: 'si'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(zapatillas)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
       },
       crm: async (req, res) => {
         let paciente = await patients.findAll({where: {crm: 'si'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(zapatillas)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
       },
       atc: async (req, res) => {
         let paciente = await patients.findAll({where: {atc: 'si'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(zapatillas)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
       },
       iam: async (req, res) => {
         let paciente = await patients.findAll({where: {iam: 'si'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(zapatillas)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
       },
       acv: async (req, res) => {
         let paciente = await patients.findAll({where: {acv: 'si'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(zapatillas)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
       },
       aneurisma: async (req, res) => {
         let paciente = await patients.findAll({where: {aortic_aneurysm: 'si'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(zapatillas)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
+        
       },
       ic: async (req, res) => {
         let paciente = await patients.findAll({where: {ic: 'si'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(zapatillas)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
       },
 
       evp: async (req, res) => {
         let paciente = await patients.findAll({where: {evp: 'si'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(zapatillas)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
       },
       epoc: async (req, res) => {
         let paciente = await patients.findAll({where: {epoc: 'si'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(zapatillas)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
       },
       irc: async (req, res) => {
         let paciente = await patients.findAll({where: {irc: 'si'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(zapatillas)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
       },
       obesos: async (req, res) => {
         let paciente = await patients.findAll({where: {obesity: 'si'}})
+        let patient = paciente.sort(function(a,b){
+          if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+            return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+              return 1
+            }
+            return 0;
+        })
         //return res.send(zapatillas)
-        res.render(path.resolve(__dirname , '..','views','patients','patients') , {paciente});
+        res.render(path.resolve(__dirname , '..','views','patients','patients') , {patient});
       },
       search:async (req,res)=>{
         
@@ -510,10 +622,16 @@ module.exports = {
 })
       console.log('oooooooooooooooooooooooooooooooooo' + paciente);
    //return res.send(req.body)  
-     
+   let patient = paciente.sort(function(a,b){
+    if( a.last_name.toLowerCase()< b.last_name.toLowerCase()){
+      return -1}else if(a.first_name.toLowerCase()> b.first_name.toLowerCase()){ 
+        return 1
+      }
+      return 0;
+  })
       
       
-      res.render(path.resolve(__dirname, '..', 'views', 'patients', 'resultados'), {paciente})
+      res.render(path.resolve(__dirname, '..', 'views', 'patients', 'resultados'), {patient})
       
   
     },
