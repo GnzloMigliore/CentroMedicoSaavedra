@@ -2,7 +2,7 @@
 const path = require('path');
 const fs = require('fs');
 const { Op, where } = require("sequelize");
-const {patients, medicalhistories,treatments,exams,patienttreatments,images} = require ('../database/models');
+const {patients, medicalhistories,treatments,exams,patienttreatments,images,apointments} = require ('../database/models');
 
 const {
   check,
@@ -157,10 +157,10 @@ module.exports = {
       const paciente = await patients.findByPk(req.params.id, {include: ['treatments']})
       const tratamiento = await treatments.findAll({where: {patient_id: req.params.id}, order: [['datetreatment', 'DESC']]})
       const historiaClinica = await medicalhistories.findAll({where: {patient_id: req.params.id}, order: [['visitamedica', 'DESC']]})
-    
+      const turnos = await apointments.findAll({where: {name: paciente.firstlast_name}, order: [['start_date', 'DESC']]})
       
       
-      res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente, historiaClinica,tratamiento });   
+      res.render(path.resolve(__dirname , '..','views','patients','patientDetail') , {paciente, historiaClinica,tratamiento,turnos });   
     },
     addhistory: async (req,res)=>{
    

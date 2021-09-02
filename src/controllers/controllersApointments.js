@@ -25,7 +25,7 @@ module.exports = {
     res.render(path.resolve(__dirname, '..', 'views', 'apointments', 'filtrarApointments'),{turnos,usuarios});
   },
   addEvent : async  (req,res) => {
-
+    const pacientes = await patients.findAll()
     const usuarios = await users.findAll({where: {puesto: "medico"}})
  
      let turno={
@@ -134,7 +134,7 @@ module.exports = {
     
     )
       
-    res.render(path.resolve(__dirname, '..', 'views', 'apointments', 'apointments'),{usuarios});
+    res.render(path.resolve(__dirname, '..', 'views', 'apointments', 'apointments'),{usuarios,pacientes});
   },
 
 }

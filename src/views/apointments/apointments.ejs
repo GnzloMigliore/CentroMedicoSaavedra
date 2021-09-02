@@ -26,12 +26,16 @@
                     <article class="col-8 mx-auto">
                         <form action="/addevent" method="POST">
                             <div class="col-12 mb-4 bg-light p-0">
-                              <select class="form-control" name="medico" required>
-                                <option selected  disabled>Paciente</option>
+  
+                              <input list="brow"class="form-control" name="name" required>
+                              <datalist id="brow">
                                 <% pacientes.forEach(paciente=> { %>
-                                  <option value="<%= usuario.complete_name   %>"><%= paciente.firstlast_name   %></option>
-                                 <% }); %> 
-                                </select>  
+                                <option value="<%= paciente.firstlast_name   %>">
+                                  <% }); %> 
+                              </datalist>  
+                              
+                           
+                           
                             
                             </div>
                            

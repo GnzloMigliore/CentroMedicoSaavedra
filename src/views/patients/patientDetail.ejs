@@ -332,9 +332,50 @@
       <% }) %>
       </tbody> 
     </table>
-  </div>
   
+  <article class="col-10 mx-auto mb-4 "  style="background-color: aliceblue;">
+    <h2 class="titulo-admin pb-3 border-bottom text-center mt-5 mx-auto text-uppercase">TURNOS ASIGNADOS</h2>
+  </article>
+  <section class="d-flex">
+    <% if (turnos.length == 0) {%>
+        <h4 class="w-100 text-center my-5">NO SE ENCONTRARON TURNOS</h4>
+        <%}else{%>
 
+        <article class="col-12">
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Médico</th>
+                        <th scope="col">Paciente</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Fecha inicio turno</th>
+                        <th scope="col">Fecha fin turno</th>
+
+                 
+                    </tr>
+                </thead>
+                <tbody>
+                    <% turnos.forEach(turno=> { %>
+                        <tr>
+                            <td><%= turno.doctor%> </td>
+                            <td><%= turno.name%> </td>
+                            <td><%= turno.description%> </td>
+                            <td><%= turno.start_date%> </td>
+                            <td><%= turno.end_date%> </td>
+
+                    
+
+                      
+                          
+                        </tr>
+                        <% }); %> 
+                </tbody>
+            </table>
+        </article>
+
+<% } %>
+</section>
+</div>
   <!--Boton volver-->
   <div class="col-12 d-flex justify-content-center mt-5 pt-5 pr-5 my-5">
     <a href="/patients" class="btn btn-dark px-5 ml-2">Volver</a>
