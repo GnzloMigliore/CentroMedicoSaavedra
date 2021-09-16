@@ -12,4 +12,5 @@ router.get('/turnos', controllersApointments.turnos);
 router.get('/filtroTurnos', controllersApointments.filtroTurnos);
 router.post('/filtrarTurnos', controllersApointments.filtrarTurnos);
 router.post('/addevent', controllersApointments.addEvent);
+router.get('/eleminarTurno', controllersApointments.delete);
 module.exports = router;

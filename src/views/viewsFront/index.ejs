@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Clinica Multi-Purpose Medical HTML Template">
+    <meta name="keywords" content="clinica, Bootstrap, clinic, doctor, health, health care, hospital, medical, patient, pharmacy, surgeon, health template, medical template, appointment, stomatology ">
+    <meta name="author" content="ThemeAtelier">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- ========== Title ========== -->
+    <title>Centro Médico Saavedra</title>
+    <!-- ========== STYLESHEETS ========== -->
+    <!-- Bootstrap CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts Awesome CSS -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!-- YouTubePopUp CSS -->
+	<link rel="stylesheet" href="css/YouTubePopUp.css" />
+    <!-- Owl-carousel CSS -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<!-- jquery ui CSS -->
+	<link rel="stylesheet" href="css/jquery-ui.min.css">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <!-- ========== Favicon Ico ========== -->
+    <link rel="shortcut icon" href="/images/logo/favicon.png" sizes="64x64">
+</head>
+<body>
+<!-- ========== Preloader Start ========== -->
+<div class="preloader-wrap">
+	<div class="loader"></div>
+</div>
+<!-- ========== Preloader End ========== -->
+<!-- ========== Header section ========== -->
+<header class="header-area header-area-v2 section-light">
+	<div class="header-top">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3 col-xs-10 logo">
+				<a href="index.html"><img class="img-responsive" src="images/logo/logo.png" alt="logo"></a>
+			</div>
+			<!-- Mainmenu-area Start-->
+			<div class="mainmenu-area hidden-xs text-right col-sm-9">
+				<div class="mainmenu">
+					<nav>
+						<ul>
+							<li><a href="index.html">Inicio</a>						
+							</li>
+							<li><a href="#about-us">Nosotros</a></li>
+							<li><a href="#benefits">Beneficios</a></li>
+							<li><a href="#doctors">Equipo Médico</a></li>
+							
+							<!-- <li><a href="#news">Novedades</a></li> -->
+							<li><a href="#contact-us">Contactanos</a></li>
+							<li><a href="/IniciarSesion">Iniciar sesión</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- Mainmenu-area End-->
+		</div>
+	</div>
+	</div>
+	<!-- Mobile-menu-area Start -->
+	<div class="mobile-menu-area visible-xs">
+		<div class="mean-container">
+			<div class="col-md-12">
+				<div class="mobile-menu">
+					<nav id="dropdown">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="#about-us">Nosotros</a></li>
+							<li><a href="#benefits">Beneficios</a></li>
+							<li><a href="#doctors">Doctors</a></li>
+							<!-- <li><a href="#news">Novedades</a></li> -->
+							<li><a href="#contact-us">Contactanos</a></li>
+						</ul>
+					</nav>
+				</div>					
+			</div>
+		</div>
+	</div>
+	<!-- Mobile-menu-area END -->	
+</header>
+<!-- ========== Header section End ========== -->
+<!-- ========== hero section ========== -->
+<section data-stellar-background-ratio="0.5" class="hero hero-parallax pt100 pb100 section-blue" style="background-image: url('images/header.jpg'); background-repeat: no-repeat; background-size: cover;">
+	<div class="gredient-overlay opacity-6"></div>
+	<div class="container">
+		<div class="row">
+			<!-- header intro Srart -->
+			<div class="col-xs-12 intro-text">
+				<h1>Centro dedicado al diagnostico y tratamiento de enfermedades Cardiometabólicas e Investigación Clínica</h1>
+				<a class="btn-intro" href="#about-us">Conoce nuestras especialidades</a>
+			</div>
+			<!-- header intro End-->
+			<!-- quick-appoinment-form Start -->
+			<div class="col-xs-12">
+				<div class="quick-appoinment-form section-light">
+					<h6 class="text-center">
+						Dejanos tus datos para que te <span class="color-blue">contactemos</span>
+					</h6>
+					<div id="erreomes"></div>
+					<form action="contact.php" id="contact-form" method="POST">
+						<div class="row">
+							<div class="form-container col-xs-12 col-md-6">
+								<div class="form-group">
+									<input class="form-control" type="text" name="full_name" placeholder="Nombre Completo" required/>
+								</div>
+								<div class="form-group">
+									<input class="form-control" id="appdate" name="date" placeholder="Fecha de Nacimiento" type="text"  required/>
+								</div>
+								<div class="form-group">
+									<input class="form-control" type="text" name="socialSec" placeholder="Obra Social"  />
+								</div>
+								<div class="form-group">
+									<input class="form-control" type="tel" name="phone" placeholder="Teléfono" required />
+								</div>
+								<div class="form-group">
+									<input class="form-control" type="email" name="email" placeholder="E-mail" required />
+								</div>
+								<div class="form-group">
+									<textarea class="form-control" cols="30" name="message" rows="3" placeholder="Consulta" required></textarea>
+								</div>
+								<div class="loader-img">
+								<img src="css/ajax-loader.gif" alt="loading" id="loading_image">
+								</div>
+							</div>
+							<div class="form-container col-xs-12 col-md-5 border">
+								<div class="form-group">
+									<span>¿DIABETES TIPO 1 O TIPO 2? </span>									
+									<label class="switch">
+										<input type="checkbox" name="diabetes" style="position: relative; right: 5px;">
+										<span class="slider round"></span>
+									</label>
+									<br>
+								</div>
+								<div class="form-group">
+									<span>¿NIVELES ELEVADOS DE COLESTEROL? </span>									
+									<label class="switch">
+										<input type="checkbox" name="colesterol">
+										<span class="slider round"></span>
+									</label>
+								</div>
+								<div class="form-group">
+									<span>¿HIPERTENSIÓN ARTERIAL? </span>									
+									<label class="switch">
+										<input type="checkbox" name="hipertension_arterial">
+										<span class="slider round"></span>
+									</label>
+								</div>
+								<div class="form-group">
+									<span>¿ENFERMEDADES CARDIACAS? </span>									
+									<label class="switch">
+										<input type="checkbox" name="enfermedades_cardiacas">
+										<span class="slider round"></span>
+									</label>
+								</div>
+								<div class="form-group">
+									<span>¿ENFERMEDADES RESPIRATORIAS? </span>									
+									<label class="switch">
+										<input type="checkbox" name="enfermedades_respiratorias">
+										<span class="slider round"></span>
+									</label>
+								</div>
+								<div class="form-group">
+									<span>¿ASMA O EPOC? </span>									
+									<label class="switch">
+										<input type="checkbox" name="asma_epoc">
+										<span class="slider round"></span>
+									</label>
+								</div>
+								<div class="form-group">
+									<span>¿ENFERMEDADES EN ARTICULACIONES? </span>									
+									<label class="switch">
+										<input type="checkbox" name="enfermedades_articulaciones">
+										<span class="slider round"></span>
+									</label>
+								</div>
+								<div class="form-group">
+									<span>¿ENFERMEDAD GASTROINTESTINAL? </span>									
+									<label class="switch">
+										<input type="checkbox" name="enfermedad_gastrointestinal">
+										<span class="slider round"></span>
+									</label>
+								</div>
+								<div class="form-group">
+									<span>¿ALERGIAS? </span>									
+									<label class="switch">
+										<input type="checkbox" name="alergias">
+										<span class="slider round"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="text-center form-button col-12">
+							<input type="submit" value="¡ENVIAR!" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- ========== hero section  End ========== -->
+<!-- ========== services section ========== -->
+<section id="about-us" class="services-section section-light pt100 pb100" style="background: #fafafa;">
+	<div class="container">
+		<!-- section title -->
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="section-title text-center mb40">
+					<img src="images/icons/icon-service-title.png" alt="" />
+					<h2>Sobre <span class="color-blue">nosotros</span></h2>
+					<p>Somos el primer centro médico de la Argentina a la vanguardia de la medicina. Contamos con <strong>más de 50 estudios clinicos</strong></p>
+					<p>Nuestro trabajo en la investigación está avalado por nuestra experiencia clínica en el control de <strong>Diabetes, Obesidad y Enfermedades Cardiovasculares.</strong></p>
+				</div>
+			</div>
+		</div>
+		<!-- end section title-->
+		<div class="row">
+			<div class="col-sm-12 col-lg-3 single-service text-center">
+				<img src="images/icons/icon-medical-service.png" alt="" />
+				<h6>Clínica Medica</h6>
+				<p>Diagnóstico y tratamiento de Condiciones clínicas. Prevencion y Promocion de la salud. Derivación a especialidades correspondientes.</p>
+			</div>
+			<!-- Single srevice end -->
+			<div class="col-sm-12 col-lg-3 single-service text-center">
+				<img src="images/icons/icon-emergency-case.png" alt="" />
+				<h6>Cardiología</h6>
+				<p>Cardiología Clínica, diagnostico y tratamiento personalizado de enfermedades de causa cardiovascular.</p>
+			</div>
+			<!-- Single srevice end -->
+			<div class="col-sm-12 col-lg-3 single-service text-center">
+				<img src="images/icons/icon-find-doctors.png" alt="" />
+				<h6>Metabolismo</h6>
+				<p>Diabetes y Obesidad. Diagnostico y tratamiento. Evaluacion y consejos nutricionales. Pie diabetico. Terapia hiperbarica.</p>
+			</div>
+			<!-- Single srevice end -->
+			<div class="col-sm-12 col-lg-3 single-service text-center">
+				<img src="images/icons/icon-find-doctors.png" alt="" />
+				<h6>Reumatología</h6>
+				<p>Diagnostico y tratamiento de patologia de origen articulo muscular. Artritis Reumatoidea, Osteo Artrosis. Tratamiento del dolor.</p>
+			</div>
+			<!-- Single srevice end -->
+			<div class="col-sm-12 col-lg-3 single-service single-service-2 text-center" style="padding-bottom:62px">
+				<img src="images/icons/icon-find-doctors.png" alt="" />
+				<h6>Dermatología</h6>
+				<p>Diagnostico y tratamiento de enfermedades de la piel. Alergia, Psoriasis, Urticaria.</p>
+			</div>
+			<!-- Single srevice end -->
+			<div class="col-sm-12 col-lg-3 single-service single-service-2 text-center"style="padding-bottom:41px">
+				<img src="images/icons/icon-find-doctors.png" alt="" />
+				<h6>Ginecología <br> Clínica</h6>
+				<p>Diagnostico y tratamiento de enfermedades de la mujer. PAP, Colposcopia. Terapia Hiperbarica.</p>
+			</div>
+			<!-- Single srevice end -->
+			<div class="col-sm-12 col-lg-3 single-service single-service-2 text-center" style="padding-bottom:39px">
+				<img src="images/icons/icon-find-doctors.png" alt="" />
+				<h6>Neumonología</h6>
+				<p>Diagnostico y tratamiento de enfermedades de las vias respiratorias. ASMA, EPOC. Terapia hiperbarica.
+				</p>
+			</div>
+			<!-- Single srevice end -->
+			<div class="col-sm-12 col-lg-3 single-service single-service-2 text-center" style="padding-bottom:16px">
+				<img src="images/icons/icon-find-doctors.png" alt="" />
+				<h6>Hepatología</h6>
+				<p>Diagnostico y tratamiento de enfermedades de origen hepatico. Higado Graso, Esteatosis Hepatica No Alcoholica, Fibrosis Hepatica. Diagnostico mediante. Fibroscan.</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- ========== services section  End ========== -->
+
+<!-- ========== services section ========== -->
+<section id="benefits" class="services-section section-light pt100 pb100">
+	<div class="container">
+		<!-- section title -->
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="section-title text-center mb40">
+					<img src="images/icons/icon-service-title.png" alt="" />
+					<h2>Porque elegír <br><span class="color-blue">Centro Médico Saavedra</span></h2>
+					<p> Un estudio clínico se compone por una serie de investigaciones con la intención de probar nuevos medicamentos. Con estas investigaciones se intenta comprobar la efectividad de un medicamento y encontrar mejores formas de <strong>prevenir</strong>, <strong>diagnosticar</strong> o <strong>tratar una enfermedad</strong>. <br> Si padeces algunas de estas enfermedades o conoces a alguien que las padezca, contáctanos a la dirección al pie de esta página y participa en una de nuestras investigaciones:
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- end section title-->
+		<div class="row">
+			<div class="col-sm-6 single-service-box">
+				<h6>Fase I</h6>
+				<p>Representa la 1ª vez que el medicamento será administrado en voluntarios sanos. Se intenta descubrir la mejor forma de administrarlo (en inyección o pastilla) y la dosis más alta que puede aplicarse con seguridad. Participan de 10 a 20 voluntarios sanos y tiene duración de 1 año.
+				</p>
+			</div>
+			<!-- Single srevice-box end -->
+			<div class="col-sm-6 single-service-box">
+				<h6>Fase II</h6>
+				<p>Esta prueba se lleva a cabo en pacientes y tiene como finalidad proporcionar información preliminar sobre la eficacia y seguridad del producto en cuestión y así poder establecer la relación dosis-respuesta del mismo. Participa un grupo que va de los 40 a los 60 pacientes y tiene una duración aproximada de 2 años.</p>
+			</div>
+			<!-- Single srevice-box end -->
+			<div class="col-sm-6 single-service-box">
+				<h6>Fase III</h6>
+				<p>En esta fase el medicamento se administra a un grupo mayor de pacientes que van de los 1000 a los 20000. Estos ensayos evalúan la efectividad y seguridad del tratamiento reproduciendo las condiciones de uso ordinarias, también, se compara con el mejor tratamiento disponible. Al igual que la Fase II, también tiene duración de entre 2 y 4 años.</p>
+			</div>
+			<!-- Single srevice-box end -->
+			<div class="col-sm-6 single-service-box">
+				<h6>Fase IV</h6>
+				<p>Consiste en el estudio de un medicamento después de su distribución comercial a la población en general y sirven para saber si un medicamento tiene otros usos o beneficios adicionales. Tanto el tiempo como el número de personas que participa, es variable.</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- ========== services section  End ========== -->
+<!-- ========== best-doctors section ========== -->
+<section id="doctors" class="best-doctors section-gray pt100 pb100">
+	<div class="container">
+		<!-- section title -->
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="section-title text-center mb40">
+					<img src="images/icons/icon-service-title.png" alt="" />
+					<h2>Conocé <span class="color-blue">Nuestro Equipo</span></h2>
+					<p>Equipo de profesionales plenamente dedicados a la atención médica, que cumplen los altos estándares que exige la institución.</p>
+				</div>
+			</div>
+		</div>
+		<!-- end section title-->
+		<div class="row grid">
+			<div class="col-sm-4 col-xs-12 grid-item">
+				<div class="bestdoctor-box-v2 section-light">
+					<!-- <img src="img/doctors/doctorsv2-2.jpg" alt="" class="img-full" /> -->
+					<div class="bestdoctor-info text-center">
+						<h6> Dr. Archibaldo Glenny</h6>
+						<!-- <a class="see-detail" href="doctor-profile.html">See Details</a> -->
+					</div>
+					<div class="best-doctor-footer section-blue">
+						<div class="bestd-list-item"><span>DIRECCIÓN MEDICA</span></div>
+					</div>
+				</div>
+			</div>
+			<!-- Single doctor-box end -->
+			<div class="col-sm-4 col-xs-12 grid-item">
+				<div class="bestdoctor-box-v2 section-light">
+					<!-- <img src="img/doctors/doctorsv2-2.jpg" alt="" class="img-full" />		 -->
+					<div class="bestdoctor-info text-center">
+						<h6> Dr. Alberto Cristino <br> Dr. Martin H. Koretzky <br> Dr. Gustavo Castiell</h6>
+						<!-- <a class="see-detail" href="doctor-profile.html">See Details</a> -->
+					</div>
+					<div class="best-doctor-footer section-blue">
+						<div class="bestd-list-item"><span>CARDIOLOGÍA</span></div>
+					</div>
+				</div>
+			</div>
+			<!-- Single doctor-box end -->
+			<div class="col-sm-4 col-xs-12 grid-item">
+				<div class="bestdoctor-box-v2 section-light">
+					<!-- <img src="img/doctors/doctorsv2-2.jpg" alt="" class="img-full" /> -->
+					<div class="bestdoctor-info text-center">
+						<h6> Dr. Alejandro Porto</h6>
+						<!-- <a class="saee-detail" href="doctor-profile.html">See Details</a> -->
+					</div>
+					<div class="best-doctor-footer section-blue">
+						<div class="bestd-list-item"><span>CLÍNICA MÉDICA</span></div>
+					</div>
+				</div>
+			</div>
+			<!-- Single doctor-box end -->
+			<div class="col-sm-4 col-xs-12 grid-item">
+				<div class="bestdoctor-box-v2 section-light">
+					<!-- <img src="img/doctors/doctorsv2-3.jpg" alt="" class="img-full" /> -->
+					<div class="bestdoctor-info text-center">
+						<h6>Dra.Candela Baigorri</h6>
+						<!-- <a class="see-detail" href="doctor-profile.html">See Details</a> -->
+					</div>
+					<div class="best-doctor-footer section-blue">
+						<div class="bestd-list-item"><span>DERMATOLOGÍA</span></div>
+					</div>
+				</div>
+			</div>
+			<!-- Single doctor-box end -->
+			<div class="col-sm-4 col-xs-12 grid-item">
+				<div class="bestdoctor-box-v2 section-light">
+					<!-- <img src="img/doctors/doctorsv2-3.jpg" alt="" class="img-full" /> -->
+					<div class="bestdoctor-info text-center">
+						<h6>Dr. Ruben Saurral</h6>
+						<!-- <a class="see-detail" href="doctor-profile.html">See Details</a> -->
+					</div>
+					<div class="best-doctor-footer section-blue">
+						<div class="bestd-list-item"><span>DIABETES Y METABOLISMO</span></div>
+					</div>
+				</div>
+			</div>
+			<!-- Single doctor-box end -->
+			<div class="col-sm-4 col-xs-12 grid-item">
+				<div class="bestdoctor-box-v2 section-light">
+					<!-- <img src="img/doctors/doctorsv2-3.jpg" alt="" class="img-full" /> -->
+					<div class="bestdoctor-info text-center">
+						<h6>Dr. Gabriel Aballay</h6>
+						<!-- <a class="see-detail" href="doctor-profile.html">See Details</a> -->
+					</div>
+					<div class="best-doctor-footer section-blue">
+						<div class="bestd-list-item"><span>HEPATOLOGÍA</span></div>
+					</div>
+				</div>
+			</div>
+			<!-- Single doctor-box end -->
+			<div class="col-sm-4 col-xs-12 grid-item">
+				<div class="bestdoctor-box-v2 section-light">
+					<!-- <img src="img/doctors/doctorsv2-3.jpg" alt="" class="img-full" /> -->
+					<div class="bestdoctor-info text-center">
+						<h6>Dr. Rafael Escobar</h6>
+						<!-- <a class="see-detail" href="doctor-profile.html">See Details</a> -->
+					</div>
+					<div class="best-doctor-footer section-blue">
+						<div class="bestd-list-item"><span>GASTROENTEROLOGÍA</span></div>
+					</div>
+				</div>
+			</div>
+			<!-- Single doctor-box end -->
+			<div class="col-sm-4 col-xs-12 grid-item">
+				<div class="bestdoctor-box-v2 section-light">
+					<!-- <img src="img/doctors/doctorsv2-3.jpg" alt="" class="img-full" /> -->
+					<div class="bestdoctor-info text-center">
+						<h6>Dr. Miguel Linarez</h6></a>
+						<!-- <a class="see-detail" href="doctor-profile.html">See Details</a> -->
+					</div>
+					<div class="best-doctor-footer section-blue">
+						<div class="bestd-list-item"><span>REUMATOLOGÍA</span></div>
+					</div>
+				</div>
+			</div>
+			<!-- Single doctor-box end -->
+			<div class="col-sm-4 col-xs-12 grid-item">
+				<div class="bestdoctor-box-v2 section-light">
+					<!-- <img src="img/doctors/doctorsv2-3.jpg" alt="" class="img-full" /> -->
+					<div class="bestdoctor-info text-center">
+						<h6>Dr. Osvaldo Tiberio</h6></a>
+						<!-- <a class="see-detail" href="doctor-profile.html">See Details</a> -->
+					</div>
+					<div class="best-doctor-footer section-blue">
+						<div class="bestd-list-item"><span>GINECOLOGÍA</span></div>
+					</div>
+				</div>
+			</div>
+			<!-- Single doctor-box end -->
+
+		</div>
+		<!-- <div class="text-center clearfix mt50">
+			<a href="doctors.html" class="primary-btn">View All Doctors</a>
+		</div> -->
+	</div>
+</section>
+<!-- ========== best-doctors section End ========== -->
+<!-- ========== Blog section ========== -->
+<section id="news" class="best-doctors section-light pt100 pb100">
+	<div class="container">
+		<!-- section title -->
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="section-title text-center mb40">
+					<img src="img/icons/icon-blog-title.png" alt="" />
+					<h2>Ultimas <span class="color-blue">Novedades</span></h2>
+					<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and  will give you a complete account of the system, and expound the actual teachings</p>
+				</div>
+			</div>
+		</div>
+		<!-- end section title-->
+		<div class="row grid">
+			<div class="col-sm-4 col-xs-12 grid-item">
+				<div class="article-box">
+					<div class="article-thumb">
+						<img src="img/blog/blog-thumb-1.jpg" alt="" class="img-full" />
+						<div class="article-date">
+							<a href="#">12 May 2017 </a>
+						</div>
+						<div class="article-meta text-center">
+							<a href="#"><i class="fa fa-comment"></i>   10 Comments</a>   |   <a href=""><i class="fa fa-eye"></i>   100 Views</a>
+						</div>
+					</div>
+					<div class="article-content text-left">
+						<a href="single.html"><h6>Nutritional Personal Consultation</h6></a>
+						<p>But I must explain to you how all this  i mistaken idea of denouncing pleasure and praising pain was i born and  will give you a complete account  more [...]</p>
+						<a href="single.html">Read More</a>
+					</div>
+				</div>
+			</div>
+			<!-- Single article-box end -->
+			<div class="col-sm-4 col-xs-12 grid-item">
+				<div class="article-box">
+					<div class="article-thumb">
+						<img src="img/blog/blog-thumb-2.jpg" alt="" class="img-full" />
+						<div class="article-date">
+							<a href="#">12 May 2017 </a>
+						</div>
+						<div class="article-meta text-center">
+							<a href="#"><i class="fa fa-comment"></i>   10 Comments</a>   |   <a href=""><i class="fa fa-eye"></i>   100 Views</a>
+						</div>
+					</div>
+					<div class="article-content text-left">
+						<a href="single.html"><h6>Nutritional Personal Consultation</h6></a>
+						<p>But I must explain to you how all this  i mistaken idea of denouncing pleasure and praising pain was i born and  will give you a complete account  more [...]</p>
+						<a href="single.html">Read More</a>
+					</div>
+				</div>
+			</div>
+			<!-- Single article-box end -->
+			<div class="col-sm-4 col-xs-12 grid-item">
+				<div class="article-box">
+					<div class="article-thumb">
+						<img src="img/blog/blog-thumb-3.jpg" alt="" class="img-full" />
+						<div class="article-date">
+							<a href="#">12 May 2017 </a>
+						</div>
+						<div class="article-meta text-center">
+							<a href="#"><i class="fa fa-comment"></i>   10 Comments</a>   |   <a href=""><i class="fa fa-eye"></i>   100 Views</a>
+						</div>
+					</div>
+					<div class="article-content text-left">
+						<a href="single.html"><h6>Nutritional Personal Consultation</h6></a>
+						<p>But I must explain to you how all this  i mistaken idea of denouncing pleasure and praising pain was i born and  will give you a complete account  more [...]</p>
+						<a href="single.html">Read More</a>
+					</div>
+				</div>
+			</div>
+			<!-- Single article-box end -->
+		</div>
+		<div class="text-center clearfix mt50">
+			<a href="blog.html" class="primary-btn">View All Posts</a>
+		</div>
+	</div>
+</section>
+<!-- ========== Blog section End ========== -->
+<!-- ========== Contact-info section ========== -->
+<section id="contact-us" class="contact-info section-blue pt100 pb100">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-7 col-sm-8">
+				<h2>Información de Contacto & Ubicación</h2>
+				<div class="col-sm-5 xs-padding-none">
+					<ul class="contact-detail">
+						<li><i class="fa fa-location-arrow"></i>Avenida Ruiz Huidobro 4693, Saavedra, Buenos Aires</li>
+						<li><i class="fa fa-phone"></i>TELEFONO: 4544-5522<br>FAX: 4545-3168</li>
+						<li><i class="fa fa-envelope"></i><a href="mailto:info@clicawebsite.com">info@centromedicosaavedra.com.ar</a><br><a href="mailto:contact@clicawebsit.com">contacto@clinicasaavedra.com.ar</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-7 xs-padding-none">
+					<div class="map">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.9617285458453!2d-58.49598514899502!3d-34.55452438037645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb6e92e6daa41%3A0x52ab6427425cb3cf!2sRuiz+Huidobro+4693%2C+C1430CKE+CABA!5e0!3m2!1ses!2sar!4v1563461449229!5m2!1ses!2sar" width="97%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+			<!-- End contact location -->
+			<div class="col-md-5 col-sm-4 opening-hours-wrap">
+				<h2>Horarios de Atención</h2>
+				<ul class="opening-hours">
+					<li>Lunes a Viernes: <span class="pull-right">8:00 - 18:00</span></li>
+					<li>Sábados y Domingos: <span class="pull-right">Cerrado</span></li>
+				</ul>
+			</div>
+			<!-- End opening hours -->
+		</div>
+	</div>
+</section>
+<!-- ========== Contact-info section End ========== -->
+<!-- ========== Footer wdiget section ========== -->
+<section class="footer-widget section-gray pt100 pb100">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="single-footer-widget">
+					<h6>Sobre la Clínica</h6>
+					<p>Somos un centro de investigación clínica con más de 20 años dedicados al diagnóstico, tratamiento e investigación de nuevos medicamentos, en busca de brindarle el mejor tratamiento disponible a nuestros pacientes, siempre orientados a las Buenas Prácticas Clínicas.</p>
+					<ul class="footer-social">
+						<li><a href=""><i class="fa fa-facebook"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- End single footer-widget -->
+			<div class="col-sm-5" style="margin-left: 97px;">
+				<div class="single-footer-widget">
+					<h6>Departamentos Médicos</h6>
+
+					<ul>
+						<div class="row" style="display: flex;">
+							<div class="col-6" style="width: 45%;">
+								<li><i class="fa fa-angle-right" style="color:rgb(59, 123, 214)"></i>  Clínica Medica</li>
+								<li><i class="fa fa-angle-right" style="color:rgb(59, 123, 214)"></i>  Cardiología</li>
+								<li><i class="fa fa-angle-right" style="color:rgb(59, 123, 214)"></i>  Metabolismo</li>
+								<li><i class="fa fa-angle-right" style="color:rgb(59, 123, 214)"></i>  Reumatología</li>
+							</div>
+							<div class="col-6" style="width: 30%;">
+								<li><i class="fa fa-angle-right" style="color:rgb(59, 123, 214)"></i>  Dermatología</li>
+								<li><i class="fa fa-angle-right" style="color:rgb(59, 123, 214)"></i>  Ginecología Clínica</li>
+								<li><i class="fa fa-angle-right" style="color:rgb(59, 123, 214)"></i>  Neumonología </li>
+								<li><i class="fa fa-angle-right" style="color:rgb(59, 123, 214)"></i>  Hepatología</li>
+							</div>
+						</div>
+						
+					</ul>
+				</div>
+			</div>
+			<!-- End single footer-widget -->
+			
+		</div>
+	</div>
+</section>
+<!-- ========== Footer wdiget section End ========== -->
+<!-- ========== Footer ========== -->
+<footer class="footer section-dark pt30 pb30">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<p>Copyright &copy; <a href="#">Centro Médico Saavedra</a> 2020. Todos los derechos reservados.  | Powered by <a href="https://www.nest.com.ar" style="color: white;">NEST</a></p>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- ========== Footer End ========== -->
+<!-- Scroll to up -->
+<div class="scroll-to-up hidden-xs">
+	<div class="scrollup">
+		<i class="fa fa-caret-up"></i>
+	</div>
+</div>
+<!-- Scroll to up end -->
+<!-- Contact Script -->
+<script type="text/javascript" src="js/contact.js"></script>
+<!-- Sweet Alert-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<!-- jquery -->
+<script src="js/jquery.min.js"></script>
+<!-- Bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Hiding menu js -->
+<script type="text/javascript" src="js/jquery.sticky-kit.min.js"></script>
+<!-- Mainmenu js -->
+<script type="text/javascript" src="js/jquery.meanmenu.js"></script>
+<!-- Stellar js -->
+<script type="text/javascript" src="js/jquery.stellar.min.js"></script>
+<!-- YouTubePopUp CSS -->
+<script type="text/javascript" src="js/YouTubePopUp.jquery.js"></script>
+<!-- Masonry js -->
+<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+<!-- jquery UI -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Owl carousel js -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- GoogleMap js -->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDx6Q7BeUVtvH2jCZY-jhjnQD_nzzGlMwo"></script> -->
+<!-- <script type="text/javascript" src="js/gmap3.min.js"></script> -->
+<!-- Custom js -->
+<script src="js/app.js"></script>
+</body>
+</html>

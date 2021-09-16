@@ -60,7 +60,7 @@ module.exports = {
 
     // Call the setCredentials method on our oAuth2Client instance and set our refresh token.
     oAuth2Client.setCredentials({
-      refresh_token: "1//04Vbon2WKnJbNCgYIARAAGAQSNwF-L9IrypYIyRfbHEPCLtvi7HTkSmmp8pYfyfM65LuCwijg-5SacFqinc7k1199X7CvL_z0agg",
+      refresh_token: "1//04PibW3CYq91QCgYIARAAGAQSNwF-L9IrjFucC791xBzdhlytcGJoPTw4vtMxxkkUTAO39W2xz2jK4JGPdsmNyA9j64p2db1StUw",
     })
 
         
@@ -136,5 +136,26 @@ module.exports = {
       
     res.render(path.resolve(__dirname, '..', 'views', 'apointments', 'apointments'),{usuarios,pacientes});
   },
+  delete : async  (req,res) => {
+    const pacientes = await patients.findAll()
+    const usuarios = await users.findAll({where: {puesto: "medico"}})
+ 
+    const oAuth2Client = new OAuth2(
+      "973393698786-o5ns69f3img0ostov5ojv9g6jg5avhsp.apps.googleusercontent.com","3tuGxS4_tRETUB7ItEqF6w6A",
+      
+    )
+    // Call the setCredentials method on our oAuth2Client instance and set our refresh token.
+    oAuth2Client.setCredentials({
+      refresh_token: "1//04Vbon2WKnJbNCgYIARAAGAQSNwF-L9IrypYIyRfbHEPCLtvi7HTkSmmp8pYfyfM65LuCwijg-5SacFqinc7k1199X7CvL_z0agg",
+    })
+    // Create a new calender instance.
+    const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
+    
+    return res.send(calendar.events); 
+
+      
+    res.render(path.resolve(__dirname, '..', 'views', 'apointments', 'apointments'),{usuarios,pacientes});
+  },
+
 
 }

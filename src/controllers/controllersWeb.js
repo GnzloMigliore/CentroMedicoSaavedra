@@ -8,6 +8,11 @@ module.exports = {
     index : async  (req,res) => {
     const usuarios = await users.findAll()
    
-    res.render(path.resolve(__dirname, '..', 'views', 'web', 'index2') , {usuarios});
+    res.render(path.resolve(__dirname, '..', 'views', 'viewsFront', 'index'));
+  },
+  iniciarSesion : async  (req,res) => {
+    const usuarios = await users.findAll()
+   
+    res.render(path.resolve(__dirname, '..', 'views', 'web', 'index2'));
   }
 }
