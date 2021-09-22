@@ -631,7 +631,7 @@ module.exports = {
   })
       
       
-      res.render(path.resolve(__dirname, '..', 'views', 'patients', 'resultados'), {patient})
+      res.render(path.resolve(__dirname, '..', 'views', 'patients', 'resultados'), {paciente})
       
   
     },
