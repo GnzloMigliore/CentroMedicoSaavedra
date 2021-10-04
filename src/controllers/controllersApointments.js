@@ -47,7 +47,7 @@ module.exports = {
    const description = req.body.descripcion;
 
     const oAuth2Client = new OAuth2(
-      "973393698786-o5ns69f3img0ostov5ojv9g6jg5avhsp.apps.googleusercontent.com","3tuGxS4_tRETUB7ItEqF6w6A",
+      "877118609214-s5hh789qqtsp44050g3et1nu9fusnfdg.apps.googleusercontent.com","giTk5xl56M9RlZ-Pb7ZKtglw",
       
     )
     // generate a url that asks permissions for Blogger and Google Calendar scopes
@@ -60,7 +60,7 @@ module.exports = {
 
     // Call the setCredentials method on our oAuth2Client instance and set our refresh token.
     oAuth2Client.setCredentials({
-      refresh_token: "1//04PibW3CYq91QCgYIARAAGAQSNwF-L9IrjFucC791xBzdhlytcGJoPTw4vtMxxkkUTAO39W2xz2jK4JGPdsmNyA9j64p2db1StUw",
+      refresh_token: "1//04xBR0AW66riFCgYIARAAGAQSNgF-L9IrOij_kSb0tmprx9v9LlCWO4XZQTZ_uhO0KnBBheoVujmFosiSfj3HIMkbdTZr0EDwug",
     })
 
         
@@ -129,6 +129,7 @@ module.exports = {
           )
     
         // If event array is not empty log that we are busy.
+       // console.log(calendarId);
         return console.log(`Sorry I'm busy...`)
       }
     
@@ -141,12 +142,12 @@ module.exports = {
     const usuarios = await users.findAll({where: {puesto: "medico"}})
  
     const oAuth2Client = new OAuth2(
-      "973393698786-o5ns69f3img0ostov5ojv9g6jg5avhsp.apps.googleusercontent.com","3tuGxS4_tRETUB7ItEqF6w6A",
+      "877118609214-s5hh789qqtsp44050g3et1nu9fusnfdg.apps.googleusercontent.com","giTk5xl56M9RlZ-Pb7ZKtglw",
       
     )
     // Call the setCredentials method on our oAuth2Client instance and set our refresh token.
     oAuth2Client.setCredentials({
-      refresh_token: "1//04Vbon2WKnJbNCgYIARAAGAQSNwF-L9IrypYIyRfbHEPCLtvi7HTkSmmp8pYfyfM65LuCwijg-5SacFqinc7k1199X7CvL_z0agg",
+      refresh_token: "1//04xBR0AW66riFCgYIARAAGAQSNgF-L9IrOij_kSb0tmprx9v9LlCWO4XZQTZ_uhO0KnBBheoVujmFosiSfj3HIMkbdTZr0EDwug",
     })
     // Create a new calender instance.
     const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
