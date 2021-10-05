@@ -150,9 +150,9 @@ module.exports = {
       refresh_token: "1//04xBR0AW66riFCgYIARAAGAQSNgF-L9IrOij_kSb0tmprx9v9LlCWO4XZQTZ_uhO0KnBBheoVujmFosiSfj3HIMkbdTZr0EDwug",
     })
     // Create a new calender instance.
-    const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
+    const calendar = google.calendar({ version: 'v3', auth: oAuth2Client})
     
-    return res.send(calendar.events); 
+    return res.send(calendar.calendarList.events);
 
       
     res.render(path.resolve(__dirname, '..', 'views', 'apointments', 'apointments'),{usuarios,pacientes});
