@@ -63,6 +63,7 @@ router.get('/patients/evp', controllersPatients.evp);
 router.get('/patients/epoc', controllersPatients.epoc);
 router.get('/patients/irc', controllersPatients.irc)
 router.get('/patients/obesos', controllersPatients.obesos);
+router.get('/patients/tabaquismo', controllersPatients.tabaquismo);
 router.post('/busqueda', controllersPatients.search);
 router.get("/inteligent", controllersPatients.inteligent);
 router.post('/busquedaInteligente', controllersPatients.inteligentSearch);

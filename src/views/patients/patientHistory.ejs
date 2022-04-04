@@ -21,7 +21,7 @@
               <label>Fecha de visita:</label>
               <input type="date" id="start" name="fechavisita" class="form-control  mb-2   bg-light"
               value=""
-              min="1940-01-01" max="2021-12-31" required>
+              min="1940-01-01" max="2050-12-31" required>
               <label>Nombre del médico:</label>
               <input type="text" class="form-control bg-light  mb-3 col-12" name="doctor" placeholder="<%=  locals.usuario.first_name %><%=  locals.usuario.last_name %>"  value="<%=  locals.usuario.first_name %><%=  locals.usuario.last_name %>"required readonly="readonly">
               <button type="submit" class="btn btn-dark">Guardar</button>
@@ -60,7 +60,7 @@
                           <label>Fecha de visita:</label>
                           <input type="date" id="start" name="date" class="form-control  mb-2   bg-light"
                           value=""
-                          min="1940-01-01" max="2021-12-31" required>
+                          min="1940-01-01" max="2050-12-31" required>
                          <div class="row">
                          <div class="col-3">
                            <label class="mt-3" >Altura</label>
@@ -71,84 +71,44 @@
                           <input type="text" class="form-control bg-light mt-2  col-12" name="peso"   value="" required>
                          </div>
                          <div class="col-3">
-                          <label for="">Masa corporal</label>
-                          <input type="text" class="form-control bg-light   col-12" name="masacorporal"   value="" required>
+                          <label class="mt-3">IMC</label>
+                          <input type="text" class="form-control bg-light mt-2  col-12" name="masacorporal"   value="" required>
                          </div>
+                         <div class="col-3">
+                          <label>Perimetro abdominal</label>
+                          <input type="text" class="form-control bg-light  col-12" name="perimetro_abs"   value="" required>
+                         </div>
+                         <div class="col-3">
+                          <label class="ml-2">Presión arterial</label>
+                         <input type="text" class="form-control bg-light   col-12" name="tension_arterial"   value="" required>
+                        </div>
                          <div class="col-3">
                           <label for="">Frec. cardíaca</label>
                           <input type="text" class="form-control bg-light   col-12" name="frec_cardiaca"  value="" required>
                          </div>
-                         </div>
-                         <div class="row">
-                          <div class="col-3">
-                            <label >Tensión arterial</label>
-                           <input type="text" class="form-control bg-light   col-12" name="tension_arterial"   value="" required>
-                          </div>
                           <div class="col-3">
                            <label >Frecuencia respiratoria</label>
                            <input type="text" class="form-control bg-light   col-12" name="frec_resp"   value="" required>
                           </div>
                           <div class="col-3">
-                           <label for="">Temperatura axilar</label>
-                           <input type="text" class="form-control bg-light   col-12" name="temp_axilar"   value="" required>
+                            <label for="">Temperatura axilar</label>
+                            <input type="text" class="form-control bg-light   col-12" name="temp_axilar"   value="" required>
                           </div>
-                          <div class="col-3">
-                           <label for="">Perímetro abdominal</label>
-                           <input type="text" class="form-control bg-light   col-12" name="perimetro_abs"  value="" required>
-                          </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-3">
-                              <label class="mt-3" >Tensión arterial promedio</label>
-                             <input type="text" class="form-control bg-light mt-2  col-12" name="tension_art_prom"   value="" required>
-                            </div>
-                            </div>
-                            <h5 class="modal-title mt-4" id="exampleModalLabel">Cardiología</h5>
-                            <div class="row">
-                              <div class="col-3">
-                                <label class="" >R2</label>
-                               <input type="text" class="form-control bg-light   col-12" name="r2"   value="" required>
-                              </div>
-                              <div class="col-3">
-                               <label class="">R3</label>
-                               <input type="text" class="form-control bg-light   col-12" name="r3"   value="" required>
-                              </div>
-                              <div class="col-3">
-                               <label for="">R4</label>
-                               <input type="text" class="form-control bg-light   col-12" name="r4"   value="" required>
-                              </div>
-                              <div class="col-3">
-                                <label for="">Soplos</label>
-                                <input type="text" class="form-control bg-light   col-12" name="soplos"   value="" required>
-                               </div>
-                               <div class="row">
-                                <div class="col-3">
-                                  <label class="ml-3" >Signos falla izquierda</label>
-                                 <input type="text" class="form-control bg-light ml-3  col-12" name="fallaizq"   value="" required>
-                                </div>
-                                <div class="col-3">
-                                 <label class="ml-3">Signos falla derecha</label>
-                                 <input type="text" class="form-control bg-light   col-12" name="fallader"   value="" required>
-                                </div>
-                                <div class="col-3">
-                                 <label for="ml-3 mt-3">Saturación de oxígeno</label>
-                                 <input type="text" class="form-control bg-light mt-4  col-12" name="saturacion"   value="" required>
-                                </div>
-                                </div>
-                              </div>
-                              <input type="hidden" class="form-control bg-light mt-2  col-12" name="doctor"   value="<%= locals.usuario.first_name %><%=  locals.usuario.last_name  %> " required>
+                        </div>
+                          <h5 class="modal-title mt-4" id="exampleModalLabel">Cardiología</h5>
+                          <input type="text" class="form-control bg-light   col-12" name="cardiologia"  value="" required placeholder="Agregar comentario">
+    
+                            <input type="hidden" class="form-control bg-light mt-2  col-12" name="doctor"   value="<%= locals.usuario.first_name %><%=  locals.usuario.last_name  %> " required>
+           
+                          <button type="submit" class="btn btn-dark mt-3">Guardar</button>
+                        </form>
                       </div>
-                            <button type="submit" class="btn btn-dark mt-3">Guardar</button>
-                            </form>
-                    </div>
                   </div>
                 </div>
               </div>
-              <h4 class="mt-4">EXPORTAR HISTORIA CLÍNICA</h4>
-              <a href="/pdf/<%= paciente.id %>" class="btn btn-dark px-5 ml-2">PDF</a>
-                
             </div>
-            
+            <h4 class="mt-4">EXPORTAR HISTORIA CLÍNICA</h4>
+            <a href="/pdf/<%= paciente.id %>" class="btn btn-dark px-5 ml-2">PDF</a>
 
 
 
@@ -207,7 +167,7 @@
             <%= exam.peso  %>
           </div>
           <div class="col-3">
-            <h6 class="mt-3">Masa corporal</h6>
+            <h6 class="mt-3">IMC</h6>
             <%= exam.masacorporal  %>
           </div>
           <div class="col-3">
@@ -216,7 +176,7 @@
           </div>
         
               <div class="col-3">
-                <h6 class="mt-3">Tensión arterial</h6>
+                <h6 class="mt-3">Presión arterial</h6>
                 <%= exam.tension_arterial  %>
               </div>
               <div class="col-3">

@@ -87,6 +87,12 @@ module.exports = (sequelize, dataTypes) => {
         date_end_obesity: dataTypes.TEXT,
         action_obesity: dataTypes.STRING,
         coments_obesity: dataTypes.TEXT,
+        smoking: dataTypes.STRING,
+        date_smoking: dataTypes.TEXT,
+        date_end_smoking: dataTypes.TEXT,
+        action_smoking: dataTypes.STRING,
+        coments_smoking: dataTypes.TEXT,
+        other_disease: dataTypes.STRING,
         medicalhistory_id:  dataTypes.STRING,
         patient_id: dataTypes.INTEGER,
     };

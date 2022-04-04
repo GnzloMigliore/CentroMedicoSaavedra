@@ -13,7 +13,7 @@
     </header>
       <h2  class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">EXPORTAR HISTORIA CLÍNICA</h2>
     <div class="col-12 d-flex justify-content-center  pr-5 ">
-      <a href="/patients" class="btn btn-light px-5 ">Volver</a>
+      <a href="/patients/detail/<%= paciente.id %>" class="btn btn-light px-5 ">Volver</a>
       <button id="btnCrearPdf" class="btn btn-light px-5 ml-2">EXPORTAR PDF</button>
 
     </div>
@@ -368,9 +368,7 @@
             <!--Boton volver-->
            
             <div class="col-12 d-flex justify-content-center my-5 py-5 pr-5 ">
-              <a href="/patients" class="btn btn-light px-5 ">Volver</a>
-              <button id="btnCrearPdf" class="btn btn-light px-5 ml-2">EXPORTAR PDF</button>
-        
+              <a href="/patients/detail/<%= paciente.id %>" class="btn btn-dark px-5 mt-5">Volver</a>
             </div>
    
 

@@ -3,615 +3,753 @@
 
 <head>
     <%- include('../partials/head.ejs') %>
-    <link rel="stylesheet" href="/css/patientCreate.css">
+        <link rel="stylesheet" href="/css/patientCreate.css">
 </head>
+
 <body>
     <header>
         <%- include('../partials/navBar.ejs') %>
     </header>
-    <section >
-       
+    <section>
+
         <article class="col-8 mx-auto mb-5">
             <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">EDITAR PACIENTE</h2>
-            </article>
-    
+        </article>
+
     </section>
-    
+
     <section class="bg-home pt-4">
         <div class="container-fluid">
-            <div class="row" >
+            <div class="row">
                 <!--UL de errores-->
                 <div class="col-12 mx-auto">
                     <article id="crear" class="col-8 mx-auto">
-                        <% if(typeof(errors) != 'undefined'){%>
+                        <% if(typeof(errors) !='undefined' ){%>
                             <ul class="alert alert-danger">
-                              <% errors.forEach(error => { %>
-                                <li><%= error.msg%></li>
-                                <%});%>
+                                <% errors.forEach(error=> { %>
+                                    <li>
+                                        <%= error.msg%>
+                                    </li>
+                                    <%});%>
                             </ul>
-                          <%}%>
-             
-                <div  class="col-12">
-                    <div class=" create-form">
-                        <form action="/patients/edit/<%= paciente.id%>?_method=PUT" method="POST" >
-                            <!--Inputs-->
-                       <!--Nombre-->
-                       <div class="form-group">
-                        <input type="hidden" name="oldExample"  value="<%= paciente.first_name%>">
-                        <input type="text" class="form-control  bg-light" name="nombre" placeholder="Nombre"   value="<%= paciente.first_name%>">
-                    </div>
-                    <!--Apellido-->
-                    <div class="form-group">
-                        <input type="hidden" name="oldExample"  value="<%= paciente.last_name%>">
-                        <input type="text" class="form-control  bg-light" name="apellido" placeholder="Apellido"  value="<%= paciente.last_name%>">
-                    </div>
-                    
-                    <div class="row">
-                        <!--Género-->
-                        <div class="form-group col-6" placeholder="Genero">
-                            <select id="genero" name="genero" class="form-control  bg-light">
-                                <option disabled value="">Seleccione un genero</option>
-                                <option value="masculino" <%= paciente.gender == "masculino" ? "selected" : " " %>>Masculino</option>
-                                <option value="femenino" <%= paciente.gender == "femenino" ? "selected" : " " %>>Femenino</option>
-                            </select>
-                        </div>
-                        <!--Fecha de nacimiento-->
-                        <div class="form-group col-6" placeholder="Nacimiento">
-                        <input type="date" id="start" name="nacimiento" class="form-control  bg-light"
-                        value="<%= paciente.date%>"
-                        min="1910-01-01" max="2021-12-31">
-                        </div>
-                      <!--Email-->
-                      <div class="form-group col-5">
-                        <input type="hidden" name="oldExample"  value="<%= paciente.email%>">
-                  <input type="text" class="form-control bg-light" name="email" placeholder="Email"   value="<%= paciente.email%>">
-                    </div>
-                   <!--numero-->
-                   <div class="form-group col-7 pl-0">
-                    <input type="hidden" name="oldExample"  value="<%= paciente.dni%>">
-                   <input type="number" class="form-control bg-light" name="dni" placeholder="DNI"  value="<%= paciente.dni%>">
-                   </div>
-                      
-                     <!--Obra social-->
-                         <div class="form-group col-5">
-                            <input type="hidden" name="oldExample"  value="<%= paciente.medical_insurance%>">
-                      <input type="text" class="form-control bg-light" name="obrasocial" placeholder="Obra Social"   value="<%= paciente.medical_insurance%>">
-                        </div>
-                       <!--numero-->
-                       <div class="form-group col-7 pl-0">
-                        <input type="hidden" name="oldExample"  value="<%= paciente.insurance_number%>">
-                       <input type="number" class="form-control bg-light" name="numero" placeholder="numero"  value="<%= paciente.insurance_number%>">
-                       </div>
+                            <%}%>
 
-                        <!--Dirección-->
-                        <div class="form-group col-6">
-                            <input type="hidden" name="oldExample"  value="<%= paciente.adress%>">
-                            <input type="text" class="form-control bg-light" name="dirección" placeholder="Dirección"  value="<%= paciente.adress%>">
-                        </div>
-                          <!--numero-->
-                          <div class="form-group col-2 pl-0">
-                            <input type="hidden" name="oldExample"  value="<%= paciente.adress_number%>">
-                           <input type="text" class="form-control bg-light" name="adress_number" placeholder="Número"  value="<%= paciente.adress_number%>">
-                       </div>
-                        <!--Telefóno-->
-                        <div class="form-group col-4 pl-0">
-                             <input type="hidden" name="oldExample"  value="<%= paciente.telephone%>">
-                            <input type="text" class="form-control bg-light" name="telefono" placeholder="Teléfono"  value="<%= paciente.telephone%>">
-                        </div>
-                        <!--Número de paciente-->
-                        <div class="form-group col-12">
-                            <input type="hidden" name="oldExample"  value="<%= paciente.nhc%>">
-                           <input type="text" class="form-control bg-light" name="nhc" placeholder="Número de paciente"  value="<%= paciente.nhc%>">
-                       </div>
-                    </div>
-                    
-                    <!--Enfermedades-->
+                                <div class="col-12">
+                                    <div class=" create-form">
+                                        <form action="/patients/edit/<%= paciente.id%>?_method=PUT" method="POST">
+                                            <!--Inputs-->
+                                            <!--Nombre-->
+                                            <div class="form-group">
+                                                <input type="hidden" name="oldExample"
+                                                    value="<%= paciente.first_name%>">
+                                                <input type="text" class="form-control  bg-light" name="nombre"
+                                                    placeholder="Nombre" value="<%= paciente.first_name%>">
+                                            </div>
+                                            <!--Apellido-->
+                                            <div class="form-group">
+                                                <input type="hidden" name="oldExample" value="<%= paciente.last_name%>">
+                                                <input type="text" class="form-control  bg-light" name="apellido"
+                                                    placeholder="Apellido" value="<%= paciente.last_name%>">
+                                            </div>
 
-                    <article class="col-8 mx-auto mb-5">
-                        <h2 class="titulo-admin pb-3  text-center pt-5 mx-auto text-uppercase">ENFERMEDADES</h2>
-                        </article>
-                    <!--Diabetes-->
-                    <div class="row enfermedad">
-                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                             
-                           <% if (paciente.diabetes == 'si') { %>
-                            <select class="custom-select  bg-light"  name="diabetes">
-                             
-                                <option selected value="si">Tiene diabetes</option>
-                                <option value="no">No tiene diabetes</option>
-                            </select>
-                           <% }else  {%>
-                            <select class="custom-select  bg-light"  name="diabetes">
-                              >
-                                <option  value="si">Tiene diabetes</option>
-                                <option selected value="no">No tiene diabetes</option>
-                            </select> 
-                            <% } %>
-                       
-                    </div>
-                    <div class="form-group col-6 pt-2" placeholder="fecha_diabetes"  value="">
-                    <input type="date" id="start" name="fecha_diabetes" class="form-control  bg-light"
-                    value="<%= paciente.date_diabetes%>"
-                    min="1940-01-01" max="2021-12-31">
-                    </div>
-                    <div class="form-group col-6 pt-2" placeholder="fecha_end_diabetes"  value="">
-                        <input type="date" id="start" name="fecha_end_diabetes" class="form-control  bg-light"
-                        value="<%= paciente.date_end_diabetes%>"
-                        min="1940-01-01" max="2021-12-31">
-                        </div>
-                    <div class="form-group col-6 pl-3">
-                        <input type="text" class="form-control bg-light" name="accion_diabetes" placeholder="Acción tomada"  value="<%= paciente.action_diabetes%>">
-                    </div>
-                    <div class="form-group col-6 pl-0">
-                        <input type="text" class="form-control bg-light" name="comentario_diabetes" placeholder="Comentario"  value="<%= paciente.coments_diabetes%>">
-                    </div>
-                    </div>
-             <!--DLP-->
-             <div class="row enfermedad mt-4">
-                <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                         
-                       <% if (paciente.dlp == 'si') { %>
-                        <select class="custom-select  bg-light"  name="dlp">
-                         
-                            <option selected value="si">Tiene dlp</option>
-                            <option value="no">No tiene dlp</option>
-                        </select>
-                       <% }else  {%>
-                        <select class="custom-select  bg-light"  name="dlp">
-                          >
-                            <option  value="si">Tiene dlp</option>
-                            <option selected value="no">No tiene dlp</option>
-                        </select> 
-                        <% } %>
-                   
-                </div>
-            <div class="form-group col-6 pt-2" placeholder="fecha_dlp"  value="">
-           <input type="date" id="start" name="fecha_dlp" class="form-control  bg-light"
-          value="<%= paciente.date_dlp%>"
-          min="1940-01-01" max="2021-12-31">
-         </div>
-         <div class="form-group col-6 pt-2" placeholder="fecha_end_dlp"  value="">
-            <input type="date" id="start" name="fecha_end_dlp" class="form-control  bg-light"
-            value="<%= paciente.date_end_dlp%>"
-            min="1940-01-01" max="2021-12-31">
-            </div>
-         <div class="form-group col-6 pl-3">
-          <input type="text" class="form-control bg-light" name="accion_dlp" placeholder="Acción tomada"  value="<%= paciente.action_dlp%>">
-          </div>
-         <div class="form-group col-6 pl-0">
-         <input type="text" class="form-control bg-light" name="comentario_dlp" placeholder="Comentario"  value="<%= paciente.coments_dlp%>">
-         </div>
-         </div>
+                                            <div class="row">
+                                                <!--Género-->
+                                                <div class="form-group col-6" placeholder="Genero">
+                                                    <select id="genero" name="genero" class="form-control  bg-light">
+                                                        <option disabled value="">Seleccione un genero</option>
+                                                        <option value="masculino" <%=paciente.gender=="masculino"
+                                                            ? "selected" : " " %>>Masculino</option>
+                                                        <option value="femenino" <%=paciente.gender=="femenino"
+                                                            ? "selected" : " " %>>Femenino</option>
+                                                    </select>
+                                                </div>
+                                                <!--Fecha de nacimiento-->
+                                                <div class="form-group col-6" placeholder="Nacimiento">
+                                                    <input type="date" id="start" name="nacimiento"
+                                                        class="form-control  bg-light" value="<%= paciente.date%>"
+                                                        min="1910-01-01" max="2050-12-01">
+                                                </div>
+                                                <!--Email-->
+                                                <div class="form-group col-5">
+                                                    <input type="hidden" name="oldExample" value="<%= paciente.email%>">
+                                                    <input type="text" class="form-control bg-light" name="email"
+                                                        placeholder="Email" value="<%= paciente.email%>">
+                                                </div>
+                                                <!--numero-->
+                                                <div class="form-group col-7 pl-0">
+                                                    <input type="hidden" name="oldExample" value="<%= paciente.dni%>">
+                                                    <input type="number" class="form-control bg-light" name="dni"
+                                                        placeholder="DNI" value="<%= paciente.dni%>">
+                                                </div>
 
-                  <!--HTA-->
-                  <div class="row enfermedad mt-4">
-                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                             
-                           <% if (paciente.hta == 'si') { %>
-                            <select class="custom-select  bg-light"  name="hta">
-                             
-                                <option selected value="si">Tiene hta</option>
-                                <option value="no">No tiene hta</option>
-                            </select>
-                           <% }else  {%>
-                            <select class="custom-select  bg-light"  name="hta">
-                              >
-                                <option  value="si">Tiene hta</option>
-                                <option selected value="no">No tiene hta</option>
-                            </select> 
-                            <% } %>
-                       
-                    </div>
-              <div class="form-group col-6 pt-2" placeholder="fecha_hta"  value="">
-             <input type="date" id="start" name="fecha_hta" class="form-control  bg-light"
-            value="<%= paciente.date_hta%>"
-            min="1940-01-01" max="2021-12-31">
-           </div>
-           <div class="form-group col-6 pt-2" placeholder="fecha_end_hta"  value="">
-            <input type="date" id="start" name="fecha_end_hta" class="form-control  bg-light"
-            value="<%= paciente.date_end_hta%>"
-            min="1940-01-01" max="2021-12-31">
-            </div>
-           <div class="form-group col-6 pl-3">
-            <input type="text" class="form-control bg-light" name="accion_hta" placeholder="Acción tomada"  value="<%= paciente.action_hta%>">
-            </div>
-           <div class="form-group col-6 pl-0">
-           <input type="text" class="form-control bg-light" name="comentario_hta" placeholder="Comentario"  value="<%= paciente.coments_hta%>">
-           </div>
-           </div>
-                   
-                              <!--CRM-->
-                              <div class="row enfermedad mt-4">
-                                <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                                         
-                                       <% if (paciente.crm == 'si') { %>
-                                        <select class="custom-select  bg-light"  name="crm">
-                                         
-                                            <option selected value="si">Tiene crm</option>
-                                            <option value="no">No tiene crm</option>
-                                        </select>
-                                       <% }else  {%>
-                                        <select class="custom-select  bg-light"  name="crm">
-                                          >
-                                            <option  value="si">Tiene crm</option>
-                                            <option selected value="no">No tiene crm</option>
-                                        </select> 
-                                        <% } %>
-                                   
+                                                <!--Obra social-->
+                                                <div class="form-group col-5">
+                                                    <input type="hidden" name="oldExample"
+                                                        value="<%= paciente.medical_insurance%>">
+                                                    <input type="text" class="form-control bg-light" name="obrasocial"
+                                                        placeholder="Obra Social"
+                                                        value="<%= paciente.medical_insurance%>">
+                                                </div>
+                                                <!--numero-->
+                                                <div class="form-group col-7 pl-0">
+                                                    <input type="hidden" name="oldExample"
+                                                        value="<%= paciente.insurance_number%>">
+                                                    <input type="number" class="form-control bg-light" name="numero"
+                                                        placeholder="numero" value="<%= paciente.insurance_number%>">
+                                                </div>
+                                                <!--Dirección-->
+                                                <div class="form-group col-6">
+                                                    <input type="hidden" name="oldExample"
+                                                        value="<%= paciente.adress%>">
+                                                    <input type="text" class="form-control bg-light" name="dirección"
+                                                        placeholder="Dirección" value="<%= paciente.adress%>">
+                                                </div>
+                                                <!--numero-->
+                                                <div class="form-group col-2 pl-0">
+                                                    <input type="hidden" name="oldExample"
+                                                        value="<%= paciente.adress_number%>">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="adress_number" placeholder="Número"
+                                                        value="<%= paciente.adress_number%>">
+                                                </div>
+                                                <!--Telefóno-->
+                                                <div class="form-group col-4 pl-0">
+                                                    <input type="hidden" name="oldExample"
+                                                        value="<%= paciente.telephone%>">
+                                                    <input type="text" class="form-control bg-light" name="telefono"
+                                                        placeholder="Teléfono" value="<%= paciente.telephone%>">
+                                                </div>
+                                                <!--Número de paciente-->
+                                                <div class="form-group col-12">
+                                                    <input type="hidden" name="oldExample" value="<%= paciente.nhc%>">
+                                                    <input type="text" class="form-control bg-light" name="nhc"
+                                                        placeholder="Número de paciente" value="<%= paciente.nhc%>">
+                                                </div>
+                                            </div>
+
+                                            <!--Enfermedades-->
+
+                                            <article class="col-8 mx-auto mb-5">
+                                                <h2 class="titulo-admin pb-3  text-center pt-5 mx-auto text-uppercase">
+                                                    ENFERMEDADES</h2>
+                                            </article>
+                                            <!--Diabetes-->
+                                            <div class="row enfermedad">
+                                                <div class="col-12 form-group d-flex justify-content-between pt-2">
+
+                                                    <% if (paciente.diabetes=='si' ) { %>
+                                                        <select class="custom-select  bg-light" name="diabetes">
+
+                                                            <option selected value="si">Tiene diabetes</option>
+                                                            <option value="no">No tiene diabetes</option>
+                                                        </select>
+                                                        <% }else {%>
+                                                            <select class="custom-select  bg-light" name="diabetes">
+                                                                >
+                                                                <option value="si">Tiene diabetes</option>
+                                                                <option selected value="no">No tiene diabetes</option>
+                                                            </select>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_diabetes"
+                                                    value="">
+                                                    <input type="date" id="start" name="fecha_diabetes"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_diabetes%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_end_diabetes"
+                                                    value="">
+                                                    <input type="date" id="start" name="fecha_end_diabetes"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_end_diabetes%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pl-3">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="accion_diabetes" placeholder="Acción tomada"
+                                                        value="<%= paciente.action_diabetes%>">
+                                                </div>
+                                                <div class="form-group col-6 pl-0">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="comentario_diabetes" placeholder="Comentario"
+                                                        value="<%= paciente.coments_diabetes%>">
+                                                </div>
+                                            </div>
+                                            <!--DLP-->
+                                            <div class="row enfermedad mt-4">
+                                                <div class="col-12 form-group d-flex justify-content-between pt-2">
+
+                                                    <% if (paciente.dlp=='si' ) { %>
+                                                        <select class="custom-select  bg-light" name="dlp">
+
+                                                            <option selected value="si">Tiene dlp</option>
+                                                            <option value="no">No tiene dlp</option>
+                                                        </select>
+                                                        <% }else {%>
+                                                            <select class="custom-select  bg-light" name="dlp">
+                                                                >
+                                                                <option value="si">Tiene dlp</option>
+                                                                <option selected value="no">No tiene dlp</option>
+                                                            </select>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_dlp" value="">
+                                                    <input type="date" id="start" name="fecha_dlp"
+                                                        class="form-control  bg-light" value="<%= paciente.date_dlp%>"
+                                                        min="1940-01-01" max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_end_dlp" value="">
+                                                    <input type="date" id="start" name="fecha_end_dlp"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_end_dlp%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pl-3">
+                                                    <input type="text" class="form-control bg-light" name="accion_dlp"
+                                                        placeholder="Acción tomada" value="<%= paciente.action_dlp%>">
+                                                </div>
+                                                <div class="form-group col-6 pl-0">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="comentario_dlp" placeholder="Comentario"
+                                                        value="<%= paciente.coments_dlp%>">
+                                                </div>
+                                            </div>
+
+                                            <!--HTA-->
+                                            <div class="row enfermedad mt-4">
+                                                <div class="col-12 form-group d-flex justify-content-between pt-2">
+
+                                                    <% if (paciente.hta=='si' ) { %>
+                                                        <select class="custom-select  bg-light" name="hta">
+
+                                                            <option selected value="si">Tiene hta</option>
+                                                            <option value="no">No tiene hta</option>
+                                                        </select>
+                                                        <% }else {%>
+                                                            <select class="custom-select  bg-light" name="hta">
+                                                                >
+                                                                <option value="si">Tiene hta</option>
+                                                                <option selected value="no">No tiene hta</option>
+                                                            </select>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_hta" value="">
+                                                    <input type="date" id="start" name="fecha_hta"
+                                                        class="form-control  bg-light" value="<%= paciente.date_hta%>"
+                                                        min="1940-01-01" max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_end_hta" value="">
+                                                    <input type="date" id="start" name="fecha_end_hta"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_end_hta%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pl-3">
+                                                    <input type="text" class="form-control bg-light" name="accion_hta"
+                                                        placeholder="Acción tomada" value="<%= paciente.action_hta%>">
+                                                </div>
+                                                <div class="form-group col-6 pl-0">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="comentario_hta" placeholder="Comentario"
+                                                        value="<%= paciente.coments_hta%>">
+                                                </div>
+                                            </div>
+
+                                            <!--CRM-->
+                                            <div class="row enfermedad mt-4">
+                                                <div class="col-12 form-group d-flex justify-content-between pt-2">
+
+                                                    <% if (paciente.crm=='si' ) { %>
+                                                        <select class="custom-select  bg-light" name="crm">
+
+                                                            <option selected value="si">Tiene crm</option>
+                                                            <option value="no">No tiene crm</option>
+                                                        </select>
+                                                        <% }else {%>
+                                                            <select class="custom-select  bg-light" name="crm">
+                                                                >
+                                                                <option value="si">Tiene crm</option>
+                                                                <option selected value="no">No tiene crm</option>
+                                                            </select>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_crm" value="">
+                                                    <input type="date" id="start" name="fecha_crm"
+                                                        class="form-control  bg-light" value="<%= paciente.date_crm%>"
+                                                        min="1940-01-01" max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_end_crm" value="">
+                                                    <input type="date" id="start" name="fecha_end_crm"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_end_crm%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pl-3">
+                                                    <input type="text" class="form-control bg-light" name="accion_crm"
+                                                        placeholder="Acción tomada" value="<%= paciente.action_crm%>">
+                                                </div>
+                                                <div class="form-group col-6 pl-0">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="comentario_crm" placeholder="Comentario"
+                                                        value="<%= paciente.coments_crm%>">
+                                                </div>
+                                            </div>
+                                            <!--ATC-->
+                                            <div class="row enfermedad mt-4">
+                                                <div class="col-12 form-group d-flex justify-content-between pt-2">
+
+                                                    <% if (paciente.atc=='si' ) { %>
+                                                        <select class="custom-select  bg-light" name="atc">
+
+                                                            <option selected value="si">Tiene atc</option>
+                                                            <option value="no">No tiene atc</option>
+                                                        </select>
+                                                        <% }else {%>
+                                                            <select class="custom-select  bg-light" name="atc">
+
+                                                                <option value="si">Tiene atc</option>
+                                                                <option selected value="no">No tiene atc</option>
+                                                            </select>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_atc" value="">
+                                                    <input type="date" id="start" name="fecha_atc"
+                                                        class="form-control  bg-light" value="<%= paciente.date_atc%>"
+                                                        min="1940-01-01" max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_end_atc" value="">
+                                                    <input type="date" id="start" name="fecha_end_atc"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_end_atc%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pl-3">
+                                                    <input type="text" class="form-control bg-light" name="accion_atc"
+                                                        placeholder="Acción tomada" value="<%= paciente.action_atc%>">
+                                                </div>
+                                                <div class="form-group col-6 pl-0">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="comentario_atc" placeholder="Comentario"
+                                                        value="<%= paciente.coments_atc%>">
+                                                </div>
+                                            </div>
+
+                                            <!--IAM-->
+                                            <div class="row enfermedad mt-4">
+                                                <div class="col-12 form-group d-flex justify-content-between pt-2">
+
+                                                    <% if (paciente.iam=='si' ) { %>
+                                                        <select class="custom-select  bg-light" name="iam">
+
+                                                            <option selected value="si">Tiene iam</option>
+                                                            <option value="no">No tiene iam</option>
+                                                        </select>
+                                                        <% }else {%>
+                                                            <select class="custom-select  bg-light" name="iam">
+
+                                                                <option value="si">Tiene iam</option>
+                                                                <option selected value="no">No tiene iam</option>
+                                                            </select>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_iam" value="">
+                                                    <input type="date" id="start" name="fecha_iam"
+                                                        class="form-control  bg-light" value="<%= paciente.date_iam%>"
+                                                        min="1940-01-01" max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_end_iam" value="">
+                                                    <input type="date" id="start" name="fecha_end_iam"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_end_iam%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pl-3">
+                                                    <input type="text" class="form-control bg-light" name="accion_iam"
+                                                        placeholder="Acción tomada" value="<%= paciente.action_iam%>">
+                                                </div>
+                                                <div class="form-group col-6 pl-0">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="comentario_iam" placeholder="Comentario"
+                                                        value="<%= paciente.coments_iam%>">
+                                                </div>
+                                            </div>
+
+
+                                            <!--ACV-->
+                                            <div class="row enfermedad mt-4">
+                                                <div class="col-12 form-group d-flex justify-content-between pt-2">
+
+                                                    <% if (paciente.acv=='si' ) { %>
+                                                        <select class="custom-select  bg-light" name="acv">
+
+                                                            <option selected value="si">Tiene acv</option>
+                                                            <option value="no">No tiene acv</option>
+                                                        </select>
+                                                        <% }else {%>
+                                                            <select class="custom-select  bg-light" name="acv">
+
+                                                                <option value="si">Tiene acv</option>
+                                                                <option selected value="no">No tiene acv</option>
+                                                            </select>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_acv" value="">
+                                                    <input type="date" id="start" name="fecha_acv"
+                                                        class="form-control  bg-light" value="<%= paciente.date_acv%>"
+                                                        min="1940-01-01" max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_end_acv" value="">
+                                                    <input type="date" id="start" name="fecha_end_acv"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_end_acv%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pl-3">
+                                                    <input type="text" class="form-control bg-light" name="accion_acv"
+                                                        placeholder="Acción tomada" value="<%= paciente.action_acv%>">
+                                                </div>
+                                                <div class="form-group col-6 pl-0">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="comentario_acv" placeholder="Comentario"
+                                                        value="<%= paciente.coments_acv%>">
+                                                </div>
+                                            </div>
+
+                                            <!--Aneurisma aorta-->
+
+                                            <div class="row enfermedad mt-4">
+                                                <div class="col-12 form-group d-flex justify-content-between pt-2">
+
+                                                    <% if (paciente.aortic_aneurysm=='si' ) { %>
+                                                        <select class="custom-select  bg-light" name="aortic_aneurysm">
+
+                                                            <option selected value="si">Tiene aneurisma</option>
+                                                            <option value="no">No tiene aneurisma</option>
+                                                        </select>
+                                                        <% }else {%>
+                                                            <select class="custom-select  bg-light"
+                                                                name="aaortic_aneurysm">
+
+                                                                <option value="si">Tiene aneurisma</option>
+                                                                <option selected value="no">No tiene aneurisma</option>
+                                                            </select>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_aneurisma"
+                                                    value="">
+                                                    <input type="date" id="start" name="fecha_aneurisma"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_aerotic%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_end_aneurisma"
+                                                    value="">
+                                                    <input type="date" id="start" name="fecha_end_aneurisma"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_end_aerotic%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pl-3">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="accion_aneurisma" placeholder="Acción tomada"
+                                                        value="<%= paciente.action_aerotic%>">
+                                                </div>
+                                                <div class="form-group col-6 pl-0">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="comentario_aneurisma" placeholder="Comentario"
+                                                        value="<%= paciente.coments_aerotic%>">
+                                                </div>
+                                            </div>
+
+                                            <!--IC-->
+                                            <div class="row enfermedad mt-4">
+                                                <div class="col-12 form-group d-flex justify-content-between pt-2">
+
+                                                    <% if (paciente.ic=='si' ) { %>
+                                                        <select class="custom-select  bg-light" name="ic">
+
+                                                            <option selected value="si">Tiene ic</option>
+                                                            <option value="no">No tiene ic</option>
+                                                        </select>
+                                                        <% }else {%>
+                                                            <select class="custom-select  bg-light" name="ic">
+
+                                                                <option value="si">Tiene ic</option>
+                                                                <option selected value="no">No tiene ic</option>
+                                                            </select>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_ic" value="">
+                                                    <input type="date" id="start" name="fecha_ic"
+                                                        class="form-control  bg-light" value="<%= paciente.date_ic%>"
+                                                        min="1940-01-01" max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_end_ic" value="">
+                                                    <input type="date" id="start" name="fecha_end_ic"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_end_ic%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pl-3">
+                                                    <input type="text" class="form-control bg-light" name="accion_ic"
+                                                        placeholder="Acción tomada" value="<%= paciente.action_ic%>">
+                                                </div>
+                                                <div class="form-group col-6 pl-0">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="comentario_ic" placeholder="Comentario"
+                                                        value="<%= paciente.coments_ic%>">
+                                                </div>
+                                            </div>
+
+                                            <!--EVP-->
+                                            <div class="row enfermedad mt-4">
+                                                <div class="col-12 form-group d-flex justify-content-between pt-2">
+
+                                                    <% if (paciente.evp=='si' ) { %>
+                                                        <select class="custom-select  bg-light" name="evp">
+
+                                                            <option selected value="si">Tiene evp</option>
+                                                            <option value="no">No tiene evp</option>
+                                                        </select>
+                                                        <% }else {%>
+                                                            <select class="custom-select  bg-light" name="evp">
+
+                                                                <option value="si">Tiene evp</option>
+                                                                <option selected value="no">No tiene evp</option>
+                                                            </select>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_evp" value="">
+                                                    <input type="date" id="start" name="fecha_evp"
+                                                        class="form-control  bg-light" value="<%= paciente.date_evp%>"
+                                                        min="1940-01-01" max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_end_evp" value="">
+                                                    <input type="date" id="start" name="fecha_end_evp"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_end_evp%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pl-3">
+                                                    <input type="text" class="form-control bg-light" name="accion_evp"
+                                                        placeholder="Acción tomada" value="<%= paciente.action_evp%>">
+                                                </div>
+                                                <div class="form-group col-6 pl-0">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="comentario_evp" placeholder="Comentario"
+                                                        value="<%= paciente.coments_evp%>">
+                                                </div>
+                                            </div>
+
+
+                                            <!--EPOC-->
+                                            <div class="row enfermedad mt-4">
+                                                <div class="col-12 form-group d-flex justify-content-between pt-2">
+
+                                                    <% if (paciente.epoc=='si' ) { %>
+                                                        <select class="custom-select  bg-light" name="epoc">
+
+                                                            <option selected value="si">Tiene epoc</option>
+                                                            <option value="no">No tiene epoc</option>
+                                                        </select>
+                                                        <% }else {%>
+                                                            <select class="custom-select  bg-light" name="epoc">
+
+                                                                <option value="si">Tiene epoc</option>
+                                                                <option selected value="no">No tiene epoc</option>
+                                                            </select>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_epoc" value="">
+                                                    <input type="date" id="start" name="fecha_epoc"
+                                                        class="form-control  bg-light" value="<%= paciente.date_epoc%>"
+                                                        min="1940-01-01" max="2050-12-01">
+                                                </div>
+
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_end_epoc"
+                                                    value="">
+                                                    <input type="date" id="start" name="fecha_end_epoc"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_end_epoc%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pl-3">
+                                                    <input type="text" class="form-control bg-light" name="accion_epoc"
+                                                        placeholder="Acción tomada" value="<%= paciente.action_epoc%>">
+                                                </div>
+                                                <div class="form-group col-6 pl-0">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="comentario_epoc" placeholder="Comentario"
+                                                        value="<%= paciente.coments_epoc%>">
+                                                </div>
+                                            </div>
+
+
+                                            <!--IRC-->
+                                            <div class="row enfermedad mt-4">
+                                                <div class="col-12 form-group d-flex justify-content-between pt-2">
+
+                                                    <% if (paciente.irc=='si' ) { %>
+                                                        <select class="custom-select  bg-light" name="irc">
+
+                                                            <option selected value="si">Tiene irc</option>
+                                                            <option value="no">No tiene irc</option>
+                                                        </select>
+                                                        <% }else {%>
+                                                            <select class="custom-select  bg-light" name="irc">
+
+                                                                <option value="si">Tiene irc</option>
+                                                                <option selected value="no">No tiene irc</option>
+                                                            </select>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_irc" value="">
+                                                    <input type="date" id="start" name="fecha_irc"
+                                                        class="form-control  bg-light" value="<%= paciente.date_irc%>"
+                                                        min="1940-01-01" max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_end_irc" value="">
+                                                    <input type="date" id="start" name="fecha_end_irc"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_end_irc%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pl-3">
+                                                    <input type="text" class="form-control bg-light" name="accion_irc"
+                                                        placeholder="Acción tomada" value="<%= paciente.action_irc%>">
+                                                </div>
+                                                <div class="form-group col-6 pl-0">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="comentario_irc" placeholder="Comentario"
+                                                        value="<%= paciente.coments_irc%>">
+                                                </div>
+                                            </div>
+
+                                            <!--Obesidad-->
+                                            <div class="row enfermedad mt-4">
+                                                <div class="col-12 form-group d-flex justify-content-between pt-2">
+
+                                                    <% if (paciente.obesity=='si' ) { %>
+                                                        <select class="custom-select  bg-light" name="obesity">
+
+                                                            <option selected value="si">Tiene obesidad</option>
+                                                            <option value="no">No tiene obesidad</option>
+                                                        </select>
+                                                        <% }else {%>
+                                                            <select class="custom-select  bg-light" name="obesity">
+                                                                <option value="si">Tiene obesidad</option>
+                                                                <option selected value="no">No tiene obesidad</option>
+                                                            </select>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_obesidad"
+                                                    value="">
+                                                    <input type="date" id="start" name="fecha_obesidad"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_obesity%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_obesidad"
+                                                    value="">
+                                                    <input type="date" id="start" name="fecha_end_obesidad"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_end_obesity%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pl-3">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="accion_obesidad" placeholder="Acción tomada"
+                                                        value="<%= paciente.action_obesity%>">
+                                                </div>
+                                                <div class="form-group col-6 pl-0">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="comentario_obesidad" placeholder="Comentario"
+                                                        value="<%= paciente.coments_obesity%>">
+                                                </div>
+                                            </div>
+                                              <!--Tabaquismo-->
+                                              <div class="row enfermedad mt-4">
+                                                <div class="col-12 form-group d-flex justify-content-between pt-2">
+
+                                                    <% if (paciente.tabaquismo=='si' ) { %>
+                                                        <select class="custom-select  bg-light" name="tabaquismo">
+
+                                                            <option selected value="si">Tiene tabaquismo</option>
+                                                            <option value="no">No tiene tabaquismo</option>
+                                                        </select>
+                                                        <% }else {%>
+                                                            <select class="custom-select  bg-light" name="tabaquismo">
+                                                                <option value="si">Tiene tabaquismo</option>
+                                                                <option selected value="no">No tiene tabaquismo</option>
+                                                            </select>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_tabaquismo"
+                                                    value="">
+                                                    <input type="date" id="start" name="fecha_tabaquismo"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_tabaquismo%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pt-2" placeholder="fecha_tabaquismo"
+                                                    value="">
+                                                    <input type="date" id="start" name="fecha_end_tabaquismo"
+                                                        class="form-control  bg-light"
+                                                        value="<%= paciente.date_end_tabaquismo%>" min="1940-01-01"
+                                                        max="2050-12-01">
+                                                </div>
+                                                <div class="form-group col-6 pl-3">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="accion_tabaquismo" placeholder="Acción tomada"
+                                                        value="<%= paciente.action_tabaquismo%>">
+                                                </div>
+                                                <div class="form-group col-6 pl-0">
+                                                    <input type="text" class="form-control bg-light"
+                                                        name="comentario_tabaquismo" placeholder="Comentario"
+                                                        value="<%= paciente.coments_tabaquismo%>">
+                                                </div>
+                                            </div>
+                                    </div>
+                                                                    <!--Otras enfermedades-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="form-group col-12  mt-3">
+                                        <input type="text" class="form-control bg-light" name="otras_enfermedades"
+                                            placeholder="Otras enfermedades" value="">
+                                    </div>
                                 </div>
-              <div class="form-group col-6 pt-2" placeholder="fecha_crm"  value="">
-             <input type="date" id="start" name="fecha_crm" class="form-control  bg-light"
-            value="<%= paciente.date_crm%>"
-            min="1940-01-01" max="2021-12-31">
-           </div>
-           <div class="form-group col-6 pt-2" placeholder="fecha_end_crm"  value="">
-            <input type="date" id="start" name="fecha_end_crm" class="form-control  bg-light"
-            value="<%= paciente.date_end_crm%>"
-            min="1940-01-01" max="2021-12-31">
-            </div>
-           <div class="form-group col-6 pl-3">
-            <input type="text" class="form-control bg-light" name="accion_crm" placeholder="Acción tomada"  value="<%= paciente.action_crm%>">
-            </div>
-           <div class="form-group col-6 pl-0">
-           <input type="text" class="form-control bg-light" name="comentario_crm" placeholder="Comentario"  value="<%= paciente.coments_crm%>">
-           </div>
-           </div>  
-                      <!--ATC-->
-            <div class="row enfermedad mt-4">
-               <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                                                         
-                 <% if (paciente.atc == 'si') { %>
-             <select class="custom-select  bg-light"  name="atc">
-                                                         
-             <option selected value="si">Tiene atc</option>
-              <option value="no">No tiene atc</option>
-                  </select>
-                  <% }else  {%>
-                <select class="custom-select  bg-light"  name="atc">
-                                                          
-                 <option  value="si">Tiene atc</option>
-                <option selected value="no">No tiene atc</option>
-                </select> 
-                 <% } %>
-                                                   
-             </div>
-              <div class="form-group col-6 pt-2" placeholder="fecha_atc"  value="">
-             <input type="date" id="start" name="fecha_atc" class="form-control  bg-light"
-            value="<%= paciente.date_atc%>"
-            min="1940-01-01" max="2021-12-31">
-           </div>
-           <div class="form-group col-6 pt-2" placeholder="fecha_end_atc"  value="">
-            <input type="date" id="start" name="fecha_end_atc" class="form-control  bg-light"
-           value="<%= paciente.date_end_atc%>"
-           min="1940-01-01" max="2021-12-31">
-          </div>
-           <div class="form-group col-6 pl-3">
-            <input type="text" class="form-control bg-light" name="accion_atc" placeholder="Acción tomada"  value="<%= paciente.action_atc%>">
-            </div>
-           <div class="form-group col-6 pl-0">
-           <input type="text" class="form-control bg-light" name="comentario_atc" placeholder="Comentario"  value="<%= paciente.coments_atc%>">
-           </div>  
-        </div>
+                                        <form action="#" method="POST">
+                                            <button type="submit"class="col-5 mx-3 my-3 btn btn-dark border">Actualizar</button>
+                                        </form>
+                                        <a href="/patients/detail/<%= paciente.id %>"
+                                            class="col-5 mx-3 my-3 btn btn-light border">Volver</a>
+                                    </div>
 
-                                        <!--IAM-->
-                                        <div class="row enfermedad mt-4">
-                                            <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                                                                                      
-                                              <% if (paciente.iam == 'si') { %>
-                                          <select class="custom-select  bg-light"  name="iam">
-                                                                                      
-                                          <option selected value="si">Tiene iam</option>
-                                           <option value="no">No tiene iam</option>
-                                               </select>
-                                               <% }else  {%>
-                                             <select class="custom-select  bg-light"  name="iam">
-                                                                                       
-                                              <option  value="si">Tiene iam</option>
-                                             <option selected value="no">No tiene iam</option>
-                                             </select> 
-                                              <% } %>
-                                                                                
-                                          </div>
-              <div class="form-group col-6 pt-2" placeholder="fecha_iam"  value="">
-             <input type="date" id="start" name="fecha_iam" class="form-control  bg-light"
-            value="<%= paciente.date_iam%>"
-            min="1940-01-01" max="2021-12-31">
-           </div>
-           <div class="form-group col-6 pt-2" placeholder="fecha_end_iam"  value="">
-            <input type="date" id="start" name="fecha_end_iam" class="form-control  bg-light"
-           value="<%= paciente.date_end_iam%>"
-           min="1940-01-01" max="2021-12-31">
-          </div>
-           <div class="form-group col-6 pl-3">
-            <input type="text" class="form-control bg-light" name="accion_iam" placeholder="Acción tomada"  value="<%= paciente.action_iam%>">
-            </div>
-           <div class="form-group col-6 pl-0">
-           <input type="text" class="form-control bg-light" name="comentario_iam" placeholder="Comentario"  value="<%= paciente.coments_iam%>">
-           </div>
-           </div>  
-                   
-                   
-                                        <!--ACV-->
-                                        <div class="row enfermedad mt-4">
-                                            <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                                                                                      
-                                              <% if (paciente.acv == 'si') { %>
-                                          <select class="custom-select  bg-light"  name="acv">
-                                                                                      
-                                          <option selected value="si">Tiene acv</option>
-                                           <option value="no">No tiene acv</option>
-                                               </select>
-                                               <% }else  {%>
-                                             <select class="custom-select  bg-light"  name="acv">
-                                                                                       
-                                              <option  value="si">Tiene acv</option>
-                                             <option selected value="no">No tiene acv</option>
-                                             </select> 
-                                              <% } %>
-                                                                                
-                                          </div>
-              <div class="form-group col-6 pt-2" placeholder="fecha_acv"  value="">
-             <input type="date" id="start" name="fecha_acv" class="form-control  bg-light"
-            value="<%= paciente.date_acv%>"
-            min="1940-01-01" max="2021-12-31">
-           </div>
-           <div class="form-group col-6 pt-2" placeholder="fecha_end_acv"  value="">
-            <input type="date" id="start" name="fecha_end_acv" class="form-control  bg-light"
-           value="<%= paciente.date_end_acv%>"
-           min="1940-01-01" max="2021-12-31">
-          </div>
-           <div class="form-group col-6 pl-3">
-            <input type="text" class="form-control bg-light" name="accion_acv" placeholder="Acción tomada"  value="<%= paciente.action_acv%>">
-            </div>
-           <div class="form-group col-6 pl-0">
-           <input type="text" class="form-control bg-light" name="comentario_acv" placeholder="Comentario"  value="<%= paciente.coments_acv%>">
-           </div>
-           </div>  
-                   
-               <!--Aneurisma aorta-->
-           
-                                        <div class="row enfermedad mt-4">
-                                            <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                                                                                      
-                                              <% if (paciente.aortic_aneurysm == 'si') { %>
-                                          <select class="custom-select  bg-light"  name="aortic_aneurysm">
-                                                                                      
-                                          <option selected value="si">Tiene aneurisma</option>
-                                           <option value="no">No tiene aneurisma</option>
-                                               </select>
-                                               <% }else  {%>
-                                             <select class="custom-select  bg-light"  name="aaortic_aneurysm">
-                                                                                       
-                                              <option  value="si">Tiene aneurisma</option>
-                                             <option selected value="no">No tiene aneurisma</option>
-                                             </select> 
-                                              <% } %>
-                                                                                
-                                          </div>
-              <div class="form-group col-6 pt-2" placeholder="fecha_aneurisma"  value="">
-             <input type="date" id="start" name="fecha_aneurisma" class="form-control  bg-light"
-            value="<%= paciente.date_aerotic%>"
-            min="1940-01-01" max="2021-12-31">
-           </div>
-           <div class="form-group col-6 pt-2" placeholder="fecha_end_aneurisma"  value="">
-            <input type="date" id="start" name="fecha_end_aneurisma" class="form-control  bg-light"
-           value="<%= paciente.date_end_aerotic%>"
-           min="1940-01-01" max="2021-12-31">
-          </div>
-           <div class="form-group col-6 pl-3">
-            <input type="text" class="form-control bg-light" name="accion_aneurisma" placeholder="Acción tomada"  value="<%= paciente.action_aerotic%>">
-            </div>
-           <div class="form-group col-6 pl-0">
-           <input type="text" class="form-control bg-light" name="comentario_aneurisma" placeholder="Comentario"  value="<%= paciente.coments_aerotic%>">
-           </div>
-           </div>  
-
-                   <!--IC-->
-                   <div class="row enfermedad mt-4">
-                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                                                              
-                      <% if (paciente.ic == 'si') { %>
-                  <select class="custom-select  bg-light"  name="ic">
-                                                              
-                  <option selected value="si">Tiene ic</option>
-                   <option value="no">No tiene ic</option>
-                       </select>
-                       <% }else  {%>
-                     <select class="custom-select  bg-light"  name="ic">
-                                                               
-                      <option  value="si">Tiene ic</option>
-                     <option selected value="no">No tiene ic</option>
-                     </select> 
-                      <% } %>
-                                                        
-                  </div>
-              <div class="form-group col-6 pt-2" placeholder="fecha_ic"  value="">
-             <input type="date" id="start" name="fecha_ic" class="form-control  bg-light"
-            value="<%= paciente.date_ic%>"
-            min="1940-01-01" max="2021-12-31">
-           </div>
-           <div class="form-group col-6 pt-2" placeholder="fecha_end_ic"  value="">
-            <input type="date" id="start" name="fecha_end_ic" class="form-control  bg-light"
-           value="<%= paciente.date_end_ic%>"
-           min="1940-01-01" max="2021-12-31">
-          </div>
-           <div class="form-group col-6 pl-3">
-            <input type="text" class="form-control bg-light" name="accion_ic" placeholder="Acción tomada"  value="<%= paciente.action_ic%>">
-            </div>
-           <div class="form-group col-6 pl-0">
-           <input type="text" class="form-control bg-light" name="comentario_ic" placeholder="Comentario"  value="<%= paciente.coments_ic%>">
-           </div>
-           </div>  
-                
-                           <!--EVP-->
-                           <div class="row enfermedad mt-4">
-                            <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                                                                      
-                              <% if (paciente.evp == 'si') { %>
-                          <select class="custom-select  bg-light"  name="evp">
-                                                                      
-                          <option selected value="si">Tiene evp</option>
-                           <option value="no">No tiene evp</option>
-                               </select>
-                               <% }else  {%>
-                             <select class="custom-select  bg-light"  name="evp">
-                                                                       
-                              <option  value="si">Tiene evp</option>
-                             <option selected value="no">No tiene evp</option>
-                             </select> 
-                              <% } %>
-                                                                
-                          </div>
-              <div class="form-group col-6 pt-2" placeholder="fecha_evp"  value="">
-             <input type="date" id="start" name="fecha_evp" class="form-control  bg-light"
-            value="<%= paciente.date_evp%>"
-            min="1940-01-01" max="2021-12-31">
-           </div>
-           <div class="form-group col-6 pt-2" placeholder="fecha_end_evp"  value="">
-            <input type="date" id="start" name="fecha_end_evp" class="form-control  bg-light"
-           value="<%= paciente.date_end_evp%>"
-           min="1940-01-01" max="2021-12-31">
-          </div>
-           <div class="form-group col-6 pl-3">
-            <input type="text" class="form-control bg-light" name="accion_evp" placeholder="Acción tomada"  value="<%= paciente.action_evp%>">
-            </div>
-           <div class="form-group col-6 pl-0">
-           <input type="text" class="form-control bg-light" name="comentario_evp" placeholder="Comentario"  value="<%= paciente.coments_evp%>">
-           </div>
-           </div> 
-                   
-                 
-                           <!--EPOC-->
-                           <div class="row enfermedad mt-4">
-                            <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                                                                      
-                              <% if (paciente.epoc == 'si') { %>
-                          <select class="custom-select  bg-light"  name="epoc">
-                                                                      
-                          <option selected value="si">Tiene epoc</option>
-                           <option value="no">No tiene epoc</option>
-                               </select>
-                               <% }else  {%>
-                             <select class="custom-select  bg-light"  name="epoc">
-                                                                       
-                              <option  value="si">Tiene epoc</option>
-                             <option selected value="no">No tiene epoc</option>
-                             </select> 
-                              <% } %>
-                                                                
-                          </div>
-              <div class="form-group col-6 pt-2" placeholder="fecha_epoc"  value="">
-             <input type="date" id="start" name="fecha_epoc" class="form-control  bg-light"
-            value="<%= paciente.date_epoc%>"
-            min="1940-01-01" max="2021-12-31">
-           </div>
-     
-        <div class="form-group col-6 pt-2" placeholder="fecha_end_epoc"  value="">
-       <input type="date" id="start" name="fecha_end_epoc" class="form-control  bg-light"
-      value="<%= paciente.date_end_epoc%>"
-      min="1940-01-01" max="2021-12-31">
-     </div>
-           <div class="form-group col-6 pl-3">
-            <input type="text" class="form-control bg-light" name="accion_epoc" placeholder="Acción tomada"  value="<%= paciente.action_epoc%>">
-            </div>
-           <div class="form-group col-6 pl-0">
-           <input type="text" class="form-control bg-light" name="comentario_epoc" placeholder="Comentario"  value="<%= paciente.coments_epoc%>">
-           </div>
-           </div>  
-
-
-                              <!--IRC-->
-                              <div class="row enfermedad mt-4">
-                                <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                                                                          
-                                  <% if (paciente.irc == 'si') { %>
-                              <select class="custom-select  bg-light"  name="irc">
-                                                                          
-                              <option selected value="si">Tiene irc</option>
-                               <option value="no">No tiene irc</option>
-                                   </select>
-                                   <% }else  {%>
-                                 <select class="custom-select  bg-light"  name="irc">
-                                                                           
-                                  <option  value="si">Tiene irc</option>
-                                 <option selected value="no">No tiene irc</option>
-                                 </select> 
-                                  <% } %>
-                                                                    
-                              </div>
-              <div class="form-group col-6 pt-2" placeholder="fecha_irc"  value="">
-             <input type="date" id="start" name="fecha_irc" class="form-control  bg-light"
-            value="<%= paciente.date_irc%>"
-            min="1940-01-01" max="2021-12-31">
-           </div>
-           <div class="form-group col-6 pt-2" placeholder="fecha_end_irc"  value="">
-            <input type="date" id="start" name="fecha_end_irc" class="form-control  bg-light"
-           value="<%= paciente.date_end_irc%>"
-           min="1940-01-01" max="2021-12-31">
-          </div>
-           <div class="form-group col-6 pl-3">
-            <input type="text" class="form-control bg-light" name="accion_irc" placeholder="Acción tomada"  value="<%= paciente.action_irc%>">
-            </div>
-           <div class="form-group col-6 pl-0">
-           <input type="text" class="form-control bg-light" name="comentario_irc" placeholder="Comentario"  value="<%= paciente.coments_irc%>">
-           </div>
-           </div> 
-
-             <!--Obesidad-->
-             <div class="row enfermedad mt-4">
-                <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                                                          
-                  <% if (paciente.obesity == 'si') { %>
-              <select class="custom-select  bg-light"  name="obesity">
-                                                          
-              <option selected value="si">Tiene obesidad</option>
-               <option value="no">No tiene obesidad</option>
-                   </select>
-                   <% }else  {%>
-                 <select class="custom-select  bg-light"  name="obesity">                                   
-                  <option  value="si">Tiene obesidad</option>
-                 <option selected value="no">No tiene obesidad</option>
-                 </select> 
-                  <% } %>
-                                                    
-              </div>
-              <div class="form-group col-6 pt-2" placeholder="fecha_obesidad"  value="">
-             <input type="date" id="start" name="fecha_obesidad" class="form-control  bg-light"
-            value="<%= paciente.date_obesity%>"
-            min="1940-01-01" max="2021-12-31">
-           </div>
-           <div class="form-group col-6 pt-2" placeholder="fecha_obesidad"  value="">
-            <input type="date" id="start" name="fecha_end_obesidad" class="form-control  bg-light"
-           value="<%= paciente.date_end_obesity%>"
-           min="1940-01-01" max="2021-12-31">
-          </div>
-           <div class="form-group col-6 pl-3">
-            <input type="text" class="form-control bg-light" name="accion_obesidad" placeholder="Acción tomada"  value="<%= paciente.action_obesity%>">
-            </div>
-           <div class="form-group col-6 pl-0">
-           <input type="text" class="form-control bg-light" name="comentario_obesidad" placeholder="Comentario"  value="<%= paciente.coments_obesity%>">
-           </div>
-           </div> 
-                         </div>
-          
-                            <div class="col-12 form-group d-flex flex-wrap justify-content-center">
-                                <form action="#"  method="POST">
-                                <button type="submit">Actualizar</button>
-                            </form>
-                                <a href="/patients" class="col-6 mx-3 my-3 btn btn-light border">Volver</a>
-                            </div>
-                            
-                        </form>
-                    </div>                        
+                                    </form>
+                                </div>
                 </div>
             </div>
         </div>
     </section>
-  
+
 
     <!-- FOOTER -->
     <%- include('../partials/footer.ejs') %>
-    
+
 </body>
 
 </html>

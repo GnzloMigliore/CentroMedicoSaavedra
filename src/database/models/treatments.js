@@ -12,6 +12,7 @@ module.exports = (sequelize, dataTypes) => {
         patient_name: dataTypes.STRING,
         datetreatment: dataTypes.TEXT,
         dateendtreatment: dataTypes.TEXT,
+        reason: dataTypes.TEXT,
     };
 
     const treatments = sequelize.define(alias, cols)

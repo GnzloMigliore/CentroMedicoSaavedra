@@ -1,474 +1,525 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <%- include('../partials/head.ejs') %>
-    <!--Mi CSS-->
-    <link rel="stylesheet" href="/css/patientCreate.css">
+        <!--Mi CSS-->
+        <link rel="stylesheet" href="/css/patientCreate.css">
 </head>
+
 <body>
     <header>
         <%- include('../partials/navBar.ejs') %>
-        
+
     </header>
-    
+
     <main class="container-fluid">
         <section class="row my-3">
             <article class="col-8 mx-auto mb-5">
                 <h2 class="titulo-admin pb-3 border-bottom text-center pt-5 mx-auto text-uppercase">CREAR PACIENTE</h2>
-                </article>
+            </article>
         </section>
         <section class="container">
             <div class="row">
                 <article id="crear" class="col-8 mx-auto">
-                    <% if(typeof(errors) != 'undefined'){%>
+                    <% if(typeof(errors) !='undefined' ){%>
                         <ul class="alert alert-danger">
-                          <% errors.forEach(error => { %>
-                            <li><%= error.msg%></li>
-                            <%});%>
+                            <% errors.forEach(error=> { %>
+                                <li>
+                                    <%= error.msg%>
+                                </li>
+                                <%});%>
                         </ul>
-                      <%}%>
-                    <form action="/patients/create" method="POST">
-                        <!--Nombre-->
-                        <div class="form-group">
-                            <input type="text" class="form-control  bg-light" name="nombre" placeholder="Nombre"  value="">
-                        </div>
-                        <!--Apellido-->
-                        <div class="form-group">
-                            <input type="text" class="form-control  bg-light" name="apellido" placeholder="Apellido"  value="">
-                        </div>
-                         
-                        <div class="row">
-                            <!--Género-->
-                            <div class="form-group col-6" placeholder="Genero"  value="">
-                                <select class="custom-select  bg-light"  name="genero">
-                                    <option desabled value="">Seleccione género</option>
-                                    <option value="femenino">Femenino</option>
-                                    <option value="masculino">Masculino</option>
-                                </select>
-                            </div>
-                            <!--Fecha de nacimiento-->
-                            <div class="form-group col-6" placeholder="Nacimiento"  value="">
-                            <input type="date" id="start" name="nacimiento" class="form-control  bg-light"
-                            value=""
-                            min="1910-01-01" max="2021-12-31">
-                            </div>
-                       
-                            <!--Email-->
-                            <div class="form-group col-7">
-                                <input type="email" class="form-control bg-light" name="email" placeholder="Email"  value="">
-                            </div>
-                            <!--DNI-->
-                            <div class="form-group col-5 pl-0">
-                                <input type="number" class="form-control bg-light" name="dni" placeholder="DNI"  value="">
-                            </div>
-                          
-                         <!--Obra social-->
-                             <div class="form-group col-5">
-                          <input type="text" class="form-control bg-light" name="obrasocial" placeholder="Obra Social"   value="">
-                            </div>
-                           <!--numero-->
-                           <div class="form-group col-7 pl-0">
-                           <input type="number" class="form-control bg-light" name="numero" placeholder="numero"  value="">
-                           </div>
+                        <%}%>
+                            <form action="/patients/create" method="POST">
+                                <!--Nombre-->
+                                <div class="form-group">
+                                    <input type="text" class="form-control  bg-light" name="nombre" placeholder="Nombre"
+                                        value="">
+                                </div>
+                                <!--Apellido-->
+                                <div class="form-group">
+                                    <input type="text" class="form-control  bg-light" name="apellido"
+                                        placeholder="Apellido" value="">
+                                </div>
 
-                            <!--Dirección-->
-                            <div class="form-group col-6">
-                                <input type="text" class="form-control bg-light" name="dirección" placeholder="Dirección"  value="">
-                            </div>
-                             <!--numero-->
-                             <div class="form-group col-2 pl-0">
-                                <input type="number" class="form-control bg-light" name="adress_number" placeholder="Número"  value="">
-                            </div>
-                            <!--Telefóno-->
-                            <div class="form-group col-4 pl-0">
-                                <input type="text" class="form-control bg-light" name="telefono" placeholder="Teléfono"  value="">
-                            </div>
-                        </div>
-                      
-                           <!--Número de Paciente-->
-                           <div class="form-group">
-                            <input type="number" class="form-control  bg-light" name="nhc" placeholder="Número de paciente"  value="">
-                           </div>
-                      
+                                <div class="row">
+                                    <!--Género-->
+                                    <div class="form-group col-6" placeholder="Genero" value="">
+                                        <select class="custom-select  bg-light" name="genero">
+                                            <option desabled value="">Seleccione género</option>
+                                            <option value="femenino">Femenino</option>
+                                            <option value="masculino">Masculino</option>
+                                        </select>
+                                    </div>
+                                    <!--Fecha de nacimiento-->
+                                    <div class="form-group col-6" placeholder="Nacimiento" value="">
+                                        <input type="date" id="start" name="nacimiento" class="form-control  bg-light"
+                                            value="" min="1910-01-01" max="2050-01-01">
+                                    </div>
 
-                          <!--Enfermedades-->
+                                    <!--Email-->
+                                    <div class="form-group col-7">
+                                        <input type="email" class="form-control bg-light" name="email"
+                                            placeholder="Email" value="">
+                                    </div>
+                                    <!--DNI-->
+                                    <div class="form-group col-5 pl-0">
+                                        <input type="number" class="form-control bg-light" name="dni" placeholder="DNI"
+                                            value="">
+                                    </div>
 
-                        <article class="col-8 mx-auto mb-5">
-                            <h2 class="titulo-admin pb-3  text-center pt-5 mx-auto text-uppercase">ENFERMEDADES</h2>
-                            </article>
-                        <!--Diabetes-->
-                        <div class="row enfermedad">
-                        <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                            <select class="custom-select   bg-light"  name="diabetes">
-                                <option desabled value="no">Seleccione si tiene diabetes</option>
-                                <option value="si">Si</option>
-                                <option value="no">No</option>
-                            </select>
-                            </label> 
-                        </div>
-                        <div class="form-group col-6 " placeholder="fecha_diabetes"  value="">
-                        <input type="date" id="start" name="fecha_diabetes" class="form-control  bg-light"
-                        value=""min="1940-01-01" max="2021-12-31">
-                        </div>
-                        <div class="form-group col-6 "value="">
-                            <input type="date" id="start" name="fecha_end_diabetes" class="form-control  bg-light"
-                            value="" min="1940-01-01" max="2021-12-31">
-                            </div>
-                        <div class="form-group col-6 pl-3">
-                            <input type="text" class="form-control bg-light" name="accion_diabetes" placeholder="Acción tomada"  value="">
-                        </div>
-                        <div class="form-group col-6 pl-0">
-                            <input type="text" class="form-control bg-light" name="comentario_diabetes" placeholder="Comentario"  value="">
-                        </div>
-                        </div>
-                 <!--DLP-->
-                <div class="row enfermedad mt-4">
-                  <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                    <select class="custom-select  bg-light"  name="dlp">
-                        <option desabled value="no">Seleccione si tiene DLP</option>
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                    </select>
-               </div>
-                <div class="form-group col-6 "value="">
-               <input type="date" id="start" name="fecha_dlp" class="form-control  bg-light"
-              value=""
-              min="1940-01-01" max="2021-12-31">
-             </div>
-             <div class="form-group col-6 "value="">
-                <input type="date" id="start" name="fecha_end_dlp" class="form-control  bg-light"
-               value=""
-               min="1940-01-01" max="2021-12-31">
-              </div>
-             <div class="form-group col-6 pl-3">
-              <input type="text" class="form-control bg-light" name="accion_dlp" placeholder="Acción tomada"  value="">
-              </div>
-             <div class="form-group col-6 pl-0">
-             <input type="text" class="form-control bg-light" name="comentario_dlp" placeholder="Comentario"  value="">
-             </div>
-             </div>
+                                    <!--Obra social-->
+                                    <div class="form-group col-5">
+                                        <input type="text" class="form-control bg-light" name="obrasocial"
+                                            placeholder="Obra Social" value="">
+                                    </div>
+                                    <!--numero-->
+                                    <div class="form-group col-7 pl-0">
+                                        <input type="number" class="form-control bg-light" name="numero"
+                                            placeholder="numero" value="">
+                                    </div>
 
-                      <!--HTA-->
-                <div class="row enfermedad mt-4">
-                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                        <select class="custom-select  bg-light"  name="hta">
-                            <option desabled value="no">Seleccione si tiene HTA</option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
-                        </select>
-                 </div>
-                  <div class="form-group col-6 " placeholder="fecha_hta"  value="">
-                 <input type="date" id="start" name="fecha_hta" class="form-control  bg-light"
-                value=""
-                min="1940-01-01" max="2021-12-31">
-               </div>
-               <div class="form-group col-6 " placeholder="fecha_hta"  value="">
-                <input type="date" id="start" name="fecha_end_hta" class="form-control  bg-light"
-               value=""
-               min="1940-01-01" max="2021-12-31">
-              </div>
-               <div class="form-group col-6 pl-3">
-                <input type="text" class="form-control bg-light" name="accion_hta" placeholder="Acción tomada"  value="">
-                </div>
-               <div class="form-group col-6 pl-0">
-               <input type="text" class="form-control bg-light" name="comentario_hta" placeholder="Comentario"  value="">
-               </div>
-               </div>
-                       
-                                  <!--CRM-->
-                <div class="row enfermedad mt-4">
-                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                        <select class="custom-select  bg-light"  name="crm">
-                            <option desabled value="no">Seleccione si tiene CRM</option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
-                        </select>
-                 </div>
-                  <div class="form-group col-6 "value="">
-                 <input type="date" id="start" name="fecha_crm" class="form-control  bg-light"
-                value=""
-                min="1940-01-01" max="2021-12-31">
-               </div>
-               <div class="form-group col-6 "value="">
-                <input type="date" id="start" name="fecha_end_crm" class="form-control  bg-light"
-               value=""
-               min="1940-01-01" max="2021-12-31">
-              </div>
-               <div class="form-group col-6 pl-3">
-                <input type="text" class="form-control bg-light" name="accion_crm" placeholder="Acción tomada"  value="">
-                </div>
-               <div class="form-group col-6 pl-0">
-               <input type="text" class="form-control bg-light" name="comentario_crm" placeholder="Comentario"  value="">
-               </div>
-               </div>  
-                                                 <!--ATC-->
-                <div class="row enfermedad mt-4">
-                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                        <select class="custom-select  bg-light"  name="atc">
-                            <option desabled value="no">Seleccione si tiene ATC</option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
-                        </select>
-                 </div>
-                  <div class="form-group col-6" placeholder="fecha_atc"  value="">
-                 <input type="date" id="start" name="fecha_atc" class="form-control  bg-light"
-                value=""
-                min="1940-01-01" max="2021-12-31">
-               </div>
-               <div class="form-group col-6" placeholder="fecha_atc"  value="">
-                <input type="date" id="start" name="fecha_end_atc" class="form-control  bg-light"
-               value=""
-               min="1940-01-01" max="2021-12-31">
-              </div>
-               <div class="form-group col-6 pl-3">
-                <input type="text" class="form-control bg-light" name="accion_atc" placeholder="Acción tomada"  value="">
-                </div>
-               <div class="form-group col-6 pl-0">
-               <input type="text" class="form-control bg-light" name="comentario_atc" placeholder="Comentario"  value="">
-               </div>
-               </div>  
+                                    <!--Dirección-->
+                                    <div class="form-group col-6">
+                                        <input type="text" class="form-control bg-light" name="dirección"
+                                            placeholder="Dirección" value="">
+                                    </div>
+                                    <!--numero-->
+                                    <div class="form-group col-2 pl-0">
+                                        <input type="number" class="form-control bg-light" name="adress_number"
+                                            placeholder="Número" value="">
+                                    </div>
+                                    <!--Telefóno-->
+                                    <div class="form-group col-4 pl-0">
+                                        <input type="text" class="form-control bg-light" name="telefono"
+                                            placeholder="Teléfono" value="">
+                                    </div>
+                                </div>
 
-                                            <!--IAM-->
-                <div class="row enfermedad mt-4">
-                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                        <select class="custom-select  bg-light"  name="iam">
-                            <option desabled value="no">Seleccione si tiene IAM</option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
-                        </select>
-                 </div>
-                  <div class="form-group col-6"value="">
-                 <input type="date" id="start" name="fecha_iam" class="form-control  bg-light"
-                value=""
-                min="1940-01-01" max="2021-12-31">
-               </div>
-               <div class="form-group col-6"value="">
-                <input type="date" id="start" name="fecha_end_iam" class="form-control  bg-light"
-               value=""
-               min="1940-01-01" max="2021-12-31">
-              </div>
-               <div class="form-group col-6 pl-3">
-                <input type="text" class="form-control bg-light" name="accion_iam" placeholder="Acción tomada"  value="">
-                </div>
-               <div class="form-group col-6 pl-0">
-               <input type="text" class="form-control bg-light" name="comentario_iam" placeholder="Comentario"  value="">
-               </div>
-               </div>  
-                       
-                       
-                                            <!--ACV-->
-                <div class="row enfermedad mt-4">
-                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                        <select class="custom-select  bg-light"  name="acv">
-                            <option desabled value="no">Seleccione si tiene ACV</option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
-                        </select>
-                 </div>
-                  <div class="form-group col-6 "   value="">
-                 <input type="date" id="start" name="fecha_acv" class="form-control  bg-light"
-                value=""
-                min="1940-01-01" max="2021-12-31">
-               </div>
-               <div class="form-group col-6 "   value="">
-                <input type="date" id="start" name="fecha_end_acv" class="form-control  bg-light"
-               value=""
-               min="1940-01-01" max="2021-12-31">
-              </div>
-               <div class="form-group col-6 pl-3">
-                <input type="text" class="form-control bg-light" name="accion_acv" placeholder="Acción tomada"  value="">
-                </div>
-               <div class="form-group col-6 pl-0">
-               <input type="text" class="form-control bg-light" name="comentario_acv" placeholder="Comentario"  value="">
-               </div>
-               </div>  
-                       
-                   <!--Aneurisma aorta-->
-                <div class="row enfermedad mt-4">
-                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                        <select class="custom-select  bg-light"  name="aneurisma">
-                            <option desabled value="no">Seleccione si tiene aneurisma</option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
-                        </select>
-                 </div>
-                  <div class="form-group col-6 "  value="">
-                 <input type="date" id="start" name="fecha_aneurisma" class="form-control  bg-light"
-                value=""
-                min="1940-01-01" max="2021-12-31">
-               </div>
-               <div class="form-group col-6 "  value="">
-                <input type="date" id="start" name="fecha_end_aneurisma" class="form-control  bg-light"
-               value=""
-               min="1940-01-01" max="2021-12-31">
-              </div>
-               <div class="form-group col-6 pl-3">
-                <input type="text" class="form-control bg-light" name="accion_aneurisma" placeholder="Acción tomada"  value="">
-                </div>
-               <div class="form-group col-6 pl-0">
-               <input type="text" class="form-control bg-light" name="comentario_aneurisma" placeholder="Comentario"  value="">
-               </div>
-               </div>  
-
-                       <!--IC-->
-                <div class="row enfermedad mt-4">
-                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                        <select class="custom-select  bg-light"  name="ic">
-                            <option desabled value="no">Seleccione si tiene IC</option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
-                        </select>
-                 </div>
-                  <div class="form-group col-6 "  value="">
-                 <input type="date" id="start" name="fecha_ic" class="form-control  bg-light"
-                value=""
-                min="1940-01-01" max="2021-12-31">
-               </div>
-               <div class="form-group col-6 "  value="">
-                <input type="date" id="start" name="fecha_end_ic" class="form-control  bg-light"
-               value=""
-               min="1940-01-01" max="2021-12-31">
-              </div>
-               <div class="form-group col-6 pl-3">
-                <input type="text" class="form-control bg-light" name="accion_ic" placeholder="Acción tomada"  value="">
-                </div>
-               <div class="form-group col-6 pl-0">
-               <input type="text" class="form-control bg-light" name="comentario_ic" placeholder="Comentario"  value="">
-               </div>
-               </div>  
-                    
-                               <!--EVP-->
-                <div class="row enfermedad mt-4">
-                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                        <select class="custom-select  bg-light"  name="evp">
-                            <option desabled value="no">Seleccione si tiene EVP</option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
-                        </select>
-                 </div>
-                  <div class="form-group col-6" value="">
-                 <input type="date" id="start" name="fecha_evp" class="form-control  bg-light"
-                value=""
-                min="1940-01-01" max="2021-12-31">
-               </div>
-               <div class="form-group col-6 " value="">
-                <input type="date" id="start" name="fecha_end_evp" class="form-control  bg-light"
-               value=""
-               min="1940-01-01" max="2021-12-31">
-              </div>
-               <div class="form-group col-6 pl-3">
-                <input type="text" class="form-control bg-light" name="accion_evp" placeholder="Acción tomada"  value="">
-                </div>
-               <div class="form-group col-6 pl-0">
-               <input type="text" class="form-control bg-light" name="comentario_evp" placeholder="Comentario"  value="">
-               </div>
-               </div> 
-                       
-                     
-                               <!--EPOC-->
-                <div class="row enfermedad mt-4">
-                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                        <select class="custom-select  bg-light"  name="epoc">
-                            <option desabled value="no">Seleccione si tiene EPOC</option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
-                        </select>
-                 </div>
-                  <div class="form-group col-6" placeholder="fecha_epoc"  value="">
-                 <input type="date" id="start" name="fecha_epoc" class="form-control  bg-light"
-                value=""
-                min="1940-01-01" max="2021-12-31">
-               </div>
-               <div class="form-group col-6" placeholder="fecha_epoc"  value="">
-                <input type="date" id="start" name="fecha_end_epoc" class="form-control  bg-light"
-               value=""
-               min="1940-01-01" max="2021-12-31">
-              </div>
-               <div class="form-group col-6 pl-3">
-                <input type="text" class="form-control bg-light" name="accion_epoc" placeholder="Acción tomada"  value="">
-                </div>
-               <div class="form-group col-6 pl-0">
-               <input type="text" class="form-control bg-light" name="comentario_epoc" placeholder="Comentario"  value="">
-               </div>
-               </div>  
+                                <!--Número de Paciente-->
+                                <div class="form-group">
+                                    <input type="number" class="form-control  bg-light" name="nhc"
+                                        placeholder="Número de paciente" value="">
+                                </div>
 
 
-                                  <!--IRC-->
-                <div class="row enfermedad mt-4">
-                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                        <select class="custom-select  bg-light"  name="irc">
-                            <option desabled value="no">Seleccione si tiene IRC</option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
-                        </select>
-                 </div>
-                  <div class="form-group col-6 "value="">
-                 <input type="date" id="start" name="fecha_irc" class="form-control  bg-light"
-                value=""
-                min="1940-01-01" max="2021-12-31">
-               </div>
-               <div class="form-group col-6 "value="">
-                <input type="date" id="start" name="fecha_end_irc" class="form-control  bg-light"
-               value=""
-               min="1940-01-01" max="2021-12-31">
-              </div>
-               <div class="form-group col-6 pl-3">
-                <input type="text" class="form-control bg-light" name="accion_irc" placeholder="Acción tomada"  value="">
-                </div>
-               <div class="form-group col-6 pl-0">
-               <input type="text" class="form-control bg-light" name="comentario_irc" placeholder="Comentario"  value="">
-               </div>
-               </div> 
+                                <!--Enfermedades-->
 
-                 <!--Obesidad-->
-                 <div class="row enfermedad mt-4">
-                    <div class="col-12 form-group d-flex justify-content-between pt-2">                       
-                        <select class="custom-select  bg-light"  name="obesidad">
-                            <option desabled value="no">Seleccione si tiene obesidad</option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
-                        </select>
-                 </div>
-                  <div class="form-group col-6" value="">
-                 <input type="date" id="start" name="fecha_obesidad" class="form-control  bg-light"
-                value=""
-                min="1940-01-01" max="2021-12-31">
-               </div>
-               <div class="form-group col-6" value="">
-                <input type="date" id="start" name="fecha_end_obesidad" class="form-control  bg-light"
-               value=""
-               min="1940-01-01" max="2021-12-31">
-              </div>
-               <div class="form-group col-6 pl-3">
-                <input type="text" class="form-control bg-light" name="accion_obesidad" placeholder="Acción tomada"  value="">
-                </div>
-               <div class="form-group col-6 pl-0">
-               <input type="text" class="form-control bg-light" name="comentario_obesidad" placeholder="Comentario"  value="">
-               </div>
-               </div> 
+                                <article class="col-8 mx-auto mb-5">
+                                    <h2 class="titulo-admin pb-3  text-center pt-5 mx-auto text-uppercase">ENFERMEDADES
+                                    </h2>
+                                </article>
+                                <!--Diabetes-->
+                                <div class="row enfermedad">
+                                    <div class="col-12 form-group d-flex justify-content-between pt-2">
+                                        <select class="custom-select   bg-light" name="diabetes">
+                                            <option desabled value="no">Seleccione si tiene diabetes</option>
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        </label>
+                                    </div>
+                                    <div class="form-group col-6 " placeholder="fecha_diabetes" value="">
+                                        <input type="date" id="start" name="fecha_diabetes"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 " value="">
+                                        <input type="date" id="start" name="fecha_end_diabetes"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 pl-3">
+                                        <input type="text" class="form-control bg-light" name="accion_diabetes"
+                                            placeholder="Acción tomada" value="">
+                                    </div>
+                                    <div class="form-group col-6 pl-0">
+                                        <input type="text" class="form-control bg-light" name="comentario_diabetes"
+                                            placeholder="Comentario" value="">
+                                    </div>
+                                </div>
+                                <!--DLP-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="col-12 form-group d-flex justify-content-between pt-2">
+                                        <select class="custom-select  bg-light" name="dlp">
+                                            <option desabled value="no">Seleccione si tiene DLP</option>
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-6 " value="">
+                                        <input type="date" id="start" name="fecha_dlp" class="form-control  bg-light"
+                                            value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 " value="">
+                                        <input type="date" id="start" name="fecha_end_dlp"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 pl-3">
+                                        <input type="text" class="form-control bg-light" name="accion_dlp"
+                                            placeholder="Acción tomada" value="">
+                                    </div>
+                                    <div class="form-group col-6 pl-0">
+                                        <input type="text" class="form-control bg-light" name="comentario_dlp"
+                                            placeholder="Comentario" value="">
+                                    </div>
+                                </div>
 
-                        
-                      
-                   
-                   
-                        </div>
-                        <!--Botones guardar volver-->
-                        <div class="form-group row d-flex justify-content-center mx-auto mt-5">
-                            <button type="submit" class="btn btn-dark col-8 border-0 rounded-0">Guardar paciente</button>
-                        </div>
-                        <div class="form-group row d-flex justify-content-center mx-auto">
-                            <a href="/patients" class=" text-decoration-none text-body col-12 text-center pl-0">Volver</a>
-                        </div>
-                        
-                        
-                        
-                    </form>
-                </article>
+                                <!--HTA-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="col-12 form-group d-flex justify-content-between pt-2">
+                                        <select class="custom-select  bg-light" name="hta">
+                                            <option desabled value="no">Seleccione si tiene HTA</option>
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-6 " placeholder="fecha_hta" value="">
+                                        <input type="date" id="start" name="fecha_hta" class="form-control  bg-light"
+                                            value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 " placeholder="fecha_hta" value="">
+                                        <input type="date" id="start" name="fecha_end_hta"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 pl-3">
+                                        <input type="text" class="form-control bg-light" name="accion_hta"
+                                            placeholder="Acción tomada" value="">
+                                    </div>
+                                    <div class="form-group col-6 pl-0">
+                                        <input type="text" class="form-control bg-light" name="comentario_hta"
+                                            placeholder="Comentario" value="">
+                                    </div>
+                                </div>
+
+                                <!--CRM-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="col-12 form-group d-flex justify-content-between pt-2">
+                                        <select class="custom-select  bg-light" name="crm">
+                                            <option desabled value="no">Seleccione si tiene CRM</option>
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-6 " value="">
+                                        <input type="date" id="start" name="fecha_crm" class="form-control  bg-light"
+                                            value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 " value="">
+                                        <input type="date" id="start" name="fecha_end_crm"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 pl-3">
+                                        <input type="text" class="form-control bg-light" name="accion_crm"
+                                            placeholder="Acción tomada" value="">
+                                    </div>
+                                    <div class="form-group col-6 pl-0">
+                                        <input type="text" class="form-control bg-light" name="comentario_crm"
+                                            placeholder="Comentario" value="">
+                                    </div>
+                                </div>
+                                <!--ATC-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="col-12 form-group d-flex justify-content-between pt-2">
+                                        <select class="custom-select  bg-light" name="atc">
+                                            <option desabled value="no">Seleccione si tiene ATC</option>
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-6" placeholder="fecha_atc" value="">
+                                        <input type="date" id="start" name="fecha_atc" class="form-control  bg-light"
+                                            value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6" placeholder="fecha_atc" value="">
+                                        <input type="date" id="start" name="fecha_end_atc"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 pl-3">
+                                        <input type="text" class="form-control bg-light" name="accion_atc"
+                                            placeholder="Acción tomada" value="">
+                                    </div>
+                                    <div class="form-group col-6 pl-0">
+                                        <input type="text" class="form-control bg-light" name="comentario_atc"
+                                            placeholder="Comentario" value="">
+                                    </div>
+                                </div>
+
+                                <!--IAM-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="col-12 form-group d-flex justify-content-between pt-2">
+                                        <select class="custom-select  bg-light" name="iam">
+                                            <option desabled value="no">Seleccione si tiene IAM</option>
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-6" value="">
+                                        <input type="date" id="start" name="fecha_iam" class="form-control  bg-light"
+                                            value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6" value="">
+                                        <input type="date" id="start" name="fecha_end_iam"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 pl-3">
+                                        <input type="text" class="form-control bg-light" name="accion_iam"
+                                            placeholder="Acción tomada" value="">
+                                    </div>
+                                    <div class="form-group col-6 pl-0">
+                                        <input type="text" class="form-control bg-light" name="comentario_iam"
+                                            placeholder="Comentario" value="">
+                                    </div>
+                                </div>
+
+
+                                <!--ACV-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="col-12 form-group d-flex justify-content-between pt-2">
+                                        <select class="custom-select  bg-light" name="acv">
+                                            <option desabled value="no">Seleccione si tiene ACV</option>
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-6 " value="">
+                                        <input type="date" id="start" name="fecha_acv" class="form-control  bg-light"
+                                            value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 " value="">
+                                        <input type="date" id="start" name="fecha_end_acv"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 pl-3">
+                                        <input type="text" class="form-control bg-light" name="accion_acv"
+                                            placeholder="Acción tomada" value="">
+                                    </div>
+                                    <div class="form-group col-6 pl-0">
+                                        <input type="text" class="form-control bg-light" name="comentario_acv"
+                                            placeholder="Comentario" value="">
+                                    </div>
+                                </div>
+                                <!--Aneurisma aorta-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="col-12 form-group d-flex justify-content-between pt-2">
+                                        <select class="custom-select  bg-light" name="aneurisma">
+                                            <option desabled value="no">Seleccione si tiene aneurisma</option>
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-6 " value="">
+                                        <input type="date" id="start" name="fecha_aneurisma"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 " value="">
+                                        <input type="date" id="start" name="fecha_end_aneurisma"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 pl-3">
+                                        <input type="text" class="form-control bg-light" name="accion_aneurisma"
+                                            placeholder="Acción tomada" value="">
+                                    </div>
+                                    <div class="form-group col-6 pl-0">
+                                        <input type="text" class="form-control bg-light" name="comentario_aneurisma"
+                                            placeholder="Comentario" value="">
+                                    </div>
+                                </div>
+
+                                <!--IC-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="col-12 form-group d-flex justify-content-between pt-2">
+                                        <select class="custom-select  bg-light" name="ic">
+                                            <option desabled value="no">Seleccione si tiene IC</option>
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-6 " value="">
+                                        <input type="date" id="start" name="fecha_ic" class="form-control  bg-light"
+                                            value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 " value="">
+                                        <input type="date" id="start" name="fecha_end_ic" class="form-control  bg-light"
+                                            value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 pl-3">
+                                        <input type="text" class="form-control bg-light" name="accion_ic"
+                                            placeholder="Acción tomada" value="">
+                                    </div>
+                                    <div class="form-group col-6 pl-0">
+                                        <input type="text" class="form-control bg-light" name="comentario_ic"
+                                            placeholder="Comentario" value="">
+                                    </div>
+                                </div>
+
+                                <!--EVP-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="col-12 form-group d-flex justify-content-between pt-2">
+                                        <select class="custom-select  bg-light" name="evp">
+                                            <option desabled value="no">Seleccione si tiene EVP</option>
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-6" value="">
+                                        <input type="date" id="start" name="fecha_evp" class="form-control  bg-light"
+                                            value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 " value="">
+                                        <input type="date" id="start" name="fecha_end_evp"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 pl-3">
+                                        <input type="text" class="form-control bg-light" name="accion_evp"
+                                            placeholder="Acción tomada" value="">
+                                    </div>
+                                    <div class="form-group col-6 pl-0">
+                                        <input type="text" class="form-control bg-light" name="comentario_evp"
+                                            placeholder="Comentario" value="">
+                                    </div>
+                                </div>
+
+
+                                <!--EPOC-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="col-12 form-group d-flex justify-content-between pt-2">
+                                        <select class="custom-select  bg-light" name="epoc">
+                                            <option desabled value="no">Seleccione si tiene EPOC</option>
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-6" placeholder="fecha_epoc" value="">
+                                        <input type="date" id="start" name="fecha_epoc" class="form-control  bg-light"
+                                            value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6" placeholder="fecha_epoc" value="">
+                                        <input type="date" id="start" name="fecha_end_epoc"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 pl-3">
+                                        <input type="text" class="form-control bg-light" name="accion_epoc"
+                                            placeholder="Acción tomada" value="">
+                                    </div>
+                                    <div class="form-group col-6 pl-0">
+                                        <input type="text" class="form-control bg-light" name="comentario_epoc"
+                                            placeholder="Comentario" value="">
+                                    </div>
+                                </div>
+
+
+                                <!--IRC-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="col-12 form-group d-flex justify-content-between pt-2">
+                                        <select class="custom-select  bg-light" name="irc">
+                                            <option desabled value="no">Seleccione si tiene IRC</option>
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-6 " value="">
+                                        <input type="date" id="start" name="fecha_irc" class="form-control  bg-light"
+                                            value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 " value="">
+                                        <input type="date" id="start" name="fecha_end_irc"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 pl-3">
+                                        <input type="text" class="form-control bg-light" name="accion_irc"
+                                            placeholder="Acción tomada" value="">
+                                    </div>
+                                    <div class="form-group col-6 pl-0">
+                                        <input type="text" class="form-control bg-light" name="comentario_irc"
+                                            placeholder="Comentario" value="">
+                                    </div>
+                                </div>
+
+                                <!--Obesidad-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="col-12 form-group d-flex justify-content-between pt-2">
+                                        <select class="custom-select  bg-light" name="obesidad">
+                                            <option desabled value="no">Seleccione si tiene obesidad</option>
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-6" value="">
+                                        <input type="date" id="start" name="fecha_obesidad"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6" value="">
+                                        <input type="date" id="start" name="fecha_end_obesidad"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 pl-3">
+                                        <input type="text" class="form-control bg-light" name="accion_obesidad"
+                                            placeholder="Acción tomada" value="">
+                                    </div>
+                                    <div class="form-group col-6 pl-0">
+                                        <input type="text" class="form-control bg-light" name="comentario_obesidad"
+                                            placeholder="Comentario" value="">
+                                    </div>
+                                </div>
+
+                                <!--Tabaquismo-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="col-12 form-group d-flex justify-content-between pt-2">
+                                        <select class="custom-select  bg-light" name="tabaquismo">
+                                            <option desabled value="no">Seleccione si tiene tabaquismo</option>
+                                            <option value="si">Si</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-6" value="">
+                                        <input type="date" id="start" name="fecha_tabaquismo"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6" value="">
+                                        <input type="date" id="start" name="fecha_end_tabaquismo"
+                                            class="form-control  bg-light" value="" min="1940-01-01" max="2050-01-01">
+                                    </div>
+                                    <div class="form-group col-6 pl-3">
+                                        <input type="text" class="form-control bg-light" name="accion_tabaquismo"
+                                            placeholder="Acción tomada" value="">
+                                    </div>
+                                    <div class="form-group col-6 pl-0">
+                                        <input type="text" class="form-control bg-light" name="comentario_tabaquismo"
+                                            placeholder="Comentario" value="">
+                                    </div>
+                                </div>
+                                <!--Otras enfermedades-->
+                                <div class="row enfermedad mt-4">
+                                    <div class="form-group col-12  mt-3">
+                                        <input type="text" class="form-control bg-light" name="otras_enfermedades"
+                                            placeholder="Otras enfermedades" value="">
+                                    </div>
+                                </div>
+
+
+
+
+
+
+            </div>
+            <!--Botones guardar volver-->
+            <div class="form-group row d-flex justify-content-center mx-auto mt-5">
+                <button type="submit" class="btn btn-dark col-8 border-0 rounded-0">Guardar paciente</button>
+            </div>
+            <div class="form-group row d-flex justify-content-center mx-auto">
+                <a href="/patients" class=" text-decoration-none text-body col-12 text-center pl-0">Volver</a>
+            </div>
+
+
+
+            </form>
+            </article>
             </div>
         </section>
     </main>
     <!-- FOOTER -->
     <%- include('../partials/footer.ejs') %>
-    
+
 </body>
+
 </html>
